@@ -1,0 +1,42 @@
+rrel_key_sc_element <- sc_node_role_relation;;
+nrel_condition <- sc_node_norole_relation;;
+
+test_question_node
+    <- action_interpret_non_atomic_action;
+    -> rrel_1: offset;
+    <= nrel_subaction: general_action;;
+
+offset = [*
+_compound_action
+    _<- test_nonatomic_action;
+    _<- action;
+    _<= nrel_decomposition_of_action:: .._decomposition_tuple;;
+
+.._decomposition_tuple
+    _-> rrel_1:: _first_action;
+    _-> _goto_action;
+    _-> _else_action;;
+
+_first_action
+    _<- successfully_finished_test_action;
+    _<- action;;
+
+_goto_action
+    _<- finished_test_action;
+    _<- action;;
+
+_else_action
+    _<- finished_test_action;
+    _<- action;;
+
+(_first_action _=> _goto_action)
+    _<- nrel_goto;;
+(_first_action _=> _else_action)
+    _<- nrel_priority_path;
+    _<- nrel_else;;
+*];;
+
+offset -> rrel_key_sc_element: _compound_action;;
+
+.._decomposition_tuple
+    <- sc_node_tuple;;
