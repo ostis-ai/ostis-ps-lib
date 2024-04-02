@@ -7,10 +7,9 @@ ScTemplateParams TemplateParamsUtils::createTemplateParamsFromReplacements(
     std::map<ScAddr, std::string, ScAddrLessFunc> const & resolvedVariableIdentifiers)
 {
   ScTemplateParams templateParams;
-  for (auto const & variableReplacementPair : replacements)
+  for (auto const & [variableIdentifier, variable] : replacements)
   {
-    std::string const & variableIdentifier = resolvedVariableIdentifiers.at(variableReplacementPair.first);
-    templateParams.Add(variableIdentifier, variableReplacementPair.second);
+    templateParams.Add(variableIdentifier, variable);
   }
 
   return templateParams;

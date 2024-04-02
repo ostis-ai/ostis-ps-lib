@@ -27,24 +27,24 @@ private:
       std::map<ScAddr, ScAddr, ScAddrLessFunc> const & replacements,
       std::map<ScAddr, std::string, ScAddrLessFunc> const & resolvedVariableIdentifiers);
 
-  ScAddrVector getOrderedTransitionCandidates(ScAddr const & actionAddr);
+  ScAddrList getOrderedTransitionCandidates(ScAddr const & actionAddr);
 
-  ScAddrVector getOrderedTransitionCandidatesFromSequence(
+  ScAddrList getOrderedTransitionCandidatesFromSequence(
       ScAddr const & actionAddr,
       bool const & actionIsSuccessful,
       bool const & actionIsUnsuccessful);
 
   void updateTransitionCandidatesWithTheCandidatesNotFromSequence(
-      ScAddrVector & orderedTransitionCandidates,
+      ScAddrList & orderedTransitionCandidates,
       ScAddr const & actionAddr,
       bool const & actionIsSuccessful,
       bool const & actionIsUnsuccessful);
 
-  void updateTransitionsByRelation(ScAddr const & action, ScAddr const & relation, ScAddrVector & transitions);
+  void updateTransitionsByRelation(ScAddr const & action, ScAddr const & relation, ScAddrList & transitions);
 
   ScAddr getPriorityTransitionArc(ScAddr const & node);
 
-  ScAddrVector getAllArcsByOutRelation(ScAddr const & node, ScAddr const & relation);
+  ScAddrList getAllArcsByOutRelation(ScAddr const & node, ScAddr const & relation);
 
   bool checkTransitionCondition(
       ScAddr const & transitionArc,

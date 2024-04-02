@@ -1,4 +1,4 @@
-Is an agent that generates an action description in the knowlendge base based on the template (program) received. If there are sets of arguments then it performs a role mapping before generation.
+This is an agent that generates an action description in the knowlendge base based on the template (program) received. If there are sets of arguments then it performs a role mapping before generation.
 
 **Action class:**
 

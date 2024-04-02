@@ -2,8 +2,6 @@
 
 #include <sc-memory/sc_addr.hpp>
 
-using namespace std;
-
 class ActionUtils
 {
 public:

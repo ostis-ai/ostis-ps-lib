@@ -68,7 +68,8 @@ SC_AGENT_IMPLEMENTATION(NonAtomicActionInterpreterAgent)
   }
   catch (nonAtomicActionInterpreterModule::ActionCancelledException const & exception)
   {
-    SC_LOG_DEBUG(exception.Description() << "\nNonAtomicActionInterpreterAgent finished with errors");
+    SC_LOG_ERROR(exception.Description());
+    SC_LOG_DEBUG("NonAtomicActionInterpreterAgent finished with errors");
     m_memoryCtx.CreateEdge(ScType::EdgeAccessConstPosPerm, Keynodes::action_cancelled, actionAddr);
     utils::AgentUtils::finishAgentWork(&m_memoryCtx, actionAddr, false);
     STOP_TIMER("NonAtomicActionInterpreterAgent");

@@ -76,7 +76,7 @@ ScAddr NonAtomicActionInterpreter::getNextAction(
     std::map<ScAddr, ScAddr, ScAddrLessFunc> const & replacements,
     std::map<ScAddr, std::string, ScAddrLessFunc> const & resolvedVariableIdentifiers)
 {
-  ScAddrVector orderedTransitionCandidates = getOrderedTransitionCandidates(actionAddr);
+  ScAddrList orderedTransitionCandidates = getOrderedTransitionCandidates(actionAddr);
 
   ScAddr nextAction;
   for (auto const & transitionArc : orderedTransitionCandidates)
@@ -90,7 +90,7 @@ ScAddr NonAtomicActionInterpreter::getNextAction(
   return nextAction;
 }
 
-ScAddrVector NonAtomicActionInterpreter::getOrderedTransitionCandidates(ScAddr const & actionAddr)
+ScAddrList NonAtomicActionInterpreter::getOrderedTransitionCandidates(ScAddr const & actionAddr)
 {
   bool actionIsSuccessful = false;
   bool actionIsUnsuccessful = false;
@@ -109,7 +109,7 @@ ScAddrVector NonAtomicActionInterpreter::getOrderedTransitionCandidates(ScAddr c
   else
     SC_LOG_DEBUG("NonAtomicActionInterpreter: atomic action finished with unknown result.");
 
-  ScAddrVector orderedTransitionCandidates =
+  ScAddrList orderedTransitionCandidates =
       getOrderedTransitionCandidatesFromSequence(actionAddr, actionIsSuccessful, actionIsUnsuccessful);
 
   updateTransitionCandidatesWithTheCandidatesNotFromSequence(
@@ -118,12 +118,12 @@ ScAddrVector NonAtomicActionInterpreter::getOrderedTransitionCandidates(ScAddr c
   return orderedTransitionCandidates;
 }
 
-ScAddrVector NonAtomicActionInterpreter::getOrderedTransitionCandidatesFromSequence(
+ScAddrList NonAtomicActionInterpreter::getOrderedTransitionCandidatesFromSequence(
     ScAddr const & actionAddr,
     bool const & actionIsSuccessful,
     bool const & actionIsUnsuccessful)
 {
-  ScAddrVector orderedTransitionCandidates;
+  ScAddrList orderedTransitionCandidates;
 
   ScAddr transitionArc = getPriorityTransitionArc(actionAddr);
   while (transitionArc.IsValid())
@@ -147,7 +147,7 @@ ScAddrVector NonAtomicActionInterpreter::getOrderedTransitionCandidatesFromSeque
 }
 
 void NonAtomicActionInterpreter::updateTransitionCandidatesWithTheCandidatesNotFromSequence(
-    ScAddrVector & orderedTransitionCandidates,
+    ScAddrList & orderedTransitionCandidates,
     ScAddr const & actionAddr,
     bool const & actionIsSuccessful,
     bool const & actionIsUnsuccessful)
@@ -167,9 +167,9 @@ void NonAtomicActionInterpreter::updateTransitionCandidatesWithTheCandidatesNotF
 void NonAtomicActionInterpreter::updateTransitionsByRelation(
     ScAddr const & action,
     ScAddr const & relation,
-    ScAddrVector & transitions)
+    ScAddrList & transitions)
 {
-  ScAddrVector transitionArcs = getAllArcsByOutRelation(action, relation);
+  ScAddrList transitionArcs = getAllArcsByOutRelation(action, relation);
   for (auto const & arc : transitionArcs)
   {
     if (std::find(transitions.begin(), transitions.end(), arc) == transitions.end())
@@ -179,29 +179,19 @@ void NonAtomicActionInterpreter::updateTransitionsByRelation(
 
 ScAddr NonAtomicActionInterpreter::getPriorityTransitionArc(ScAddr const & node)
 {
-  const std::string TRANSITION_ARC = "_transition_arc";
   ScAddr arcAddr;
 
-  ScTemplate scTemplate;
-  scTemplate.Quintuple(
-      node,
-      ScType::EdgeDCommonVar >> TRANSITION_ARC,
-      ScType::NodeVar,
-      ScType::EdgeAccessVarPosPerm,
-      Keynodes::nrel_priority_path);
-
-  ScTemplateSearchResult searchResult;
-  context->HelperSearchTemplate(scTemplate, searchResult);
-
-  if (!searchResult.IsEmpty())
-    arcAddr = searchResult[0][TRANSITION_ARC];
-
+  ScIterator5Ptr priorityArcIterator = context->Iterator5(node, ScType::EdgeDCommonConst, ScType::NodeConst, ScType::EdgeAccessConstPosPerm, Keynodes::nrel_priority_path);
+  if (priorityArcIterator->Next())
+  {
+    arcAddr = priorityArcIterator->Get(1);
+  }
   return arcAddr;
 }
 
-ScAddrVector NonAtomicActionInterpreter::getAllArcsByOutRelation(ScAddr const & node, ScAddr const & relation)
+ScAddrList NonAtomicActionInterpreter::getAllArcsByOutRelation(ScAddr const & node, ScAddr const & relation)
 {
-  ScAddrVector arcs;
+  ScAddrList arcs;
   ScIterator5Ptr iterator5 = utils::IteratorUtils::getIterator5(context, node, relation, true);
   while (iterator5->Next())
   {
@@ -222,7 +212,7 @@ bool NonAtomicActionInterpreter::checkTransitionCondition(
     result = true;
   else
   {
-    LogicFormulaManager logicFormulaSearcher(context);
+    static LogicFormulaManager logicFormulaSearcher(context);
     result = logicFormulaSearcher.checkLogicalFormula(logicFormula, replacements, resolvedVariableIdentifiers);
   }
 

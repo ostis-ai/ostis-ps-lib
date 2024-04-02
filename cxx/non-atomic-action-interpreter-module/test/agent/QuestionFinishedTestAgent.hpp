@@ -13,4 +13,4 @@ class QuestionFinishedTestAgent : public ScAgent
   SC_GENERATED_BODY()
 };
 
-}  // namespace commonTest
+}  // namespace nonAtomicActionInterpreterModuleTest

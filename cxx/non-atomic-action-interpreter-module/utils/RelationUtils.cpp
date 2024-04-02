@@ -48,67 +48,23 @@ bool RelationUtils::checkRelationBetween(
 }
 
 bool RelationUtils::checkAllInEdges(
-    ScMemoryContext * ms_context,
+    ScMemoryContext * context,
     ScAddr const & node,
     ScType const & edgeType,
     ScAddrVector const & addrVector)
 {
-  return std::all_of(addrVector.cbegin(), addrVector.cend(), [ms_context, &node, &edgeType](auto const & addr) {
-    return ms_context->HelperCheckEdge(addr, node, edgeType);
+  return std::all_of(addrVector.cbegin(), addrVector.cend(), [context, &node, &edgeType](auto const & addr) {
+    return context->HelperCheckEdge(addr, node, edgeType);
   });
 }
 
 bool RelationUtils::checkAllOutEdges(
-    ScMemoryContext * ms_context,
+    ScMemoryContext * context,
     ScAddr const & node,
     ScType const & edgeType,
     ScAddrVector const & addrVector)
 {
-  return std::all_of(addrVector.cbegin(), addrVector.cend(), [ms_context, &node, &edgeType](auto const & addr) {
-    return ms_context->HelperCheckEdge(node, addr, edgeType);
+  return std::all_of(addrVector.cbegin(), addrVector.cend(), [context, &node, &edgeType](auto const & addr) {
+    return context->HelperCheckEdge(node, addr, edgeType);
   });
-}
-
-ScAddr RelationUtils::setOutValue(
-    ScMemoryContext * context,
-    ScAddr const & begin,
-    ScType const & edgeType,
-    ScAddr const & end,
-    ScAddr const & relation)
-{
-  context->ForEachIter5(
-      begin,
-      edgeType,
-      ScType::Unknown,
-      ScType::Unknown,
-      relation,
-      [context](
-          ScAddr const & src, ScAddr const & edge, ScAddr const & trg, ScAddr const & edgeAttr, ScAddr const & attr) {
-        context->EraseElement(edge);
-      });
-  ScAddr const & edge = context->CreateEdge(edgeType, begin, end);
-  context->CreateEdge(ScType::EdgeAccessConstPosPerm, relation, edge);
-  return edge;
-}
-
-ScAddr RelationUtils::setInValue(
-    ScMemoryContext * context,
-    ScAddr const & begin,
-    ScType const & edgeType,
-    ScAddr const & end,
-    ScAddr const & relation)
-{
-  context->ForEachIter5(
-      ScType::Unknown,
-      edgeType,
-      end,
-      ScType::Unknown,
-      relation,
-      [context](
-          ScAddr const & src, ScAddr const & edge, ScAddr const & trg, ScAddr const & edgeAttr, ScAddr const & attr) {
-        context->EraseElement(edge);
-      });
-  ScAddr const & edge = context->CreateEdge(edgeType, begin, end);
-  context->CreateEdge(ScType::EdgeAccessConstPosPerm, relation, edge);
-  return edge;
 }

@@ -7,7 +7,6 @@
 
 using namespace nonAtomicActionInterpreterModule;
 
-// TODO: reuse inference module logic for formulas check
 LogicFormulaManager::LogicFormulaManager(ScMemoryContext * context)
   : context(context)
 {

@@ -18,7 +18,7 @@ using namespace nonAtomicActionInterpreterModule;
 namespace nonAtomicActionInterpreterModuleTest
 {
 ScsLoader loader;
-const std::string TEST_FILES_DIR_PATH = COMMON_MODULE_TEST_SRC_PATH "/testStructures/";
+const std::string TEST_FILES_DIR_PATH = NON_ATOMIC_ACTION_INTERPRETER_MODULE_TEST_SRC_PATH "/testStructures/";
 const int WAIT_TIME = 20000;
 
 using CommonTest = ScMemoryTest;
