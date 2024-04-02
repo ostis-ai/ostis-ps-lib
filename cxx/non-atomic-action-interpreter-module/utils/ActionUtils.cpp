@@ -11,12 +11,13 @@ bool ActionUtils::initAgentAndWaitForActionSuccessfulFinish(
     ScAddr const & actionAddr,
     int const & waitTime)
 {
-  return utils::AgentUtils::applyAction(context, actionAddr, waitTime) &&
-         context->HelperCheckEdge(
+  return utils::AgentUtils::applyAction(context, actionAddr, waitTime)
+         && context->HelperCheckEdge(
              scAgentsCommon::CoreKeynodes::question_finished_successfully, actionAddr, ScType::EdgeAccessConstPosPerm);
 }
 
 bool ActionUtils::isActionDeactivated(ScMemoryContext * context, ScAddr const & action)
 {
-  return context->HelperCheckEdge(nonAtomicActionInterpreterModule::Keynodes::action_deactivated, action, ScType::EdgeAccessConstPosPerm);
+  return context->HelperCheckEdge(
+      nonAtomicActionInterpreterModule::Keynodes::action_deactivated, action, ScType::EdgeAccessConstPosPerm);
 }

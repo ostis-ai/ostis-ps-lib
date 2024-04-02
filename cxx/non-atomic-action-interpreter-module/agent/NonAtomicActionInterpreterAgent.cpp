@@ -31,10 +31,8 @@ SC_AGENT_IMPLEMENTATION(NonAtomicActionInterpreterAgent)
   {
     ScAddr nonAtomicActionTemplateAddr =
         utils::IteratorUtils::getAnyByOutRelation(&m_memoryCtx, actionAddr, CoreKeynodes::rrel_1);
-    if (!nonAtomicActionTemplateAddr.IsValid())
-    {
-      throw std::runtime_error("NonAtomicActionInterpreterAgent: action params are not formed correctly.");
-    }
+
+    SC_CHECK_PARAM(nonAtomicActionTemplateAddr, "action params are not formed correctly.");
     ScAddr argumentsSet = utils::IteratorUtils::getAnyByOutRelation(&m_memoryCtx, actionAddr, CoreKeynodes::rrel_2);
     replacements = createReplacements(nonAtomicActionTemplateAddr, argumentsSet);
     resolvedVariableIdentifiers = resolveVariableIdentifiers(replacements);
@@ -45,9 +43,9 @@ SC_AGENT_IMPLEMENTATION(NonAtomicActionInterpreterAgent)
 
     generalAction = utils::IteratorUtils::getAnyByInRelation(&m_memoryCtx, actionAddr, Keynodes::nrel_subaction);
   }
-  catch (std::exception & ex)
+  catch (utils::ExceptionInvalidParams const & ex)
   {
-    SC_LOG_ERROR(ex.what());
+    SC_LOG_ERROR("NonAtomicActionInterpreterAgent: " << ex.Message());
     utils::AgentUtils::finishAgentWork(&m_memoryCtx, actionAddr, false);
     STOP_TIMER("NonAtomicActionInterpreterAgent");
     return SC_RESULT_ERROR_INVALID_PARAMS;
@@ -59,9 +57,9 @@ SC_AGENT_IMPLEMENTATION(NonAtomicActionInterpreterAgent)
     nonAtomicActionInterpreter->interpret(
         nonAtomicActionAddr, replacements, resolvedVariableIdentifiers, generalAction);
   }
-  catch (std::runtime_error & ex)
+  catch (utils::ExceptionCritical & ex)
   {
-    SC_LOG_ERROR(ex.what());
+    SC_LOG_ERROR(ex.Message());
     utils::AgentUtils::finishAgentWork(&m_memoryCtx, actionAddr, false);
     STOP_TIMER("NonAtomicActionInterpreterAgent");
     return SC_RESULT_ERROR;
@@ -96,7 +94,7 @@ void NonAtomicActionInterpreterAgent::generateNonAtomicActionTemplate(
   ScTemplateGenResult templateGenResult;
   if (!m_memoryCtx.HelperGenTemplate(nonAtomicActionTemplate, templateGenResult, templateParams))
   {
-    throw std::runtime_error("NonAtomicActionInterpreterAgent: template generation error.");
+    SC_THROW_EXCEPTION(utils::ExceptionCritical, "template generation error.");
   }
 }
 
@@ -107,7 +105,7 @@ ScAddr NonAtomicActionInterpreterAgent::getTemplateKeyElement(ScAddr const & tem
 
   if (!templateKeyElement.IsValid())
   {
-    throw std::runtime_error("NonAtomicActionInterpreterAgent: template key element not found.");
+    SC_THROW_EXCEPTION(utils::ExceptionInvalidParams, "template key element not found.");
   }
 
   return templateKeyElement;
@@ -124,7 +122,7 @@ std::map<ScAddr, ScAddr, ScAddrLessFunc> NonAtomicActionInterpreterAgent::create
     templateKeyElement = getTemplateKeyElement(nonAtomicActionTemplate);
     for (int index = 1;; index++)
     {
-      ScAddr role = RelationUtils::getIndexRelation(&m_memoryCtx, index);
+      ScAddr role = utils::IteratorUtils::getRoleRelation(&m_memoryCtx, index);
       if (!role.IsValid())
       {
         break;
@@ -147,16 +145,16 @@ std::map<ScAddr, ScAddr, ScAddrLessFunc> NonAtomicActionInterpreterAgent::create
 }
 
 std::map<ScAddr, std::string, ScAddrLessFunc> NonAtomicActionInterpreterAgent::resolveVariableIdentifiers(
-    const std::map<ScAddr, ScAddr, ScAddrLessFunc> & replacements)
+    std::map<ScAddr, ScAddr, ScAddrLessFunc> const & replacements)
 {
   std::map<ScAddr, std::string, ScAddrLessFunc> resolvedVariableIdentifiers;
 
-  for (const auto & variableReplacementPair : replacements)
+  for (auto const & variableReplacementPair : replacements)
   {
     std::string identifier = m_memoryCtx.HelperGetSystemIdtf(variableReplacementPair.first);
     if (identifier.empty())
     {
-      throw std::runtime_error("NonAtomicActionInterpreterAgent: all argument variables should have identifiers.");
+      SC_THROW_EXCEPTION(utils::ExceptionInvalidParams, "all argument variables should have identifiers.");
     }
     resolvedVariableIdentifiers[variableReplacementPair.first] = identifier;
   }

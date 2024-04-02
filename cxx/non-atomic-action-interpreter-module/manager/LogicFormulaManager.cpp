@@ -7,27 +7,23 @@
 
 using namespace nonAtomicActionInterpreterModule;
 
-LogicFormulaManager::LogicFormulaManager(ScMemoryContext * context)
-  : context(context)
-{
-}
-
 bool LogicFormulaManager::checkLogicalFormula(
+    ScMemoryContext * context,
     ScAddr const & logicFormula,
     std::map<ScAddr, ScAddr, ScAddrLessFunc> const & replacements,
     std::map<ScAddr, std::string, ScAddrLessFunc> const & resolvedVariableIdentifiers)
 {
   bool result = false;
 
-  if (utils::CommonUtils::checkType(context, logicFormula, ScType::NodeConstStruct) &&
-      context->HelperCheckEdge(Keynodes::atomic_logical_formula, logicFormula, ScType::EdgeAccessConstPosPerm))
+  if (utils::CommonUtils::checkType(context, logicFormula, ScType::NodeConstStruct)
+      && context->HelperCheckEdge(Keynodes::atomic_logical_formula, logicFormula, ScType::EdgeAccessConstPosPerm))
   {
     ScTemplateParams formulaTemplateParams = TemplateParamsUtils::createTemplateParamsFromReplacements(
         context, replacements, resolvedVariableIdentifiers, logicFormula);
 
     ScTemplate formulaTemplate;
     if (!context->HelperBuildTemplate(formulaTemplate, logicFormula, formulaTemplateParams))
-      throw std::runtime_error("LogicFormulaSearcher: the logic formula template cannot be built.");
+      SC_THROW_EXCEPTION(utils::ExceptionCritical, "LogicFormulaSearcher: the logic formula template cannot be built.");
     ScTemplateSearchResult formulaSearchResult;
     context->HelperSearchTemplate(formulaTemplate, formulaSearchResult);
 

@@ -6,8 +6,6 @@
 class RelationUtils
 {
 public:
-  static ScAddr getIndexRelation(ScMemoryContext * context, int const & index);
-
   static void eraseAllEdges(
       ScMemoryContext * context,
       ScAddr const & source,

@@ -33,7 +33,7 @@ include_directories(
 add_library(non_atomic_action_interpreter SHARED ${SOURCES} ${HEADERS})
 
 if(${SC_CLANG_FORMAT_CODE})
-	target_clangformat_setup(common)
+	target_clangformat_setup(non_atomic_action_interpreter)
 endif()
 
 target_link_libraries(non_atomic_action_interpreter sc-memory sc-agents-common)

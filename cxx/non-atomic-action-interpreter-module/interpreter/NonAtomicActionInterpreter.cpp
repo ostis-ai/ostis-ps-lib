@@ -19,7 +19,6 @@
 #include "NonAtomicActionInterpreter.hpp"
 
 using namespace nonAtomicActionInterpreterModule;
-using namespace scAgentsCommon;
 
 NonAtomicActionInterpreter::NonAtomicActionInterpreter(ScMemoryContext * context)
   : context(context)
@@ -38,7 +37,9 @@ void NonAtomicActionInterpreter::interpret(
   while (action.IsValid())
   {
     if (context->HelperCheckEdge(decompositionTuple, action, ScType::EdgeAccessConstPosPerm) == SC_FALSE)
-      throw std::runtime_error("NonAtomicActionInterpreter: action is not belongs to nonatomic action decomposition.");
+      SC_THROW_EXCEPTION(
+          utils::ExceptionCritical,
+          "NonAtomicActionInterpreter: action is not belongs to nonatomic action decomposition.");
 
     if (context->HelperCheckEdge(Keynodes::action_cancelled, generalAction, ScType::EdgeAccessConstPosPerm))
       SC_THROW_EXCEPTION(
@@ -56,7 +57,8 @@ ScAddr NonAtomicActionInterpreter::getFirstSubAction(ScAddr const & decompositio
       utils::IteratorUtils::getAnyByOutRelation(context, decompositionTuple, scAgentsCommon::CoreKeynodes::rrel_1);
   if (!firstAction.IsValid())
   {
-    throw std::runtime_error("Non atomic action structure is incorrect. Failed to find first action.");
+    SC_THROW_EXCEPTION(
+        utils::ExceptionCritical, "Non atomic action structure is incorrect. Failed to find first action.");
   }
   return firstAction;
 }
@@ -64,9 +66,10 @@ ScAddr NonAtomicActionInterpreter::getFirstSubAction(ScAddr const & decompositio
 void NonAtomicActionInterpreter::applyAction(ScAddr const & actionAddr)
 {
   SC_LOG_DEBUG("NonAtomicActionInterpreter: waiting for atomic action finish.");
-  if (!utils::AgentUtils::applyAction(context, actionAddr, NonAtomicActionInterpreterConstants::INTERPRETER_ACTION_WAIT_TIME))
+  if (!utils::AgentUtils::applyAction(
+          context, actionAddr, NonAtomicActionInterpreterConstants::INTERPRETER_ACTION_WAIT_TIME))
   {
-    throw std::runtime_error("NonAtomicActionInterpreter: action wait time expired.");
+    SC_THROW_EXCEPTION(utils::ExceptionCritical, "NonAtomicActionInterpreter: action wait time expired.");
   }
   SC_LOG_DEBUG("NonAtomicActionInterpreter: atomic action finished.");
 }
@@ -95,13 +98,15 @@ ScAddrList NonAtomicActionInterpreter::getOrderedTransitionCandidates(ScAddr con
   bool actionIsSuccessful = false;
   bool actionIsUnsuccessful = false;
   if (context->HelperCheckEdge(
-          CoreKeynodes::question_finished_successfully, actionAddr, ScType::EdgeAccessConstPosPerm))
+          scAgentsCommon::CoreKeynodes::question_finished_successfully, actionAddr, ScType::EdgeAccessConstPosPerm))
   {
     SC_LOG_DEBUG("NonAtomicActionInterpreter: atomic action finished successfully.");
     actionIsSuccessful = true;
   }
   else if (context->HelperCheckEdge(
-               CoreKeynodes::question_finished_unsuccessfully, actionAddr, ScType::EdgeAccessConstPosPerm))
+               scAgentsCommon::CoreKeynodes::question_finished_unsuccessfully,
+               actionAddr,
+               ScType::EdgeAccessConstPosPerm))
   {
     SC_LOG_DEBUG("NonAtomicActionInterpreter: atomic action finished unsuccessfully.");
     actionIsUnsuccessful = true;
@@ -129,11 +134,11 @@ ScAddrList NonAtomicActionInterpreter::getOrderedTransitionCandidatesFromSequenc
   while (transitionArc.IsValid())
   {
     bool const successCaseTransitionPossibility =
-        actionIsSuccessful &&
-        context->HelperCheckEdge(Keynodes::nrel_then, transitionArc, ScType::EdgeAccessConstPosPerm);
+        actionIsSuccessful
+        && context->HelperCheckEdge(Keynodes::nrel_then, transitionArc, ScType::EdgeAccessConstPosPerm);
     bool const unsuccessCaseTransitionPossibility =
-        actionIsUnsuccessful &&
-        context->HelperCheckEdge(Keynodes::nrel_else, transitionArc, ScType::EdgeAccessConstPosPerm);
+        actionIsUnsuccessful
+        && context->HelperCheckEdge(Keynodes::nrel_else, transitionArc, ScType::EdgeAccessConstPosPerm);
     bool const unconditionalTransitionPossibility =
         context->HelperCheckEdge(Keynodes::nrel_goto, transitionArc, ScType::EdgeAccessConstPosPerm);
 
@@ -181,7 +186,8 @@ ScAddr NonAtomicActionInterpreter::getPriorityTransitionArc(ScAddr const & node)
 {
   ScAddr arcAddr;
 
-  ScIterator5Ptr priorityArcIterator = context->Iterator5(node, ScType::EdgeDCommonConst, ScType::NodeConst, ScType::EdgeAccessConstPosPerm, Keynodes::nrel_priority_path);
+  ScIterator5Ptr priorityArcIterator = context->Iterator5(
+      node, ScType::EdgeDCommonConst, ScType::NodeConst, ScType::EdgeAccessConstPosPerm, Keynodes::nrel_priority_path);
   if (priorityArcIterator->Next())
   {
     arcAddr = priorityArcIterator->Get(1);
@@ -212,8 +218,8 @@ bool NonAtomicActionInterpreter::checkTransitionCondition(
     result = true;
   else
   {
-    static LogicFormulaManager logicFormulaSearcher(context);
-    result = logicFormulaSearcher.checkLogicalFormula(logicFormula, replacements, resolvedVariableIdentifiers);
+    static LogicFormulaManager logicFormulaSearcher;
+    result = logicFormulaSearcher.checkLogicalFormula(context, logicFormula, replacements, resolvedVariableIdentifiers);
   }
 
   return result;

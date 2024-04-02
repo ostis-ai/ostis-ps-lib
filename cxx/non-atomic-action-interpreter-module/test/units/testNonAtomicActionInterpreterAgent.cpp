@@ -21,7 +21,7 @@ ScsLoader loader;
 const std::string TEST_FILES_DIR_PATH = NON_ATOMIC_ACTION_INTERPRETER_MODULE_TEST_SRC_PATH "/testStructures/";
 const int WAIT_TIME = 20000;
 
-using CommonTest = ScMemoryTest;
+using NonAtomicActionInterpreterTest = ScMemoryTest;
 
 void initialize()
 {
@@ -78,7 +78,7 @@ ScAddr getFirstAction(ScMemoryContext & context)
   return actionAddr;
 }
 
-TEST_F(CommonTest, checkDynamicArguments)
+TEST_F(NonAtomicActionInterpreterTest, checkDynamicArguments)
 {
   ScMemoryContext & context = *m_ctx;
 
@@ -133,7 +133,7 @@ TEST_F(CommonTest, checkDynamicArguments)
   shutdown();
 }
 
-TEST_F(CommonTest, checkThenSequence)
+TEST_F(NonAtomicActionInterpreterTest, checkThenSequence)
 {
   ScMemoryContext & context = *m_ctx;
   loader.loadScsFile(context, TEST_FILES_DIR_PATH + "sucsesfullyFinishedSubaction.scs");
@@ -170,7 +170,7 @@ TEST_F(CommonTest, checkThenSequence)
   shutdown();
 }
 
-TEST_F(CommonTest, checkElseSequence)
+TEST_F(NonAtomicActionInterpreterTest, checkElseSequence)
 {
   ScMemoryContext & context = *m_ctx;
 
@@ -208,7 +208,7 @@ TEST_F(CommonTest, checkElseSequence)
   shutdown();
 }
 
-TEST_F(CommonTest, checkGotoSequence)
+TEST_F(NonAtomicActionInterpreterTest, checkGotoSequence)
 {
   ScMemoryContext & context = *m_ctx;
 
@@ -244,7 +244,7 @@ TEST_F(CommonTest, checkGotoSequence)
   shutdown();
 }
 
-TEST_F(CommonTest, checkSuccessfulConditionalTransitionWithoutMatching)
+TEST_F(NonAtomicActionInterpreterTest, checkSuccessfulConditionalTransitionWithoutMatching)
 {
   ScMemoryContext & context = *m_ctx;
   loader.loadScsFile(context, TEST_FILES_DIR_PATH + "successfulConditionalTransitionWithoutMatching.scs");
@@ -272,7 +272,7 @@ TEST_F(CommonTest, checkSuccessfulConditionalTransitionWithoutMatching)
   shutdown();
 }
 
-TEST_F(CommonTest, checkSuccessfulConditionalTransitionWithMatching)
+TEST_F(NonAtomicActionInterpreterTest, checkSuccessfulConditionalTransitionWithMatching)
 {
   ScMemoryContext & context = *m_ctx;
   loader.loadScsFile(context, TEST_FILES_DIR_PATH + "successfulConditionalTransitionWithMatching.scs");
@@ -300,7 +300,7 @@ TEST_F(CommonTest, checkSuccessfulConditionalTransitionWithMatching)
   shutdown();
 }
 
-TEST_F(CommonTest, checkUnsuccessfulConditionalTransitionWithMatching)
+TEST_F(NonAtomicActionInterpreterTest, checkUnsuccessfulConditionalTransitionWithMatching)
 {
   ScMemoryContext & context = *m_ctx;
   loader.loadScsFile(context, TEST_FILES_DIR_PATH + "unsuccessfulConditionalTransitionWithMatching.scs");
@@ -328,7 +328,7 @@ TEST_F(CommonTest, checkUnsuccessfulConditionalTransitionWithMatching)
   shutdown();
 }
 
-TEST_F(CommonTest, checkUnsuccessfulConditionalTransitionWithoutMatching)
+TEST_F(NonAtomicActionInterpreterTest, checkUnsuccessfulConditionalTransitionWithoutMatching)
 {
   ScMemoryContext & context = *m_ctx;
   loader.loadScsFile(context, TEST_FILES_DIR_PATH + "unsuccessfulConditionalTransitionWithoutMatching.scs");
@@ -356,7 +356,7 @@ TEST_F(CommonTest, checkUnsuccessfulConditionalTransitionWithoutMatching)
   shutdown();
 }
 
-TEST_F(CommonTest, checkAllPathsInSequence)
+TEST_F(NonAtomicActionInterpreterTest, checkAllPathsInSequence)
 {
   ScMemoryContext & context = *m_ctx;
   loader.loadScsFile(context, TEST_FILES_DIR_PATH + "allPathsInSequence.scs");
@@ -392,7 +392,7 @@ TEST_F(CommonTest, checkAllPathsInSequence)
   shutdown();
 }
 
-TEST_F(CommonTest, notAllPathsInSequence)
+TEST_F(NonAtomicActionInterpreterTest, notAllPathsInSequence)
 {
   ScMemoryContext & context = *m_ctx;
   loader.loadScsFile(context, TEST_FILES_DIR_PATH + "notAllPathsInSequence.scs");
@@ -422,7 +422,7 @@ TEST_F(CommonTest, notAllPathsInSequence)
   shutdown();
 }
 
-TEST_F(CommonTest, checkArgumentsMatching)
+TEST_F(NonAtomicActionInterpreterTest, checkArgumentsMatching)
 {
   ScMemoryContext & context = *m_ctx;
 
@@ -483,4 +483,4 @@ TEST_F(CommonTest, checkArgumentsMatching)
   shutdown();
 }
 
-}  // namespace commonTest
+}  // namespace nonAtomicActionInterpreterModuleTest

@@ -9,7 +9,8 @@ sc_result NonAtomicActionInterpreterModule::InitializeImpl()
   if (nonAtomicActionInterpreterModule::Keynodes::InitGlobal() == SC_FALSE)
     return SC_RESULT_ERROR;
 
-  ScMemoryContext ctx(sc_access_lvl_make_min, "NonAtomicActionInterpreterModule");
+  ScMemoryContext ctx;
+
   if (ActionUtils::isActionDeactivated(&ctx, Keynodes::action_interpret_non_atomic_action))
   {
     SC_LOG_WARNING("action_interpret_non_atomic_action is deactivated");

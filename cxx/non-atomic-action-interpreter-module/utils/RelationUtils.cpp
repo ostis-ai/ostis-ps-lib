@@ -4,31 +4,11 @@
 
 #include "RelationUtils.hpp"
 
-ScAddr RelationUtils::getIndexRelation(ScMemoryContext * context, int const & index)
-{
-  if (index <= 0)
-  {
-    throw std::runtime_error("Invalid index.");
-  }
-  if (index == 1)
-  {
-    return scAgentsCommon::CoreKeynodes::rrel_1;
-  }
-  else if (index == 2)
-  {
-    return scAgentsCommon::CoreKeynodes::rrel_2;
-  }
-  else
-  {
-    return context->HelperFindBySystemIdtf("rrel_" + std::to_string(index));
-  }
-}
-
 void RelationUtils::eraseAllEdges(
     ScMemoryContext * context,
-    const ScAddr & source,
-    const ScAddr & target,
-    const ScType & edgeType)
+    ScAddr const & source,
+    ScAddr const & target,
+    ScType const & edgeType)
 {
   ScIterator3Ptr iterator3 = context->Iterator3(source, edgeType, target);
   while (iterator3->Next())
@@ -53,9 +33,13 @@ bool RelationUtils::checkAllInEdges(
     ScType const & edgeType,
     ScAddrVector const & addrVector)
 {
-  return std::all_of(addrVector.cbegin(), addrVector.cend(), [context, &node, &edgeType](auto const & addr) {
-    return context->HelperCheckEdge(addr, node, edgeType);
-  });
+  return std::all_of(
+      addrVector.cbegin(),
+      addrVector.cend(),
+      [context, &node, &edgeType](auto const & addr)
+      {
+        return context->HelperCheckEdge(addr, node, edgeType);
+      });
 }
 
 bool RelationUtils::checkAllOutEdges(
@@ -64,7 +48,11 @@ bool RelationUtils::checkAllOutEdges(
     ScType const & edgeType,
     ScAddrVector const & addrVector)
 {
-  return std::all_of(addrVector.cbegin(), addrVector.cend(), [context, &node, &edgeType](auto const & addr) {
-    return context->HelperCheckEdge(node, addr, edgeType);
-  });
+  return std::all_of(
+      addrVector.cbegin(),
+      addrVector.cend(),
+      [context, &node, &edgeType](auto const & addr)
+      {
+        return context->HelperCheckEdge(node, addr, edgeType);
+      });
 }
