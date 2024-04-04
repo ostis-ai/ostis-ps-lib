@@ -28,7 +28,6 @@ NonAtomicActionInterpreter::NonAtomicActionInterpreter(ScMemoryContext * context
 void NonAtomicActionInterpreter::interpret(
     ScAddr const & nonAtomicActionAddr,
     std::map<ScAddr, ScAddr, ScAddrLessFunc> const & replacements,
-    std::map<ScAddr, std::string, ScAddrLessFunc> const & resolvedVariableIdentifiers,
     ScAddr const & generalAction)
 {
   ScAddr decompositionTuple =
@@ -47,7 +46,7 @@ void NonAtomicActionInterpreter::interpret(
           "NonAtomicActionInterpreter: the processing action of the current message has been interrupted.");
 
     applyAction(action);
-    action = getNextAction(action, replacements, resolvedVariableIdentifiers);
+    action = getNextAction(action, replacements);
   }
 }
 
@@ -76,15 +75,14 @@ void NonAtomicActionInterpreter::applyAction(ScAddr const & actionAddr)
 
 ScAddr NonAtomicActionInterpreter::getNextAction(
     ScAddr const & actionAddr,
-    std::map<ScAddr, ScAddr, ScAddrLessFunc> const & replacements,
-    std::map<ScAddr, std::string, ScAddrLessFunc> const & resolvedVariableIdentifiers)
+    std::map<ScAddr, ScAddr, ScAddrLessFunc> const & replacements)
 {
   ScAddrList orderedTransitionCandidates = getOrderedTransitionCandidates(actionAddr);
 
   ScAddr nextAction;
   for (auto const & transitionArc : orderedTransitionCandidates)
   {
-    if (checkTransitionCondition(transitionArc, replacements, resolvedVariableIdentifiers))
+    if (checkTransitionCondition(transitionArc, replacements))
     {
       nextAction = context->GetEdgeTarget(transitionArc);
       break;
@@ -208,19 +206,14 @@ ScAddrList NonAtomicActionInterpreter::getAllArcsByOutRelation(ScAddr const & no
 
 bool NonAtomicActionInterpreter::checkTransitionCondition(
     ScAddr const & transitionArc,
-    std::map<ScAddr, ScAddr, ScAddrLessFunc> const & replacements,
-    std::map<ScAddr, std::string, ScAddrLessFunc> const & resolvedVariableIdentifiers)
+    std::map<ScAddr, ScAddr, ScAddrLessFunc> const & replacements)
 {
   bool result;
 
   ScAddr logicFormula = utils::IteratorUtils::getAnyByOutRelation(context, transitionArc, Keynodes::nrel_condition);
   if (!logicFormula.IsValid())
-    result = true;
-  else
-  {
-    static LogicFormulaManager logicFormulaSearcher;
-    result = logicFormulaSearcher.checkLogicalFormula(context, logicFormula, replacements, resolvedVariableIdentifiers);
-  }
+    return true;
 
-  return result;
+  static LogicFormulaManager logicFormulaSearcher;
+  return logicFormulaSearcher.checkLogicalFormula(context, logicFormula, replacements);
 }

@@ -27,8 +27,7 @@ private:
       ScAddr const & nonAtomicActionTemplate,
       ScAddr const & argumentsSet);
 
-  std::map<ScAddr, std::string, ScAddrLessFunc> resolveVariableIdentifiers(
-      std::map<ScAddr, ScAddr, ScAddrLessFunc> const & replacements);
+  void validateVariableIdentifiers(std::map<ScAddr, ScAddr, ScAddrLessFunc> const & replacements);
 
   ScAddr getTemplateKeyElement(ScAddr const & templateAddr);
 

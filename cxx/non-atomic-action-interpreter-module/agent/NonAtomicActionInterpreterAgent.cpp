@@ -25,7 +25,6 @@ SC_AGENT_IMPLEMENTATION(NonAtomicActionInterpreterAgent)
 
   ScAddr nonAtomicActionAddr;
   std::map<ScAddr, ScAddr, ScAddrLessFunc> replacements;
-  std::map<ScAddr, std::string, ScAddrLessFunc> resolvedVariableIdentifiers;
   ScAddr generalAction;
   try
   {
@@ -33,11 +32,12 @@ SC_AGENT_IMPLEMENTATION(NonAtomicActionInterpreterAgent)
         utils::IteratorUtils::getAnyByOutRelation(&m_memoryCtx, actionAddr, CoreKeynodes::rrel_1);
 
     SC_CHECK_PARAM(nonAtomicActionTemplateAddr, "action params are not formed correctly.");
+
     ScAddr argumentsSet = utils::IteratorUtils::getAnyByOutRelation(&m_memoryCtx, actionAddr, CoreKeynodes::rrel_2);
     replacements = createReplacements(nonAtomicActionTemplateAddr, argumentsSet);
-    resolvedVariableIdentifiers = resolveVariableIdentifiers(replacements);
-    ScTemplateParams programTemplateParams =
-        TemplateParamsUtils::createTemplateParamsFromReplacements(replacements, resolvedVariableIdentifiers);
+    validateVariableIdentifiers(replacements);
+
+    ScTemplateParams programTemplateParams = TemplateParamsUtils::createTemplateParamsFromReplacements(replacements);
     nonAtomicActionAddr = replaceNonAtomicAction(nonAtomicActionTemplateAddr, programTemplateParams);
     generateNonAtomicActionTemplate(nonAtomicActionTemplateAddr, programTemplateParams);
 
@@ -54,8 +54,7 @@ SC_AGENT_IMPLEMENTATION(NonAtomicActionInterpreterAgent)
   initFields();
   try
   {
-    nonAtomicActionInterpreter->interpret(
-        nonAtomicActionAddr, replacements, resolvedVariableIdentifiers, generalAction);
+    nonAtomicActionInterpreter->interpret(nonAtomicActionAddr, replacements, generalAction);
   }
   catch (utils::ExceptionCritical & ex)
   {
@@ -144,22 +143,17 @@ std::map<ScAddr, ScAddr, ScAddrLessFunc> NonAtomicActionInterpreterAgent::create
   return replacements;
 }
 
-std::map<ScAddr, std::string, ScAddrLessFunc> NonAtomicActionInterpreterAgent::resolveVariableIdentifiers(
+void NonAtomicActionInterpreterAgent::validateVariableIdentifiers(
     std::map<ScAddr, ScAddr, ScAddrLessFunc> const & replacements)
 {
-  std::map<ScAddr, std::string, ScAddrLessFunc> resolvedVariableIdentifiers;
-
-  for (auto const & variableReplacementPair : replacements)
+  for (auto const & [varAddr, value] : replacements)
   {
-    std::string identifier = m_memoryCtx.HelperGetSystemIdtf(variableReplacementPair.first);
+    std::string identifier = m_memoryCtx.HelperGetSystemIdtf(varAddr);
     if (identifier.empty())
     {
       SC_THROW_EXCEPTION(utils::ExceptionInvalidParams, "all argument variables should have identifiers.");
     }
-    resolvedVariableIdentifiers[variableReplacementPair.first] = identifier;
   }
-
-  return resolvedVariableIdentifiers;
 }
 
 ScAddr NonAtomicActionInterpreterAgent::replaceNonAtomicAction(

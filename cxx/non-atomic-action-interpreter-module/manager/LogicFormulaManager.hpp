@@ -10,7 +10,6 @@ public:
   bool checkLogicalFormula(
       ScMemoryContext * context,
       ScAddr const & logicFormula,
-      std::map<ScAddr, ScAddr, ScAddrLessFunc> const & replacements,
-      std::map<ScAddr, std::string, ScAddrLessFunc> const & resolvedVariableIdentifiers);
+      std::map<ScAddr, ScAddr, ScAddrLessFunc> const & replacements);
 };
 }  // namespace nonAtomicActionInterpreterModule
