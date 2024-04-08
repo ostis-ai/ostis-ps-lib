@@ -11,7 +11,7 @@ sc_result NonAtomicActionInterpreterModule::InitializeImpl()
 
   ScMemoryContext ctx;
 
-  if (ActionUtils::isActionDeactivated(&ctx, Keynodes::action_interpret_non_atomic_action))
+  if (commonModule::ActionUtils::isActionDeactivated(&ctx, Keynodes::action_interpret_non_atomic_action))
   {
     SC_LOG_WARNING("action_interpret_non_atomic_action is deactivated");
   }

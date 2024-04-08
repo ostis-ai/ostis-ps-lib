@@ -4,7 +4,6 @@
 
 using namespace nonAtomicActionInterpreterModule;
 
-ScAddr Keynodes::action_deactivated;
 ScAddr Keynodes::action_interpret_non_atomic_action;
 ScAddr Keynodes::nrel_decomposition_of_action;
 ScAddr Keynodes::nrel_then;

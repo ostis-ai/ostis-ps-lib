@@ -3,6 +3,9 @@
 #include "sc-memory/sc_memory.hpp"
 #include "sc-memory/sc_addr.hpp"
 
+namespace commonModule
+{
+
 class RelationUtils
 {
 public:
@@ -44,3 +47,5 @@ public:
       ScAddr const & end,
       ScAddr const & relation);
 };
+
+}  // namespace commonModule

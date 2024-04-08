@@ -1,7 +1,7 @@
 #include "sc-memory/sc_addr.hpp"
 #include "sc-memory/sc_memory.hpp"
 
-namespace nonAtomicActionInterpreterModule
+namespace commonModule
 {
 class TemplateParamsUtils
 {
@@ -14,4 +14,4 @@ public:
       std::map<ScAddr, ScAddr, ScAddrLessFunc> const & replacements,
       ScAddr const & structure);
 };
-}  // namespace nonAtomicActionInterpreterModule
+}  // namespace commonModule

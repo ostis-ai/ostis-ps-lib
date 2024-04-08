@@ -1,6 +1,6 @@
 #include "TemplateParamsUtils.hpp"
 
-using namespace nonAtomicActionInterpreterModule;
+using namespace commonModule;
 
 ScTemplateParams TemplateParamsUtils::createTemplateParamsFromReplacements(
     std::map<ScAddr, ScAddr, ScAddrLessFunc> const & replacements)

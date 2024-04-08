@@ -37,7 +37,8 @@ SC_AGENT_IMPLEMENTATION(NonAtomicActionInterpreterAgent)
     replacements = createReplacements(nonAtomicActionTemplateAddr, argumentsSet);
     validateVariableIdentifiers(replacements);
 
-    ScTemplateParams programTemplateParams = TemplateParamsUtils::createTemplateParamsFromReplacements(replacements);
+    ScTemplateParams programTemplateParams =
+        commonModule::TemplateParamsUtils::createTemplateParamsFromReplacements(replacements);
     nonAtomicActionAddr = replaceNonAtomicAction(nonAtomicActionTemplateAddr, programTemplateParams);
     generateNonAtomicActionTemplate(nonAtomicActionTemplateAddr, programTemplateParams);
 
@@ -63,7 +64,7 @@ SC_AGENT_IMPLEMENTATION(NonAtomicActionInterpreterAgent)
     STOP_TIMER("NonAtomicActionInterpreterAgent");
     return SC_RESULT_ERROR;
   }
-  catch (nonAtomicActionInterpreterModule::ActionCancelledException const & exception)
+  catch (commonModule::ActionCancelledException const & exception)
   {
     SC_LOG_ERROR(exception.Description());
     SC_LOG_DEBUG("NonAtomicActionInterpreterAgent finished with errors");

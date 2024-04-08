@@ -4,7 +4,7 @@
 #include "keynodes/Keynodes.hpp"
 #include "ActionUtils.hpp"
 
-using namespace nonAtomicActionInterpreterModule;
+using namespace commonModule;
 
 bool ActionUtils::initAgentAndWaitForActionSuccessfulFinish(
     ScMemoryContext * context,
@@ -18,6 +18,5 @@ bool ActionUtils::initAgentAndWaitForActionSuccessfulFinish(
 
 bool ActionUtils::isActionDeactivated(ScMemoryContext * context, ScAddr const & action)
 {
-  return context->HelperCheckEdge(
-      nonAtomicActionInterpreterModule::Keynodes::action_deactivated, action, ScType::EdgeAccessConstPosPerm);
+  return context->HelperCheckEdge(Keynodes::action_deactivated, action, ScType::EdgeAccessConstPosPerm);
 }

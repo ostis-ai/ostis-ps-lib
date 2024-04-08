@@ -13,9 +13,6 @@ class Keynodes : public ScObject
   SC_GENERATED_BODY()
 
 public:
-  SC_PROPERTY(Keynode("action_deactivated"), ForceCreate)
-  static ScAddr action_deactivated;
-
   SC_PROPERTY(Keynode("action_interpret_non_atomic_action"), ForceCreate)
   static ScAddr action_interpret_non_atomic_action;
 

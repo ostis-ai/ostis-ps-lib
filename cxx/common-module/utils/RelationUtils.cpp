@@ -4,6 +4,8 @@
 
 #include "RelationUtils.hpp"
 
+using namespace commonModule;
+
 void RelationUtils::eraseAllEdges(
     ScMemoryContext * context,
     ScAddr const & source,

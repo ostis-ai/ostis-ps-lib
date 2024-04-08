@@ -42,7 +42,7 @@ void NonAtomicActionInterpreter::interpret(
 
     if (context->HelperCheckEdge(Keynodes::action_cancelled, generalAction, ScType::EdgeAccessConstPosPerm))
       SC_THROW_EXCEPTION(
-          ActionCancelledException,
+          commonModule::ActionCancelledException,
           "NonAtomicActionInterpreter: the processing action of the current message has been interrupted.");
 
     applyAction(action);

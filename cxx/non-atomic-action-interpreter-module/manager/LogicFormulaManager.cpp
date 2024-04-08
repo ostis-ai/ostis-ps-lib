@@ -18,7 +18,7 @@ bool LogicFormulaManager::checkLogicalFormula(
       && context->HelperCheckEdge(Keynodes::atomic_logical_formula, logicFormula, ScType::EdgeAccessConstPosPerm))
   {
     ScTemplateParams formulaTemplateParams =
-        TemplateParamsUtils::createTemplateParamsFromReplacements(context, replacements, logicFormula);
+        commonModule::TemplateParamsUtils::createTemplateParamsFromReplacements(context, replacements, logicFormula);
 
     ScTemplate formulaTemplate;
     if (!context->HelperBuildTemplate(formulaTemplate, logicFormula, formulaTemplateParams))
