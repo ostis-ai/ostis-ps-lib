@@ -3,8 +3,7 @@ set(SOURCES
 	"agent/NonAtomicActionInterpreterAgent.cpp"
 	"constants/NonAtomicActionInterpreterConstants.cpp"
 	"interpreter/NonAtomicActionInterpreter.cpp"
-	"keynodes/Keynodes.cpp"
-	"manager/LogicFormulaManager.cpp"
+	"keynodes/NonAtomicKeynodes.cpp"
 )
 
 set(HEADERS
@@ -12,8 +11,7 @@ set(HEADERS
 	"agent/NonAtomicActionInterpreterAgent.hpp"
 	"constants/NonAtomicActionInterpreterConstants.hpp"
 	"interpreter/NonAtomicActionInterpreter.hpp"
-	"keynodes/Keynodes.hpp"
-	"manager/LogicFormulaManager.hpp"
+	"keynodes/NonAtomicKeynodes.hpp"
 )
 include_directories(
 		${CMAKE_CURRENT_LIST_DIR}

@@ -2,7 +2,7 @@
 #include "sc-agents-common/utils/AgentUtils.hpp"
 #include "sc-agents-common/keynodes/coreKeynodes.hpp"
 
-#include "keynodes/Keynodes.hpp"
+#include "keynodes/NonAtomicKeynodes.hpp"
 #include "utils/RelationUtils.hpp"
 #include "utils/TemplateParamsUtils.hpp"
 #include "exception/ActionCancelledException.hpp"
@@ -63,7 +63,7 @@ SC_AGENT_IMPLEMENTATION(NonAtomicActionInterpreterAgent)
     STOP_TIMER("NonAtomicActionInterpreterAgent");
     return SC_RESULT_ERROR;
   }
-  
+
   SC_LOG_DEBUG("NonAtomicActionInterpreterAgent finished");
   utils::AgentUtils::finishAgentWork(&m_memoryCtx, actionAddr, true);
   STOP_TIMER("NonAtomicActionInterpreterAgent");

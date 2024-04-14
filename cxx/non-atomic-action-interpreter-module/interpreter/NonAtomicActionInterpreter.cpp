@@ -1,19 +1,16 @@
 #include <algorithm>
 
 #include "sc-agents-common/keynodes/coreKeynodes.hpp"
-#include "sc-memory/sc_wait.hpp"
 #include "sc-agents-common/utils/IteratorUtils.hpp"
-#include "sc-agents-common/utils/CommonUtils.hpp"
 #include "sc-agents-common/utils/AgentUtils.hpp"
 
 #include "constants/NonAtomicActionInterpreterConstants.hpp"
 
 #include "exception/ActionCancelledException.hpp"
 
-#include "keynodes/Keynodes.hpp"
+#include "keynodes/NonAtomicKeynodes.hpp"
 
-#include "manager/LogicFormulaManager.hpp"
-
+#include "utils/LogicUtils.hpp"
 #include "utils/TemplateParamsUtils.hpp"
 
 #include "NonAtomicActionInterpreter.hpp"
@@ -212,6 +209,5 @@ bool NonAtomicActionInterpreter::checkTransitionCondition(
   if (!logicFormula.IsValid())
     return true;
 
-  static LogicFormulaManager logicFormulaSearcher;
-  return logicFormulaSearcher.checkLogicalFormula(context, logicFormula, replacements);
+  return commonModule::LogicUtils::checkLogicalFormula(context, logicFormula, replacements);
 }

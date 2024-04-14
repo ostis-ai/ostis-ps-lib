@@ -1,6 +1,7 @@
 set(SOURCES
 	"CommonModule.cpp"
 	"utils/ActionUtils.cpp"
+	"utils/LogicUtils.cpp"
 	"utils/RelationUtils.cpp"
 	"utils/TemplateParamsUtils.cpp"
 	"keynodes/Keynodes.cpp"
@@ -11,6 +12,7 @@ set(HEADERS
 	"CommonModule.hpp"
 	"utils/Macros.hpp"
 	"utils/ActionUtils.hpp"
+	"utils/LogicUtils.hpp"
 	"utils/RelationUtils.hpp"
 	"utils/TemplateParamsUtils.hpp"
 	"keynodes/Keynodes.hpp"

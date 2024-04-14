@@ -1,13 +1,12 @@
-#include "sc-agents-common/utils/CommonUtils.hpp"
+#include "LogicUtils.hpp"
 
+#include "sc-agents-common/utils/CommonUtils.hpp"
 #include "keynodes/Keynodes.hpp"
 #include "utils/TemplateParamsUtils.hpp"
 
-#include "LogicFormulaManager.hpp"
+using namespace commonModule;
 
-using namespace nonAtomicActionInterpreterModule;
-
-bool LogicFormulaManager::checkLogicalFormula(
+bool LogicUtils::checkLogicalFormula(
     ScMemoryContext * context,
     ScAddr const & logicFormula,
     std::map<ScAddr, ScAddr, ScAddrLessFunc> const & replacements)
@@ -18,20 +17,18 @@ bool LogicFormulaManager::checkLogicalFormula(
       && context->HelperCheckEdge(Keynodes::atomic_logical_formula, logicFormula, ScType::EdgeAccessConstPosPerm))
   {
     ScTemplateParams formulaTemplateParams =
-        commonModule::TemplateParamsUtils::createTemplateParamsFromReplacements(context, replacements, logicFormula);
+        TemplateParamsUtils::createTemplateParamsFromReplacements(context, replacements, logicFormula);
 
     ScTemplate formulaTemplate;
     if (!context->HelperBuildTemplate(formulaTemplate, logicFormula, formulaTemplateParams))
-      SC_THROW_EXCEPTION(utils::ExceptionCritical, "LogicFormulaSearcher: the logic formula template cannot be built.");
+      SC_THROW_EXCEPTION(utils::ExceptionCritical, "LogicUtils: the logic formula template cannot be built.");
     ScTemplateSearchResult formulaSearchResult;
     context->HelperSearchTemplate(formulaTemplate, formulaSearchResult);
 
     result = !formulaSearchResult.IsEmpty();
   }
   else
-    SC_LOG_DEBUG(
-        "LogicFormulaSearcher: the statement cannot be checked- "
-        "only atomic logical formulas are currently supported.");
+    SC_LOG_DEBUG("LogicUtils: the statement cannot be checked - only atomic logical formulas are currently supported.");
 
   return result;
 }

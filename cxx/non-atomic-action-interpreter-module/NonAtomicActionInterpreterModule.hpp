@@ -3,11 +3,7 @@
 #include "sc-memory/sc_memory.hpp"
 #include "sc-memory/sc_module.hpp"
 
-#include "keynodes/Keynodes.hpp"
-#include "agent/NonAtomicActionInterpreterAgent.hpp"
-
 #include "NonAtomicActionInterpreterModule.generated.hpp"
-#include "utils/ActionUtils.hpp"
 
 namespace nonAtomicActionInterpreterModule
 {

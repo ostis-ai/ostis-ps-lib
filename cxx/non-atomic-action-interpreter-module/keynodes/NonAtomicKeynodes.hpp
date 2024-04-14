@@ -3,7 +3,7 @@
 #include "sc-memory/sc_addr.hpp"
 #include "sc-memory/sc_object.hpp"
 
-#include "Keynodes.generated.hpp"
+#include "NonAtomicKeynodes.generated.hpp"
 
 namespace nonAtomicActionInterpreterModule
 {
@@ -36,9 +36,6 @@ public:
 
   SC_PROPERTY(Keynode("nrel_basic_sequence"), ForceCreate)
   static ScAddr nrel_basic_sequence;
-
-  SC_PROPERTY(Keynode("atomic_logical_formula"), ForceCreate)
-  static ScAddr atomic_logical_formula;
 
   SC_PROPERTY(Keynode("action_cancelled"), ForceCreate)
   static ScAddr action_cancelled;

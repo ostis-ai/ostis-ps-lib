@@ -15,4 +15,3 @@ networks:
   ostis-ps-lib:
     name: ostis-ps-lib-network
     driver: bridge
-    

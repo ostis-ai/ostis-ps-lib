@@ -1,7 +1,6 @@
 #include "Keynodes.hpp"
 
-#include "sc-memory/sc_memory.hpp"
-
 using namespace commonModule;
 
 ScAddr Keynodes::action_deactivated;
+ScAddr Keynodes::atomic_logical_formula;

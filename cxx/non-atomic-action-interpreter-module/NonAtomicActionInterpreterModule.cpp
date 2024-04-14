@@ -1,5 +1,10 @@
 #include "NonAtomicActionInterpreterModule.hpp"
 
+#include "keynodes/NonAtomicKeynodes.hpp"
+#include "agent/NonAtomicActionInterpreterAgent.hpp"
+
+#include "utils/ActionUtils.hpp"
+
 using namespace nonAtomicActionInterpreterModule;
 
 SC_IMPLEMENT_MODULE(NonAtomicActionInterpreterModule)

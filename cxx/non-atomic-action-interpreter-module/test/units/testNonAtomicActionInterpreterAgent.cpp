@@ -6,6 +6,7 @@
 #include "sc-agents-common/utils/AgentUtils.hpp"
 #include "agent/NonAtomicActionInterpreterAgent.hpp"
 #include "keynodes/Keynodes.hpp"
+#include "keynodes/NonAtomicKeynodes.hpp"
 #include "test/agent/QuestionFinishedSuccessfullyTestAgent.hpp"
 #include "test/agent/QuestionFinishedTestAgent.hpp"
 #include "test/agent/QuestionFinishedUnsuccessfullyTestAgent.hpp"
@@ -26,6 +27,7 @@ using NonAtomicActionInterpreterTest = ScMemoryTest;
 void initialize()
 {
   scAgentsCommon::CoreKeynodes::InitGlobal();
+  commonModule::Keynodes::InitGlobal();
   Keynodes::InitGlobal();
   TestKeynodes::InitGlobal();
 

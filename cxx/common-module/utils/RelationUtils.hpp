@@ -32,7 +32,6 @@ public:
       ScAddr const & node,
       ScType const & edgeType,
       ScAddrVector const & addrVector);
-
 };
 
 }  // namespace commonModule

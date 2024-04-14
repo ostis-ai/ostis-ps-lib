@@ -15,6 +15,9 @@ class Keynodes : public ScObject
 public:
   SC_PROPERTY(Keynode("action_deactivated"), ForceCreate)
   static ScAddr action_deactivated;
+
+  SC_PROPERTY(Keynode("atomic_logical_formula"), ForceCreate)
+  static ScAddr atomic_logical_formula;
 };
 
 }  // namespace commonModule
