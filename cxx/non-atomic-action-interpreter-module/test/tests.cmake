@@ -10,6 +10,6 @@ target_link_libraries(
 make_tests_from_folder(${CMAKE_CURRENT_LIST_DIR}/units
     NAME non_atomic_action_interpreter_test_starter
     DEPENDS non_atomic_action_interpreter_test_agents sc-builder-lib sc-core
-    INCLUDES ${SC_MEMORY_SRC}/tests/sc-memory/_test ${NON_ATOMIC_ACTION_INTERPRETER_MODULE_PATH} ${SC_MACHINE_PATH}/sc-tools/sc-builder/src)
+    INCLUDES ${SC_MEMORY_SRC}/tests/sc-memory/_test ${NON_ATOMIC_ACTION_INTERPRETER_MODULE_PATH} ${SC_TOOLS_SRC}/sc-builder/src)
 
 add_definitions(-DNON_ATOMIC_ACTION_INTERPRETER_MODULE_TEST_SRC_PATH="${CMAKE_CURRENT_LIST_DIR}")

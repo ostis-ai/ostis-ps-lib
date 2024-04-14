@@ -33,19 +33,6 @@ public:
       ScType const & edgeType,
       ScAddrVector const & addrVector);
 
-  static ScAddr setOutValue(
-      ScMemoryContext * context,
-      ScAddr const & begin,
-      ScType const & edgeType,
-      ScAddr const & end,
-      ScAddr const & relation);
-
-  static ScAddr setInValue(
-      ScMemoryContext * context,
-      ScAddr const & begin,
-      ScType const & edgeType,
-      ScAddr const & end,
-      ScAddr const & relation);
 };
 
 }  // namespace commonModule

@@ -43,26 +43,9 @@ SC_AGENT_IMPLEMENTATION(NonAtomicActionInterpreterAgent)
     generateNonAtomicActionTemplate(nonAtomicActionTemplateAddr, programTemplateParams);
 
     generalAction = utils::IteratorUtils::getAnyByInRelation(&m_memoryCtx, actionAddr, Keynodes::nrel_subaction);
-  }
-  catch (utils::ExceptionInvalidParams const & ex)
-  {
-    SC_LOG_ERROR("NonAtomicActionInterpreterAgent: " << ex.Message());
-    utils::AgentUtils::finishAgentWork(&m_memoryCtx, actionAddr, false);
-    STOP_TIMER("NonAtomicActionInterpreterAgent");
-    return SC_RESULT_ERROR_INVALID_PARAMS;
-  }
 
-  initFields();
-  try
-  {
+    initFields();
     nonAtomicActionInterpreter->interpret(nonAtomicActionAddr, replacements, generalAction);
-  }
-  catch (utils::ExceptionCritical & ex)
-  {
-    SC_LOG_ERROR(ex.Message());
-    utils::AgentUtils::finishAgentWork(&m_memoryCtx, actionAddr, false);
-    STOP_TIMER("NonAtomicActionInterpreterAgent");
-    return SC_RESULT_ERROR;
   }
   catch (commonModule::ActionCancelledException const & exception)
   {
@@ -73,6 +56,14 @@ SC_AGENT_IMPLEMENTATION(NonAtomicActionInterpreterAgent)
     STOP_TIMER("NonAtomicActionInterpreterAgent");
     return SC_RESULT_ERROR;
   }
+  catch (utils::ScException & ex)
+  {
+    SC_LOG_ERROR(ex.Message());
+    utils::AgentUtils::finishAgentWork(&m_memoryCtx, actionAddr, false);
+    STOP_TIMER("NonAtomicActionInterpreterAgent");
+    return SC_RESULT_ERROR;
+  }
+  
   SC_LOG_DEBUG("NonAtomicActionInterpreterAgent finished");
   utils::AgentUtils::finishAgentWork(&m_memoryCtx, actionAddr, true);
   STOP_TIMER("NonAtomicActionInterpreterAgent");

@@ -38,12 +38,12 @@ void NonAtomicActionInterpreter::interpret(
     if (context->HelperCheckEdge(decompositionTuple, action, ScType::EdgeAccessConstPosPerm) == SC_FALSE)
       SC_THROW_EXCEPTION(
           utils::ExceptionCritical,
-          "NonAtomicActionInterpreter: action is not belongs to nonatomic action decomposition.");
+          "NonAtomicActionInterpreter: action is not belongs to non-atomic action decomposition.");
 
     if (context->HelperCheckEdge(Keynodes::action_cancelled, generalAction, ScType::EdgeAccessConstPosPerm))
       SC_THROW_EXCEPTION(
           commonModule::ActionCancelledException,
-          "NonAtomicActionInterpreter: the processing action of the current message has been interrupted.");
+          "NonAtomicActionInterpreter: the processing action of the current non-atomic action has been interrupted.");
 
     applyAction(action);
     action = getNextAction(action, replacements);
@@ -57,7 +57,7 @@ ScAddr NonAtomicActionInterpreter::getFirstSubAction(ScAddr const & decompositio
   if (!firstAction.IsValid())
   {
     SC_THROW_EXCEPTION(
-        utils::ExceptionCritical, "Non atomic action structure is incorrect. Failed to find first action.");
+        utils::ExceptionCritical, "Non-atomic action structure is incorrect. Failed to find first action.");
   }
   return firstAction;
 }
@@ -208,8 +208,6 @@ bool NonAtomicActionInterpreter::checkTransitionCondition(
     ScAddr const & transitionArc,
     std::map<ScAddr, ScAddr, ScAddrLessFunc> const & replacements)
 {
-  bool result;
-
   ScAddr logicFormula = utils::IteratorUtils::getAnyByOutRelation(context, transitionArc, Keynodes::nrel_condition);
   if (!logicFormula.IsValid())
     return true;
