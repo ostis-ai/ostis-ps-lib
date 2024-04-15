@@ -28,7 +28,7 @@ void NonAtomicActionInterpreter::interpret(
     ScAddr const & generalAction)
 {
   ScAddr decompositionTuple =
-      utils::IteratorUtils::getAnyByInRelation(context, nonAtomicActionAddr, Keynodes::nrel_decomposition_of_action);
+      utils::IteratorUtils::getAnyByOutRelation(context, nonAtomicActionAddr, Keynodes::nrel_decomposition_of_action);
   ScAddr action = getFirstSubAction(decompositionTuple);
   while (action.IsValid())
   {
