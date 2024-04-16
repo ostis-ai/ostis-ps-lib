@@ -17,7 +17,7 @@ _compound_action
 	_-> rrel_1:: _arg1_var;
     _-> rrel_2:: _arg2_var;
     _-> rrel_3:: _arg3_var;
-	_<= nrel_decomposition_of_action:: .._decomposition_tuple;;
+	_=> nrel_decomposition_of_action:: .._decomposition_tuple;;
 
 .._decomposition_tuple
 	_-> rrel_1:: _first_action;

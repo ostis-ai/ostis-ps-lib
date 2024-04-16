@@ -59,9 +59,9 @@ ScAddr getFirstAction(ScMemoryContext & context)
       ScType::EdgeAccessVarPosPerm,
       ScType::NodeVar >> "_nonAtomicAction");
   scTemplate.Quintuple(
-      ScType::NodeVarTuple >> "_tuple",
-      ScType::EdgeDCommonVar,
       "_nonAtomicAction",
+      ScType::EdgeDCommonVar,
+      ScType::NodeVarTuple >> "_tuple",
       ScType::EdgeAccessVarPosPerm,
       Keynodes::nrel_decomposition_of_action);
   scTemplate.Quintuple(

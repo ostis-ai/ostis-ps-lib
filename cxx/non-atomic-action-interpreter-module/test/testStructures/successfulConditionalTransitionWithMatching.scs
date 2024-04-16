@@ -23,7 +23,7 @@ _compound_action
     _<- test_nonatomic_action;
     _<- action;
     _-> rrel_1:: _arg1_var;
-    _<= nrel_decomposition_of_action:: .._decomposition_tuple;;
+    _=> nrel_decomposition_of_action:: .._decomposition_tuple;;
 
 .._decomposition_tuple
     _-> rrel_1:: _first_action;
