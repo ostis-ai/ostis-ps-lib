@@ -21,7 +21,7 @@ std::string SemanticNeighbourhoodTranslator::getEnglishContent(ScAddr const & li
 {
   std::string content;
   if (isEnglish(linkNode))
-    content = utils::CommonUtils::readString(context, linkNode);
+    context->GetLinkContent(linkNode, content);
   return content;
 }
 
@@ -68,7 +68,7 @@ bool SemanticNeighbourhoodTranslator::anyIsInStructure(ScAddrVector const & elem
 {
   if (structure.empty())
     return true;
-  for (const auto & element : elements)
+  for (auto const & element : elements)
   {
     if (structure.find(element) != structure.end())
       return true;

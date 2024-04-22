@@ -18,13 +18,13 @@ SC_AGENT_IMPLEMENTATION(FormSemanticNeighbourhoodTranslationAgent)
       return SC_RESULT_OK;
     SC_LOG_DEBUG("FormSemanticNeighbourhoodTranslationAgent started");
 
-
     ScAddr const & nodeAddr =
         utils::IteratorUtils::getAnyByOutRelation(&m_memoryCtx, actionNode, scAgentsCommon::CoreKeynodes::rrel_1);
     if (nodeAddr.IsValid() == SC_FALSE)
-      SC_THROW_EXCEPTION(utils::ExceptionItemNotFound, "FormSemanticNeighbourhoodTranslationAgent: nodeAddr is not valid");
+      SC_THROW_EXCEPTION(
+          utils::ExceptionItemNotFound, "FormSemanticNeighbourhoodTranslationAgent: nodeAddr is not valid");
 
-    auto manager = make_unique<FormSemanticNeighbourhoodTranslationManager>(&m_memoryCtx);
+    auto manager = std::make_unique<FormSemanticNeighbourhoodTranslationManager>(&m_memoryCtx);
     ScAddrVector const & answerElements = manager->manage({nodeAddr});
 
     if (answerElements.empty())

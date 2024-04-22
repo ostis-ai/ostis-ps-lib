@@ -2,7 +2,8 @@
 
 namespace naturalLanguageProcessingModule
 {
-NrelInQuasybinaryNodeSemanticNeighbourhoodTranslator::NrelInQuasybinaryNodeSemanticNeighbourhoodTranslator(ScMemoryContext * context)
+NrelInQuasybinaryNodeSemanticNeighbourhoodTranslator::NrelInQuasybinaryNodeSemanticNeighbourhoodTranslator(
+    ScMemoryContext * context)
   : SemanticNeighbourhoodTranslator(context)
 {
 }
@@ -19,8 +20,8 @@ std::vector<std::string> NrelInQuasybinaryNodeSemanticNeighbourhoodTranslator::g
       node, ScType::EdgeDCommonConst, ScType::NodeConstTuple, ScType::EdgeAccessConstPosPerm, ScType::NodeConstNoRole);
   while (tupleIterator->Next() && translations.size() < maxTranslations)
   {
-    if (isInStructure(tupleIterator->Get(1), structure) == SC_FALSE ||
-        isInStructure(tupleIterator->Get(3), structure) == SC_FALSE)
+    if (isInStructure(tupleIterator->Get(1), structure) == SC_FALSE
+        || isInStructure(tupleIterator->Get(3), structure) == SC_FALSE)
       continue;
     ScAddr const & nrelNode = tupleIterator->Get(4);
     if (isInIgnoredKeynodes(nrelNode))
@@ -37,8 +38,8 @@ std::vector<std::string> NrelInQuasybinaryNodeSemanticNeighbourhoodTranslator::g
       if (isInStructure(tupleNodeIterator->Get(1), structure) == SC_FALSE)
         continue;
       if (anyIsInStructure(
-              {tupleIterator->Get(2), tupleIterator->Get(4), tupleNodeIterator->Get(2)},
-              atLeastOneNodeFromConstruction) == SC_FALSE)
+              {tupleIterator->Get(2), tupleIterator->Get(4), tupleNodeIterator->Get(2)}, atLeastOneNodeFromConstruction)
+          == SC_FALSE)
         continue;
       ScAddr const & tupleNodeNode = tupleNodeIterator->Get(2);
       if (isInIgnoredKeynodes(tupleNodeNode))
@@ -62,8 +63,8 @@ std::list<ScAddrVector> NrelInQuasybinaryNodeSemanticNeighbourhoodTranslator::ge
       node, ScType::EdgeDCommonConst, ScType::NodeConstTuple, ScType::EdgeAccessConstPosPerm, ScType::NodeConstNoRole);
   while (tupleIterator->Next())
   {
-    if (isInStructure(tupleIterator->Get(1), structure) == SC_FALSE ||
-        isInStructure(tupleIterator->Get(3), structure) == SC_FALSE)
+    if (isInStructure(tupleIterator->Get(1), structure) == SC_FALSE
+        || isInStructure(tupleIterator->Get(3), structure) == SC_FALSE)
       continue;
     ScAddr const & nrelNode = tupleIterator->Get(4);
     if (isInIgnoredKeynodes(nrelNode))

@@ -35,14 +35,14 @@ std::vector<std::string> FromParameterSemanticNeighbourhoodTranslator::getSemant
     {
       if (isInStructure(parameterIterator->Get(1), structure) == SC_FALSE)
         continue;
-      if (anyIsInStructure({classIterator->Get(0), parameterIterator->Get(0)}, atLeastOneNodeFromConstruction) ==
-          SC_FALSE)
+      if (anyIsInStructure({classIterator->Get(0), parameterIterator->Get(0)}, atLeastOneNodeFromConstruction)
+          == SC_FALSE)
         continue;
       ScAddr const & parameterNode = parameterIterator->Get(0);
       if (isInIgnoredKeynodes(parameterNode))
         continue;
-      if (context->HelperCheckEdge(TranslationKeynodes::parameter, parameterNode, ScType::EdgeAccessConstPosPerm) ==
-          SC_FALSE)
+      if (context->HelperCheckEdge(TranslationKeynodes::parameter, parameterNode, ScType::EdgeAccessConstPosPerm)
+          == SC_FALSE)
         continue;
       std::string parameterMainIdtf = getEnglishMainIdtf(parameterNode);
       if (parameterMainIdtf.empty())
@@ -78,8 +78,8 @@ std::list<ScAddrVector> FromParameterSemanticNeighbourhoodTranslator::getSemanti
       ScAddr const & parameterNode = parameterIterator->Get(0);
       if (isInIgnoredKeynodes(parameterNode))
         continue;
-      if (context->HelperCheckEdge(TranslationKeynodes::parameter, parameterNode, ScType::EdgeAccessConstPosPerm) ==
-          SC_FALSE)
+      if (context->HelperCheckEdge(TranslationKeynodes::parameter, parameterNode, ScType::EdgeAccessConstPosPerm)
+          == SC_FALSE)
         continue;
 
       answer.push_back(

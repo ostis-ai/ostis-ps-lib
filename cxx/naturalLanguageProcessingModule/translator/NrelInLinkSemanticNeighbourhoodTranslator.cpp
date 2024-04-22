@@ -19,8 +19,8 @@ std::vector<std::string> NrelInLinkSemanticNeighbourhoodTranslator::getSemanticN
       node, ScType::EdgeDCommonConst, ScType::LinkConst, ScType::EdgeAccessConstPosPerm, ScType::NodeConstNoRole);
   while (linkIterator->Next() && translations.size() < maxTranslations)
   {
-    if (isInStructure(linkIterator->Get(1), structure) == SC_FALSE ||
-        isInStructure(linkIterator->Get(3), structure) == SC_FALSE)
+    if (isInStructure(linkIterator->Get(1), structure) == SC_FALSE
+        || isInStructure(linkIterator->Get(3), structure) == SC_FALSE)
       continue;
     if (anyIsInStructure({linkIterator->Get(4)}, atLeastOneNodeFromConstruction) == SC_FALSE)
       continue;
@@ -50,8 +50,8 @@ std::list<ScAddrVector> NrelInLinkSemanticNeighbourhoodTranslator::getSemanticNe
       node, ScType::EdgeDCommonConst, ScType::LinkConst, ScType::EdgeAccessConstPosPerm, ScType::NodeConstNoRole);
   while (linkIterator->Next())
   {
-    if (isInStructure(linkIterator->Get(1), structure) == SC_FALSE ||
-        isInStructure(linkIterator->Get(3), structure) == SC_FALSE)
+    if (isInStructure(linkIterator->Get(1), structure) == SC_FALSE
+        || isInStructure(linkIterator->Get(3), structure) == SC_FALSE)
       continue;
     ScAddr const nrelNode = linkIterator->Get(4);
     if (isInIgnoredKeynodes(nrelNode))

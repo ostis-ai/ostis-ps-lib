@@ -1,6 +1,5 @@
 #pragma once
 
-
 #include "translator/SemanticNeighbourhoodTranslatorSet.hpp"
 
 namespace naturalLanguageProcessingModule
@@ -19,7 +18,7 @@ private:
   static std::string join(
       std::vector<std::string>::const_iterator const & cbegin,
       std::vector<std::string>::const_iterator const & cend,
-      const std::string & delimiter = "");
+      std::string const & delimiter = "");
 };
 
 }  // namespace naturalLanguageProcessingModule

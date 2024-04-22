@@ -290,7 +290,7 @@ TEST_F(FormSemanticNeighbourhoodTest, TestAllSemanticNeighbourhoodTranslators)
 
   for (const auto & translator : translators)
   {
-    vector<std::string> const & translations = translator->getSemanticNeighbourhoods(test_question_node, MAX_TRANSLATIONS, {}, {});
+    std::vector<std::string> const & translations = translator->getSemanticNeighbourhoods(test_question_node, MAX_TRANSLATIONS, {}, {});
     std::copy(translations.begin(), translations.end(), std::inserter(answer, answer.cend()));
   }
 

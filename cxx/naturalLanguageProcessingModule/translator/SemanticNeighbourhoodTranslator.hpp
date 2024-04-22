@@ -23,7 +23,8 @@ public:
       ScAddrSet const & structure,
       ScAddrSet const & atLeastOneNodeFromConstruction) const = 0;
 
-  virtual std::list<ScAddrVector> getSemanticNeighbourhoodsElements(ScAddr const & node, ScAddrSet const & structure) const = 0;
+  virtual std::list<ScAddrVector> getSemanticNeighbourhoodsElements(ScAddr const & node, ScAddrSet const & structure)
+      const = 0;
 
   size_t hashCode() const;
 

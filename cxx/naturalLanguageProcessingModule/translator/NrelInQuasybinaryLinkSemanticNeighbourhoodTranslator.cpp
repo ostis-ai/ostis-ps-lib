@@ -2,7 +2,8 @@
 
 namespace naturalLanguageProcessingModule
 {
-NrelInQuasybinaryLinkSemanticNeighbourhoodTranslator::NrelInQuasybinaryLinkSemanticNeighbourhoodTranslator(ScMemoryContext * context)
+NrelInQuasybinaryLinkSemanticNeighbourhoodTranslator::NrelInQuasybinaryLinkSemanticNeighbourhoodTranslator(
+    ScMemoryContext * context)
   : SemanticNeighbourhoodTranslator(context)
 {
 }
@@ -19,8 +20,8 @@ std::vector<std::string> NrelInQuasybinaryLinkSemanticNeighbourhoodTranslator::g
       node, ScType::EdgeDCommonConst, ScType::NodeConstTuple, ScType::EdgeAccessConstPosPerm, ScType::NodeConstNoRole);
   while (tupleIterator->Next() && translations.size() < maxTranslations)
   {
-    if (isInStructure(tupleIterator->Get(1), structure) == SC_FALSE ||
-        isInStructure(tupleIterator->Get(3), structure) == SC_FALSE)
+    if (isInStructure(tupleIterator->Get(1), structure) == SC_FALSE
+        || isInStructure(tupleIterator->Get(3), structure) == SC_FALSE)
       continue;
     if (anyIsInStructure({tupleIterator->Get(2), tupleIterator->Get(4)}, atLeastOneNodeFromConstruction) == SC_FALSE)
       continue;
@@ -57,8 +58,8 @@ std::list<ScAddrVector> NrelInQuasybinaryLinkSemanticNeighbourhoodTranslator::ge
       node, ScType::EdgeDCommonConst, ScType::NodeConstTuple, ScType::EdgeAccessConstPosPerm, ScType::NodeConstNoRole);
   while (tupleIterator->Next())
   {
-    if (isInStructure(tupleIterator->Get(1), structure) == SC_FALSE ||
-        isInStructure(tupleIterator->Get(3), structure) == SC_FALSE)
+    if (isInStructure(tupleIterator->Get(1), structure) == SC_FALSE
+        || isInStructure(tupleIterator->Get(3), structure) == SC_FALSE)
       continue;
     ScAddr const & nrelNode = tupleIterator->Get(4);
     if (isInIgnoredKeynodes(nrelNode))

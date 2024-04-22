@@ -14,21 +14,21 @@ namespace naturalLanguageProcessingModule
 {
 SemanticNeighbourhoodTranslatorSet::SemanticNeighbourhoodTranslatorSet(ScMemoryContext * context)
   : handlers(
-        {new NrelInNodeSemanticNeighbourhoodTranslator(context),
-         new NrelInLinkSemanticNeighbourhoodTranslator(context),
-         new NrelInQuasybinaryLinkSemanticNeighbourhoodTranslator(context),
-         new NrelInQuasybinaryNodeSemanticNeighbourhoodTranslator(context),
-         new NrelFromQuasybinaryNodeSemanticNeighbourhoodTranslator(context),
-         new FromParameterSemanticNeighbourhoodTranslator(context),
-         new FromConceptSemanticNeighbourhoodTranslator(context),
-         new NrelFromNodeSemanticNeighbourhoodTranslator(context),
-         new NrelFromQuasybinaryLinkSemanticNeighbourhoodTranslator(context)})
+      {new NrelInNodeSemanticNeighbourhoodTranslator(context),
+       new NrelInLinkSemanticNeighbourhoodTranslator(context),
+       new NrelInQuasybinaryLinkSemanticNeighbourhoodTranslator(context),
+       new NrelInQuasybinaryNodeSemanticNeighbourhoodTranslator(context),
+       new NrelFromQuasybinaryNodeSemanticNeighbourhoodTranslator(context),
+       new FromParameterSemanticNeighbourhoodTranslator(context),
+       new FromConceptSemanticNeighbourhoodTranslator(context),
+       new NrelFromNodeSemanticNeighbourhoodTranslator(context),
+       new NrelFromQuasybinaryLinkSemanticNeighbourhoodTranslator(context)})
 {
 }
 
 SemanticNeighbourhoodTranslatorSet::~SemanticNeighbourhoodTranslatorSet()
 {
-  for (const auto & handler : handlers)
+  for (auto const & handler : handlers)
     delete handler;
 }
 
@@ -39,20 +39,21 @@ std::vector<std::string> SemanticNeighbourhoodTranslatorSet::getSemanticNeighbou
     ScAddrSet const & atLeastOneNodeFromConstruction) const
 {
   std::vector<std::string> answer;
-  for (const auto & handler : handlers)
+  for (auto const & handler : handlers)
   {
-    auto translations =
-        handler->getSemanticNeighbourhoods(node, maxTranslationsFromEachHandler, structure, atLeastOneNodeFromConstruction);
+    auto translations = handler->getSemanticNeighbourhoods(
+        node, maxTranslationsFromEachHandler, structure, atLeastOneNodeFromConstruction);
     answer.insert(answer.cend(), translations.cbegin(), translations.cend());
   }
   return answer;
 }
 
-std::list<ScAddrVector> SemanticNeighbourhoodTranslatorSet::getSemanticNeighbourhoodsElements(ScAddr const & node, ScAddrSet const & structure)
-    const
+std::list<ScAddrVector> SemanticNeighbourhoodTranslatorSet::getSemanticNeighbourhoodsElements(
+    ScAddr const & node,
+    ScAddrSet const & structure) const
 {
   std::list<ScAddrVector> answerList;
-  for (const auto & handler : handlers)
+  for (auto const & handler : handlers)
   {
     std::list<ScAddrVector> const & addrs = handler->getSemanticNeighbourhoodsElements(node, structure);
     answerList.insert(answerList.cend(), addrs.cbegin(), addrs.cend());

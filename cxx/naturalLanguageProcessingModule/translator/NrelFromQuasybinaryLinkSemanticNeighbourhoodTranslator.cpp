@@ -20,8 +20,8 @@ std::vector<std::string> NrelFromQuasybinaryLinkSemanticNeighbourhoodTranslator:
       ScType::NodeConstTuple, ScType::EdgeDCommonConst, node, ScType::EdgeAccessConstPosPerm, ScType::NodeConstNoRole);
   while (tupleIterator->Next() && translations.size() < maxTranslations)
   {
-    if (isInStructure(tupleIterator->Get(1), structure) == SC_FALSE ||
-        isInStructure(tupleIterator->Get(3), structure) == SC_FALSE)
+    if (isInStructure(tupleIterator->Get(1), structure) == SC_FALSE
+        || isInStructure(tupleIterator->Get(3), structure) == SC_FALSE)
       continue;
     if (anyIsInStructure({tupleIterator->Get(0), tupleIterator->Get(4)}, atLeastOneNodeFromConstruction) == SC_FALSE)
       continue;
@@ -58,8 +58,8 @@ std::list<ScAddrVector> NrelFromQuasybinaryLinkSemanticNeighbourhoodTranslator::
       ScType::NodeConstTuple, ScType::EdgeDCommonConst, node, ScType::EdgeAccessConstPosPerm, ScType::NodeConstNoRole);
   while (tupleIterator->Next())
   {
-    if (isInStructure(tupleIterator->Get(1), structure) == SC_FALSE ||
-        isInStructure(tupleIterator->Get(3), structure) == SC_FALSE)
+    if (isInStructure(tupleIterator->Get(1), structure) == SC_FALSE
+        || isInStructure(tupleIterator->Get(3), structure) == SC_FALSE)
       continue;
     ScAddr const & nrelNode = tupleIterator->Get(4);
     if (isInIgnoredKeynodes(nrelNode))

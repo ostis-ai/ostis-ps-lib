@@ -15,7 +15,8 @@ public:
       ScAddrSet const & structure = {},
       ScAddrSet const & atLeastOneNodeFromConstruction = {}) const;
 
-  std::list<ScAddrVector> getSemanticNeighbourhoodsElements(ScAddr const & node, ScAddrSet const & structure = {}) const;
+  std::list<ScAddrVector> getSemanticNeighbourhoodsElements(ScAddr const & node, ScAddrSet const & structure = {})
+      const;
 
   ~SemanticNeighbourhoodTranslatorSet();
 

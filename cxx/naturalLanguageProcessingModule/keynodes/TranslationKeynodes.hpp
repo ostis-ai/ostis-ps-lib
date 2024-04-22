@@ -27,4 +27,4 @@ public:
   static ScAddr translation_ignored_keynodes;
 };
 
-} // naturalLanguageProcessingModule
+}  // namespace naturalLanguageProcessingModule
