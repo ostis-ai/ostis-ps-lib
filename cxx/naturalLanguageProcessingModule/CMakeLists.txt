@@ -24,3 +24,7 @@ sc_codegen_ex(naturalLanguageProcessingModule ${CMAKE_CURRENT_LIST_DIR} ${CMAKE_
 if (${SC_BUILD_TESTS})
     include(${CMAKE_CURRENT_LIST_DIR}/test/tests.cmake)
 endif ()
+
+if(${SC_CLANG_FORMAT_CODE})
+    target_clangformat_setup(naturalLanguageProcessingModule)
+endif()
