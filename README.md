@@ -2,18 +2,5 @@
 OSTIS problem solvers components library
 
 ## Run documentation
-Run on Linux:
-```sh
-#Terminal
-cd ostis-ps-lib
-pip3 install mkdocs markdown-include mkdocs-material
-python3 -m mkdocs serve
-```
-
-Run in Docker
-```sh
-docker compose pull docs
-docker compose up docs
-```
-
-By default documentation is served on http://localhost:8002/.
+To run documentation go to the main.tex file in the scn docs environment of the project, that includes ostis-ps-lib 
+and include `non_atomic_action_interpreter_agent.tex` file with `\subimport{<path_to_this_component>/docs}{non_atomic_action_interpreter_agent}`
