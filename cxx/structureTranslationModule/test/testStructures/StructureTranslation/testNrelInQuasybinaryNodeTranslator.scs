@@ -1,0 +1,23 @@
+sc_node_class
+    -> concept_human;
+    -> lang_en;;
+
+sc_node_norole_relation
+    -> nrel_parents;;
+
+test_structure = [*
+    concept_human => nrel_parents:
+    {
+        parent1;
+        parent2
+    };;
+    *];;
+
+concept_human
+    => nrel_main_idtf: [human] (* <- lang_en;; *);;
+nrel_parents
+    => nrel_main_idtf: [parents] (* <- lang_en;; *);;
+parent1
+    => nrel_main_idtf: [first parent] (* <- lang_en;; *);;
+parent2
+    => nrel_main_idtf: [second parent] (* <- lang_en;; *);;

@@ -1,0 +1,99 @@
+sc_node_class
+    -> concept_apple;
+    -> concept_red;
+    -> concept_man;
+    -> concept_human;
+    -> concept_thing;
+    -> concept_fruit;
+    -> color;
+    -> lang_en;;
+
+sc_node_norole_relation
+    -> nrel_name;
+    -> nrel_synonyms;
+    -> nrel_decomposition;
+    -> nrel_parents;
+    -> nrel_parts_decomposition;
+    -> nrel_likes;
+    -> nrel_likes_to_eat;
+    -> nrel_parent;;
+
+test_question_node
+    <- question;
+    <- action_translate_structures;
+    -> rrel_1: {
+    test_structure
+};;
+
+test_structure = [*
+    concept_red <- color;;
+    concept_apple <- concept_fruit;;
+    concept_apple <= nrel_decomposition:
+    {
+       [peel] (* <- lang_en;; *);
+       [pulp] (* <- lang_en;; *)
+    };;
+    concept_apple => nrel_name: [Arnold] (* <- lang_en;; *);;
+    concept_man => nrel_likes: nrel_likes_to_eat: pizza;;
+    concept_apple <= nrel_decomposition: 
+    {
+       [peel] (* <- lang_en;; *);
+       [pulp] (* <- lang_en;; *)
+    };;
+    concept_thing <= nrel_parts_decomposition:
+    {
+        part1;
+        part2
+    };;
+    concept_man => nrel_synonyms:
+    {
+       [human] (* <- lang_en;; *);
+       [guy] (* <- lang_en;; *)
+    };;
+    concept_human => nrel_parents:
+    {
+        parent1;
+        parent2
+    };;
+    *];;
+
+concept_man
+    => nrel_main_idtf: [man] (* <- lang_en;; *);;
+concept_human
+    => nrel_main_idtf: [human] (* <- lang_en;; *);;
+concept_thing
+    => nrel_main_idtf: [thing] (* <- lang_en;; *);;
+concept_apple
+    => nrel_main_idtf: [apple] (* <- lang_en;; *);;
+concept_red
+    => nrel_main_idtf: [red] (* <- lang_en;; *);;
+concept_fruit
+    => nrel_main_idtf: [fruit] (* <- lang_en;; *);;
+color
+    => nrel_main_idtf: [color] (* <- lang_en;; *);;
+nrel_name
+    => nrel_main_idtf: [name] (* <- lang_en;; *);;
+nrel_synonyms
+    => nrel_main_idtf: [synonyms] (* <- lang_en;; *);;
+nrel_decomposition
+    => nrel_main_idtf: [decomposition] (* <- lang_en;; *);;
+nrel_parents
+    => nrel_main_idtf: [parents] (* <- lang_en;; *);;
+parent1
+    => nrel_main_idtf: [first parent] (* <- lang_en;; *);;
+parent2
+    => nrel_main_idtf: [second parent] (* <- lang_en;; *);;
+nrel_parts_decomposition
+    => nrel_main_idtf: [parts decomposition] (* <- lang_en;; *);;
+part1
+    => nrel_main_idtf: [big part] (* <- lang_en;; *);;
+part2
+    => nrel_main_idtf: [little part] (* <- lang_en;; *);;
+nrel_likes
+    => nrel_main_idtf: [likes] (* <- lang_en;; *);;
+nrel_likes_to_eat
+    => nrel_main_idtf: [likes to eat] (* <- lang_en;; *);;
+pizza
+    => nrel_main_idtf: [pizza] (* <- lang_en;; *);;
+nrel_parent
+    => nrel_main_idtf: [parent] (* <- lang_en;; *);;
