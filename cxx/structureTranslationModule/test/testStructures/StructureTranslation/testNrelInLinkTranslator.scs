@@ -1,0 +1,26 @@
+sc_node_class
+    -> concept_apple;
+    -> concept_red;
+    -> color;
+    -> concept_fruit;
+    -> lang_en;;
+
+sc_node_norole_relation
+    -> nrel_name;;
+
+test_structure = [*
+    concept_red <- color;;
+    concept_apple <- concept_fruit;;
+    concept_apple => nrel_name: [Arnold] (* <- lang_en;; *);;
+    *];;
+
+concept_apple
+    => nrel_main_idtf: [apple] (* <- lang_en;; *);;
+concept_red
+    => nrel_main_idtf: [red] (* <- lang_en;; *);;
+concept_fruit
+    => nrel_main_idtf: [fruit] (* <- lang_en;; *);;
+color
+    => nrel_main_idtf: [color] (* <- lang_en;; *);;
+nrel_name
+    => nrel_main_idtf: [name] (* <- lang_en;; *);;

@@ -1,0 +1,28 @@
+sc_node_class
+    -> concept_apple;
+    -> color;
+    -> concept_fruit;
+    -> lang_en;;
+
+sc_node_norole_relation
+    -> nrel_name;
+    -> nrel_decomposition;;
+
+test_structure = [*
+    concept_apple <= nrel_decomposition:
+    {
+       [peel] (* <- lang_en;; *);
+       [pulp] (* <- lang_en;; *)
+    };;
+    *];;
+
+concept_apple
+    => nrel_main_idtf: [apple] (* <- lang_en;; *);;
+concept_fruit
+    => nrel_main_idtf: [fruit] (* <- lang_en;; *);;
+color
+    => nrel_main_idtf: [color] (* <- lang_en;; *);;
+nrel_name
+    => nrel_main_idtf: [name] (* <- lang_en;; *);;
+nrel_decomposition
+    => nrel_main_idtf: [decomposition] (* <- lang_en;; *);;
