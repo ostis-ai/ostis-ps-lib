@@ -1,3 +1,9 @@
+/*
+ * This source file is part of an OSTIS project. For the latest info, see http://ostis.net
+ * Distributed under the MIT License
+ * (See accompanying file COPYING.MIT or copy at http://opensource.org/licenses/MIT)
+ */
+
 #pragma once
 
 #include "translator/StructureTranslator.hpp"
@@ -9,13 +15,13 @@ class StructureTranslatorSet
 public:
   explicit StructureTranslatorSet(ScMemoryContext * context);
   
-  std::vector<std::string> translate(ScAddr structAddr)
+  std::string translate(ScAddr structAddr)
       const;
 
   ~StructureTranslatorSet();
 
 private:
-  std::set<StructureTranslator *> const handlers;
+  std::unordered_set<StructureTranslator *> const handlers;
 };
 
 }  // namespace structureTranslationModule

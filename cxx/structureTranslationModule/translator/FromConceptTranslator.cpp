@@ -1,4 +1,13 @@
+/*
+ * This source file is part of an OSTIS project. For the latest info, see http://ostis.net
+ * Distributed under the MIT License
+ * (See accompanying file COPYING.MIT or copy at http://opensource.org/licenses/MIT)
+ */
+
 #include "FromConceptTranslator.hpp"
+#include "constants/TranslationConstants.hpp"
+#include "sc-agents-common/utils/CommonUtils.hpp"
+#include "keynodes/TranslationKeynodes.hpp"
 
 namespace structureTranslationModule
 {
@@ -7,33 +16,34 @@ FromConceptTranslator::FromConceptTranslator(ScMemoryContext * context)
 {
 }
 
-std::vector<std::string> FromConceptTranslator::translate(ScAddr const & structAddr) const
+std::string FromConceptTranslator::translate(ScAddr const & structAddr) const
 {
-  std::vector<std::string> translations;
-  std::string const NODE_ALIAS = "_node";
-  std::string const CLASS_ALIAS = "_class";
-  std::string const EDGE_ALIAS = "_edge";
+  std::string translations;
   ScAddr classNode, node;
 
   ScTemplate scTemplate;
-  scTemplate.Triple(ScType::NodeVarClass >> CLASS_ALIAS, ScType::EdgeAccessVarPosPerm >> EDGE_ALIAS, ScType::NodeVar >> NODE_ALIAS);
-  scTemplate.Triple(structAddr, ScType::EdgeAccessVarPosPerm, EDGE_ALIAS);
+  scTemplate.Triple(ScType::NodeVarClass >> TranslationConstants::CLASS_ALIAS, ScType::EdgeAccessVarPosPerm >> TranslationConstants::EDGE_ALIAS, ScType::NodeVar >> TranslationConstants::NODE_ALIAS);
+  scTemplate.Triple(structAddr, ScType::EdgeAccessVarPosPerm, TranslationConstants::EDGE_ALIAS);
   ScTemplateSearchResult searchResult;
-  context->HelperSearchTemplate(scTemplate, searchResult);
-
-  for (size_t i = 0; i < searchResult.Size(); i++)
+  context->HelperSmartSearchTemplate(scTemplate,
+  [&](ScTemplateResultItem const & searchResult)
   {
-    auto const & result = searchResult[i];
-    classNode = result[CLASS_ALIAS];
-    node = result[NODE_ALIAS];
-    std::string const & classMainIdtf = getEnglishMainIdtf(classNode);
+    classNode = searchResult[TranslationConstants::CLASS_ALIAS];
+    node = searchResult[TranslationConstants::NODE_ALIAS];
+    std::string const & classMainIdtf = utils::CommonUtils::getMainIdtf(context, classNode, {TranslationKeynodes::lang_en});
     if (classMainIdtf.empty())
-      continue;
-    std::string const & nodeMainIdtf = getEnglishMainIdtf(node);
+      return ScTemplateSearchRequest::CONTINUE;
+    std::string const & nodeMainIdtf = utils::CommonUtils::getMainIdtf(context, node, {TranslationKeynodes::lang_en});
     if (nodeMainIdtf.empty())
-      continue;
-    translations.push_back(nodeMainIdtf + " is " + classMainIdtf);
-  }
+      return ScTemplateSearchRequest::CONTINUE;
+    translations += nodeMainIdtf + " is " + classMainIdtf + ". ";
+    return ScTemplateSearchRequest::CONTINUE;
+  },
+  [&](ScAddr const & element)
+  {
+    return isInStructure(structAddr, element);
+  });
+
   return translations;
 }
 }  // namespace structureTranslationModule

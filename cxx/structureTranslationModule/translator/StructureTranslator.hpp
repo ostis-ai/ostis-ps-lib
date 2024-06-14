@@ -1,3 +1,9 @@
+/*
+ * This source file is part of an OSTIS project. For the latest info, see http://ostis.net
+ * Distributed under the MIT License
+ * (See accompanying file COPYING.MIT or copy at http://opensource.org/licenses/MIT)
+ */
+
 #pragma once
 
 #include "sc-memory/sc_memory.hpp"
@@ -15,7 +21,7 @@ public:
   {
   }
 
-  virtual std::vector<std::string> translate(ScAddr const & structAddr)
+  virtual std::string translate(ScAddr const & structAddr)
       const = 0;
 
   size_t hashCode() const;
@@ -27,13 +33,8 @@ protected:
 
   std::string getEnglishContent(ScAddr const & linkNode) const;
 
-  std::string getEnglishMainIdtf(ScAddr const & node) const;
+  bool isInStructure(ScAddr const & structAddr, ScAddr const & elementAddr) const;
 
-  bool isInIgnoredKeynodes(ScAddr const & node) const;
-
-  static bool isInStructure(ScAddr const & elementAddr, ScAddrSet const & structure);
-
-  static bool anyIsInStructure(ScAddrVector const & elements, ScAddrSet const & structure);
 
 private:
   ScIterator5Ptr getNrelMainIdtfIterator(ScAddr const & node) const;

@@ -1,3 +1,9 @@
+/*
+ * This source file is part of an OSTIS project. For the latest info, see http://ostis.net
+ * Distributed under the MIT License
+ * (See accompanying file COPYING.MIT or copy at http://opensource.org/licenses/MIT)
+ */
+
 #include "StructureTranslatorSet.hpp"
 
 #include "NrelInLinkTranslator.hpp"
@@ -28,13 +34,13 @@ StructureTranslatorSet::~StructureTranslatorSet()
     delete handler;
 }
 
-std::vector<std::string> StructureTranslatorSet::translate(ScAddr structAddr) const
+std::string StructureTranslatorSet::translate(ScAddr structAddr) const
 {
-  std::vector<std::string> answer;
+  std::string answer;
   for (auto const & handler : handlers)
   {
-    auto translations = handler->translate(structAddr);
-    answer.insert(answer.cend(), translations.cbegin(), translations.cend());
+    std::string translations = handler->translate(structAddr);
+    answer += translations + "\n";
   }
   return answer;
 }

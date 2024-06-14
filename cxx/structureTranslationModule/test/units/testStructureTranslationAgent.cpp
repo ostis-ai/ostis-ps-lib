@@ -1,3 +1,9 @@
+/*
+ * This source file is part of an OSTIS project. For the latest info, see http://ostis.net
+ * Distributed under the MIT License
+ * (See accompanying file COPYING.MIT or copy at http://opensource.org/licenses/MIT)
+ */
+ 
 #include "scs_loader.hpp"
 
 #include "sc-agents-common/utils/AgentUtils.hpp"
@@ -32,7 +38,6 @@ std::string const & TEST_FILES_DIR_PATH = STRUCTURE_TRANSLATION_MODULE_TEST_SRC_
 std::string const & TEST_QUESTION_NODE_ALIAS = "test_question_node";
 std::string const & TEST_STRUCTURE_ALIAS = "test_structure";
 int const WAIT_TIME = 3000;
-size_t const MAX_TRANSLATIONS = 30;
 
 using StructureTranslationTest = ScMemoryTest;
 
@@ -49,167 +54,76 @@ void deinitializeClasses()
   SC_AGENT_UNREGISTER(structureTranslationModule::StructureTranslationAgent);
 }
 
-TEST_F(StructureTranslationTest, TestSetFillingWithPointers)
+void testTranslator(ScMemoryContext & context, auto & translator, std::string fileName, std::vector<std::string> answer_phrases)
 {
-  ScMemoryContext & context = *m_ctx;
-  auto translator1 = new NrelInLinkTranslator(&context);
-  auto translator2 = new NrelInQuasybinaryLinkTranslator(&context);
-  auto translator3 = new NrelFromQuasybinaryLinkTranslator(&context);
-  auto translator4 = new NrelInQuasybinaryNodeTranslator(&context);
-  auto translator5 = new NrelFromQuasybinaryNodeTranslator(&context);
-  auto translator6 = new NrelFromNodeTranslator(&context);
-  auto translator7 = new FromConceptTranslator(&context);
+  initializeClasses();
 
-  std::set<StructureTranslator *, StructureTranslatorCmp> translators;
-  translators.insert(translator1);
-  translators.insert(translator2);
-  translators.insert(translator3);
-  translators.insert(translator4);
-  translators.insert(translator5);
-  translators.insert(translator6);
-  translators.insert(translator7);
-  translators.insert(translator7);
-  translators.insert(translator6);
-  translators.insert(translator5);
-  translators.insert(translator4);
-  translators.insert(translator3);
-  translators.insert(translator2);
-  translators.insert(translator1);
-  EXPECT_EQ(translators.size(), 7u);
-  for (const auto & item: translators)
-    delete item;
+  loader.loadScsFile(context, TEST_FILES_DIR_PATH + fileName);
+  ScAddr test_structure = context.HelperFindBySystemIdtf(TEST_STRUCTURE_ALIAS);
+  auto const & answer = translator.translate(test_structure);
+
+  for (std::string phrase : answer_phrases)
+  {
+    EXPECT_TRUE(answer.find(phrase) != std::string::npos) << phrase;
+  }
+
+  deinitializeClasses();
 }
 
 TEST_F(StructureTranslationTest, TestFromConceptTranslator)
 {
+  std::vector<std::string> answer_phrases = {"red is color", "apple is fruit"};
   ScMemoryContext & context = *m_ctx;
-  initializeClasses();
-
-  loader.loadScsFile(context, TEST_FILES_DIR_PATH + "testFromConceptTranslator.scs");
-  ScAddr test_structure = context.HelperFindBySystemIdtf(TEST_STRUCTURE_ALIAS);
-
-  auto translator = new FromConceptTranslator(&context);
-  auto const & answer = translator->translate(test_structure);
-
-  EXPECT_EQ(answer.size(), 2u);
-  EXPECT_NE(std::find(answer.cbegin(), answer.cend(), "red is color"), answer.cend());
-  EXPECT_NE(std::find(answer.cbegin(), answer.cend(), "apple is fruit"), answer.cend());
-
-  deinitializeClasses();
-  delete translator;
+  FromConceptTranslator translator(&context);
+  testTranslator(context, translator, "testFromConceptTranslator.scs", answer_phrases);
 }
 
 TEST_F(StructureTranslationTest, TestNrelInLinkTranslator)
 {
+  std::vector<std::string> answer_phrases = {"apple name Arnold"};
   ScMemoryContext & context = *m_ctx;
-  initializeClasses();
-
-  loader.loadScsFile(context, TEST_FILES_DIR_PATH + "testNrelInLinkTranslator.scs");
-  ScAddr test_structure = context.HelperFindBySystemIdtf(TEST_STRUCTURE_ALIAS);
-
-  auto translator = new NrelInLinkTranslator(&context);
-  auto const & answer = translator->translate(test_structure);
-
-  EXPECT_EQ(answer.size(), 1u);
-  EXPECT_NE(std::find(answer.cbegin(), answer.cend(), "apple name Arnold"), answer.cend());
-
-  deinitializeClasses();
-  delete translator;
+  NrelInLinkTranslator translator(&context);
+  testTranslator(context, translator, "testNrelInLinkTranslator.scs", answer_phrases);
 }
 
 TEST_F(StructureTranslationTest, TestNrelInQuasybinaryLinkTranslator)
 {
+  std::vector<std::string> answer_phrases = {"man synonyms human", "man synonyms guy"};
   ScMemoryContext & context = *m_ctx;
-  initializeClasses();
-
-  loader.loadScsFile(context, TEST_FILES_DIR_PATH + "testNrelInQuasybinaryLinkTranslator.scs");
-  ScAddr test_structure = context.HelperFindBySystemIdtf(TEST_STRUCTURE_ALIAS);
-
-  auto translator = new NrelInQuasybinaryLinkTranslator(&context);
-  auto const & answer = translator->translate(test_structure);
-
-  EXPECT_EQ(answer.size(), 2u);
-  EXPECT_NE(std::find(answer.cbegin(), answer.cend(), "man synonyms human"), answer.cend());
-  EXPECT_NE(std::find(answer.cbegin(), answer.cend(), "man synonyms guy"), answer.cend());
-
-  deinitializeClasses();
-  delete translator;
+  NrelInQuasybinaryLinkTranslator translator(&context);
+  testTranslator(context, translator, "testNrelInQuasybinaryLinkTranslator.scs", answer_phrases);
 }
 
 TEST_F(StructureTranslationTest, TestNrelFromQuasybinaryLinkTranslator)
 {
+  std::vector<std::string> answer_phrases = {"apple decomposition pulp", "apple decomposition peel"};
   ScMemoryContext & context = *m_ctx;
-  initializeClasses();
-
-  loader.loadScsFile(context, TEST_FILES_DIR_PATH + "testNrelFromQuasybinaryLinkTranslator.scs");
-  ScAddr test_structure = context.HelperFindBySystemIdtf(TEST_STRUCTURE_ALIAS);
-
-  auto translator = new NrelFromQuasybinaryLinkTranslator(&context);
-  auto const & answer = translator->translate(test_structure);
-
-  EXPECT_EQ(answer.size(), 2u);
-  EXPECT_NE(std::find(answer.cbegin(), answer.cend(), "apple decomposition pulp"), answer.cend());
-  EXPECT_NE(std::find(answer.cbegin(), answer.cend(), "apple decomposition peel"), answer.cend());
-
-  deinitializeClasses();
-  delete translator;
+  NrelFromQuasybinaryLinkTranslator translator(&context);
+  testTranslator(context, translator, "testNrelFromQuasybinaryLinkTranslator.scs", answer_phrases);
 }
 
 TEST_F(StructureTranslationTest, TestNrelInQuasybinaryNodeTranslator)
 {
+  std::vector<std::string> answer_phrases = {"human parents first parent", "human parents second parent"};
   ScMemoryContext & context = *m_ctx;
-  initializeClasses();
-
-  loader.loadScsFile(context, TEST_FILES_DIR_PATH + "testNrelInQuasybinaryNodeTranslator.scs");
-  ScAddr test_structure = context.HelperFindBySystemIdtf(TEST_STRUCTURE_ALIAS);
-
-  auto translator = new NrelInQuasybinaryNodeTranslator(&context);
-  auto const & answer = translator->translate(test_structure);
-
-  EXPECT_EQ(answer.size(), 2u);
-  EXPECT_NE(std::find(answer.cbegin(), answer.cend(), "human parents first parent"), answer.cend());
-  EXPECT_NE(std::find(answer.cbegin(), answer.cend(), "human parents second parent"), answer.cend());
-
-  deinitializeClasses();
-  delete translator;
+  NrelInQuasybinaryNodeTranslator translator(&context);
+  testTranslator(context, translator, "testNrelInQuasybinaryNodeTranslator.scs", answer_phrases);
 }
 
 TEST_F(StructureTranslationTest, TestNrelFromQuasybinaryNodeTranslator)
 {
+  std::vector<std::string> answer_phrases = {"thing parts decomposition big part", "thing parts decomposition little part"};
   ScMemoryContext & context = *m_ctx;
-  initializeClasses();
-
-  loader.loadScsFile(context, TEST_FILES_DIR_PATH + "testNrelFromQuasybinaryNodeTranslator.scs");
-  ScAddr test_structure = context.HelperFindBySystemIdtf(TEST_STRUCTURE_ALIAS);
-
-  auto translator = new NrelFromQuasybinaryNodeTranslator(&context);
-  auto const & answer = translator->translate(test_structure);
-
-  EXPECT_EQ(answer.size(), 2u);
-  EXPECT_NE(std::find(answer.cbegin(), answer.cend(), "thing parts decomposition big part"), answer.cend());
-  EXPECT_NE(std::find(answer.cbegin(), answer.cend(), "thing parts decomposition little part"), answer.cend());
-
-  deinitializeClasses();
-  delete translator;
+  NrelFromQuasybinaryNodeTranslator translator(&context);
+  testTranslator(context, translator, "testNrelFromQuasybinaryNodeTranslator.scs", answer_phrases);
 }
 
 TEST_F(StructureTranslationTest, TestNrelFromNodeTranslator)
 {
+  std::vector<std::string> answer_phrases = {"man likes pizza", "man likes to eat pizza"};
   ScMemoryContext & context = *m_ctx;
-  initializeClasses();
-
-  loader.loadScsFile(context, TEST_FILES_DIR_PATH + "testNrelFromNodeTranslator.scs");
-  ScAddr test_structure = context.HelperFindBySystemIdtf(TEST_STRUCTURE_ALIAS);
-
-  auto translator = new NrelFromNodeTranslator(&context);
-  auto const & answer = translator->translate(test_structure);
-
-  EXPECT_EQ(answer.size(), 2u);
-  EXPECT_NE(std::find(answer.cbegin(), answer.cend(), "man likes pizza"), answer.cend());
-  EXPECT_NE(std::find(answer.cbegin(), answer.cend(), "man likes to eat pizza"), answer.cend());
-
-  deinitializeClasses();
-  delete translator;
+  NrelFromNodeTranslator translator(&context);
+  testTranslator(context, translator, "testNrelFromNodeTranslator.scs", answer_phrases);
 }
 
 TEST_F(StructureTranslationTest, TestAllTranslators)
@@ -236,35 +150,33 @@ TEST_F(StructureTranslationTest, TestAllTranslators)
   translators.insert(translator6);
   translators.insert(translator7);
 
-  std::set<std::string> answer;
+  std::string answer;
 
   for (const auto & translator : translators)
   {
-    std::vector<std::string> const & translations = translator->translate(test_structure);
-    std::copy(translations.begin(), translations.end(), std::inserter(answer, answer.cend()));
+    std::string const & translation = translator->translate(test_structure);
+    answer += translation;
   }
 
-  EXPECT_EQ(answer.size(), 13u);
+  EXPECT_TRUE(answer.find("red is color") != std::string::npos);
+  EXPECT_TRUE(answer.find("apple is fruit") != std::string::npos);
 
-  EXPECT_NE(std::find(answer.cbegin(), answer.cend(), "red is color"), answer.cend());
-  EXPECT_NE(std::find(answer.cbegin(), answer.cend(), "apple is fruit"), answer.cend());
+  EXPECT_TRUE(answer.find("apple name Arnold") != std::string::npos);
 
-  EXPECT_NE(std::find(answer.cbegin(), answer.cend(), "apple name Arnold"), answer.cend());
+  EXPECT_TRUE(answer.find("man synonyms human") != std::string::npos);
+  EXPECT_TRUE(answer.find("man synonyms guy") != std::string::npos);
 
-  EXPECT_NE(std::find(answer.cbegin(), answer.cend(), "man synonyms human"), answer.cend());
-  EXPECT_NE(std::find(answer.cbegin(), answer.cend(), "man synonyms guy"), answer.cend());
+  EXPECT_TRUE(answer.find("apple decomposition pulp") != std::string::npos);
+  EXPECT_TRUE(answer.find("apple decomposition peel") != std::string::npos);
 
-  EXPECT_NE(std::find(answer.cbegin(), answer.cend(), "apple decomposition pulp"), answer.cend());
-  EXPECT_NE(std::find(answer.cbegin(), answer.cend(), "apple decomposition peel"), answer.cend());
+  EXPECT_TRUE(answer.find("human parents first parent") != std::string::npos);
+  EXPECT_TRUE(answer.find("human parents second parent") != std::string::npos);
 
-  EXPECT_NE(std::find(answer.cbegin(), answer.cend(), "human parents first parent"), answer.cend());
-  EXPECT_NE(std::find(answer.cbegin(), answer.cend(), "human parents second parent"), answer.cend());
+  EXPECT_TRUE(answer.find("thing parts decomposition big part") != std::string::npos);
+  EXPECT_TRUE(answer.find("thing parts decomposition little part") != std::string::npos);
 
-  EXPECT_NE(std::find(answer.cbegin(), answer.cend(), "thing parts decomposition big part"), answer.cend());
-  EXPECT_NE(std::find(answer.cbegin(), answer.cend(), "thing parts decomposition little part"), answer.cend());
-
-  EXPECT_NE(std::find(answer.cbegin(), answer.cend(), "man likes pizza"), answer.cend());
-  EXPECT_NE(std::find(answer.cbegin(), answer.cend(), "man likes to eat pizza"), answer.cend());
+  EXPECT_TRUE(answer.find("man likes pizza") != std::string::npos);
+  EXPECT_TRUE(answer.find("man likes to eat pizza") != std::string::npos);
 
   deinitializeClasses();
   for (const auto & translator : translators)

@@ -20,7 +20,7 @@ sc_node_norole_relation
 
 test_question_node
     <- question;
-    <- action_translate_structures;
+    <- action_translate_structures_into_natural_language;
     -> rrel_1: {
     test_structure
 };;
