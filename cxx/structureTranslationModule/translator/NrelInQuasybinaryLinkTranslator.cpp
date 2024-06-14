@@ -1,45 +1,46 @@
+/*
+ * This source file is part of an OSTIS project. For the latest info, see http://ostis.net
+ * Distributed under the MIT License
+ * (See accompanying file COPYING.MIT or copy at http://opensource.org/licenses/MIT)
+ */
+
 #include "NrelInQuasybinaryLinkTranslator.hpp"
+#include "constants/TranslationConstants.hpp"
+#include "sc-agents-common/utils/CommonUtils.hpp"
+#include "keynodes/TranslationKeynodes.hpp"
 
 namespace structureTranslationModule
 {
-NrelInQuasybinaryLinkTranslator::NrelInQuasybinaryLinkTranslator(
-    ScMemoryContext * context)
+NrelInQuasybinaryLinkTranslator::NrelInQuasybinaryLinkTranslator(ScMemoryContext * context)
   : StructureTranslator(context)
 {
 }
 
-std::vector<std::string> NrelInQuasybinaryLinkTranslator::translate(ScAddr const & structAddr) const
+std::string NrelInQuasybinaryLinkTranslator::translate(ScAddr const & structAddr) const
 {
-  std::vector<std::string> translations;
-  std::string const TUPLE_ALIAS = "_tuple";
-  std::string const NODE_ALIAS = "_node";
-  std::string const NREL_ALIAS = "_nrel";
-  std::string const EDGE_ALIAS = "_edge";
+  std::string translations;
   ScAddr tupleNode, node, nrelNode;
 
   ScTemplate scTemplate;
-  scTemplate.Triple(structAddr, ScType::EdgeAccessVarPosPerm, ScType::EdgeDCommonVar >> EDGE_ALIAS);
+  scTemplate.Triple(structAddr, ScType::EdgeAccessVarPosPerm, ScType::EdgeDCommonVar >> TranslationConstants::EDGE_ALIAS);
   scTemplate.Quintuple(
-      ScType::NodeVar >> NODE_ALIAS, 
-      EDGE_ALIAS, 
-      ScType::NodeVarTuple >> TUPLE_ALIAS,
+      ScType::NodeVar >> TranslationConstants::NODE_ALIAS, 
+      TranslationConstants::EDGE_ALIAS, 
+      ScType::NodeVarTuple >> TranslationConstants::TUPLE_ALIAS,
       ScType::EdgeAccessVarPosPerm, 
-      ScType::NodeVarNoRole >> NREL_ALIAS);
-  ScTemplateSearchResult searchResult;
-  context->HelperSearchTemplate(scTemplate, searchResult);
-
-  for (size_t i = 0; i < searchResult.Size(); i++)
+      ScType::NodeVarNoRole >> TranslationConstants::NREL_ALIAS);
+  context->HelperSmartSearchTemplate(scTemplate,
+  [&](ScTemplateResultItem const & searchResult)
   {
-    auto const & result = searchResult[i];
-    node = result[NODE_ALIAS];
-    tupleNode = result[TUPLE_ALIAS];
-    nrelNode = result[NREL_ALIAS];
-    std::string const & nodeMainIdtf = getEnglishMainIdtf(node);
+    node = searchResult[TranslationConstants::NODE_ALIAS];
+    tupleNode = searchResult[TranslationConstants::TUPLE_ALIAS];
+    nrelNode = searchResult[TranslationConstants::NREL_ALIAS];
+    std::string const & nodeMainIdtf = utils::CommonUtils::getMainIdtf(context, node, {TranslationKeynodes::lang_en});
     if (nodeMainIdtf.empty())
-      continue;
-    std::string const & nrelMainIdtf = getEnglishMainIdtf(nrelNode);
+      return ScTemplateSearchRequest::CONTINUE;
+    std::string const & nrelMainIdtf = utils::CommonUtils::getMainIdtf(context, nrelNode, {TranslationKeynodes::lang_en});
     if (nrelMainIdtf.empty())
-      continue;
+      return ScTemplateSearchRequest::CONTINUE;
     auto const & linkIterator = context->Iterator3(tupleNode, ScType::EdgeAccessConstPosPerm, ScType::LinkConst);
     while (linkIterator->Next())
     {
@@ -47,9 +48,15 @@ std::vector<std::string> NrelInQuasybinaryLinkTranslator::translate(ScAddr const
       std::string const & linkContent = getEnglishContent(linkNode);
       if (linkContent.empty())
         continue;
-      translations.push_back(nodeMainIdtf + " " + nrelMainIdtf + " " + linkContent);
+      translations += nodeMainIdtf + " " + nrelMainIdtf + " " + linkContent + ". ";
     }
-  }
+    return ScTemplateSearchRequest::CONTINUE;
+  },
+  [&](ScAddr const & element)
+  {
+    return isInStructure(structAddr, element);
+  });
+
   return translations;
 }
 }  // namespace structureTranslationModule
