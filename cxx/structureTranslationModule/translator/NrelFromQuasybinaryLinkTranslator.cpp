@@ -16,11 +16,12 @@ NrelFromQuasybinaryLinkTranslator::NrelFromQuasybinaryLinkTranslator(ScMemoryCon
 {
 }
 
-std::string NrelFromQuasybinaryLinkTranslator::translate(ScAddr const & structAddr) const
+std::stringstream NrelFromQuasybinaryLinkTranslator::translate(ScAddr const & structAddr) const
 {
-  SC_LOG_INFO("NrelFromQuasybinaryLinkTranslator started");
-  std::string translations;
-  ScAddr tupleNode, node, nrelNode;
+  std::stringstream translations;
+  ScAddr tupleNode;
+  ScAddr node;
+  ScAddr nrelNode;
 
   ScTemplate scTemplate;
   scTemplate.Quintuple(
@@ -47,10 +48,11 @@ std::string NrelFromQuasybinaryLinkTranslator::translate(ScAddr const & structAd
     while (linkIterator->Next())
     {
       ScAddr const & linkNode = linkIterator->Get(2);
-      std::string const & linkContent = getEnglishContent(linkNode);
+      std::string linkContent;
+      context->GetLinkContent(linkNode, linkContent);
       if (linkContent.empty())
         continue;
-      translations += nodeMainIdtf + " " + nrelMainIdtf + " " + linkContent + ". ";
+      translations << nodeMainIdtf << " " << nrelMainIdtf << " " << linkContent << ". ";
     }
     return ScTemplateSearchRequest::CONTINUE;
   },

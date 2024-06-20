@@ -17,10 +17,12 @@ NrelFromNodeTranslator::NrelFromNodeTranslator(ScMemoryContext * context)
 }
 
 
-std::string NrelFromNodeTranslator::translate(ScAddr const & structAddr) const
+std::stringstream NrelFromNodeTranslator::translate(ScAddr const & structAddr) const
 {
-  std::string translations;
-  ScAddr sourceNode, node, nrelNode;
+  std::stringstream translations;
+  ScAddr sourceNode;
+  ScAddr node;
+  ScAddr nrelNode;
 
   ScTemplate scTemplate;
   scTemplate.Triple(structAddr, ScType::EdgeAccessVarPosPerm, ScType::EdgeDCommonVar >> TranslationConstants::EDGE_ALIAS);
@@ -45,7 +47,7 @@ std::string NrelFromNodeTranslator::translate(ScAddr const & structAddr) const
     std::string const & nrelMainIdtf = utils::CommonUtils::getMainIdtf(context, nrelNode, {TranslationKeynodes::lang_en});
     if (nrelMainIdtf.empty())
       return ScTemplateSearchRequest::CONTINUE;
-    translations += sourceMainIdtf + " "  + nrelMainIdtf + " "  + nodeMainIdtf + ". ";
+    translations << sourceMainIdtf << " "  << nrelMainIdtf << " "  << nodeMainIdtf << ". ";
     return ScTemplateSearchRequest::CONTINUE;
   },
   [&](ScAddr const & element)

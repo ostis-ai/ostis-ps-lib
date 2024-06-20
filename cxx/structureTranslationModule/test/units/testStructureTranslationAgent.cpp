@@ -54,17 +54,17 @@ void deinitializeClasses()
   SC_AGENT_UNREGISTER(structureTranslationModule::StructureTranslationAgent);
 }
 
-void testTranslator(ScMemoryContext & context, auto & translator, std::string fileName, std::vector<std::string> answer_phrases)
+void testTranslator(ScMemoryContext & context, auto & translator, std::string fileName, std::vector<std::string> answerPhrases)
 {
   initializeClasses();
 
   loader.loadScsFile(context, TEST_FILES_DIR_PATH + fileName);
   ScAddr test_structure = context.HelperFindBySystemIdtf(TEST_STRUCTURE_ALIAS);
-  auto const & answer = translator.translate(test_structure);
+  std::string const & answer = translator.translate(test_structure).str();
 
-  for (std::string phrase : answer_phrases)
+  for (std::string const & phrase : answerPhrases)
   {
-    EXPECT_TRUE(answer.find(phrase) != std::string::npos) << phrase;
+    EXPECT_TRUE(answer.find(phrase) != std::string::npos);
   }
 
   deinitializeClasses();
@@ -72,58 +72,58 @@ void testTranslator(ScMemoryContext & context, auto & translator, std::string fi
 
 TEST_F(StructureTranslationTest, TestFromConceptTranslator)
 {
-  std::vector<std::string> answer_phrases = {"red is color", "apple is fruit"};
+  std::vector<std::string> answerPhrases = {"red is color", "apple is fruit"};
   ScMemoryContext & context = *m_ctx;
   FromConceptTranslator translator(&context);
-  testTranslator(context, translator, "testFromConceptTranslator.scs", answer_phrases);
+  testTranslator(context, translator, "testFromConceptTranslator.scs", answerPhrases);
 }
 
 TEST_F(StructureTranslationTest, TestNrelInLinkTranslator)
 {
-  std::vector<std::string> answer_phrases = {"apple name Arnold"};
+  std::vector<std::string> answerPhrases = {"apple name Arnold"};
   ScMemoryContext & context = *m_ctx;
   NrelInLinkTranslator translator(&context);
-  testTranslator(context, translator, "testNrelInLinkTranslator.scs", answer_phrases);
+  testTranslator(context, translator, "testNrelInLinkTranslator.scs", answerPhrases);
 }
 
 TEST_F(StructureTranslationTest, TestNrelInQuasybinaryLinkTranslator)
 {
-  std::vector<std::string> answer_phrases = {"man synonyms human", "man synonyms guy"};
+  std::vector<std::string> answerPhrases = {"man synonyms human", "man synonyms guy"};
   ScMemoryContext & context = *m_ctx;
   NrelInQuasybinaryLinkTranslator translator(&context);
-  testTranslator(context, translator, "testNrelInQuasybinaryLinkTranslator.scs", answer_phrases);
+  testTranslator(context, translator, "testNrelInQuasybinaryLinkTranslator.scs", answerPhrases);
 }
 
 TEST_F(StructureTranslationTest, TestNrelFromQuasybinaryLinkTranslator)
 {
-  std::vector<std::string> answer_phrases = {"apple decomposition pulp", "apple decomposition peel"};
+  std::vector<std::string> answerPhrases = {"apple decomposition pulp", "apple decomposition peel"};
   ScMemoryContext & context = *m_ctx;
   NrelFromQuasybinaryLinkTranslator translator(&context);
-  testTranslator(context, translator, "testNrelFromQuasybinaryLinkTranslator.scs", answer_phrases);
+  testTranslator(context, translator, "testNrelFromQuasybinaryLinkTranslator.scs", answerPhrases);
 }
 
 TEST_F(StructureTranslationTest, TestNrelInQuasybinaryNodeTranslator)
 {
-  std::vector<std::string> answer_phrases = {"human parents first parent", "human parents second parent"};
+  std::vector<std::string> answerPhrases = {"human parents first parent", "human parents second parent"};
   ScMemoryContext & context = *m_ctx;
   NrelInQuasybinaryNodeTranslator translator(&context);
-  testTranslator(context, translator, "testNrelInQuasybinaryNodeTranslator.scs", answer_phrases);
+  testTranslator(context, translator, "testNrelInQuasybinaryNodeTranslator.scs", answerPhrases);
 }
 
 TEST_F(StructureTranslationTest, TestNrelFromQuasybinaryNodeTranslator)
 {
-  std::vector<std::string> answer_phrases = {"thing parts decomposition big part", "thing parts decomposition little part"};
+  std::vector<std::string> answerPhrases = {"thing parts decomposition big part", "thing parts decomposition little part"};
   ScMemoryContext & context = *m_ctx;
   NrelFromQuasybinaryNodeTranslator translator(&context);
-  testTranslator(context, translator, "testNrelFromQuasybinaryNodeTranslator.scs", answer_phrases);
+  testTranslator(context, translator, "testNrelFromQuasybinaryNodeTranslator.scs", answerPhrases);
 }
 
 TEST_F(StructureTranslationTest, TestNrelFromNodeTranslator)
 {
-  std::vector<std::string> answer_phrases = {"man likes pizza", "man likes to eat pizza"};
+  std::vector<std::string> answerPhrases = {"man likes pizza", "man likes to eat pizza"};
   ScMemoryContext & context = *m_ctx;
   NrelFromNodeTranslator translator(&context);
-  testTranslator(context, translator, "testNrelFromNodeTranslator.scs", answer_phrases);
+  testTranslator(context, translator, "testNrelFromNodeTranslator.scs", answerPhrases);
 }
 
 TEST_F(StructureTranslationTest, TestAllTranslators)
@@ -132,7 +132,7 @@ TEST_F(StructureTranslationTest, TestAllTranslators)
   initializeClasses();
 
   loader.loadScsFile(context, TEST_FILES_DIR_PATH + "testAllTranslators.scs");
-  ScAddr test_structure = context.HelperFindBySystemIdtf(TEST_STRUCTURE_ALIAS);
+  ScAddr testStructure = context.HelperFindBySystemIdtf(TEST_STRUCTURE_ALIAS);
   auto translator1 = new NrelInLinkTranslator(&context);
   auto translator2 = new NrelInQuasybinaryLinkTranslator(&context);
   auto translator3 = new NrelFromQuasybinaryLinkTranslator(&context);
@@ -141,7 +141,7 @@ TEST_F(StructureTranslationTest, TestAllTranslators)
   auto translator6 = new NrelFromNodeTranslator(&context);
   auto translator7 = new FromConceptTranslator(&context);
 
-  std::set<StructureTranslator *, StructureTranslatorCmp> translators;
+  std::set<StructureTranslator *, StructureTranslatorComporator> translators;
   translators.insert(translator1);
   translators.insert(translator2);
   translators.insert(translator3);
@@ -150,13 +150,16 @@ TEST_F(StructureTranslationTest, TestAllTranslators)
   translators.insert(translator6);
   translators.insert(translator7);
 
+  std::stringstream translations;
   std::string answer;
 
   for (const auto & translator : translators)
   {
-    std::string const & translation = translator->translate(test_structure);
-    answer += translation;
+    std::stringstream const & translation = translator->translate(testStructure);
+    translations << translation.str();
   }
+
+  answer = translations.str();
 
   EXPECT_TRUE(answer.find("red is color") != std::string::npos);
   EXPECT_TRUE(answer.find("apple is fruit") != std::string::npos);
@@ -189,15 +192,15 @@ TEST_F(StructureTranslationTest, TestAllAgent)
   initializeClasses();
 
   loader.loadScsFile(context, TEST_FILES_DIR_PATH + "testAgentOnAllTranslations.scs");
-  ScAddr test_question_node = context.HelperFindBySystemIdtf(TEST_QUESTION_NODE_ALIAS);
-  EXPECT_TRUE(test_question_node.IsValid());
+  ScAddr testQuestionNode = context.HelperFindBySystemIdtf(TEST_QUESTION_NODE_ALIAS);
+  EXPECT_TRUE(testQuestionNode.IsValid());
 
-  EXPECT_TRUE(utils::AgentUtils::applyAction(&context, test_question_node, WAIT_TIME));
+  EXPECT_TRUE(utils::AgentUtils::applyAction(&context, testQuestionNode, WAIT_TIME));
   EXPECT_TRUE(context.HelperCheckEdge(
       scAgentsCommon::CoreKeynodes::question_finished_successfully,
-      test_question_node,
+      testQuestionNode,
       ScType::EdgeAccessConstPosPerm));
-  ScAddr const & answer = utils::IteratorUtils::getAnyByOutRelation(&context, test_question_node, scAgentsCommon::CoreKeynodes::nrel_answer);
+  ScAddr const & answer = utils::IteratorUtils::getAnyByOutRelation(&context, testQuestionNode, scAgentsCommon::CoreKeynodes::nrel_answer);
   ASSERT_TRUE(answer.IsValid());
   ScAddr const & answerLink = utils::IteratorUtils::getAnyFromSet(&context, answer);
   ASSERT_TRUE(context.GetElementType(answerLink).IsLink());

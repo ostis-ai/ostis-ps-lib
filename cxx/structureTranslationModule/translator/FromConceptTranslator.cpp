@@ -16,10 +16,11 @@ FromConceptTranslator::FromConceptTranslator(ScMemoryContext * context)
 {
 }
 
-std::string FromConceptTranslator::translate(ScAddr const & structAddr) const
+std::stringstream FromConceptTranslator::translate(ScAddr const & structAddr) const
 {
-  std::string translations;
-  ScAddr classNode, node;
+  std::stringstream translations;
+  ScAddr classNode;
+  ScAddr node;
 
   ScTemplate scTemplate;
   scTemplate.Triple(ScType::NodeVarClass >> TranslationConstants::CLASS_ALIAS, ScType::EdgeAccessVarPosPerm >> TranslationConstants::EDGE_ALIAS, ScType::NodeVar >> TranslationConstants::NODE_ALIAS);
@@ -36,7 +37,7 @@ std::string FromConceptTranslator::translate(ScAddr const & structAddr) const
     std::string const & nodeMainIdtf = utils::CommonUtils::getMainIdtf(context, node, {TranslationKeynodes::lang_en});
     if (nodeMainIdtf.empty())
       return ScTemplateSearchRequest::CONTINUE;
-    translations += nodeMainIdtf + " is " + classMainIdtf + ". ";
+    translations << nodeMainIdtf << " is " << classMainIdtf << ". ";
     return ScTemplateSearchRequest::CONTINUE;
   },
   [&](ScAddr const & element)
