@@ -21,7 +21,7 @@ public:
   {
   }
 
-  virtual std::string translate(ScAddr const & structAddr)
+  virtual std::stringstream translate(ScAddr const & structAddr)
       const = 0;
 
   size_t hashCode() const;
@@ -31,18 +31,15 @@ public:
 protected:
   ScMemoryContext * context;
 
-  std::string getEnglishContent(ScAddr const & linkNode) const;
-
   bool isInStructure(ScAddr const & structAddr, ScAddr const & elementAddr) const;
 
 
 private:
   ScIterator5Ptr getNrelMainIdtfIterator(ScAddr const & node) const;
 
-  bool isEnglish(ScAddr const & node) const;
 };
 
-struct StructureTranslatorCmp
+struct StructureTranslatorComporator
 {
   bool operator()(StructureTranslator * first, StructureTranslator * second) const
   {

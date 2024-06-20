@@ -16,10 +16,12 @@ NrelInQuasybinaryNodeTranslator::NrelInQuasybinaryNodeTranslator(ScMemoryContext
 {
 }
 
-std::string NrelInQuasybinaryNodeTranslator::translate(ScAddr const & structAddr) const
+std::stringstream NrelInQuasybinaryNodeTranslator::translate(ScAddr const & structAddr) const
 {
-  std::string translations;
-  ScAddr tupleNode, node, nrelNode;
+  std::stringstream translations;
+  ScAddr tupleNode;
+  ScAddr node;
+  ScAddr nrelNode;
 
   ScTemplate scTemplate;
   scTemplate.Triple(structAddr, ScType::EdgeAccessVarPosPerm, TranslationConstants::EDGE_ALIAS);
@@ -50,7 +52,7 @@ std::string NrelInQuasybinaryNodeTranslator::translate(ScAddr const & structAddr
       std::string const & tupleNodeMainIdtf = utils::CommonUtils::getMainIdtf(context, tupleNode, {TranslationKeynodes::lang_en});
       if (tupleNodeMainIdtf.empty())
         continue;
-      translations += nodeMainIdtf + " " + nrelMainIdtf + " " + tupleNodeMainIdtf + ". ";
+      translations << nodeMainIdtf << " " << nrelMainIdtf << " " << tupleNodeMainIdtf << ". ";
     }
     return ScTemplateSearchRequest::CONTINUE;
   },

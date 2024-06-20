@@ -15,6 +15,8 @@
 #include "StructureTranslationAgent.hpp"
 
 #include<string>
+#include <iostream>
+#include <sstream>
 
 namespace structureTranslationModule
 {
@@ -30,21 +32,21 @@ SC_AGENT_IMPLEMENTATION(StructureTranslationAgent)
 
     ScAddr const & structuresSet = utils::IteratorUtils::getAnyByOutRelation(&m_memoryCtx, actionNode, scAgentsCommon::CoreKeynodes::rrel_1);
 
-    std::string translation;
+    std::stringstream translation;
 
-    auto const & structIterator = m_memoryCtx.Iterator3(structuresSet, ScType::EdgeAccessConstPosPerm, ScType::NodeConstStruct);
+    ScIterator3Ptr const & structIterator = m_memoryCtx.Iterator3(structuresSet, ScType::EdgeAccessConstPosPerm, ScType::NodeConstStruct);
     while (structIterator->Next())
     {
       ScAddr const & structAddr = structIterator->Get(2);
-      translation += translateStructure(structAddr, &m_memoryCtx);
+      translation << translateStructure(structAddr, &m_memoryCtx);
     }
 
-    SC_LOG_DEBUG(translation);
+    SC_LOG_DEBUG("StructureTranslationAgent: translation result is " << translation.str());
 
     ScAddr const & translationLink = m_memoryCtx.CreateLink();
     if (m_memoryCtx.IsElement(translationLink) == SC_FALSE)
       SC_THROW_EXCEPTION(utils::ScException, "StructureTranslationAgent: cannot create answer link");
-    if (m_memoryCtx.SetLinkContent(translationLink, translation) == SC_FALSE)
+    if (m_memoryCtx.SetLinkContent(translationLink, translation.str()) == SC_FALSE)
       SC_THROW_EXCEPTION(utils::ScException, "StructureTranslationAgent: cannot set link content");
 
     ScAddrVector const & answerElements = {translationLink};

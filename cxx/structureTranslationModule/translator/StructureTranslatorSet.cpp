@@ -36,12 +36,12 @@ StructureTranslatorSet::~StructureTranslatorSet()
 
 std::string StructureTranslatorSet::translate(ScAddr structAddr) const
 {
-  std::string answer;
+  std::stringstream answer;
   for (auto const & handler : handlers)
   {
-    std::string translations = handler->translate(structAddr);
-    answer += translations + "\n";
+    std::stringstream translations = handler->translate(structAddr);
+    answer << translations.str() << "\n";
   }
-  return answer;
+  return answer.str();
 }
 }  // namespace structureTranslationModule

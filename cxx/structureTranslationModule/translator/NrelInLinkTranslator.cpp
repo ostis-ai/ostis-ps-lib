@@ -16,11 +16,12 @@ NrelInLinkTranslator::NrelInLinkTranslator(ScMemoryContext * context)
 {
 }
 
-std::string NrelInLinkTranslator::translate(ScAddr const & structAddr) const
+std::stringstream NrelInLinkTranslator::translate(ScAddr const & structAddr) const
 {
-  SC_LOG_INFO("NrelInLinkTranslator started");
-  std::string translations;
-  ScAddr linkNode, node, nrelNode;
+  std::stringstream translations;
+  ScAddr linkNode;
+  ScAddr node;
+  ScAddr nrelNode;
 
   ScTemplate scTemplate;
   scTemplate.Triple(structAddr, ScType::EdgeAccessVarPosPerm, ScType::EdgeDCommonVar >> TranslationConstants::EDGE_ALIAS);
@@ -42,10 +43,12 @@ std::string NrelInLinkTranslator::translate(ScAddr const & structAddr) const
     std::string const & nrelMainIdtf = utils::CommonUtils::getMainIdtf(context, nrelNode, {TranslationKeynodes::lang_en});
     if (nrelMainIdtf.empty())
       return ScTemplateSearchRequest::CONTINUE;
-    std::string const & linkContent = getEnglishContent(linkNode);
+    std::string linkContent;
+    if (context->HelperCheckEdge(TranslationKeynodes::lang_en, linkNode, ScType::EdgeAccessConstPosPerm))
+      context->GetLinkContent(linkNode, linkContent);
     if (linkContent.empty())
       return ScTemplateSearchRequest::CONTINUE;
-    translations += nodeMainIdtf + " " + nrelMainIdtf + " " + linkContent + ". ";
+    translations << nodeMainIdtf << " " << nrelMainIdtf << " " << linkContent << ". ";
     return ScTemplateSearchRequest::CONTINUE;
   },
   [&](ScAddr const & element)

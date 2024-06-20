@@ -7,6 +7,7 @@
 #pragma once
 
 #include "StructureTranslator.hpp"
+#include <sstream>
 
 namespace structureTranslationModule
 {
@@ -18,7 +19,7 @@ class NrelFromQuasybinaryNodeTranslator : public StructureTranslator
 public:
   explicit NrelFromQuasybinaryNodeTranslator(ScMemoryContext * context);
 
-std::string translate(ScAddr const & structAddr)
+std::stringstream translate(ScAddr const & structAddr)
       const override;
 
 private:

@@ -24,17 +24,9 @@ bool StructureTranslator::operator<(StructureTranslator const & other) const
   return this->hashCode() < other.hashCode();
 }
 
-std::string StructureTranslator::getEnglishContent(ScAddr const & linkNode) const
-{
-  std::string content;
-  if (isEnglish(linkNode))
-    context->GetLinkContent(linkNode, content);
-  return content;
-}
-
 bool StructureTranslator::isInStructure(ScAddr const & structAddr, ScAddr const & elementAddr) const
 {
-  return elementAddr==structAddr or (context->GetElementType(elementAddr) == ScType::EdgeAccessConstPosPerm and context->GetEdgeSource(elementAddr)==structAddr) or context->HelperCheckEdge(structAddr, elementAddr, ScType::EdgeAccessConstPosPerm);
+  return elementAddr == structAddr or (context->GetElementType(elementAddr) == ScType::EdgeAccessConstPosPerm and context->GetEdgeSource(elementAddr) == structAddr) or context->HelperCheckEdge(structAddr, elementAddr, ScType::EdgeAccessConstPosPerm);
 }
 
 ScIterator5Ptr StructureTranslator::getNrelMainIdtfIterator(ScAddr const & node) const
@@ -45,11 +37,6 @@ ScIterator5Ptr StructureTranslator::getNrelMainIdtfIterator(ScAddr const & node)
       ScType::LinkConst,
       ScType::EdgeAccessConstPosPerm,
       scAgentsCommon::CoreKeynodes::nrel_main_idtf);
-}
-
-bool StructureTranslator::isEnglish(ScAddr const & node) const
-{
-  return context->HelperCheckEdge(TranslationKeynodes::lang_en, node, ScType::EdgeAccessConstPosPerm);
 }
 
 }  // namespace structureTranslationModule
