@@ -29,14 +29,4 @@ bool StructureTranslator::isInStructure(ScAddr const & structAddr, ScAddr const 
   return elementAddr == structAddr or (context->GetElementType(elementAddr) == ScType::EdgeAccessConstPosPerm and context->GetEdgeSource(elementAddr) == structAddr) or context->HelperCheckEdge(structAddr, elementAddr, ScType::EdgeAccessConstPosPerm);
 }
 
-ScIterator5Ptr StructureTranslator::getNrelMainIdtfIterator(ScAddr const & node) const
-{
-  return context->Iterator5(
-      node,
-      ScType::EdgeDCommonConst,
-      ScType::LinkConst,
-      ScType::EdgeAccessConstPosPerm,
-      scAgentsCommon::CoreKeynodes::nrel_main_idtf);
-}
-
 }  // namespace structureTranslationModule
