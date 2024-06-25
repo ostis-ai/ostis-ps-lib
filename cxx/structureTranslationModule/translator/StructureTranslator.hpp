@@ -33,10 +33,6 @@ protected:
 
   bool isInStructure(ScAddr const & structAddr, ScAddr const & elementAddr) const;
 
-
-private:
-  ScIterator5Ptr getNrelMainIdtfIterator(ScAddr const & node) const;
-
 };
 
 struct StructureTranslatorComporator
