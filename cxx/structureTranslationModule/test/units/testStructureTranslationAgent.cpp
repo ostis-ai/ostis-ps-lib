@@ -54,7 +54,7 @@ void deinitializeClasses()
   SC_AGENT_UNREGISTER(structureTranslationModule::StructureTranslationAgent);
 }
 
-void testTranslator(ScMemoryContext & context, auto & translator, std::string fileName, std::vector<std::string> answerPhrases)
+void testTranslator(ScMemoryContext & context, StructureTranslator & translator, std::string fileName, std::vector<std::string> answerPhrases)
 {
   initializeClasses();
 
