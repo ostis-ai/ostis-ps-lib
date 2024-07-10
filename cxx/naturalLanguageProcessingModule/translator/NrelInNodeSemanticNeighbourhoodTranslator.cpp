@@ -14,6 +14,7 @@ std::vector<std::string> NrelInNodeSemanticNeighbourhoodTranslator::getSemanticN
     ScAddrSet const & atLeastOneNodeFromConstruction) const
 {
   std::vector<std::string> translations;
+  std::set<std::string> usedNrelIdtfs;
   translations.reserve(maxTranslations);
   auto const & nrelIterator = context->Iterator5(
       node, ScType::EdgeDCommonConst, ScType::NodeConst, ScType::EdgeAccessConstPosPerm, ScType::NodeConstNoRole);
@@ -24,12 +25,6 @@ std::vector<std::string> NrelInNodeSemanticNeighbourhoodTranslator::getSemanticN
       continue;
     if (anyIsInStructure({nrelIterator->Get(2), nrelIterator->Get(4)}, atLeastOneNodeFromConstruction) == SC_FALSE)
       continue;
-    ScAddr const & nrelTargetNode = nrelIterator->Get(2);
-    if (isInIgnoredKeynodes(nrelTargetNode))
-      continue;
-    std::string const & nrelTargetMainIdtf = getEnglishMainIdtf(nrelTargetNode);
-    if (nrelTargetMainIdtf.empty())
-      continue;
 
     ScAddr const & nrelNode = nrelIterator->Get(4);
     if (isInIgnoredKeynodes(nrelNode))
@@ -37,9 +32,26 @@ std::vector<std::string> NrelInNodeSemanticNeighbourhoodTranslator::getSemanticN
     std::string nrelMainIdtf = getEnglishMainIdtf(nrelNode);
     if (nrelMainIdtf.empty())
       continue;
-
-    translations.push_back(nrelMainIdtf.append(" ").append(nrelTargetMainIdtf));
-  }
+    if (usedNrelIdtfs.find(nrelMainIdtf) == usedNrelIdtfs.end())
+    {
+      usedNrelIdtfs.insert(nrelMainIdtf);
+      std::string translation = nrelMainIdtf;
+      auto const & nrelNodeIterator = context->Iterator5(
+      node, ScType::EdgeDCommonConst, ScType::NodeConst, ScType::EdgeAccessConstPosPerm, nrelNode);
+      while (nrelIterator->Next() && translations.size() < maxTranslations)
+      {
+        ScAddr const & nrelTargetNode = nrelIterator->Get(2);
+        if (isInIgnoredKeynodes(nrelTargetNode))
+          continue;
+        std::string const & nrelTargetMainIdtf = getEnglishMainIdtf(nrelTargetNode);
+        if (nrelTargetMainIdtf.empty())
+          continue;
+        translation += " " + nrelTargetMainIdtf + ",";
+      }
+      if (translation != nrelMainIdtf)
+        translations.push_back(translation);
+    }
+    }
   return translations;
 }
 
