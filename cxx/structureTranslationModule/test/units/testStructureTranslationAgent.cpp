@@ -72,7 +72,7 @@ void testTranslator(ScMemoryContext & context, StructureTranslator & translator,
 
 TEST_F(StructureTranslationTest, TestFromConceptTranslator)
 {
-  std::vector<std::string> answerPhrases = {"red is color", "apple is fruit"};
+  std::vector<std::string> answerPhrases = {"красный это цвет", "яблоко это фрукт"};
   ScMemoryContext & context = *m_ctx;
   FromConceptTranslator translator(&context);
   testTranslator(context, translator, "testFromConceptTranslator.scs", answerPhrases);
@@ -80,7 +80,7 @@ TEST_F(StructureTranslationTest, TestFromConceptTranslator)
 
 TEST_F(StructureTranslationTest, TestNrelInLinkTranslator)
 {
-  std::vector<std::string> answerPhrases = {"apple name Arnold"};
+  std::vector<std::string> answerPhrases = {"яблоко имя Арнольд"};
   ScMemoryContext & context = *m_ctx;
   NrelInLinkTranslator translator(&context);
   testTranslator(context, translator, "testNrelInLinkTranslator.scs", answerPhrases);
@@ -88,7 +88,7 @@ TEST_F(StructureTranslationTest, TestNrelInLinkTranslator)
 
 TEST_F(StructureTranslationTest, TestNrelInQuasybinaryLinkTranslator)
 {
-  std::vector<std::string> answerPhrases = {"man synonyms human", "man synonyms guy"};
+  std::vector<std::string> answerPhrases = {"человек синонимы чел", "человек синонимы чувак"};
   ScMemoryContext & context = *m_ctx;
   NrelInQuasybinaryLinkTranslator translator(&context);
   testTranslator(context, translator, "testNrelInQuasybinaryLinkTranslator.scs", answerPhrases);
@@ -96,7 +96,7 @@ TEST_F(StructureTranslationTest, TestNrelInQuasybinaryLinkTranslator)
 
 TEST_F(StructureTranslationTest, TestNrelFromQuasybinaryLinkTranslator)
 {
-  std::vector<std::string> answerPhrases = {"apple decomposition pulp", "apple decomposition peel"};
+  std::vector<std::string> answerPhrases = {"яблоко декомпозиция мякоть", "яблоко декомпозиция кожура"};
   ScMemoryContext & context = *m_ctx;
   NrelFromQuasybinaryLinkTranslator translator(&context);
   testTranslator(context, translator, "testNrelFromQuasybinaryLinkTranslator.scs", answerPhrases);
@@ -104,7 +104,7 @@ TEST_F(StructureTranslationTest, TestNrelFromQuasybinaryLinkTranslator)
 
 TEST_F(StructureTranslationTest, TestNrelInQuasybinaryNodeTranslator)
 {
-  std::vector<std::string> answerPhrases = {"human parents first parent", "human parents second parent"};
+  std::vector<std::string> answerPhrases = {"человек родители первый родитель", "человек родители второй родитель"};
   ScMemoryContext & context = *m_ctx;
   NrelInQuasybinaryNodeTranslator translator(&context);
   testTranslator(context, translator, "testNrelInQuasybinaryNodeTranslator.scs", answerPhrases);
@@ -112,7 +112,7 @@ TEST_F(StructureTranslationTest, TestNrelInQuasybinaryNodeTranslator)
 
 TEST_F(StructureTranslationTest, TestNrelFromQuasybinaryNodeTranslator)
 {
-  std::vector<std::string> answerPhrases = {"thing parts decomposition big part", "thing parts decomposition little part"};
+  std::vector<std::string> answerPhrases = {"штука декомпозиция на части большая часть", "штука декомпозиция на части маленькая часть"};
   ScMemoryContext & context = *m_ctx;
   NrelFromQuasybinaryNodeTranslator translator(&context);
   testTranslator(context, translator, "testNrelFromQuasybinaryNodeTranslator.scs", answerPhrases);
@@ -120,7 +120,7 @@ TEST_F(StructureTranslationTest, TestNrelFromQuasybinaryNodeTranslator)
 
 TEST_F(StructureTranslationTest, TestNrelFromNodeTranslator)
 {
-  std::vector<std::string> answerPhrases = {"man likes pizza", "man likes to eat pizza"};
+  std::vector<std::string> answerPhrases = {"человек любит пицца", "человек любит есть пицца"};
   ScMemoryContext & context = *m_ctx;
   NrelFromNodeTranslator translator(&context);
   testTranslator(context, translator, "testNrelFromNodeTranslator.scs", answerPhrases);
@@ -161,25 +161,25 @@ TEST_F(StructureTranslationTest, TestAllTranslators)
 
   answer = translations.str();
 
-  EXPECT_TRUE(answer.find("red is color") != std::string::npos);
-  EXPECT_TRUE(answer.find("apple is fruit") != std::string::npos);
+  EXPECT_TRUE(answer.find("красный это цвет") != std::string::npos);
+  EXPECT_TRUE(answer.find("яблоко это фрукт") != std::string::npos);
 
-  EXPECT_TRUE(answer.find("apple name Arnold") != std::string::npos);
+  EXPECT_TRUE(answer.find("яблоко имя Арнольд") != std::string::npos);
 
-  EXPECT_TRUE(answer.find("man synonyms human") != std::string::npos);
-  EXPECT_TRUE(answer.find("man synonyms guy") != std::string::npos);
+  EXPECT_TRUE(answer.find("человек синонимы чел") != std::string::npos);
+  EXPECT_TRUE(answer.find("человек синонимы чувак") != std::string::npos);
 
-  EXPECT_TRUE(answer.find("apple decomposition pulp") != std::string::npos);
-  EXPECT_TRUE(answer.find("apple decomposition peel") != std::string::npos);
+  EXPECT_TRUE(answer.find("яблоко декомпозиция мякоть") != std::string::npos);
+  EXPECT_TRUE(answer.find("яблоко декомпозиция кожура") != std::string::npos);
 
-  EXPECT_TRUE(answer.find("human parents first parent") != std::string::npos);
-  EXPECT_TRUE(answer.find("human parents second parent") != std::string::npos);
+  EXPECT_TRUE(answer.find("человек родители первый родитель") != std::string::npos);
+  EXPECT_TRUE(answer.find("человек родители второй родитель") != std::string::npos);
 
-  EXPECT_TRUE(answer.find("thing parts decomposition big part") != std::string::npos);
-  EXPECT_TRUE(answer.find("thing parts decomposition little part") != std::string::npos);
+  EXPECT_TRUE(answer.find("штука декомпозиция на части большая часть") != std::string::npos);
+  EXPECT_TRUE(answer.find("штука декомпозиция на части маленькая часть") != std::string::npos);
 
-  EXPECT_TRUE(answer.find("man likes pizza") != std::string::npos);
-  EXPECT_TRUE(answer.find("man likes to eat pizza") != std::string::npos);
+  EXPECT_TRUE(answer.find("человек любит пицца") != std::string::npos);
+  EXPECT_TRUE(answer.find("человек любит есть пицца") != std::string::npos);
 
   deinitializeClasses();
   for (const auto & translator : translators)

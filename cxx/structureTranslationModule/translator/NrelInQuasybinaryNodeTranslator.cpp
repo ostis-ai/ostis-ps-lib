@@ -7,7 +7,7 @@
 #include "NrelInQuasybinaryNodeTranslator.hpp"
 #include "constants/TranslationConstants.hpp"
 #include "sc-agents-common/utils/CommonUtils.hpp"
-#include "keynodes/TranslationKeynodes.hpp"
+#include "sc-agents-common/keynodes/coreKeynodes.hpp"
 
 namespace structureTranslationModule
 {
@@ -37,10 +37,10 @@ std::stringstream NrelInQuasybinaryNodeTranslator::translate(ScAddr const & stru
     node = searchResult[TranslationConstants::NODE_ALIAS];
     tupleNode = searchResult[TranslationConstants::TUPLE_ALIAS];
     nrelNode = searchResult[TranslationConstants::NREL_ALIAS];
-    std::string const & nodeMainIdtf = utils::CommonUtils::getMainIdtf(context, node, {TranslationKeynodes::lang_en});
+    std::string const & nodeMainIdtf = utils::CommonUtils::getMainIdtf(context, node, {scAgentsCommon::CoreKeynodes::lang_ru});
     if (nodeMainIdtf.empty())
       return ScTemplateSearchRequest::CONTINUE;
-    std::string const & nrelMainIdtf = utils::CommonUtils::getMainIdtf(context, nrelNode, {TranslationKeynodes::lang_en});
+    std::string const & nrelMainIdtf = utils::CommonUtils::getMainIdtf(context, nrelNode, {scAgentsCommon::CoreKeynodes::lang_ru});
     if (nrelMainIdtf.empty())
       return ScTemplateSearchRequest::CONTINUE;
 
@@ -49,7 +49,7 @@ std::stringstream NrelInQuasybinaryNodeTranslator::translate(ScAddr const & stru
     while (tupleNodeIterator->Next())
     {
       ScAddr const & tupleNode = tupleNodeIterator->Get(2);
-      std::string const & tupleNodeMainIdtf = utils::CommonUtils::getMainIdtf(context, tupleNode, {TranslationKeynodes::lang_en});
+      std::string const & tupleNodeMainIdtf = utils::CommonUtils::getMainIdtf(context, tupleNode, {scAgentsCommon::CoreKeynodes::lang_ru});
       if (tupleNodeMainIdtf.empty())
         continue;
       translations << nodeMainIdtf << " " << nrelMainIdtf << " " << tupleNodeMainIdtf << ". ";

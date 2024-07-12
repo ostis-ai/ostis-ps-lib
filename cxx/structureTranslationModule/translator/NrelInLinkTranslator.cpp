@@ -7,7 +7,7 @@
 #include "NrelInLinkTranslator.hpp"
 #include "constants/TranslationConstants.hpp"
 #include "sc-agents-common/utils/CommonUtils.hpp"
-#include "keynodes/TranslationKeynodes.hpp"
+#include "sc-agents-common/keynodes/coreKeynodes.hpp"
 
 namespace structureTranslationModule
 {
@@ -37,14 +37,14 @@ std::stringstream NrelInLinkTranslator::translate(ScAddr const & structAddr) con
     node = searchResult[TranslationConstants::NODE_ALIAS];
     linkNode = searchResult[TranslationConstants::LINK_ALIAS];
     nrelNode = searchResult[TranslationConstants::NREL_ALIAS];
-    std::string const & nodeMainIdtf = utils::CommonUtils::getMainIdtf(context, node, {TranslationKeynodes::lang_en});
+    std::string const & nodeMainIdtf = utils::CommonUtils::getMainIdtf(context, node, {scAgentsCommon::CoreKeynodes::lang_ru});
     if (nodeMainIdtf.empty())
       return ScTemplateSearchRequest::CONTINUE;
-    std::string const & nrelMainIdtf = utils::CommonUtils::getMainIdtf(context, nrelNode, {TranslationKeynodes::lang_en});
+    std::string const & nrelMainIdtf = utils::CommonUtils::getMainIdtf(context, nrelNode, {scAgentsCommon::CoreKeynodes::lang_ru});
     if (nrelMainIdtf.empty())
       return ScTemplateSearchRequest::CONTINUE;
     std::string linkContent;
-    if (context->HelperCheckEdge(TranslationKeynodes::lang_en, linkNode, ScType::EdgeAccessConstPosPerm))
+    if (context->HelperCheckEdge(scAgentsCommon::CoreKeynodes::lang_ru, linkNode, ScType::EdgeAccessConstPosPerm))
       context->GetLinkContent(linkNode, linkContent);
     if (linkContent.empty())
       return ScTemplateSearchRequest::CONTINUE;

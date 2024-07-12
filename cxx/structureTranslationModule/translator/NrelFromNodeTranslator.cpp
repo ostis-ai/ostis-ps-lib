@@ -7,7 +7,7 @@
 #include "NrelFromNodeTranslator.hpp"
 #include "constants/TranslationConstants.hpp"
 #include "sc-agents-common/utils/CommonUtils.hpp"
-#include "keynodes/TranslationKeynodes.hpp"
+#include "sc-agents-common/keynodes/coreKeynodes.hpp"
 
 namespace structureTranslationModule
 {
@@ -38,13 +38,13 @@ std::stringstream NrelFromNodeTranslator::translate(ScAddr const & structAddr) c
     node = searchResult[TranslationConstants::NODE_ALIAS];
     sourceNode = searchResult[TranslationConstants::SOURCE_ALIAS];
     nrelNode = searchResult[TranslationConstants::NREL_ALIAS];
-    std::string const & nodeMainIdtf = utils::CommonUtils::getMainIdtf(context, node, {TranslationKeynodes::lang_en});
+    std::string const & nodeMainIdtf = utils::CommonUtils::getMainIdtf(context, node, {scAgentsCommon::CoreKeynodes::lang_ru});
     if (nodeMainIdtf.empty())
       return ScTemplateSearchRequest::CONTINUE;
-    std::string const & sourceMainIdtf = utils::CommonUtils::getMainIdtf(context, sourceNode, {TranslationKeynodes::lang_en});
+    std::string const & sourceMainIdtf = utils::CommonUtils::getMainIdtf(context, sourceNode, {scAgentsCommon::CoreKeynodes::lang_ru});
     if (sourceMainIdtf.empty())
       return ScTemplateSearchRequest::CONTINUE;
-    std::string const & nrelMainIdtf = utils::CommonUtils::getMainIdtf(context, nrelNode, {TranslationKeynodes::lang_en});
+    std::string const & nrelMainIdtf = utils::CommonUtils::getMainIdtf(context, nrelNode, {scAgentsCommon::CoreKeynodes::lang_ru});
     if (nrelMainIdtf.empty())
       return ScTemplateSearchRequest::CONTINUE;
     translations << sourceMainIdtf << " "  << nrelMainIdtf << " "  << nodeMainIdtf << ". ";

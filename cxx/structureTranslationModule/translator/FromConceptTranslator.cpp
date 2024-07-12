@@ -7,7 +7,7 @@
 #include "FromConceptTranslator.hpp"
 #include "constants/TranslationConstants.hpp"
 #include "sc-agents-common/utils/CommonUtils.hpp"
-#include "keynodes/TranslationKeynodes.hpp"
+#include "sc-agents-common/keynodes/coreKeynodes.hpp"
 
 namespace structureTranslationModule
 {
@@ -31,13 +31,13 @@ std::stringstream FromConceptTranslator::translate(ScAddr const & structAddr) co
   {
     classNode = searchResult[TranslationConstants::CLASS_ALIAS];
     node = searchResult[TranslationConstants::NODE_ALIAS];
-    std::string const & classMainIdtf = utils::CommonUtils::getMainIdtf(context, classNode, {TranslationKeynodes::lang_en});
+    std::string const & classMainIdtf = utils::CommonUtils::getMainIdtf(context, classNode, {scAgentsCommon::CoreKeynodes::lang_ru});
     if (classMainIdtf.empty())
       return ScTemplateSearchRequest::CONTINUE;
-    std::string const & nodeMainIdtf = utils::CommonUtils::getMainIdtf(context, node, {TranslationKeynodes::lang_en});
+    std::string const & nodeMainIdtf = utils::CommonUtils::getMainIdtf(context, node, {scAgentsCommon::CoreKeynodes::lang_ru});
     if (nodeMainIdtf.empty())
       return ScTemplateSearchRequest::CONTINUE;
-    translations << nodeMainIdtf << " is " << classMainIdtf << ". ";
+    translations << nodeMainIdtf << " это " << classMainIdtf << ". ";
     return ScTemplateSearchRequest::CONTINUE;
   },
   [&](ScAddr const & element)
