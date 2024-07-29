@@ -4,18 +4,14 @@
  * (See accompanying file COPYING.MIT or copy at http://opensource.org/licenses/MIT)
  */
 
-#include "sc-agents-common/utils/CommonUtils.hpp"
 #include "sc-agents-common/utils/AgentUtils.hpp"
 #include "sc-agents-common/utils/IteratorUtils.hpp"
-#include <iterator>
-#include "constants/TranslationConstants.hpp"
 
 #include "keynodes/TranslationKeynodes.hpp"
 
 #include "StructureTranslationAgent.hpp"
 
 #include <string>
-#include <iostream>
 #include <sstream>
 
 namespace structureTranslationModule
@@ -32,6 +28,8 @@ SC_AGENT_IMPLEMENTATION(StructureTranslationAgent)
 
     ScAddr const & structuresSet =
         utils::IteratorUtils::getAnyByOutRelation(&m_memoryCtx, actionNode, scAgentsCommon::CoreKeynodes::rrel_1);
+    ScAddr const & answerAddr =
+        utils::IteratorUtils::getAnyByOutRelation(&m_memoryCtx, actionNode, scAgentsCommon::CoreKeynodes::rrel_2);
 
     std::stringstream translation;
 
@@ -41,6 +39,8 @@ SC_AGENT_IMPLEMENTATION(StructureTranslationAgent)
     {
       ScAddr const & structAddr = structIterator->Get(2);
       translation << translateStructure(structAddr, &m_memoryCtx);
+      ScAddr const & structuresSet =
+        utils::IteratorUtils::getAnyByOutRelation(&m_memoryCtx, actionNode, scAgentsCommon::CoreKeynodes::rrel_1);
     }
 
     SC_LOG_DEBUG("StructureTranslationAgent: translation result is " << translation.str());
@@ -51,9 +51,9 @@ SC_AGENT_IMPLEMENTATION(StructureTranslationAgent)
     if (m_memoryCtx.SetLinkContent(translationLink, translation.str()) == SC_FALSE)
       SC_THROW_EXCEPTION(utils::ScException, "StructureTranslationAgent: cannot set link content");
 
-    ScAddrVector const & answerElements = {translationLink};
+    m_memoryCtx.CreateEdge(ScType::EdgeAccessConstPosPerm, answerAddr, translationLink);
 
-    utils::AgentUtils::finishAgentWork(&m_memoryCtx, actionNode, answerElements, true);
+    utils::AgentUtils::finishAgentWork(&m_memoryCtx, actionNode, true);
     SC_LOG_INFO("StructureTranslationAgent finished");
     return SC_RESULT_OK;
   }
