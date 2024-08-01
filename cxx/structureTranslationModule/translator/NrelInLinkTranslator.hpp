@@ -18,8 +18,7 @@ class NrelInLinkTranslator : public StructureTranslator
 public:
   explicit NrelInLinkTranslator(ScMemoryContext * context);
 
-std::stringstream translate(ScAddr const & structAddr)
-      const override;
+  std::stringstream translate(ScAddr const & structAddr) const override;
 
 private:
 };

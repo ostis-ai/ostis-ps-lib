@@ -18,10 +18,10 @@ class NrelFromNodeTranslator : public StructureTranslator
 public:
   explicit NrelFromNodeTranslator(ScMemoryContext * context);
 
-  std::stringstream translate(ScAddr const & structAddr)
-      const override;
+  std::stringstream translate(ScAddr const & structAddr) const override;
 
 private:
+  std::string get_translation_of_relation(ScAddr const & structAddr, ScAddr const & nrelNode, ScAddr const & sourceNode) const;
 };
 
 }  // namespace structureTranslationModule

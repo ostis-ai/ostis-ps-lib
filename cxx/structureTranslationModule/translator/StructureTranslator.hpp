@@ -21,8 +21,7 @@ public:
   {
   }
 
-  virtual std::stringstream translate(ScAddr const & structAddr)
-      const = 0;
+  virtual std::stringstream translate(ScAddr const & structAddr) const = 0;
 
   size_t hashCode() const;
 
@@ -32,7 +31,6 @@ protected:
   ScMemoryContext * context;
 
   bool isInStructure(ScAddr const & structAddr, ScAddr const & elementAddr) const;
-
 };
 
 struct StructureTranslatorComporator

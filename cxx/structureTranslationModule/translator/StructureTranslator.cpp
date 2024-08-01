@@ -26,7 +26,10 @@ bool StructureTranslator::operator<(StructureTranslator const & other) const
 
 bool StructureTranslator::isInStructure(ScAddr const & structAddr, ScAddr const & elementAddr) const
 {
-  return elementAddr == structAddr or (context->GetElementType(elementAddr) == ScType::EdgeAccessConstPosPerm and context->GetEdgeSource(elementAddr) == structAddr) or context->HelperCheckEdge(structAddr, elementAddr, ScType::EdgeAccessConstPosPerm);
+  return elementAddr == structAddr
+         or (context->GetElementType(elementAddr) == ScType::EdgeAccessConstPosPerm
+             and context->GetEdgeSource(elementAddr) == structAddr)
+         or context->HelperCheckEdge(structAddr, elementAddr, ScType::EdgeAccessConstPosPerm);
 }
 
 }  // namespace structureTranslationModule

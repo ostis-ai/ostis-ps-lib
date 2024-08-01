@@ -14,9 +14,8 @@ class StructureTranslatorSet
 {
 public:
   explicit StructureTranslatorSet(ScMemoryContext * context);
-  
-  std::string translate(ScAddr structAddr)
-      const;
+
+  std::string translate(ScAddr structAddr) const;
 
   ~StructureTranslatorSet();
 

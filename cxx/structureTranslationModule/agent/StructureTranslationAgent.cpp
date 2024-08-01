@@ -3,20 +3,17 @@
  * Distributed under the MIT License
  * (See accompanying file COPYING.MIT or copy at http://opensource.org/licenses/MIT)
  */
- 
-#include "sc-agents-common/utils/CommonUtils.hpp"
+
 #include "sc-agents-common/utils/AgentUtils.hpp"
 #include "sc-agents-common/utils/IteratorUtils.hpp"
-#include <iterator>
-#include "constants/TranslationConstants.hpp"
 
 #include "keynodes/TranslationKeynodes.hpp"
 
 #include "StructureTranslationAgent.hpp"
 
-#include<string>
-#include <iostream>
+#include <string>
 #include <sstream>
+
 
 namespace structureTranslationModule
 {
@@ -30,15 +27,21 @@ SC_AGENT_IMPLEMENTATION(StructureTranslationAgent)
       return SC_RESULT_OK;
     SC_LOG_INFO("StructureTranslationAgent started");
 
-    ScAddr const & structuresSet = utils::IteratorUtils::getAnyByOutRelation(&m_memoryCtx, actionNode, scAgentsCommon::CoreKeynodes::rrel_1);
+    ScAddr const & structuresSet =
+        utils::IteratorUtils::getAnyByOutRelation(&m_memoryCtx, actionNode, scAgentsCommon::CoreKeynodes::rrel_1);
+    ScAddr const & answerAddr =
+        utils::IteratorUtils::getAnyByOutRelation(&m_memoryCtx, actionNode, scAgentsCommon::CoreKeynodes::rrel_2);
 
     std::stringstream translation;
 
-    ScIterator3Ptr const & structIterator = m_memoryCtx.Iterator3(structuresSet, ScType::EdgeAccessConstPosPerm, ScType::NodeConstStruct);
+    ScIterator3Ptr const & structIterator =
+        m_memoryCtx.Iterator3(structuresSet, ScType::EdgeAccessConstPosPerm, ScType::NodeConstStruct);
     while (structIterator->Next())
     {
       ScAddr const & structAddr = structIterator->Get(2);
       translation << translateStructure(structAddr, &m_memoryCtx);
+    ScAddr const & structuresSet =
+        utils::IteratorUtils::getAnyByOutRelation(&m_memoryCtx, actionNode, scAgentsCommon::CoreKeynodes::rrel_1);
     }
 
     SC_LOG_DEBUG("StructureTranslationAgent: translation result is " << translation.str());
@@ -49,9 +52,9 @@ SC_AGENT_IMPLEMENTATION(StructureTranslationAgent)
     if (m_memoryCtx.SetLinkContent(translationLink, translation.str()) == SC_FALSE)
       SC_THROW_EXCEPTION(utils::ScException, "StructureTranslationAgent: cannot set link content");
 
-    ScAddrVector const & answerElements = {translationLink};
+    m_memoryCtx.CreateEdge(ScType::EdgeAccessConstPosPerm, answerAddr, translationLink);
 
-    utils::AgentUtils::finishAgentWork(&m_memoryCtx, actionNode, answerElements, true);
+    utils::AgentUtils::finishAgentWork(&m_memoryCtx, actionNode, true);
     SC_LOG_INFO("StructureTranslationAgent finished");
     return SC_RESULT_OK;
   }
@@ -67,7 +70,9 @@ SC_AGENT_IMPLEMENTATION(StructureTranslationAgent)
 bool StructureTranslationAgent::checkActionClass(ScAddr const & actionNode)
 {
   return m_memoryCtx.HelperCheckEdge(
-      TranslationKeynodes::action_translate_structures_into_natural_language, actionNode, ScType::EdgeAccessConstPosPerm);
+      TranslationKeynodes::action_translate_structures_into_natural_language,
+      actionNode,
+      ScType::EdgeAccessConstPosPerm);
 }
 
 std::string StructureTranslationAgent::translateStructure(ScAddr const & structAddr, ScMemoryContext * context)

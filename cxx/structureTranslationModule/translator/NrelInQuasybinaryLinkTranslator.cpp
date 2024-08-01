@@ -19,47 +19,61 @@ NrelInQuasybinaryLinkTranslator::NrelInQuasybinaryLinkTranslator(ScMemoryContext
 std::stringstream NrelInQuasybinaryLinkTranslator::translate(ScAddr const & structAddr) const
 {
   std::stringstream translations;
+  std::stringstream translation;
   ScAddr tupleNode;
   ScAddr node;
   ScAddr nrelNode;
 
   ScTemplate scTemplate;
-  scTemplate.Triple(structAddr, ScType::EdgeAccessVarPosPerm, ScType::EdgeDCommonVar >> TranslationConstants::EDGE_ALIAS);
+  scTemplate.Triple(
+      structAddr, ScType::EdgeAccessVarPosPerm, ScType::EdgeDCommonVar >> TranslationConstants::EDGE_ALIAS);
   scTemplate.Quintuple(
-      ScType::NodeVar >> TranslationConstants::NODE_ALIAS, 
-      TranslationConstants::EDGE_ALIAS, 
+      ScType::NodeVar >> TranslationConstants::NODE_ALIAS,
+      TranslationConstants::EDGE_ALIAS,
       ScType::NodeVarTuple >> TranslationConstants::TUPLE_ALIAS,
-      ScType::EdgeAccessVarPosPerm, 
+      ScType::EdgeAccessVarPosPerm,
       ScType::NodeVarNoRole >> TranslationConstants::NREL_ALIAS);
-  context->HelperSmartSearchTemplate(scTemplate,
-  [&](ScTemplateResultItem const & searchResult)
-  {
-    node = searchResult[TranslationConstants::NODE_ALIAS];
-    tupleNode = searchResult[TranslationConstants::TUPLE_ALIAS];
-    nrelNode = searchResult[TranslationConstants::NREL_ALIAS];
-    std::string const & nodeMainIdtf = utils::CommonUtils::getMainIdtf(context, node, {scAgentsCommon::CoreKeynodes::lang_ru});
-    if (nodeMainIdtf.empty())
-      return ScTemplateSearchRequest::CONTINUE;
-    std::string const & nrelMainIdtf = utils::CommonUtils::getMainIdtf(context, nrelNode, {scAgentsCommon::CoreKeynodes::lang_ru});
-    if (nrelMainIdtf.empty())
-      return ScTemplateSearchRequest::CONTINUE;
-    auto const & linkIterator = context->Iterator3(tupleNode, ScType::EdgeAccessConstPosPerm, ScType::LinkConst);
-    while (linkIterator->Next())
-    {
-      ScAddr const & linkNode = linkIterator->Get(2);
-      std::string linkContent;
-      context->GetLinkContent(linkNode, linkContent);
-      if (linkContent.empty())
-        continue;
-      translations << nodeMainIdtf << " " << nrelMainIdtf << " " + linkContent << ". ";
-    }
-    return ScTemplateSearchRequest::CONTINUE;
-  },
-  [&](ScAddr const & element)
-  {
-    return isInStructure(structAddr, element);
-  });
+  context->HelperSmartSearchTemplate(
+      scTemplate,
+      [&](ScTemplateResultItem const & searchResult)
+      {
+        node = searchResult[TranslationConstants::NODE_ALIAS];
+        tupleNode = searchResult[TranslationConstants::TUPLE_ALIAS];
+        nrelNode = searchResult[TranslationConstants::NREL_ALIAS];
+        std::string const & nodeMainIdtf =
+            utils::CommonUtils::getMainIdtf(context, node, {scAgentsCommon::CoreKeynodes::lang_ru});
+        if (nodeMainIdtf.empty())
+          return ScTemplateSearchRequest::CONTINUE;
+        std::string const & nrelMainIdtf =
+            utils::CommonUtils::getMainIdtf(context, nrelNode, {scAgentsCommon::CoreKeynodes::lang_ru});
+        if (nrelMainIdtf.empty())
+          return ScTemplateSearchRequest::CONTINUE;
+        SC_LOG_INFO("NrelInQuasybinaryLinkTranslator: " << nodeMainIdtf << " " << nrelMainIdtf);
+        std::string const & tupleIdtf =
+            utils::CommonUtils::getMainIdtf(context, tupleNode, {scAgentsCommon::CoreKeynodes::lang_ru});
+        if (!tupleIdtf.empty())
+          SC_LOG_INFO(tupleIdtf);
+        
+        auto const & linkIterator = context->Iterator3(tupleNode, ScType::EdgeAccessConstPosPerm, ScType::LinkConst);
 
+        while (linkIterator->Next())
+        {
+          ScAddr const & linkNode = linkIterator->Get(2);
+          std::string linkContent;
+          context->GetLinkContent(linkNode, linkContent);
+          if (linkContent.empty())
+            continue;
+          translation << " " << linkContent << ", ";
+        }
+        if (!(translation.tellp() == 0))
+          translations << nodeMainIdtf << " " << nrelMainIdtf << " " << translation.str();
+        return ScTemplateSearchRequest::CONTINUE;
+      },
+      [&](ScAddr const & element)
+      {
+        return isInStructure(structAddr, element);
+      });
+  SC_LOG_INFO("NrelInQuasybinaryLinkTranslator: " << translations.str());
   return translations;
 }
 }  // namespace structureTranslationModule

@@ -8,6 +8,7 @@
 #include "constants/TranslationConstants.hpp"
 #include "sc-agents-common/utils/CommonUtils.hpp"
 #include "sc-agents-common/keynodes/coreKeynodes.hpp"
+#include "sc-memory/utils/sc_log.hpp"
 
 namespace structureTranslationModule
 {
@@ -23,28 +24,34 @@ std::stringstream FromConceptTranslator::translate(ScAddr const & structAddr) co
   ScAddr node;
 
   ScTemplate scTemplate;
-  scTemplate.Triple(ScType::NodeVarClass >> TranslationConstants::CLASS_ALIAS, ScType::EdgeAccessVarPosPerm >> TranslationConstants::EDGE_ALIAS, ScType::NodeVar >> TranslationConstants::NODE_ALIAS);
+  scTemplate.Triple(
+      ScType::NodeVarClass >> TranslationConstants::CLASS_ALIAS,
+      ScType::EdgeAccessVarPosPerm >> TranslationConstants::EDGE_ALIAS,
+      ScType::NodeVar >> TranslationConstants::NODE_ALIAS);
   scTemplate.Triple(structAddr, ScType::EdgeAccessVarPosPerm, TranslationConstants::EDGE_ALIAS);
   ScTemplateSearchResult searchResult;
-  context->HelperSmartSearchTemplate(scTemplate,
-  [&](ScTemplateResultItem const & searchResult)
-  {
-    classNode = searchResult[TranslationConstants::CLASS_ALIAS];
-    node = searchResult[TranslationConstants::NODE_ALIAS];
-    std::string const & classMainIdtf = utils::CommonUtils::getMainIdtf(context, classNode, {scAgentsCommon::CoreKeynodes::lang_ru});
-    if (classMainIdtf.empty())
-      return ScTemplateSearchRequest::CONTINUE;
-    std::string const & nodeMainIdtf = utils::CommonUtils::getMainIdtf(context, node, {scAgentsCommon::CoreKeynodes::lang_ru});
-    if (nodeMainIdtf.empty())
-      return ScTemplateSearchRequest::CONTINUE;
-    translations << nodeMainIdtf << " это " << classMainIdtf << ". ";
-    return ScTemplateSearchRequest::CONTINUE;
-  },
-  [&](ScAddr const & element)
-  {
-    return isInStructure(structAddr, element);
-  });
-
+  context->HelperSmartSearchTemplate(
+      scTemplate,
+      [&](ScTemplateResultItem const & searchResult)
+      {
+        classNode = searchResult[TranslationConstants::CLASS_ALIAS];
+        node = searchResult[TranslationConstants::NODE_ALIAS];
+        std::string const & classMainIdtf =
+            utils::CommonUtils::getMainIdtf(context, classNode, {scAgentsCommon::CoreKeynodes::lang_ru});
+        if (classMainIdtf.empty())
+          return ScTemplateSearchRequest::CONTINUE;
+        std::string const & nodeMainIdtf =
+            utils::CommonUtils::getMainIdtf(context, node, {scAgentsCommon::CoreKeynodes::lang_ru});
+        if (nodeMainIdtf.empty())
+          return ScTemplateSearchRequest::CONTINUE;
+        translations << nodeMainIdtf << " это " << classMainIdtf << ". ";
+        return ScTemplateSearchRequest::CONTINUE;
+      },
+      [&](ScAddr const & element)
+      {
+        return isInStructure(structAddr, element);
+      });
+  SC_LOG_INFO("FromConceptTranslator: " << translations.str());
   return translations;
 }
 }  // namespace structureTranslationModule
