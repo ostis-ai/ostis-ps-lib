@@ -31,7 +31,6 @@ std::vector<std::string> NrelFromQuasybinaryLinkSemanticNeighbourhoodTranslator:
     std::string const & nrelMainIdtf = getEnglishMainIdtf(nrelNode);
     if (nrelMainIdtf.empty())
       continue;
-    std::string translation;
 
     ScAddr const & tupleNode = tupleIterator->Get(0);
     auto const & linkIterator = context->Iterator3(tupleNode, ScType::EdgeAccessConstPosPerm, ScType::LinkConst);
@@ -44,10 +43,8 @@ std::vector<std::string> NrelFromQuasybinaryLinkSemanticNeighbourhoodTranslator:
       if (linkContent.empty())
         continue;
 
-      translation += " " + linkContent + ",";
+      translations.push_back(nrelMainIdtf + " " + linkContent);
     }
-    if (translation != nrelMainIdtf)
-      translations.push_back(translation);
   }
   return translations;
 }

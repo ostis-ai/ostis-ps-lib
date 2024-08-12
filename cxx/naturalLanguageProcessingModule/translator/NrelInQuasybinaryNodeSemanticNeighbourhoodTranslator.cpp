@@ -1,5 +1,4 @@
 #include "NrelInQuasybinaryNodeSemanticNeighbourhoodTranslator.hpp"
-#include "sc-memory/utils/sc_log.hpp"
 
 namespace naturalLanguageProcessingModule
 {
@@ -30,12 +29,11 @@ std::vector<std::string> NrelInQuasybinaryNodeSemanticNeighbourhoodTranslator::g
     std::string const & nrelMainIdtf = getEnglishMainIdtf(nrelNode);
     if (nrelMainIdtf.empty())
       continue;
-    std::string translation = nrelMainIdtf;
 
     ScAddr const & tupleNode = tupleIterator->Get(2);
     auto const & tupleNodeIterator = context->Iterator3(tupleNode, ScType::EdgeAccessConstPosPerm, ScType::NodeConst);
 
-    while (tupleNodeIterator->Next())
+    while (tupleNodeIterator->Next() && translations.size() < maxTranslations)
     {
       if (isInStructure(tupleNodeIterator->Get(1), structure) == SC_FALSE)
         continue;
@@ -49,11 +47,9 @@ std::vector<std::string> NrelInQuasybinaryNodeSemanticNeighbourhoodTranslator::g
       std::string const & tupleNodeMainIdtf = getEnglishMainIdtf(tupleNodeNode);
       if (tupleNodeMainIdtf.empty())
         continue;
-      
-      translation += " " + tupleNodeMainIdtf + ", ";
+
+      translations.push_back(nrelMainIdtf + " " + tupleNodeMainIdtf);
     }
-    if (translation != nrelMainIdtf) 
-      translations.push_back(translation);
   }
   return translations;
 }

@@ -1,7 +1,6 @@
 #include "SemanticNeighbourhoodTranslatorSet.hpp"
 
 #include "NrelInNodeSemanticNeighbourhoodTranslator.hpp"
-#include "NodeDefinitionTranslator.hpp"
 #include "NrelInLinkSemanticNeighbourhoodTranslator.hpp"
 #include "NrelInQuasybinaryLinkSemanticNeighbourhoodTranslator.hpp"
 #include "NrelInQuasybinaryNodeSemanticNeighbourhoodTranslator.hpp"
@@ -16,7 +15,6 @@ namespace naturalLanguageProcessingModule
 SemanticNeighbourhoodTranslatorSet::SemanticNeighbourhoodTranslatorSet(ScMemoryContext * context)
   : handlers(
       {new NrelInNodeSemanticNeighbourhoodTranslator(context),
-       new NodeDefinitionTranslator(context),
        new NrelInLinkSemanticNeighbourhoodTranslator(context),
        new NrelInQuasybinaryLinkSemanticNeighbourhoodTranslator(context),
        new NrelInQuasybinaryNodeSemanticNeighbourhoodTranslator(context),
