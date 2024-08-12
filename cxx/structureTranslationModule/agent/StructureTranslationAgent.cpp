@@ -14,7 +14,6 @@
 #include <string>
 #include <sstream>
 
-
 namespace structureTranslationModule
 {
 
@@ -40,8 +39,8 @@ SC_AGENT_IMPLEMENTATION(StructureTranslationAgent)
     {
       ScAddr const & structAddr = structIterator->Get(2);
       translation << translateStructure(structAddr, &m_memoryCtx);
-    ScAddr const & structuresSet =
-        utils::IteratorUtils::getAnyByOutRelation(&m_memoryCtx, actionNode, scAgentsCommon::CoreKeynodes::rrel_1);
+      ScAddr const & structuresSet =
+          utils::IteratorUtils::getAnyByOutRelation(&m_memoryCtx, actionNode, scAgentsCommon::CoreKeynodes::rrel_1);
     }
 
     SC_LOG_DEBUG("StructureTranslationAgent: translation result is " << translation.str());
