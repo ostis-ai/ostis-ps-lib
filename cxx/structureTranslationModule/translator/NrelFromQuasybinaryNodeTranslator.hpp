@@ -19,8 +19,7 @@ class NrelFromQuasybinaryNodeTranslator : public StructureTranslator
 public:
   explicit NrelFromQuasybinaryNodeTranslator(ScMemoryContext * context);
 
-std::stringstream translate(ScAddr const & structAddr)
-      const override;
+  std::stringstream translate(ScAddr const & structAddr) const override;
 
 private:
 };

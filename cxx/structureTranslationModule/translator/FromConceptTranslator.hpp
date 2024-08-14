@@ -18,8 +18,7 @@ class FromConceptTranslator : public StructureTranslator
 public:
   explicit FromConceptTranslator(ScMemoryContext * context);
 
-  std::stringstream translate(ScAddr const & structAddr)
-      const override;
+  std::stringstream translate(ScAddr const & structAddr) const override;
 };
 
 }  // namespace structureTranslationModule

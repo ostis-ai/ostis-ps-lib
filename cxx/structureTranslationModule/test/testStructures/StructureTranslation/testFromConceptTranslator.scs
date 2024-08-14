@@ -3,7 +3,7 @@ sc_node_class
     -> concept_red;
     -> color;
     -> concept_fruit;
-    -> lang_en;;
+    -> lang_ru;;
 
 test_structure = [*
     concept_red <- color;;
@@ -11,10 +11,10 @@ test_structure = [*
     *];;
 
 concept_apple
-    => nrel_main_idtf: [apple] (* <- lang_en;; *);;
+    => nrel_main_idtf: [яблоко] (* <- lang_ru;; *);;
 concept_red
-    => nrel_main_idtf: [red] (* <- lang_en;; *);;
+    => nrel_main_idtf: [красный] (* <- lang_ru;; *);;
 concept_fruit
-    => nrel_main_idtf: [fruit] (* <- lang_en;; *);;
+    => nrel_main_idtf: [фрукт] (* <- lang_ru;; *);;
 color
-    => nrel_main_idtf: [color] (* <- lang_en;; *);;
+    => nrel_main_idtf: [цвет] (* <- lang_ru;; *);;
