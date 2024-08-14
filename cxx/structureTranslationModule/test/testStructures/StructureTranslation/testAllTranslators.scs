@@ -7,7 +7,7 @@ sc_node_class
     -> concept_thing;
     -> concept_fruit;
     -> color;
-    -> lang_en;;
+    -> lang_ru;;
 
 sc_node_norole_relation
     -> nrel_name;
@@ -20,30 +20,24 @@ sc_node_norole_relation
     -> nrel_parent;;
 
 test_structure = [*
-    concept_apple <= nrel_decomposition:
-    {
-       [peel] (* <- lang_en;; *);
-       [pulp] (* <- lang_en;; *)
-    };;
     concept_red <- color;;
     concept_apple <- concept_fruit;;
+    concept_apple <= nrel_decomposition:
+    {
+       [кожура] (* <- lang_ru;; *);
+       [мякоть] (* <- lang_ru;; *)
+    };;
+    concept_apple => nrel_name: [Арнольд] (* <- lang_ru;; *);;
+    concept_man => nrel_likes: nrel_likes_to_eat: pizza;;
     concept_thing <= nrel_parts_decomposition:
     {
         part1;
         part2
     };;
-    concept_apple => nrel_name: [Arnold] (* <- lang_en;; *);;
     concept_man => nrel_synonyms:
     {
-       [human] (* <- lang_en;; *);
-       [guy] (* <- lang_en;; *)
-    };;
-    concept_man => nrel_likes: pizza;;
-    concept_man => nrel_likes_to_eat: pizza;;
-    concept_man => nrel_synonyms:
-    {
-       [human] (* <- lang_en;; *);
-       [guy] (* <- lang_en;; *)
+       [хомо сапиенс] (* <- lang_ru;; *);
+       [людь] (* <- lang_ru;; *)
     };;
     concept_human => nrel_parents:
     {
@@ -53,44 +47,43 @@ test_structure = [*
     *];;
 
 concept_man
-    => nrel_main_idtf: [man] (* <- lang_en;; *);;
+    => nrel_main_idtf: [мужик] (* <- lang_ru;; *);;
 concept_human
-    => nrel_main_idtf: [human] (* <- lang_en;; *);;
+    => nrel_main_idtf: [человек] (* <- lang_ru;; *);;
 concept_thing
-    => nrel_main_idtf: [thing] (* <- lang_en;; *);;
+    => nrel_main_idtf: [штука] (* <- lang_ru;; *);;
 concept_apple
-    => nrel_main_idtf: [apple] (* <- lang_en;; *);;
+    => nrel_main_idtf: [яблоко] (* <- lang_ru;; *);;
 concept_red
-    => nrel_main_idtf: [red] (* <- lang_en;; *);;
+    => nrel_main_idtf: [красный] (* <- lang_ru;; *);;
 concept_fruit
-    => nrel_main_idtf: [fruit] (* <- lang_en;; *);;
+    => nrel_main_idtf: [фрукт] (* <- lang_ru;; *);;
 color
-    => nrel_main_idtf: [color] (* <- lang_en;; *);;
+    => nrel_main_idtf: [цвет] (* <- lang_ru;; *);;
 nrel_name
-    => nrel_main_idtf: [name] (* <- lang_en;; *);;
+    => nrel_main_idtf: [имя] (* <- lang_ru;; *);;
 nrel_synonyms
-    => nrel_main_idtf: [synonyms] (* <- lang_en;; *);;
+    => nrel_main_idtf: [синонимы] (* <- lang_ru;; *);;
 nrel_decomposition
-    => nrel_main_idtf: [decomposition] (* <- lang_en;; *);;
+    => nrel_main_idtf: [декомпозиция] (* <- lang_ru;; *);;
 nrel_parents
-    => nrel_main_idtf: [parents] (* <- lang_en;; *);;
+    => nrel_main_idtf: [родители] (* <- lang_ru;; *);;
 parent1
-    => nrel_main_idtf: [first parent] (* <- lang_en;; *);;
+    => nrel_main_idtf: [первый родитель] (* <- lang_ru;; *);;
 parent2
-    => nrel_main_idtf: [second parent] (* <- lang_en;; *);;
+    => nrel_main_idtf: [второй родитель] (* <- lang_ru;; *);;
 nrel_parts_decomposition
-    => nrel_main_idtf: [parts decomposition] (* <- lang_en;; *);;
+    => nrel_main_idtf: [декомпозиция на части] (* <- lang_ru;; *);;
 part1
-    => nrel_main_idtf: [big part] (* <- lang_en;; *);;
+    => nrel_main_idtf: [большая часть] (* <- lang_ru;; *);;
 part2
-    => nrel_main_idtf: [little part] (* <- lang_en;; *);;
+    => nrel_main_idtf: [маленькая часть] (* <- lang_ru;; *);;
 nrel_likes
-    => nrel_main_idtf: [likes] (* <- lang_en;; *);;
+    => nrel_main_idtf: [любит] (* <- lang_ru;; *);;
 nrel_likes_to_eat
-    => nrel_main_idtf: [likes to eat] (* <- lang_en;; *);;
+    => nrel_main_idtf: [любит есть] (* <- lang_ru;; *);;
 pizza
-    => nrel_main_idtf: [pizza] (* <- lang_en;; *);;
+    => nrel_main_idtf: [пицца] (* <- lang_ru;; *);;
 nrel_parent
-    => nrel_main_idtf: [parent] (* <- lang_en;; *);;
+    => nrel_main_idtf: [родитель] (* <- lang_ru;; *);;
 *];;
-

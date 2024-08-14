@@ -3,7 +3,7 @@
  * Distributed under the MIT License
  * (See accompanying file COPYING.MIT or copy at http://opensource.org/licenses/MIT)
  */
- 
+
 #include "sc-agents-common/utils/CommonUtils.hpp"
 #include "sc-agents-common/utils/AgentUtils.hpp"
 #include "sc-agents-common/utils/IteratorUtils.hpp"
@@ -14,7 +14,7 @@
 
 #include "StructureTranslationAgent.hpp"
 
-#include<string>
+#include <string>
 #include <iostream>
 #include <sstream>
 
@@ -30,11 +30,13 @@ SC_AGENT_IMPLEMENTATION(StructureTranslationAgent)
       return SC_RESULT_OK;
     SC_LOG_INFO("StructureTranslationAgent started");
 
-    ScAddr const & structuresSet = utils::IteratorUtils::getAnyByOutRelation(&m_memoryCtx, actionNode, scAgentsCommon::CoreKeynodes::rrel_1);
+    ScAddr const & structuresSet =
+        utils::IteratorUtils::getAnyByOutRelation(&m_memoryCtx, actionNode, scAgentsCommon::CoreKeynodes::rrel_1);
 
     std::stringstream translation;
 
-    ScIterator3Ptr const & structIterator = m_memoryCtx.Iterator3(structuresSet, ScType::EdgeAccessConstPosPerm, ScType::NodeConstStruct);
+    ScIterator3Ptr const & structIterator =
+        m_memoryCtx.Iterator3(structuresSet, ScType::EdgeAccessConstPosPerm, ScType::NodeConstStruct);
     while (structIterator->Next())
     {
       ScAddr const & structAddr = structIterator->Get(2);
@@ -67,7 +69,9 @@ SC_AGENT_IMPLEMENTATION(StructureTranslationAgent)
 bool StructureTranslationAgent::checkActionClass(ScAddr const & actionNode)
 {
   return m_memoryCtx.HelperCheckEdge(
-      TranslationKeynodes::action_translate_structures_into_natural_language, actionNode, ScType::EdgeAccessConstPosPerm);
+      TranslationKeynodes::action_translate_structures_into_natural_language,
+      actionNode,
+      ScType::EdgeAccessConstPosPerm);
 }
 
 std::string StructureTranslationAgent::translateStructure(ScAddr const & structAddr, ScMemoryContext * context)

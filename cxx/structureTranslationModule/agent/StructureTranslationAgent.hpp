@@ -1,4 +1,3 @@
-
 /*
  * This source file is part of an OSTIS project. For the latest info, see http://ostis.net
  * Distributed under the MIT License

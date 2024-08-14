@@ -4,8 +4,6 @@
  * (See accompanying file COPYING.MIT or copy at http://opensource.org/licenses/MIT)
  */
 
-#include "StructureTranslatorSet.hpp"
-
 #include "NrelInLinkTranslator.hpp"
 #include "NrelInQuasybinaryLinkTranslator.hpp"
 #include "NrelInQuasybinaryNodeTranslator.hpp"
@@ -13,6 +11,8 @@
 #include "FromConceptTranslator.hpp"
 #include "NrelFromNodeTranslator.hpp"
 #include "NrelFromQuasybinaryLinkTranslator.hpp"
+
+#include "StructureTranslatorSet.hpp"
 
 namespace structureTranslationModule
 {
