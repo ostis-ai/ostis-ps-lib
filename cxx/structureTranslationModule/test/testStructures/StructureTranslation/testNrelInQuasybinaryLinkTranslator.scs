@@ -14,6 +14,6 @@ test_structure = [*
     *];;
 
 concept_man
-    => nrel_main_idtf: [человек] (* <- lang_ru;; *);;
+    => nrel_main_idtf: [мужчина] (* <- lang_ru;; *);;
 nrel_synonyms
     => nrel_main_idtf: [синонимы] (* <- lang_ru;; *);;
