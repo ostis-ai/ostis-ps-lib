@@ -47,7 +47,7 @@ test_structure = [*
     *];;
 
 concept_man
-    => nrel_main_idtf: [мужик] (* <- lang_ru;; *);;
+    => nrel_main_idtf: [мужчина] (* <- lang_ru;; *);;
 concept_human
     => nrel_main_idtf: [человек] (* <- lang_ru;; *);;
 concept_thing
