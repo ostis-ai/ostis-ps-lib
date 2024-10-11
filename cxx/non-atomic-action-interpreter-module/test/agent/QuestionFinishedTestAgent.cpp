@@ -1,27 +1,18 @@
-#include "sc-agents-common/keynodes/coreKeynodes.hpp"
+#include "QuestionFinishedTestAgent.hpp"
 
 #include "test/keynodes/TestKeynodes.hpp"
 
-#include "QuestionFinishedTestAgent.hpp"
-
 using namespace nonAtomicActionInterpreterModuleTest;
 
-SC_AGENT_IMPLEMENTATION(QuestionFinishedTestAgent)
+ScResult QuestionFinishedTestAgent::DoProgram(ScAction & action)
 {
-  if (!edgeAddr.IsValid())
-  {
-    return SC_RESULT_ERROR;
-  }
+  m_context.GenerateConnector(ScType::ConstPermPosArc, ScKeynodes::action_finished, action);
+  ScAction fakeActionToNotFinishOriginalActionAgain =
+      m_context.ConvertToAction(m_context.GenerateNode(ScType::ConstNode));
+  return fakeActionToNotFinishOriginalActionAgain.FinishSuccessfully();
+}
 
-  ScAddr actionAddr = m_memoryCtx.GetEdgeTarget(edgeAddr);
-
-  ScIterator3Ptr iterator3Ptr =
-      m_memoryCtx.Iterator3(TestKeynodes::finished_test_action, ScType::EdgeAccessConstPosPerm, actionAddr);
-  if (!iterator3Ptr->Next())
-  {
-    return SC_RESULT_OK;
-  }
-
-  m_memoryCtx.CreateEdge(ScType::EdgeAccessConstPosPerm, scAgentsCommon::CoreKeynodes::question_finished, actionAddr);
-  return SC_RESULT_OK;
+ScAddr QuestionFinishedTestAgent::GetActionClass() const
+{
+  return TestKeynodes::finished_test_action;
 }

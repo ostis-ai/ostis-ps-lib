@@ -1,46 +1,28 @@
-#include "sc-agents-common/keynodes/coreKeynodes.hpp"
-#include "sc-agents-common/utils/AgentUtils.hpp"
+#include "CheckDynamicArgumentTestAgent.hpp"
 
 #include "test/keynodes/TestKeynodes.hpp"
 
-#include "CheckDynamicArgumentTestAgent.hpp"
-
 using namespace nonAtomicActionInterpreterModuleTest;
 
-SC_AGENT_IMPLEMENTATION(CheckDynamicArgumentTestAgent)
+ScResult CheckDynamicArgumentTestAgent::DoProgram(ScAction & action)
 {
-  if (!edgeAddr.IsValid())
-  {
-    return SC_RESULT_ERROR;
-  }
-
-  ScAddr actionAddr = m_memoryCtx.GetEdgeTarget(edgeAddr);
-
-  ScIterator3Ptr iterator3Ptr = m_memoryCtx.Iterator3(
-      TestKeynodes::check_dynamic_argument_test_action, ScType::EdgeAccessConstPosPerm, actionAddr);
-  if (!iterator3Ptr->Next())
-  {
-    return SC_RESULT_OK;
-  }
-
   ScTemplate scTemplate;
   scTemplate.Quintuple(
-      actionAddr,
-      ScType::EdgeAccessVarPosPerm,
-      ScType::NodeVar >> "_dynamic_argument",
-      ScType::EdgeAccessVarPosPerm,
-      scAgentsCommon::CoreKeynodes::rrel_1);
-  scTemplate.Triple("_dynamic_argument", ScType::EdgeAccessVarPosTemp, TestKeynodes::test_node);
+      action, ScType::VarPermPosArc, ScType::VarNode >> "_dynamic_argument", ScType::VarPermPosArc, ScKeynodes::rrel_1);
+  scTemplate.Triple("_dynamic_argument", ScType::VarTempPosArc, TestKeynodes::test_node);
   ScTemplateSearchResult results;
-  m_memoryCtx.HelperSearchTemplate(scTemplate, results);
+  m_context.SearchByTemplate(scTemplate, results);
   if (results.Size() == 1)
   {
-    utils::AgentUtils::finishAgentWork(&m_memoryCtx, actionAddr, true);
+    return action.FinishSuccessfully();
   }
   else
   {
-    utils::AgentUtils::finishAgentWork(&m_memoryCtx, actionAddr, false);
+    return action.FinishUnsuccessfully();
   }
+}
 
-  return SC_RESULT_OK;
+ScAddr CheckDynamicArgumentTestAgent::GetActionClass() const
+{
+  return TestKeynodes::check_dynamic_argument_test_action;
 }

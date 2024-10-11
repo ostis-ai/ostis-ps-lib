@@ -1,13 +1,13 @@
 #pragma once
 
-#include "sc-memory/sc_memory.hpp"
+#include <sc-memory/sc_action.hpp>
 
 namespace nonAtomicActionInterpreterModule
 {
 class NonAtomicActionInterpreter
 {
 public:
-  explicit NonAtomicActionInterpreter(ScMemoryContext * context);
+  explicit NonAtomicActionInterpreter(ScAgentContext * context);
 
   void interpret(
       ScAddr const & nonAtomicActionAddr,
@@ -15,17 +15,17 @@ public:
       ScAddr const & generalAction);
 
 private:
-  ScMemoryContext * context;
+  ScAgentContext * context;
 
-  ScAddr getFirstSubAction(ScAddr const & decompositionTuple);
+  ScAction getFirstSubAction(ScAddr const & decompositionTuple);
 
-  void applyAction(ScAddr const & actionAddr);
+  static void applyAction(ScAction & actionAddr);
 
-  ScAddr getNextAction(
-      ScAddr const & previousActionAddr,
+  ScAction getNextAction(
+      ScAction const & previousActionAddr,
       std::map<ScAddr, ScAddr, ScAddrLessFunc> const & replacements);
 
-  ScAddrList getOrderedTransitionCandidates(ScAddr const & actionAddr);
+  ScAddrList getOrderedTransitionCandidates(ScAction const & actionAddr);
 
   ScAddrList getOrderedTransitionCandidatesFromSequence(
       ScAddr const & actionAddr,

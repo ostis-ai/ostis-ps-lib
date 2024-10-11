@@ -13,17 +13,16 @@ bool LogicUtils::checkLogicalFormula(
 {
   bool result = false;
 
-  if (utils::CommonUtils::checkType(context, logicFormula, ScType::NodeConstStruct)
-      && context->HelperCheckEdge(Keynodes::atomic_logical_formula, logicFormula, ScType::EdgeAccessConstPosPerm))
+  if (utils::CommonUtils::checkType(context, logicFormula, ScType::ConstNodeStructure) &&
+      context->CheckConnector(Keynodes::atomic_logical_formula, logicFormula, ScType::ConstPermPosArc))
   {
     ScTemplateParams formulaTemplateParams =
         TemplateParamsUtils::createTemplateParamsFromReplacements(context, replacements, logicFormula);
 
     ScTemplate formulaTemplate;
-    if (!context->HelperBuildTemplate(formulaTemplate, logicFormula, formulaTemplateParams))
-      SC_THROW_EXCEPTION(utils::ExceptionCritical, "LogicUtils: the logic formula template cannot be built.");
+    context->BuildTemplate(formulaTemplate, logicFormula, formulaTemplateParams);
     ScTemplateSearchResult formulaSearchResult;
-    context->HelperSearchTemplate(formulaTemplate, formulaSearchResult);
+    context->SearchByTemplate(formulaTemplate, formulaSearchResult);
 
     result = !formulaSearchResult.IsEmpty();
   }

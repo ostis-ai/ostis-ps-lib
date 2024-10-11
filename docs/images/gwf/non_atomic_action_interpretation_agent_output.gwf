@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GWF version="2.0">
     <staticSector>
-        <node type="node/const/perm/group" idtf="question_finished_successfully" shapeColor="0" id="28914208" parent="0" left="0" top="0" right="173.953" bottom="23" textColor="164" text_angle="0" text_font="Times New Roman" font_size="10" x="106" y="332" haveBus="false" idtf_pos="1">
+        <node type="node/const/perm/group" idtf="action_finished_successfully" shapeColor="0" id="28914208" parent="0" left="0" top="0" right="173.953" bottom="23" textColor="164" text_angle="0" text_font="Times New Roman" font_size="10" x="106" y="332" haveBus="false" idtf_pos="1">
             <content type="0" mime_type="" content_visibility="false" file_name=""/>
         </node>
         <node type="node/const/perm/general" idtf="action" shapeColor="0" id="29538752" parent="0" left="0" top="0" right="41.2031" bottom="23" textColor="164" text_angle="0" text_font="Times New Roman" font_size="10" x="180.5" y="395.5" haveBus="false" idtf_pos="4">
             <content type="0" mime_type="" content_visibility="false" file_name=""/>
         </node>
-        <node type="node/const/perm/group" idtf="question_finished" shapeColor="0" id="19785872" parent="0" left="0" top="0" right="103.266" bottom="23" textColor="164" text_angle="0" text_font="Times New Roman" font_size="10" x="131" y="285" haveBus="false" idtf_pos="1">
+        <node type="node/const/perm/group" idtf="action_finished" shapeColor="0" id="19785872" parent="0" left="0" top="0" right="103.266" bottom="23" textColor="164" text_angle="0" text_font="Times New Roman" font_size="10" x="131" y="285" haveBus="false" idtf_pos="1">
             <content type="0" mime_type="" content_visibility="false" file_name=""/>
         </node>
         <node type="node/const/perm/general" idtf="general_action" shapeColor="0" id="20951104" parent="0" left="0" top="0" right="88.1094" bottom="23" textColor="164" text_angle="0" text_font="Times New Roman" font_size="10" x="429.5" y="395.5" haveBus="false" idtf_pos="0">
@@ -22,10 +22,10 @@
         <node type="node/const/perm/general" idtf="first_arg" shapeColor="0" id="29617648" parent="0" left="0" top="0" right="54.1875" bottom="23" textColor="164" text_angle="0" text_font="Times New Roman" font_size="10" x="181.5" y="541.5" haveBus="false" idtf_pos="0">
             <content type="0" mime_type="" content_visibility="false" file_name=""/>
         </node>
-        <node type="node/const/perm/group" idtf="question_initiated" shapeColor="0" id="27614400" parent="0" left="0" top="0" right="104" bottom="23" textColor="164" text_angle="0" text_font="Times New Roman" font_size="10" x="179.5" y="278.5" haveBus="false" idtf_pos="0">
+        <node type="node/const/perm/group" idtf="action_initiated" shapeColor="0" id="27614400" parent="0" left="0" top="0" right="104" bottom="23" textColor="164" text_angle="0" text_font="Times New Roman" font_size="10" x="179.5" y="278.5" haveBus="false" idtf_pos="0">
             <content type="0" mime_type="" content_visibility="false" file_name=""/>
         </node>
-        <node type="node/const/perm/group" idtf="question" shapeColor="0" id="19329280" parent="0" left="0" top="0" right="53.4688" bottom="23" textColor="164" text_angle="0" text_font="Times New Roman" font_size="10" x="210.5" y="325.5" haveBus="false" idtf_pos="0">
+        <node type="node/const/perm/group" idtf="action" shapeColor="0" id="19329280" parent="0" left="0" top="0" right="53.4688" bottom="23" textColor="164" text_angle="0" text_font="Times New Roman" font_size="10" x="210.5" y="325.5" haveBus="false" idtf_pos="0">
             <content type="0" mime_type="" content_visibility="false" file_name=""/>
         </node>
         <node type="node/const/perm/group" idtf="action_interpret_non_atomic_action" shapeColor="0" id="28923152" parent="0" left="0" top="0" right="203.609" bottom="23" textColor="164" text_angle="0" text_font="Times New Roman" font_size="10" x="156.5" y="253.5" haveBus="false" idtf_pos="3">

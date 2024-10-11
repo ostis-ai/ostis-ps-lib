@@ -31,10 +31,10 @@
         <node type="node/const/perm/general" idtf="action" shapeColor="0" id="24428960" parent="0" left="0" top="0" right="41.2031" bottom="23" textColor="164" text_angle="0" text_font="Times New Roman" font_size="10" x="224" y="301" haveBus="false" idtf_pos="2">
             <content type="0" mime_type="" content_visibility="false" file_name=""/>
         </node>
-        <node type="node/const/perm/group" idtf="question" shapeColor="0" id="23158576" parent="0" left="0" top="0" right="53.4688" bottom="23" textColor="164" text_angle="0" text_font="Times New Roman" font_size="10" x="254" y="231" haveBus="false" idtf_pos="0">
+        <node type="node/const/perm/group" idtf="action" shapeColor="0" id="23158576" parent="0" left="0" top="0" right="53.4688" bottom="23" textColor="164" text_angle="0" text_font="Times New Roman" font_size="10" x="254" y="231" haveBus="false" idtf_pos="0">
             <content type="0" mime_type="" content_visibility="false" file_name=""/>
         </node>
-        <node type="node/const/perm/group" idtf="question_initiated" shapeColor="0" id="23449856" parent="0" left="0" top="0" right="104" bottom="23" textColor="164" text_angle="0" text_font="Times New Roman" font_size="10" x="223" y="184" haveBus="false" idtf_pos="0">
+        <node type="node/const/perm/group" idtf="action_initiated" shapeColor="0" id="23449856" parent="0" left="0" top="0" right="104" bottom="23" textColor="164" text_angle="0" text_font="Times New Roman" font_size="10" x="223" y="184" haveBus="false" idtf_pos="0">
             <content type="0" mime_type="" content_visibility="false" file_name=""/>
         </node>
         <node type="node/const/perm/group" idtf="action_interpret_non_atomic_action" shapeColor="0" id="23059056" parent="0" left="0" top="0" right="203.609" bottom="23" textColor="164" text_angle="0" text_font="Times New Roman" font_size="10" x="200" y="159" haveBus="false" idtf_pos="3">

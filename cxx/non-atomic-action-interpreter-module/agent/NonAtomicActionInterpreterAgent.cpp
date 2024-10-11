@@ -1,39 +1,27 @@
-#include "sc-agents-common/utils/IteratorUtils.hpp"
-#include "sc-agents-common/utils/AgentUtils.hpp"
-#include "sc-agents-common/keynodes/coreKeynodes.hpp"
-
-#include "keynodes/NonAtomicKeynodes.hpp"
-#include "utils/RelationUtils.hpp"
-#include "utils/TemplateParamsUtils.hpp"
-#include "exception/ActionCancelledException.hpp"
-
 #include "NonAtomicActionInterpreterAgent.hpp"
 
+#include <sc-agents-common/utils/IteratorUtils.hpp>
+
+#include "keynodes/NonAtomicKeynodes.hpp"
+#include "exception/ActionCancelledException.hpp"
+#include "utils/TemplateParamsUtils.hpp"
 #include "utils/Macros.hpp"
 
 using namespace nonAtomicActionInterpreterModule;
-using namespace scAgentsCommon;
-
-SC_AGENT_IMPLEMENTATION(NonAtomicActionInterpreterAgent)
+ScResult NonAtomicActionInterpreterAgent::DoProgram(ScActionInitiatedEvent const & event, ScAction & action)
 {
   START_TIMER();
-  ScAddr actionAddr = otherAddr;
-  if (checkActionClass(actionAddr) == SC_FALSE)
-    return SC_RESULT_OK;
-
-  SC_LOG_DEBUG("NonAtomicActionInterpreterAgent started");
 
   ScAddr nonAtomicActionAddr;
   std::map<ScAddr, ScAddr, ScAddrLessFunc> replacements;
   ScAddr generalAction;
   try
   {
-    ScAddr nonAtomicActionTemplateAddr =
-        utils::IteratorUtils::getAnyByOutRelation(&m_memoryCtx, actionAddr, CoreKeynodes::rrel_1);
+    ScAddr const & nonAtomicActionTemplateAddr = action.GetArgument(1);
 
     SC_CHECK_PARAM(nonAtomicActionTemplateAddr, "action params are not formed correctly.");
 
-    ScAddr argumentsSet = utils::IteratorUtils::getAnyByOutRelation(&m_memoryCtx, actionAddr, CoreKeynodes::rrel_2);
+    ScAddr const & argumentsSet = action.GetArgument(2);
     replacements = createReplacements(nonAtomicActionTemplateAddr, argumentsSet);
     validateVariableIdentifiers(replacements);
 
@@ -42,38 +30,32 @@ SC_AGENT_IMPLEMENTATION(NonAtomicActionInterpreterAgent)
     nonAtomicActionAddr = replaceNonAtomicAction(nonAtomicActionTemplateAddr, programTemplateParams);
     generateNonAtomicActionTemplate(nonAtomicActionTemplateAddr, programTemplateParams);
 
-    generalAction = utils::IteratorUtils::getAnyByInRelation(&m_memoryCtx, actionAddr, Keynodes::nrel_subaction);
+    generalAction = utils::IteratorUtils::getAnyByInRelation(&m_context, action, Keynodes::nrel_subaction);
 
     initFields();
     nonAtomicActionInterpreter->interpret(nonAtomicActionAddr, replacements, generalAction);
   }
   catch (commonModule::ActionCancelledException const & exception)
   {
-    SC_LOG_ERROR(exception.Description());
-    SC_LOG_DEBUG("NonAtomicActionInterpreterAgent finished with errors");
-    m_memoryCtx.CreateEdge(ScType::EdgeAccessConstPosPerm, Keynodes::action_cancelled, actionAddr);
-    utils::AgentUtils::finishAgentWork(&m_memoryCtx, actionAddr, false);
+    SC_AGENT_LOG_ERROR(exception.Description());
+    m_context.GenerateConnector(ScType::ConstPermPosArc, Keynodes::action_cancelled, action);
     STOP_TIMER("NonAtomicActionInterpreterAgent");
-    return SC_RESULT_ERROR;
+    return action.FinishUnsuccessfully();
   }
   catch (utils::ScException & ex)
   {
-    SC_LOG_ERROR(ex.Message());
-    utils::AgentUtils::finishAgentWork(&m_memoryCtx, actionAddr, false);
+    SC_AGENT_LOG_ERROR(ex.Message());
     STOP_TIMER("NonAtomicActionInterpreterAgent");
-    return SC_RESULT_ERROR;
+    return action.FinishUnsuccessfully();
   }
 
-  SC_LOG_DEBUG("NonAtomicActionInterpreterAgent finished");
-  utils::AgentUtils::finishAgentWork(&m_memoryCtx, actionAddr, true);
   STOP_TIMER("NonAtomicActionInterpreterAgent");
-  return SC_RESULT_OK;
+  return action.FinishSuccessfully();
 }
 
-bool NonAtomicActionInterpreterAgent::checkActionClass(ScAddr const & actionAddr)
+ScAddr NonAtomicActionInterpreterAgent::GetActionClass() const
 {
-  return m_memoryCtx.HelperCheckEdge(
-      Keynodes::action_interpret_non_atomic_action, actionAddr, ScType::EdgeAccessConstPosPerm);
+  return Keynodes::action_interpret_non_atomic_action;
 }
 
 void NonAtomicActionInterpreterAgent::generateNonAtomicActionTemplate(
@@ -81,18 +63,15 @@ void NonAtomicActionInterpreterAgent::generateNonAtomicActionTemplate(
     ScTemplateParams const & templateParams)
 {
   ScTemplate nonAtomicActionTemplate;
-  m_memoryCtx.HelperBuildTemplate(nonAtomicActionTemplate, nonAtomicActionTemplateAddr);
+  m_context.BuildTemplate(nonAtomicActionTemplate, nonAtomicActionTemplateAddr);
   ScTemplateGenResult templateGenResult;
-  if (!m_memoryCtx.HelperGenTemplate(nonAtomicActionTemplate, templateGenResult, templateParams))
-  {
-    SC_THROW_EXCEPTION(utils::ExceptionCritical, "template generation error.");
-  }
+  m_context.GenerateByTemplate(nonAtomicActionTemplate, templateGenResult, templateParams);
 }
 
 ScAddr NonAtomicActionInterpreterAgent::getTemplateKeyElement(ScAddr const & templateAddr)
 {
   ScAddr templateKeyElement =
-      utils::IteratorUtils::getAnyByOutRelation(&m_memoryCtx, templateAddr, CoreKeynodes::rrel_key_sc_element);
+      utils::IteratorUtils::getAnyByOutRelation(&m_context, templateAddr, ScKeynodes::rrel_key_sc_element);
 
   if (!templateKeyElement.IsValid())
   {
@@ -113,18 +92,18 @@ std::map<ScAddr, ScAddr, ScAddrLessFunc> NonAtomicActionInterpreterAgent::create
     templateKeyElement = getTemplateKeyElement(nonAtomicActionTemplate);
     for (int index = 1;; index++)
     {
-      ScAddr role = utils::IteratorUtils::getRoleRelation(&m_memoryCtx, index);
+      ScAddr role = utils::IteratorUtils::getRoleRelation(&m_context, index);
       if (!role.IsValid())
       {
         break;
       }
-      ScAddr argument = utils::IteratorUtils::getAnyByOutRelation(&m_memoryCtx, argumentsSet, role);
+      ScAddr argument = utils::IteratorUtils::getAnyByOutRelation(&m_context, argumentsSet, role);
       if (!argument.IsValid())
       {
         break;
       }
-      ScIterator5Ptr variablesIterator5 = m_memoryCtx.Iterator5(
-          templateKeyElement, ScType::EdgeAccessVarPosPerm, ScType::NodeVar, ScType::EdgeAccessVarPosPerm, role);
+      ScIterator5Ptr variablesIterator5 = m_context.CreateIterator5(
+          templateKeyElement, ScType::VarPermPosArc, ScType::VarNode, ScType::VarPermPosArc, role);
       if (variablesIterator5->Next())
       {
         replacements[variablesIterator5->Get(2)] = argument;
@@ -140,7 +119,7 @@ void NonAtomicActionInterpreterAgent::validateVariableIdentifiers(
 {
   for (auto const & [varAddr, value] : replacements)
   {
-    std::string identifier = m_memoryCtx.HelperGetSystemIdtf(varAddr);
+    std::string identifier = m_context.GetElementSystemIdentifier(varAddr);
     if (identifier.empty())
     {
       SC_THROW_EXCEPTION(utils::ExceptionInvalidParams, "all argument variables should have identifiers.");
@@ -152,15 +131,15 @@ ScAddr NonAtomicActionInterpreterAgent::replaceNonAtomicAction(
     ScAddr const & templateAddr,
     ScTemplateParams & templateParams)
 {
-  ScAddr keyElementReplacement = m_memoryCtx.CreateNode(ScType::NodeConst);
+  ScAddr keyElementReplacement = m_context.GenerateNode(ScType::ConstNode);
   ScAddr templateKeyElement;
   templateKeyElement = getTemplateKeyElement(templateAddr);
-  templateParams.Add(m_memoryCtx.HelperGetSystemIdtf(templateKeyElement), keyElementReplacement);
+  templateParams.Add(m_context.GetElementSystemIdentifier(templateKeyElement), keyElementReplacement);
 
   return keyElementReplacement;
 }
 
 void NonAtomicActionInterpreterAgent::initFields()
 {
-  this->nonAtomicActionInterpreter = std::make_unique<NonAtomicActionInterpreter>(&m_memoryCtx);
+  this->nonAtomicActionInterpreter = std::make_unique<NonAtomicActionInterpreter>(&m_context);
 }
