@@ -8,8 +8,8 @@ test_action_node
 
 offset = [*
 _compound_action
-    _<- test_nonatomic_action;
-    _<- action;
+    <-_ test_nonatomic_action;
+    <-_ action;
     _=> nrel_decomposition_of_action:: .._decomposition_tuple;;
 
 .._decomposition_tuple
@@ -18,24 +18,24 @@ _compound_action
     _-> _goto_action;;
 
 _first_action
-    _<- successfully_finished_test_action;
-    _<- action;;
+    <-_ successfully_finished_test_action;
+    <-_ action;;
 
 _then_action
-    _<- finished_test_action;
-    _<- action;;
+    <-_ finished_test_action;
+    <-_ action;;
 
 _goto_action
-    _<- finished_test_action;
-    _<- action;;
+    <-_ finished_test_action;
+    <-_ action;;
 
 @first_transtion = (_first_action _=> _goto_action);;
 @second_transtion = (_first_action _=> _then_action);;
 @first_transtion
-    _<- nrel_priority_path;
-    _<- nrel_goto;;
+    <-_ nrel_priority_path;
+    <-_ nrel_goto;;
 @second_transtion
-    _<- nrel_then;;
+    <-_ nrel_then;;
 @first_transtion _=> nrel_basic_sequence:: @second_transtion;;
 *];;
 

@@ -18,8 +18,8 @@ test_set -> arg2;;
 
 offset = [*
 _compound_action
-    _<- test_nonatomic_action;
-    _<- action;
+    <-_ test_nonatomic_action;
+    <-_ action;
     _-> rrel_1:: _arg1_var;
     _=> nrel_decomposition_of_action:: .._decomposition_tuple;;
 
@@ -28,15 +28,15 @@ _compound_action
     _-> _first_goto_action;;
 
 _first_action
-    _<- finished_test_action;
-    _<- action;;
+    <-_ finished_test_action;
+    <-_ action;;
 
 _first_goto_action
-    _<- finished_test_action;
-    _<- action;;
+    <-_ finished_test_action;
+    <-_ action;;
 
 (_first_action _=> _first_goto_action)
-    _<- nrel_goto;
+    <-_ nrel_goto;
     _=> nrel_condition:: first_condition;;
 *];;
 
