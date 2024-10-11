@@ -359,7 +359,7 @@ TEST_F(NonAtomicActionInterpreterTest, notAllPathsInSequence)
   ScAddr const & gotoAction = utils::IteratorUtils::getAnyByOutRelation(&context, action, TestKeynodes::nrel_goto);
   EXPECT_TRUE(gotoAction.IsValid());
   action = context.ConvertToAction(gotoAction);
-  EXPECT_FALSE(action.IsFinished());
+  EXPECT_TRUE(action.IsFinished());
 
   shutdown(context);
 }

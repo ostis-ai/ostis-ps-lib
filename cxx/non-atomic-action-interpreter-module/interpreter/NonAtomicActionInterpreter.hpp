@@ -21,8 +21,8 @@ private:
 
   static void applyAction(ScAction & actionAddr);
 
-  ScAction getNextAction(
-      ScAction const & previousActionAddr,
+  bool getNextAction(
+      ScAction & actionAddr,
       std::map<ScAddr, ScAddr, ScAddrLessFunc> const & replacements);
 
   ScAddrList getOrderedTransitionCandidates(ScAction const & actionAddr);

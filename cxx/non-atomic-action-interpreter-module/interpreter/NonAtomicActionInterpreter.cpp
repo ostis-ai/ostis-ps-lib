@@ -27,7 +27,8 @@ void NonAtomicActionInterpreter::interpret(
   ScAddr decompositionTuple =
       utils::IteratorUtils::getAnyByOutRelation(context, nonAtomicActionAddr, Keynodes::nrel_decomposition_of_action);
   ScAction action = getFirstSubAction(decompositionTuple);
-  while (action.IsValid())
+  bool hasActionToApply = context->IsElement(action);
+  while (hasActionToApply)
   {
     if (context->CheckConnector(decompositionTuple, action, ScType::ConstPermPosArc) == SC_FALSE)
       SC_THROW_EXCEPTION(
@@ -40,7 +41,7 @@ void NonAtomicActionInterpreter::interpret(
           "NonAtomicActionInterpreter: the processing action of the current non-atomic action has been interrupted.");
 
     applyAction(action);
-    action = getNextAction(action, replacements);
+    hasActionToApply = getNextAction(action, replacements);
   }
 }
 
@@ -65,8 +66,8 @@ void NonAtomicActionInterpreter::applyAction(ScAction & actionAddr)
   SC_LOG_DEBUG("NonAtomicActionInterpreter: atomic action finished.");
 }
 
-ScAction NonAtomicActionInterpreter::getNextAction(
-    ScAction const & actionAddr,
+bool NonAtomicActionInterpreter::getNextAction(
+    ScAction & actionAddr,
     std::map<ScAddr, ScAddr, ScAddrLessFunc> const & replacements)
 {
   ScAddrList orderedTransitionCandidates = getOrderedTransitionCandidates(actionAddr);
@@ -77,10 +78,11 @@ ScAction NonAtomicActionInterpreter::getNextAction(
     if (checkTransitionCondition(transitionArc, replacements))
     {
       nextAction = context->GetArcTargetElement(transitionArc);
-      break;
+      actionAddr = context->ConvertToAction(nextAction);
+      return true;
     }
   }
-  return context->ConvertToAction(nextAction);
+  return false;
 }
 
 ScAddrList NonAtomicActionInterpreter::getOrderedTransitionCandidates(ScAction const & actionAddr)
