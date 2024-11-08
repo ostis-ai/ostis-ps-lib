@@ -26,7 +26,3 @@ if (${SC_CLANG_FORMAT_CODE})
 endif ()
 
 target_link_libraries(common-ps-lib sc-memory sc-agents-common)
-
-# if (${SC_BUILD_TESTS})
-# 	include(${CMAKE_CURRENT_LIST_DIR}/test/tests.cmake)
-# endif ()
