@@ -1,47 +1,34 @@
 #pragma once
 
+#include <sc-memory/sc_keynodes.hpp>
+
 #include "sc-memory/sc_addr.hpp"
 #include "sc-memory/sc_object.hpp"
 
-#include "NonAtomicKeynodes.generated.hpp"
-
 namespace nonAtomicActionInterpreterModule
 {
-class Keynodes : public ScObject
+class Keynodes : public ScKeynodes
 {
-  SC_CLASS()
-  SC_GENERATED_BODY()
-
 public:
-  SC_PROPERTY(Keynode("action_interpret_non_atomic_action"), ForceCreate)
-  static ScAddr action_interpret_non_atomic_action;
+  static inline ScKeynode const action_interpret_non_atomic_action{"action_interpret_non_atomic_action"};
 
-  SC_PROPERTY(Keynode("nrel_decomposition_of_action"), ForceCreate)
-  static ScAddr nrel_decomposition_of_action;
+  static inline ScKeynode const nrel_decomposition_of_action{"nrel_decomposition_of_action"};
 
-  SC_PROPERTY(Keynode("nrel_then"), ForceCreate)
-  static ScAddr nrel_then;
+  static inline ScKeynode const nrel_then{"nrel_then"};
 
-  SC_PROPERTY(Keynode("nrel_else"), ForceCreate)
-  static ScAddr nrel_else;
+  static inline ScKeynode const nrel_else{"nrel_else"};
 
-  SC_PROPERTY(Keynode("nrel_goto"), ForceCreate)
-  static ScAddr nrel_goto;
+  static inline ScKeynode const nrel_goto{"nrel_goto"};
 
-  SC_PROPERTY(Keynode("nrel_condition"), ForceCreate)
-  static ScAddr nrel_condition;
+  static inline ScKeynode const nrel_condition{"nrel_condition"};
 
-  SC_PROPERTY(Keynode("nrel_priority_path"), ForceCreate)
-  static ScAddr nrel_priority_path;
+  static inline ScKeynode const nrel_priority_path{"nrel_priority_path"};
 
-  SC_PROPERTY(Keynode("nrel_basic_sequence"), ForceCreate)
-  static ScAddr nrel_basic_sequence;
+  static inline ScKeynode const nrel_basic_sequence{"nrel_basic_sequence"};
 
-  SC_PROPERTY(Keynode("action_cancelled"), ForceCreate)
-  static ScAddr action_cancelled;
+  static inline ScKeynode const action_cancelled{"action_cancelled"};
 
-  SC_PROPERTY(Keynode("nrel_subaction"), ForceCreate)
-  static ScAddr nrel_subaction;
+  static inline ScKeynode const nrel_subaction{"nrel_subaction"};
 };
 
 }  // namespace nonAtomicActionInterpreterModule

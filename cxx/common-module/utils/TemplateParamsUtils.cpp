@@ -22,7 +22,7 @@ ScTemplateParams TemplateParamsUtils::createTemplateParamsFromReplacements(
   ScTemplateParams templateParams;
   for (auto const & [varAddr, value] : replacements)
   {
-    if (context->HelperCheckEdge(structure, varAddr, ScType::EdgeAccessConstPosPerm))
+    if (context->CheckConnector(structure, varAddr, ScType::ConstPermPosArc))
     {
       templateParams.Add(varAddr, value);
     }
