@@ -1,0 +1,33 @@
+test_action_node
+    <- action_visualise_to_scg;
+    -> rrel_1: test_structure;;
+
+sc_node_class
+    -> concept_test_element;
+    -> concept_0;
+    -> concept_1;
+    -> concept_2;;
+
+sc_node_role_relation
+    -> rrel_relation_1;;
+
+test_structure =
+[*
+root_element
+    <-_ concept_test_element;
+    -> rrel_relation_1: not_root;
+    -> rrel_relation_1: ( concept_1 => concept_2 );
+    <- concept_0;;
+*];;
+
+test_structure
+    -> rrel_main_key_sc_element: root_element;
+    => nrel_key_elements_order:
+    <
+        concept_test_element;
+        concept_0;
+        concept_1;
+        concept_2;
+        rrel_relation_1
+    >;;
+

@@ -1,0 +1,84 @@
+test_action_node
+    <- action_visualise_to_scg;
+    -> rrel_1: test_structure;;
+
+@const_node_link = [sample text];;
+@const_node_link_class = [sample text];;
+@var_node_link = _[sample text];;
+@var_node_link_class = _[sample text];;
+
+@const_node_link => nrel_system_identifier: [const_node_link];;
+@const_node_link_class => nrel_system_identifier: [const_node_link_class];;
+@var_node_link => nrel_system_identifier: [var_node_link];;
+@var_node_link_class => nrel_system_identifier: [var_node_link_class];;
+
+sc_link
+    -> @const_node_link;
+    -> @var_node_link;;
+
+sc_link_class
+    -> @const_node_link_class;
+    -> @var_node_link_class;;
+
+sc_node_tuple
+    -> const_node_tuple;
+    -> _var_node_tuple;;
+
+sc_node_structure
+    -> const_node_structure;
+    -> _var_node_structure;;
+
+sc_node_role_relation
+    -> rrel_node;
+    -> const_node_role;
+    -> _var_node_role;;
+
+sc_node_non_role_relation
+    -> const_node_non_role;
+    -> _var_node_non_role;;
+
+sc_node_class
+    -> const_node_class;
+    -> _var_node_class;;
+
+sc_node_superclass
+    -> const_node_superclass;
+    -> _var_node_superclass;;
+
+sc_node_material
+    -> const_node_material;
+    -> _var_node_material;;
+
+
+test_structure =
+[*
+root_element
+-> rrel_node:
+    const_node;
+    const_node_material;
+    const_node_structure;
+    const_node_tuple;
+    const_node_role;
+    const_node_non_role;
+    const_node_class;
+    const_node_superclass;
+    @const_node_link;
+    @const_node_link_class;
+    _var_node;
+    _var_node_material;
+    _var_node_structure;
+    _var_node_tuple;
+    _var_node_role;
+    _var_node_non_role;
+    _var_node_class;
+    _var_node_superclass;
+    @var_node_link;
+    @var_node_link_class;;
+*];;
+
+test_structure
+    -> rrel_main_key_sc_element: root_element;
+    => nrel_key_elements_order:
+    <
+        rrel_node
+    >;;

@@ -1,0 +1,60 @@
+test_action_node
+    <- action_visualise_to_scg;
+    -> rrel_1: test_structure;;
+
+@not_root_2 = [not_root_2];;
+@not_root_3 = _[not_root_3];;
+
+sc_node_class
+    -> concept_test_element;
+    -> concept_0;
+    -> concept_1;
+    -> concept_2;
+    -> concept_3;;
+
+sc_node_tuple
+    -> _not_root_1;;
+
+test_structure =
+[*
+root_element
+    <-_ concept_test_element;
+    <- concept_0;;
+concept_test_element
+    _-> _not_root_1;
+    -|> @not_root_2;
+    _=> @not_root_3;;
+
+not_root_1
+    </ concept_another_test_element;;
+
+@not_root_2
+    <- concept_1;
+    -> concept_2;
+    <- concept_3;;
+*];;
+
+test_structure
+    -> rrel_main_key_sc_element: root_element;
+    => nrel_key_elements_order: ..order;;
+
+@arc1 = ( ..order -> concept_test_element );;
+rrel_1 -> @arc1;;
+@arc2 = ( ..order -> concept_another_test_element );;
+nrel_basic_sequence -> (@arc1 => @arc2);;
+@arc3 = ( ..order -> concept_0 );;
+nrel_basic_sequence -> (@arc2 => @arc3);;
+@arc4 = ( ..order -> concept_1 );;
+nrel_basic_sequence -> (@arc3 => @arc4);;
+@arc5 = ( ..order -> concept_2 );;
+nrel_basic_sequence -> (@arc4 => @arc5);;
+@arc6 = ( ..order -> concept_3 );;
+nrel_basic_sequence -> (@arc5 => @arc6);;
+@arc7 = ( ..order -> _not_root_1 );;
+nrel_basic_sequence -> (@arc6 => @arc7);;
+@arc8 = ( ..order -> @not_root_2 );;
+nrel_basic_sequence -> (@arc7 => @arc8);;
+@arc9 = ( ..order -> @not_root_3 );;
+nrel_basic_sequence -> (@arc8 => @arc9);;
+nrel_basic_sequence -> (@arc9 => @arc5);;
+
