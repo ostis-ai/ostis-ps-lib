@@ -118,8 +118,6 @@ void GWFTranslatorVisitor::visitNode(Node & node)
 {
   bool haveBus = node.hasBus();
   std::string identifier = node.getIdentifier();
-  if (identifier.empty())
-    identifier = "unnamed node with hash " + std::to_string(node.getScAddress().Hash());
   staticSectorContent
       << "        <node type=\"" << getGWFNodeType(node) << "\" idtf=\"" << identifier << "\" shapeColor=\"0\" id=\""
       << getGWFId(node) << "\" parent=\"0\" x=\"" << node.getX() << "\" y=\"" << node.getTopY() << "\" haveBus=\""

@@ -335,7 +335,7 @@ void SCgVisualisationTranslatorAgent::assignXCoordinates() const
   float previousLevelIndent = 0;
   float nextLevelIndent = 0;
   float relationIndent = 0;
-  float scaleX = 8;
+  float scaleX = 5;
   float connectorPercent = 0.7f;
   // levelElementConnectorIdentifierScale was set after a couple of experiments because it makes connector long enough
   // for identifier to not overlap with other element
