@@ -1,0 +1,44 @@
+concept_descriptive_phrase_about_detectable_item
+<-sc_node_class;
+=>nrel_main_idtf:
+	[описывающая фраза о распознаваемом предмете]
+	(* <- lang_ru;; *);
+	[descriptive phrase about a detectable item]
+	(* <- lang_en;; *);
+	[beschreibende Phrase über einen zu erkennenden Gegenstand]
+	(* <- lang_de;; *);
+<- rrel_key_sc_element:
+	...
+	(*
+	=>nrel_main_idtf:
+		[Опр. (описывающая фраза о распознаваемом предмете)]
+		(* <- lang_ru;; *);
+		[Def. (descriptive phrase about a detectable item)]
+		(* <- lang_en;; *);
+		[Def. (beschreibende Phrase über einen zu erkennenden Gegenstand)]
+		(* <- lang_de;; *);;
+	<- definition;;
+	<= nrel_sc_text_translation:
+		...
+		(*
+		->rrel_example:
+			[Описывающая фраза о распознаваемом предмете - это фраза, косвенно описывающая распознаваемый предмет.]
+			(* <- lang_ru;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Descriptive phrase about a detectable item is a phrase that indirectly describes a detectable item.]
+			(* <- lang_en;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Beschreibende Phrase über einen zu erkennenden Gegenstand ist eine Phrase, die einen zu erkennenden Gegenstand indirekt beschreibt.]
+			(* <- lang_de;; *);;
+		*);;
+	<= nrel_using_constants:
+		{
+			concept_detected_item
+		};;
+	*);;

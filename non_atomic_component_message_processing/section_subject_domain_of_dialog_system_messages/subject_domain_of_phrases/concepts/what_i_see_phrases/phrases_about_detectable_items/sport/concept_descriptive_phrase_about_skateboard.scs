@@ -1,0 +1,55 @@
+concept_descriptive_phrase_about_skateboard
+<- sc_node_class;
+<= nrel_inclusion:
+	concept_descriptive_phrase_about_detectable_item;
+=> nrel_main_idtf:
+	[описывающая фраза о скейтборде]
+	(* <- lang_ru;; *);
+	[descriptive phrase about a skateboard]
+	(* <- lang_en;; *);
+	[beschreibende Phrase über ein Skateboard]
+	(* <- lang_de;; *);
+<= nrel_descriptive_phrase:
+    concept_skateboard;
+<- rrel_key_sc_element:
+	...
+	(*
+	=> nrel_main_idtf:
+		[Опр. (описывающая фраза о скейтборде)]
+		(* <- lang_ru;; *);
+		[Def. (descriptive phrase about a skateboard)]
+		(* <- lang_en;; *);
+		[Def. (beschreibende Phrase über ein Skateboard)]
+		(* <- lang_de;; *);;
+	<- definition;;
+	<= nrel_sc_text_translation:
+		...
+		(*
+		-> rrel_example:
+			[Описывающая фраза о скейтборде - это фраза, косвенно описывающая скейтборд.]
+			(* <- lang_ru;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Descriptive phrase about a skateboard is a phrase that indirectly describes a skateboard.]
+			(* <- lang_en;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Beschreibende Phrase über ein Skateboard ist eine Phrase, die ein Skateboard indirekt beschreibt.]
+			(* <- lang_de;; *);;
+		*);;
+	<= nrel_using_constants:
+		{
+			concept_skateboard
+		};;
+	*);
+->[A board on which you can do tricks](* <- lang_en;; *);
+->[A small snowboard on wheels](* <- lang_en;; *);
+->[A vehicle that even a cat can ride on](* <- lang_en;; *);
+
+->[Ein Brett, auf dem Sie Tricks machen können](* <- lang_de;; *);
+->[Ein kleines Snowboard auf Rädern](* <- lang_de;; *);
+->[Ein Fahrzeug, auf dem sogar eine Katze fahren kann](* <- lang_de;; *);;

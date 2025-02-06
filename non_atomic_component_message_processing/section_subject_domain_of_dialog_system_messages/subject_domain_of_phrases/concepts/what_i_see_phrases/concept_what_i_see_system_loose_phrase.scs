@@ -1,0 +1,48 @@
+concept_what_i_see_system_loose_phrase
+<- sc_node_class;
+=> nrel_main_idtf:
+	[фраза, представляющая собой выражение проигрыша в рамках партии игры "Угадай, что я вижу"]
+	(* <- lang_ru;; *);
+	[loss phrase within the "Guess what I see" game party]
+	(* <- lang_en;; *);
+	[Verlustphrase innerhalb der "Rate mal, was ich sehe"-Spielpartie]
+	(* <- lang_de;; *);
+<= nrel_inclusion:
+	concept_informing_phrase;
+<- rrel_key_sc_element:
+	...
+	(*
+	=> nrel_main_idtf:
+		[Опр. (фраза, представляющая собой выражение проигрыша в рамках партии игры "Угадай, что я вижу")]
+		(* <- lang_ru;; *);
+		[Def. (loss phrase within the "Guess what I see" game party)]
+		(* <- lang_en;; *);
+		[Def. (Verlustphrase innerhalb der "Rate mal, was ich sehe"-Spielpartie)]
+		(* <- lang_de;; *);;
+	<- definition;;
+	<= nrel_sc_text_translation:
+		...
+		(*
+		-> rrel_example:
+			[Фраза, представляющая собой выражение проигрыша в рамках партии игры "Угадай, что я вижу" - это фраза, оповещающая о том, что отгадывающий не смог дать правильный ответ.]
+			(* <- lang_ru;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Loss phrase within the "Guess what I see" game party is a phrase notifying that the player could not give the correct answer.]
+			(* <- lang_en;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Verlustphrase innerhalb der "Rate mal, was ich sehe"-Spielpartie ist eine Phrase, die anzeigt, dass der Spieler die richtige Antwort nicht geben konnte.]
+			(* <- lang_de;; *);;
+		*);;
+	<= nrel_using_constants:
+		{
+			concept_phrase;
+			nrel_player_who_guesses;
+            		nrel_right_answer
+		};;
+	*);;

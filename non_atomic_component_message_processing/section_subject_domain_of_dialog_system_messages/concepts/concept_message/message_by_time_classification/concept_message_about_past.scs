@@ -1,0 +1,48 @@
+concept_message_about_past
+<-sc_node_class;
+=>nrel_main_idtf:
+	[сообщение о прошлом]
+	(* <- lang_ru;; *);
+	[message about the past]
+	(* <- lang_en;; *);
+	[Nachricht mit Informationen über die Vergangenheit]
+	(* <- lang_de;; *);
+=> nrel_nlp_service_idtf:
+	[past];
+=> nrel_action_class_by_message_tense:
+	question_finished;
+<- rrel_key_sc_element:
+	...
+	(*
+	=>nrel_main_idtf:
+		[Опр. (сообщение о прошлом)]
+		(* <- lang_ru;; *);
+		[Def. (message about the past)]
+		(* <- lang_en;; *);
+		[Def. (Nachricht mit Informationen über die Vergangenheit)]
+		(* <- lang_de;; *);;
+	<- definition;;
+	<= nrel_sc_text_translation:
+		...
+		(*
+		->rrel_example:
+			[Сообщение о прошлом - атомарное сообщение, содержащее информацию о прошлом.]
+			(* <- lang_ru;; *);;
+		*);
+		...
+		(*
+		-> rrel_example: 
+			[Message about the past is an atomic message that contains information about the past.]
+			(* <- lang_en;; *);;
+		*);
+		...
+		(*
+		-> rrel_example: 
+			[Nachricht mit Informationen über die Vergangenheit ist eine atomare Nachricht, die Informationen über die Vergangenheit enthält.]
+			(* <- lang_de;; *);;
+		*);;
+	<= nrel_using_constants:
+		{
+			concept_atomic_message
+		};;
+	*);;

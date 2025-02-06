@@ -1,0 +1,46 @@
+concept_imperative_message
+<-sc_node_class;
+=>nrel_main_idtf:
+	[императивное сообщение]
+	(* <- lang_ru;; *);
+	[imperative message]
+	(* <- lang_en;; *);
+	[imperative Nachricht]
+	(* <- lang_de;; *);
+=> nrel_nlp_service_idtf:
+	[imperative];
+<- rrel_key_sc_element:
+	...
+	(*
+	=>nrel_main_idtf:
+		[Опр. (императивное сообщение)]
+		(* <- lang_ru;; *);
+		[Def. (imperative message)]
+		(* <- lang_en;; *);
+		[Def. (imperative Nachricht)]
+		(* <- lang_de;; *);;
+	<- definition;;
+	<= nrel_sc_text_translation:
+		...
+		(*
+		->rrel_example:
+			[Императивное сообщение - сообщение, содержащее побуждение к чему-либо.]
+			(* <- lang_ru;; *);;
+		*);
+		...
+		(*
+		-> rrel_example: 
+			[Imperative message is a message that contains an incentive to do something.]
+			(* <- lang_en;; *);;
+		*);
+		...
+		(*
+		-> rrel_example: 
+			[Imperative Nachricht ist eine Nachricht, die eine Aufforderung zu etwas enthält.]
+			(* <- lang_de;; *);;
+		*);;
+	<= nrel_using_constants:
+		{
+			concept_message
+		};;
+	*);;

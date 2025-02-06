@@ -1,0 +1,67 @@
+nrel_svo_triples
+<- sc_node_norole_relation;
+<- relation;
+<- quasybinary_relation;
+<- oriented_relation;
+<- antireflexive_relation;
+<- asymmetric_relation;
+<- antitransitive_relation;
+=> nrel_main_idtf:
+	[тройки субъект-глагол-объект*]
+	(* <- lang_ru;; *);
+	[subject-verb-object triples*]
+	(* <- lang_en;; *);
+	[Subjekt-Verb-Objekt-Tripel*]
+	(* <- lang_de;; *);
+=> nrel_first_domain: concept_message;
+=> nrel_second_domain: concept_svo_triple;
+=> nrel_definitional_domain:
+	...
+	(*
+	<= nrel_combination:
+		{
+		concept_message;
+		concept_svo_triple
+		};;
+	*);
+<- rrel_key_sc_element:
+	...
+	(*
+	=> nrel_main_idtf:
+		[Опр. (тройки субъект-глагол-объект*)]
+		(* <- lang_ru;; *);
+		[Def. (subject-verb-object triples*)]
+		(* <- lang_en;; *);
+		[Def. (Subjekt-Verb-Objekt-Tripel*)]
+		(* <- lang_de;; *);;
+	<-  definition;;
+	<= nrel_sc_text_translation:
+		...
+		(*
+		-> rrel_example:
+			[Тройки субъект-глагол-объект* - квазибинарное ориентированное отношение, связывающее сообщение и множество
+			троек субъект-глагол-объект, выделенных nlp-сервисом в данном сообщении.]
+			(* <- lang_ru;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Subject-verb-object triples is a quasi-binary oriented relation that connects the message and the set of
+			subject-verb-object triples allocated in this message by the nlp service.]
+			(* <- lang_en;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Subjekt-Verb-Objekt-Tripel ist eine quasibinäre orientierte Beziehung, die die Nachricht und die Menge
+			der vom NLP-Dienst in dieser Nachricht zugewiesenen Subjekt-Verb-Objekt-Tripel verbindet.]
+			(* <- lang_de;; *);;
+		*);;
+	<= nrel_using_constants:
+		{
+		quasybinary_relation;
+		oriented_relation;
+		concept_message;
+		concept_svo_triple
+		};;
+	*);;

@@ -1,0 +1,55 @@
+concept_descriptive_phrase_about_truck
+<- sc_node_class;
+<= nrel_inclusion:
+	concept_descriptive_phrase_about_detectable_item;
+=> nrel_main_idtf:
+	[описывающая фраза о грузовом автомобиле]
+	(* <- lang_ru;; *);
+	[descriptive phrase about a truck]
+	(* <- lang_en;; *);
+	[beschreibende Phrase über einen Lastkraftwagen]
+	(* <- lang_de;; *);
+<= nrel_descriptive_phrase:
+    concept_truck;
+<- rrel_key_sc_element:
+	...
+	(*
+	=> nrel_main_idtf:
+		[Опр. (описывающая фраза о грузовом автомобиле)]
+		(* <- lang_ru;; *);
+		[Def. (descriptive phrase about a truck)]
+		(* <- lang_en;; *);
+		[Def. (beschreibende Phrase über einen Lastkraftwagen)]
+		(* <- lang_de;; *);;
+	<- definition;;
+	<= nrel_sc_text_translation:
+		...
+		(*
+		-> rrel_example:
+			[Описывающая фраза о грузовом автомобиле - это фраза, косвенно описывающая грузовой автомобиль.]
+			(* <- lang_ru;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Descriptive phrase about a truck is a phrase that indirectly describes a truck.]
+			(* <- lang_en;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Beschreibende Phrase über einen Lastkraftwagen ist eine Phrase, die einen Lastkraftwagen indirekt beschreibt.]
+			(* <- lang_de;; *);;
+		*);;
+	<= nrel_using_constants:
+		{
+			concept_truck
+		};;
+	*);
+->[A vehicle for apples and potatoes](* <- lang_en;; *);
+->[A "serious" car you can't ride for no reason](* <- lang_en;; *);
+->[A vehicle for items, not people](* <- lang_en;; *);
+
+->[Ein Fahrzeug für Äpfel und Kartoffeln](* <- lang_de;; *);
+->[Ein “ernstes” Auto, das man nicht ohne Grund fahren kann](* <- lang_de;; *);
+->[Ein Fahrzeug für Gegenstände, nicht für Menschen](* <- lang_de;; *);;

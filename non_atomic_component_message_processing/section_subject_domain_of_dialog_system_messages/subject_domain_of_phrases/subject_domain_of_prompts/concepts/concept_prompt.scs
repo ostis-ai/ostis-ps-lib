@@ -1,0 +1,44 @@
+concept_prompt
+<- sc_node_class;
+=> nrel_main_idtf:
+	[промпт]
+	(* <- lang_ru;; *);
+	[prompt]
+	(* <- lang_en;; *);
+	[...]
+	(* <- lang_de;; *);
+
+<- rrel_key_sc_element:
+	...
+	(*
+	=> nrel_main_idtf:
+		[Опр. (промпт)]
+		(* <- lang_ru;; *);
+		[Def. (prompt)]
+		(* <- lang_en;; *);
+		[Def. (...)]
+		(* <- lang_de;; *);;
+	<- definition;;
+	<= nrel_sc_text_translation:
+		...
+		(*
+		<- sc_node_tuple;;
+		-> rrel_example:
+			[Промпт - текстовое описание задания, передаваемое chatGPT.]
+			(* <- lang_ru;; *);;
+		*);
+		...
+		(*
+		<- sc_node_tuple;;
+		-> rrel_example:
+			[Prompt is a text description of a task passed to chatGPT.]
+			(* <- lang_en;; *);;
+		*);
+		...
+		(*
+		<- sc_node_tuple;;
+		-> rrel_example:
+			[...]
+			(* <- lang_de;; *);;
+		*);;
+	*);;

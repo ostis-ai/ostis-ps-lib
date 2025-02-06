@@ -1,0 +1,47 @@
+concept_what_i_see_object_clarification_phrase
+<- sc_node_class;
+=> nrel_main_idtf:
+	[шаблон фразы-предположения о загаданном предмете в рамках партии игры "Угадай, что я вижу"]
+	(* <- lang_ru;; *);
+	[assumption phrase template about a thought-of item within the "Guess what I see" game party]
+	(* <- lang_en;; *);
+	[Vorlage der Vermutungsphrase über einen ausgedachten Gegenstand innerhalb der "Rate mal, was ich sehe"-Spielpartie]
+	(* <- lang_de;; *);
+<= nrel_inclusion:
+	concept_informing_phrase;
+<- rrel_key_sc_element:
+	...
+	(*
+	=> nrel_main_idtf:
+		[Опр. (шаблон фразы-предположения о загаданном предмете в рамках партии игры "Угадай, что я вижу")]
+		(* <- lang_ru;; *);
+		[Def. (assumption phrase template about a thought-of item within the "Guess what I see" game party)]
+		(* <- lang_en;; *);
+		[Def. (Vorlage der Vermutungsphrase über einen ausgedachten Gegenstand innerhalb der "Rate mal, was ich sehe"-Spielpartie)]
+		(* <- lang_de;; *);;
+	<- definition;;
+	<= nrel_sc_text_translation:
+		...
+		(*
+		-> rrel_example:
+			[Шаблон фразы-предположения о загаданном предмете в рамках партии игры "Угадай, что я вижу" - это шаблон фразы, побуждающей систему сыграть в игру "Угадай, что я вижу".]
+			(* <- lang_ru;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Assumption phrase template about a thought-of item within the "Guess what I see" game party is a phrase template that evokes the system to play the "Guess what I see" game.]
+			(* <- lang_en;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Vorlage der Vermutungsphrase über einen ausgedachten Gegenstand innerhalb der "Rate mal, was ich sehe"-Spielpartie ist eine Phrasenvorlage, die das System zum Spielen des "Rate mal, was ich sehe"-Spiels hervorruft.]
+			(* <- lang_de;; *);;
+		*);;
+	<= nrel_using_constants:
+		{
+			concept_system;
+			game_what_i_see
+		};;
+	*);;

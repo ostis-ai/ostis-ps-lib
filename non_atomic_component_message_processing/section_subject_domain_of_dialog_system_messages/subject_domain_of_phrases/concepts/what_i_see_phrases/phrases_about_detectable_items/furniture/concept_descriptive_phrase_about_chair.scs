@@ -1,0 +1,55 @@
+concept_descriptive_phrase_about_chair
+<- sc_node_class;
+<= nrel_inclusion:
+	concept_descriptive_phrase_about_detectable_item;
+=> nrel_main_idtf:
+	[описывающая фраза о стуле]
+	(* <- lang_ru;; *);
+	[descriptive phrase about a chair]
+	(* <- lang_en;; *);
+	[beschreibende Phrase über einen Stuhl]
+	(* <- lang_de;; *);
+<= nrel_descriptive_phrase:
+    concept_chair;
+<- rrel_key_sc_element:
+	...
+	(*
+	=> nrel_main_idtf:
+		[Опр. (описывающая фраза о стуле)]
+		(* <- lang_ru;; *);
+		[Def. (descriptive phrase about a chair)]
+		(* <- lang_en;; *);
+		[Def. (beschreibende Phrase über einen Stuhl)]
+		(* <- lang_de;; *);;
+	<- definition;;
+	<= nrel_sc_text_translation:
+		...
+		(*
+		-> rrel_example:
+			[Описывающая фраза о стуле - это фраза, косвенно описывающая стул.]
+			(* <- lang_ru;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Descriptive phrase about a chair is a phrase that indirectly describes a chair.]
+			(* <- lang_en;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Beschreibende Phrase über einen Stuhl ist eine Phrase, die einen Stuhl indirekt beschreibt.]
+			(* <- lang_de;; *);;
+		*);;
+	<= nrel_using_constants:
+		{
+			concept_chair
+		};;
+	*);
+->[A versatile piece of furniture that can serve as a hanger for clothes, a table, and a shelf for books](* <- lang_en;; *);
+->[A piece of furniture, the analogue of which in nature is a tree stump](* <- lang_en;; *);
+->[A piece of furniture that will be set aside if there is a coach nearby](* <- lang_en;; *);
+
+->[Ein vielseitiges Möbelstück, das als Kleiderbügel, Tisch und Bücherregal dienen kann](* <- lang_de;; *);
+->[Ein Möbelstück, dessen Analog in der Natur ein Baumstumpf ist](* <- lang_de;; *);
+->[Ein Möbelstück, das beiseite gestellt wird, wenn eine Couch in der Nähe ist](* <- lang_de;; *);;

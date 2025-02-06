@@ -1,0 +1,46 @@
+message_types_for_llm_meaning_examples
+<- sc_node_class;
+<- oriented_set;
+=> nrel_main_idtf:
+    [типы сообщения для примеров смыслов для LLM]
+    (* <- lang_ru;; *);
+    [message types for LLM meaning examples]
+    (* <- lang_en;; *)
+<- rrel_key_sc_element:
+    ...
+    (*
+    => nrel_main_idtf:
+    [Опр. (типы сообщения для примеров смыслов для LLM)]
+    (* <- lang_ru;; *);
+    [Def. (message types for LLM meaning examples)]
+    (* <- lang_en;; *);
+    <- definition;;
+    <= nrel_sc_text_translation:
+        ...
+        (*
+        <- sc_node_tuple;;
+        -> rrel_example:
+            [Типы сообщения для примеров смыслов для LLM - это ориентированное множество, задающее порядок типов сообщений при составлении примеров трансляций смыслов сообщений для отправки на chatGPT.]
+            (* <- lang_ru;; *);;
+        -> rrel_example:
+            [Message types for LLM meaning examples is an oriented set that specifies the order of message types when composing example translations of message meanings to send to chatGPT.]
+            (* <- lang_en;; *);;
+        -> rrel_example:
+            [...]
+            (* <- lang_de;; *);;
+        *);;
+    <= nrel_using_constants:
+        {
+           oriented_set;
+           concept_message_type;
+           concept_message
+        };;
+    *);;
+
+@edge1 = (message_types_for_llm_meaning_examples -> concept_declarative_message);;
+@edge2 = (message_types_for_llm_meaning_examples -> concept_imperative_message);;
+@edge3 = (message_types_for_llm_meaning_examples -> concept_interrogative_message);;
+
+rrel_1 -> @edge1;;
+@edge1 => nrel_basic_sequence: @edge2;;
+@edge2 => nrel_basic_sequence: @edge3;;

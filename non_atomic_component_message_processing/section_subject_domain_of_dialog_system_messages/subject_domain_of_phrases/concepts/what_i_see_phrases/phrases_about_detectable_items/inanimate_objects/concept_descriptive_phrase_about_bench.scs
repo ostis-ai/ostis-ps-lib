@@ -1,0 +1,55 @@
+concept_descriptive_phrase_about_bench
+<- sc_node_class;
+<= nrel_inclusion:
+	concept_descriptive_phrase_about_detectable_item;
+=> nrel_main_idtf:
+	[описывающая фраза о скамье]
+	(* <- lang_ru;; *);
+	[descriptive phrase about a bench]
+	(* <- lang_en;; *);
+	[beschreibende Phrase über eine Bank]
+	(* <- lang_de;; *);
+<= nrel_descriptive_phrase:
+    concept_bench;
+<- rrel_key_sc_element:
+	...
+	(*
+	=> nrel_main_idtf:
+		[Опр. (описывающая фраза о скамье)]
+		(* <- lang_ru;; *);
+		[Def. (descriptive phrase about a bench)]
+		(* <- lang_en;; *);
+		[Def. (beschreibende Phrase über eine Bank)]
+		(* <- lang_de;; *);;
+	<- definition;;
+	<= nrel_sc_text_translation:
+		...
+		(*
+		-> rrel_example:
+			[Описывающая фраза о скамье - это фраза, косвенно описывающая скамью.]
+			(* <- lang_ru;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Descriptive phrase about a bench is a phrase that indirectly describes a bench.]
+			(* <- lang_en;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Beschreibende Phrase über eine Bank ist eine Phrase, die eine Bank indirekt beschreibt.]
+			(* <- lang_de;; *);;
+		*);;
+	<= nrel_using_constants:
+		{
+			concept_bench
+		};;
+	*);
+->[A piece of furniture located outside, on which you can not stand with your feet, so as not to anger the elderly people](* <- lang_en;; *);
+->[A minimalistic outdoor bed](* <- lang_en;; *);
+->[A favorite meeting place for pensioners](* <- lang_en;; *);
+
+->[Ein Möbelstück von außen, auf dem man nicht mit den Füßen stehen kann, um die älteren Menschen nicht zu verärgern](* <- lang_de;; *);
+->[Ein minimalistisches Außenbett](* <- lang_de;; *);
+->[Ein beliebter Treffpunkt für Rentner](* <- lang_de;; *);;

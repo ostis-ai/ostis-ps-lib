@@ -1,0 +1,61 @@
+nrel_set_of_phrases_matching_the_message_topic
+<- sc_node_norole_relation;
+<- relation;
+<- quasybinary_relation;
+<- oriented_relation;
+<- antireflexive_relation;
+<- asymmetric_relation;
+<- antitransitive_relation;
+=> nrel_main_idtf:
+	[множество фраз, соответствующих теме сообщения*]
+	(* <- lang_ru;; *);
+	[set of phrases matching the message topic*]
+	(* <- lang_en;; *);
+	[Menge von Phrasen, die das Thema der Nachricht entsprechen*]
+	(* <- lang_de;; *);
+=> nrel_first_domain: set;
+=> nrel_second_domain: set;
+=> nrel_definitional_domain: set;
+<- rrel_key_sc_element:
+	...
+	(*
+	=> nrel_main_idtf:
+		[Опр. (множество фраз, соответствующих теме сообщения*)]
+		(* <- lang_ru;; *);
+		[Def. (set of phrases matching the message topic*)]
+		(* <- lang_en;; *);
+		[Def. (Menge von Phrasen, die das Thema der Nachricht entsprechen*)]
+		(* <- lang_de;; *);;
+	<-  definition;;
+	<= nrel_sc_text_translation:
+		...
+		(*
+		-> rrel_example:
+			[Множество фраз, соответствующих теме сообщения* - квазибинарное ориентированное отношение, связывающее
+			класс сообщений с классами фраз, которые соответствуют теме данной группы сообщений.]
+			(* <- lang_ru;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Set of phrases matching the message topic* is a quasi-binary oriented relation linking a message class
+			with classes of phrases that correspond to the topic of a given group of messages.]
+			(* <- lang_en;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Menge von Phrasen, die das Thema der Nachricht entsprechen* ist eine quasi-binäre orientierte Beziehung,
+			die eine Nachrichtenklasse mit Klassen von Phrasen verbindet, die dem Thema einer bestimmten Gruppe von
+			Nachrichten entsprechen.]
+			(* <- lang_de;; *);;
+		*);;
+	<= nrel_using_constants:
+		{
+		quasybinary_relation;
+		oriented_relation;
+		set;
+		concept_message;
+		concept_phrase
+		};;
+	*);;

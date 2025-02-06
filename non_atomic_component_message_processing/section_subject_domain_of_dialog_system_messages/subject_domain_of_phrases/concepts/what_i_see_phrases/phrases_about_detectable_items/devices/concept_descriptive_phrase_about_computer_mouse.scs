@@ -1,0 +1,55 @@
+concept_descriptive_phrase_about_computer_mouse
+<- sc_node_class;
+<= nrel_inclusion:
+	concept_descriptive_phrase_about_detectable_item;
+=> nrel_main_idtf:
+	[описывающая фраза о компьютерной мыши]
+	(* <- lang_ru;; *);
+	[descriptive phrase about a computer mouse]
+	(* <- lang_en;; *);
+	[beschreibende Phrase über eine Computermaus]
+	(* <- lang_de;; *);
+<= nrel_descriptive_phrase:
+    concept_computer_mouse;
+<- rrel_key_sc_element:
+	...
+	(*
+	=> nrel_main_idtf:
+		[Опр. (описывающая фраза о компьютерной мыши)]
+		(* <- lang_ru;; *);
+		[Def. (descriptive phrase about a computer mouse)]
+		(* <- lang_en;; *);
+		[Def. (beschreibende Phrase über eine Computermaus)]
+		(* <- lang_de;; *);;
+	<- definition;;
+	<= nrel_sc_text_translation:
+		...
+		(*
+		-> rrel_example:
+			[Описывающая фраза о компьютерной мыши - это фраза, косвенно описывающая компьютерную мышь.]
+			(* <- lang_ru;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Descriptive phrase about a computer mouse is a phrase that indirectly describes a computer mouse.]
+			(* <- lang_en;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Beschreibende Phrase über eine Computermaus ist eine Phrase, die eine Computermaus indirekt beschreibt.]
+			(* <- lang_de;; *);;
+		*);;
+	<= nrel_using_constants:
+		{
+			concept_computer_mouse
+		};;
+	*);
+->[A device from which cats like to bite through the wire so much](* <- lang_en;; *);
+->[A computer accessory with an animal name](* <- lang_en;; *);
+->[An inanimate object with a very-very long "tail"](* <- lang_en;; *);
+
+->[Ein Gerät, bei dem Katzen so gerne einen Draht durchbeißen](* <- lang_de;; *);
+->[Ein Computerzubehörteil mit einem Tiernamen](* <- lang_de;; *);
+->[Ein unbelebtes Objekt mit einem sehr, sehr langen “Schwanz”](* <- lang_de;; *);;

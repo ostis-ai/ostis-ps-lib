@@ -1,0 +1,55 @@
+concept_descriptive_phrase_about_backpack
+<- sc_node_class;
+<= nrel_inclusion:
+	concept_descriptive_phrase_about_detectable_item;
+=> nrel_main_idtf:
+	[описывающая фраза о рюкзаке]
+	(* <- lang_ru;; *);
+	[descriptive phrase about a backpack]
+	(* <- lang_en;; *);
+	[beschreibende Phrase über einen Rucksack]
+	(* <- lang_de;; *);
+<= nrel_descriptive_phrase:
+    concept_backpack;
+<- rrel_key_sc_element:
+	...
+	(*
+	=> nrel_main_idtf:
+		[Опр. (описывающая фраза о рюкзаке)]
+		(* <- lang_ru;; *);
+		[Def. (descriptive phrase about a backpack)]
+		(* <- lang_en;; *);
+		[Def. (beschreibende Phrase über einen Rucksack)]
+		(* <- lang_de;; *);;
+	<- definition;;
+	<= nrel_sc_text_translation:
+		...
+		(*
+		-> rrel_example:
+			[Описывающая фраза о рюкзаке - это фраза, косвенно описывающая рюкзак.]
+			(* <- lang_ru;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Descriptive phrase about a backpack is a phrase that indirectly describes a backpack.]
+			(* <- lang_en;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Beschreibende Phrase über einen Rucksack ist eine Phrase, die einen Rucksack indirekt beschreibt.]
+			(* <- lang_de;; *);;
+		*);;
+	<= nrel_using_constants:
+		{
+			concept_backpack
+		};;
+	*);
+->[An object in which half of the things from the apartment can be placed before going outside](* <- lang_en;; *);
+->[An item with two webbings, one of which is definitely redundant](* <- lang_en;; *);
+->[An item that is sometimes not visible due to the huge number of pins](* <- lang_en;; *);
+
+->[Ein Objekt, in das die Hälfte der Dinge aus der Wohnung gelegt werden kann, bevor man nach draußen geht](* <- lang_de;; *);
+->[Ein Gegenstand mit zwei Sielen, von denen eine definitiv überflüssig ist](* <- lang_de;; *);
+->[Ein Gegenstand, der aufgrund der großen Anzahl von Pins manchmal nicht sichtbar ist](* <- lang_de;; *);;

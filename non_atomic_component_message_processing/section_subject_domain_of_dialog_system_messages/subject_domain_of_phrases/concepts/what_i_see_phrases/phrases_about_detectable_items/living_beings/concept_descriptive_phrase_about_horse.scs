@@ -1,0 +1,55 @@
+concept_descriptive_phrase_about_horse
+<- sc_node_class;
+<= nrel_inclusion:
+	concept_descriptive_phrase_about_detectable_item;
+=> nrel_main_idtf:
+	[описывающая фраза о лошади]
+	(* <- lang_ru;; *);
+	[descriptive phrase about a horse]
+	(* <- lang_en;; *);
+	[beschreibende Phrase über ein Pferd]
+	(* <- lang_de;; *);
+<= nrel_descriptive_phrase:
+    concept_horse;
+<- rrel_key_sc_element:
+	...
+	(*
+	=> nrel_main_idtf:
+		[Опр. (описывающая фраза о лошади)]
+		(* <- lang_ru;; *);
+		[Def. (descriptive phrase about a horse)]
+		(* <- lang_en;; *);
+		[Def. (beschreibende Phrase über ein Pferd)]
+		(* <- lang_de;; *);;
+	<- definition;;
+	<= nrel_sc_text_translation:
+		...
+		(*
+		-> rrel_example:
+			[Описывающая фраза о лошади - это фраза, косвенно описывающая лошадь.]
+			(* <- lang_ru;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Descriptive phrase about a horse is a phrase that indirectly describes a horse.]
+			(* <- lang_en;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Beschreibende Phrase über ein Pferd ist eine Phrase, die ein Pferd indirekt beschreibt.]
+			(* <- lang_de;; *);;
+		*);;
+	<= nrel_using_constants:
+		{
+			concept_horse
+		};;
+	*);
+->[An animal that is epicly ridden by swordsmen or nazguls in movies](* <- lang_en;; *);
+->[A non-striped zebra](* <- lang_en;; *);
+->[A living synonym for freedom](* <- lang_en;; *);
+
+->[Ein Tier, das in Filmen von Schwertkämpfern oder Nazguls episch geritten wird](* <- lang_de;; *);
+->[Ein nicht gestreiftes Zebra](* <- lang_de;; *);
+->[Ein lebendiges Synonym für Freiheit](* <- lang_de;; *);;

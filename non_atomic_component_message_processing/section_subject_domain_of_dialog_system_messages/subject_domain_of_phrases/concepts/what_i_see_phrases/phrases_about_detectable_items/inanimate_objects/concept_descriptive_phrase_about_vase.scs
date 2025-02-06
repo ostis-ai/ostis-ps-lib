@@ -1,0 +1,55 @@
+concept_descriptive_phrase_about_vase
+<- sc_node_class;
+<= nrel_inclusion:
+	concept_descriptive_phrase_about_detectable_item;
+=> nrel_main_idtf:
+	[описывающая фраза о вазе]
+	(* <- lang_ru;; *);
+	[descriptive phrase about a vase]
+	(* <- lang_en;; *);
+	[beschreibende Phrase über eine Vase]
+	(* <- lang_de;; *);
+<= nrel_descriptive_phrase:
+    concept_vase;
+<- rrel_key_sc_element:
+	...
+	(*
+	=> nrel_main_idtf:
+		[Опр. (описывающая фраза о вазе)]
+		(* <- lang_ru;; *);
+		[Def. (descriptive phrase about a vase)]
+		(* <- lang_en;; *);
+		[Def. (beschreibende Phrase über eine Vase)]
+		(* <- lang_de;; *);;
+	<- definition;;
+	<= nrel_sc_text_translation:
+		...
+		(*
+		-> rrel_example:
+			[Описывающая фраза о вазе - это фраза, косвенно описывающая вазу.]
+			(* <- lang_ru;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Descriptive phrase about a vase is a phrase that indirectly describes a vase.]
+			(* <- lang_en;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Beschreibende Phrase über eine Vase ist eine Phrase, die eine Vase indirekt beschreibt.]
+			(* <- lang_de;; *);;
+		*);;
+	<= nrel_using_constants:
+		{
+			concept_vase
+		};;
+	*);
+->[An item that you have to look for a long time if you were given flowers](* <- lang_en;; *);
+->[A bath for flowers](* <- lang_en;; *);
+->[A large glass, but not for drinking](* <- lang_en;; *);
+
+->[Ein Gegenstand, den Sie lange suchen müssen, wenn Sie Blumen beschenkt bekommen](* <- lang_de;; *);
+->[Ein Bad für Blumen](* <- lang_de;; *);
+->[Ein großes Glas, aber nicht zum Trinken](* <- lang_de;; *);;

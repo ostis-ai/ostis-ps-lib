@@ -1,0 +1,55 @@
+concept_descriptive_phrase_about_carrot
+<- sc_node_class;
+<= nrel_inclusion:
+	concept_descriptive_phrase_about_detectable_item;
+=> nrel_main_idtf:
+	[описывающая фраза о моркови]
+	(* <- lang_ru;; *);
+	[descriptive phrase about a carrot]
+	(* <- lang_en;; *);
+	[beschreibende Phrase über eine Karotte]
+	(* <- lang_de;; *);
+<= nrel_descriptive_phrase:
+    concept_carrot;
+<- rrel_key_sc_element:
+	...
+	(*
+	=> nrel_main_idtf:
+		[Опр. (описывающая фраза о моркови)]
+		(* <- lang_ru;; *);
+		[Def. (descriptive phrase about a carrot)]
+		(* <- lang_en;; *);
+		[Def. (beschreibende Phrase über eine Karotte)]
+		(* <- lang_de;; *);;
+	<- definition;;
+	<= nrel_sc_text_translation:
+		...
+		(*
+		-> rrel_example:
+			[Описывающая фраза о моркови - это фраза, косвенно описывающая морковь.]
+			(* <- lang_ru;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Descriptive phrase about a carrot is a phrase that indirectly describes a carrot.]
+			(* <- lang_en;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Beschreibende Phrase über eine Karotte ist eine Phrase, die eine Karotte indirekt beschreibt.]
+			(* <- lang_de;; *);;
+		*);;
+	<= nrel_using_constants:
+		{
+			concept_carrot
+		};;
+	*);
+->[A vegetable that is actively used in winter for the creation of snowmen](* <- lang_en;; *);
+->[Snowman's nose](* <- lang_en;; *);
+->[A bright orange vegetable with good aerodynamics](* <- lang_en;; *);
+
+->[Ein Gemüse, das im Winter aktiv zur Herstellung von Schneemännern verwendet wird](* <- lang_de;; *);
+->[Die Nase des Schneemanns](* <- lang_de;; *);
+->[Ein grelles orangefarbenes Gemüse mit guter Aerodynamik](* <- lang_de;; *);;

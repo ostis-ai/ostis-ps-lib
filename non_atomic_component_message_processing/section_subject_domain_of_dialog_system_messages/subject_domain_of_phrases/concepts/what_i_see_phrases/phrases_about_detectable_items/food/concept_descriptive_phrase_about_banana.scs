@@ -1,0 +1,55 @@
+concept_descriptive_phrase_about_banana
+<-sc_node_class;
+<= nrel_inclusion:
+	concept_descriptive_phrase_about_detectable_item;
+=> nrel_main_idtf:
+	[описывающая фраза о банане]
+	(* <- lang_ru;; *);
+	[descriptive phrase about a banana]
+	(* <- lang_en;; *);
+	[beschreibende Phrase über eine Banane]
+	(* <- lang_de;; *);
+<= nrel_descriptive_phrase:
+    concept_banana;
+<- rrel_key_sc_element:
+	...
+	(*
+	=> nrel_main_idtf:
+		[Опр. (описывающая фраза о банане)]
+		(* <- lang_ru;; *);
+		[Def. (descriptive phrase about a banana)]
+		(* <- lang_en;; *);
+		[Def. (beschreibende Phrase über eine Banane)]
+		(* <- lang_de;; *);;
+	<- definition;;
+	<= nrel_sc_text_translation:
+		...
+		(*
+		-> rrel_example:
+			[Описывающая фраза о банане - это фраза, косвенно описывающая банан.]
+			(* <- lang_ru;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Descriptive phrase about a banana is a phrase that indirectly describes a banana.]
+			(* <- lang_en;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Beschreibende Phrase über eine Banane ist eine Phrase, die eine Banane indirekt beschreibt.]
+			(* <- lang_de;; *);;
+		*);;
+	<= nrel_using_constants:
+		{
+			concept_banana
+		};;
+	*);
+->[A fruit that is able to purify water with its yellow, pectin-rich peel](* <- lang_en;; *);
+->[An ideal fruit that is never sour](* <- lang_en;; *);
+->[A perfect fruit that is very easy to peel](* <- lang_en;; *);
+
+->[Eine Frucht, die mit ihrer gelben, pektinreichen Schale Wasser reinigen kann](* <- lang_de;; *);
+->[Eine ideale Frucht, die niemals sauer ist](* <- lang_de;; *);
+->[Eine perfekte Frucht, die sich sehr leicht schälen lässt](* <- lang_de;; *);;

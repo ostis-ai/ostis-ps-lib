@@ -1,0 +1,55 @@
+concept_descriptive_phrase_about_keyboard
+<- sc_node_class;
+<= nrel_inclusion:
+	concept_descriptive_phrase_about_detectable_item;
+=> nrel_main_idtf:
+	[описывающая фраза о клавиатуре]
+	(* <- lang_ru;; *);
+	[descriptive phrase about a keyboard]
+	(* <- lang_en;; *);
+	[beschreibende Phrase über eine Tastatur]
+	(* <- lang_de;; *);
+<= nrel_descriptive_phrase:
+    concept_keyboard;
+<- rrel_key_sc_element:
+	...
+	(*
+	=> nrel_main_idtf:
+		[Опр. (описывающая фраза о клавиатуре)]
+		(* <- lang_ru;; *);
+		[Def. (descriptive phrase about a keyboard)]
+		(* <- lang_en;; *);
+		[Def. (beschreibende Phrase über eine Tastatur)]
+		(* <- lang_de;; *);;
+	<- definition;;
+	<= nrel_sc_text_translation:
+		...
+		(*
+		-> rrel_example:
+			[Описывающая фраза о клавиатуре - это фраза, косвенно описывающая клавиатуру.]
+			(* <- lang_ru;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Descriptive phrase about a keyboard is a phrase that indirectly describes a keyboard.]
+			(* <- lang_en;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Beschreibende Phrase über eine Tastatur ist eine Phrase, die eine Tastatur indirekt beschreibt.]
+			(* <- lang_de;; *);;
+		*);;
+	<= nrel_using_constants:
+		{
+			concept_keyboard
+		};;
+	*);
+->[A device that is an active dust collector](* <- lang_en;; *);
+->[An object, on which the letters are always out of order](* <- lang_en;; *);
+->[An "enemy" of the alphabet, where the letters are always mixed up](* <- lang_en;; *);
+
+->[Ein Gerät, das ein aktiver Staubsammler ist](* <- lang_de;; *);
+->[Ein Objekt, auf dem die Buchstaben immer in Unordnung sind](* <- lang_de;; *);
+->[Ein “Gegner” des Alphabets, bei dem die Buchstaben immer verwechselt werden](* <- lang_de;; *);;

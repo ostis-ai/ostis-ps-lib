@@ -1,0 +1,63 @@
+nrel_message_key_elements
+<-sc_node_norole_relation;
+<-relation;
+<-quasybinary_relation;
+<-oriented_relation;
+<-antireflexive_relation;
+<-asymmetric_relation;
+<-antitransitive_relation;
+=>nrel_main_idtf:
+	[ключевые элементы сообщения*]
+	(* <- lang_ru;; *);
+	[message key elements*]
+	(* <- lang_en;; *);
+	[Schlüsselelemente der Nachricht*]
+	(* <- lang_de;; *);
+=>nrel_first_domain: sheaf;
+=>nrel_second_domain: concept_message;
+=>nrel_definitional_domain: 
+	... 
+	(*
+	<= nrel_combination: 
+		{
+		sheaf;
+		concept_message
+		};;
+	*);
+<-rrel_key_sc_element:
+	...
+	(*
+	=>nrel_main_idtf:
+		[Опр. (ключевые элементы сообщения*)]
+		(* <- lang_ru;; *);
+		[Def. (message key elements*)]
+		(* <- lang_en;; *);
+		[Def. (Schlüsselelemente der Nachricht*)]
+		(* <- lang_de;; *);;
+	<- definition;;
+	<= nrel_sc_text_translation: 
+		...
+		(*
+		-> rrel_example: 
+			[Ключевые элементы сообщения* - отношение, связывающее класс сообщений со множествами характерных для него классов лексем.]
+			(* <- lang_ru;; *);;
+		*);
+		...
+		(*
+		-> rrel_example: 
+			[Message key elements* is a relation, that connects a message class with sets of typical of it token classes.]
+			(* <- lang_en;; *);;
+		*);
+		...
+		(*
+		-> rrel_example: 
+   			[Schlüsselelemente der Nachricht* ist eine Beziehung, die eine Nachrichtenklasse mit vielen charakteristischen Token-Klassen verknüpft.]
+			(* <- lang_de;; *);;
+		*);;
+	<=nrel_using_constants:
+		{
+		relation;
+		concept_message;
+		concept_token
+		};;
+	*);;

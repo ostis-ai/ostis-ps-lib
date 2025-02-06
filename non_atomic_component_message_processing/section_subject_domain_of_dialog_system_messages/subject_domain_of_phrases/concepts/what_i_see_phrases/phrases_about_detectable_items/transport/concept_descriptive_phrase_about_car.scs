@@ -1,0 +1,55 @@
+concept_descriptive_phrase_about_car
+<- sc_node_class;
+<= nrel_inclusion:
+	concept_descriptive_phrase_about_detectable_item;
+=> nrel_main_idtf:
+	[описывающая фраза о автомобиле]
+	(* <- lang_ru;; *);
+	[descriptive phrase about a car]
+	(* <- lang_en;; *);
+	[beschreibende Phrase über ein Auto]
+	(* <- lang_de;; *);
+<= nrel_descriptive_phrase:
+    concept_car;
+<- rrel_key_sc_element:
+	...
+	(*
+	=> nrel_main_idtf:
+		[Опр. (описывающая фраза о автомобиле)]
+		(* <- lang_ru;; *);
+		[Def. (descriptive phrase about a car)]
+		(* <- lang_en;; *);
+		[Def. (beschreibende Phrase über ein Auto)]
+		(* <- lang_de;; *);;
+	<- definition;;
+	<= nrel_sc_text_translation:
+		...
+		(*
+		-> rrel_example:
+			[Описывающая фраза о автомобиле - это фраза, косвенно описывающая автомобиль.]
+			(* <- lang_ru;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Descriptive phrase about a car is a phrase that indirectly describes a car.]
+			(* <- lang_en;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Beschreibende Phrase über ein Auto ist eine Phrase, die ein Auto indirekt beschreibt.]
+			(* <- lang_de;; *);;
+		*);;
+	<= nrel_using_constants:
+		{
+			concept_car
+		};;
+	*);
+->[A vehicle whose scaled-down analogues boys like to use for games](* <- lang_en;; *);
+->[A vehicle with its own room](* <- lang_en;; *);
+->[A vehicle, by which, due to traffic jams, it can take 5 times longer to travel than on foot](* <- lang_en;; *);
+
+->[Ein Fahrzeug, dessen verkleinerte Analoga Jungen gerne für Spiele verwenden](* <- lang_de;; *);
+->[Ein Fahrzeug mit eigenem Raum](* <- lang_de;; *);
+->[Ein Fahrzeug, die Fortbewegung mit dem durch Staus 5-mal länger dauern kann als zu Fuß](* <- lang_de;; *);;

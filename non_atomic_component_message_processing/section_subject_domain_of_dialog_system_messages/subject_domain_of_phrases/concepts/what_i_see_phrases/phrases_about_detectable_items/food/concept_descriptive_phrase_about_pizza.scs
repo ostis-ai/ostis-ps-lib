@@ -1,0 +1,55 @@
+concept_descriptive_phrase_about_pizza
+<- sc_node_class;
+<= nrel_inclusion:
+	concept_descriptive_phrase_about_detectable_item;
+=> nrel_main_idtf:
+	[описывающая фраза о пицце]
+	(* <- lang_ru;; *);
+	[descriptive phrase about the pizza]
+	(* <- lang_en;; *);
+	[beschreibende Phrase über die Pizza]
+	(* <- lang_de;; *);
+<= nrel_descriptive_phrase:
+    concept_pizza;
+<- rrel_key_sc_element:
+	...
+	(*
+	=> nrel_main_idtf:
+		[Опр. (описывающая фраза о пицце)]
+		(* <- lang_ru;; *);
+		[Def. (descriptive phrase about the pizza)]
+		(* <- lang_en;; *);
+		[Def. (beschreibende Phrase über die Pizza)]
+		(* <- lang_de;; *);;
+	<- definition;;
+	<= nrel_sc_text_translation:
+		...
+		(*
+		-> rrel_example:
+			[Описывающая фраза о пицце - это фраза, косвенно описывающая пиццу.]
+			(* <- lang_ru;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Descriptive phrase about the pizza is a phrase that indirectly describes the pizza.]
+			(* <- lang_en;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Beschreibende Phrase über die Pizza ist eine Phrase, die die Pizza indirekt beschreibt.]
+			(* <- lang_de;; *);;
+		*);;
+	<= nrel_using_constants:
+		{
+			concept_pizza
+		};;
+	*);
+->[A food product that can divide a company into 2 dissenting camps: those who like it with pineapples and those who do not](* <- lang_en;; *);
+->[A product, eating of which with the help of a knife and fork the Italians would consider a cruel joke](* <- lang_en;; *);
+->[A food product that becomes better and better when you put more and more cheese](* <- lang_en;; *);
+
+->[Ein Lebensmittelprodukt, das einen Umgang in 2 streitende Lager aufteilen kann: diejenigen, die es mit Ananas mögen, und diejenigen, die es nicht mögen](* <- lang_de;; *);
+->[Ein Produkt, dessen Essen mit Hilfe von Messer und Gabel die Italiener für einen grausamen Witz halten würden](* <- lang_de;; *);
+->[Ein Lebensmittelprodukt, das immer besser wird, wenn Sie immer mehr Käse hinzufügen](* <- lang_de;; *);;

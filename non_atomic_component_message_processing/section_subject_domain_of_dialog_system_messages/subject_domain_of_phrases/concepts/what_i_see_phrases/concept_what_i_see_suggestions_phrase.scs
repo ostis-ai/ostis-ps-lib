@@ -1,0 +1,49 @@
+concept_what_i_see_suggestions_phrase
+<- sc_node_class;
+=> nrel_main_idtf:
+	[фраза, представляющая собой предположение о загаданном предмете в рамках партии игры "Угадай, что я вижу"]
+	(* <- lang_ru;; *);
+	[assumption phrase about a thought-of item within the "Guess what I see" game party]
+	(* <- lang_en;; *);
+	[Vermutungsphrase über einen ausgedachten Gegenstand innerhalb der "Rate mal, was ich sehe"-Spielpartie]
+	(* <- lang_de;; *);
+<= nrel_inclusion:
+	concept_informing_phrase;
+<- rrel_key_sc_element:
+	...
+	(*
+	=> nrel_main_idtf:
+		[Опр. (фраза, представляющая собой предположение о загаданном предмете в рамках партии игры "Угадай, что я вижу")]
+		(* <- lang_ru;; *);
+		[Def. (assumption phrase about a thought-of item within the "Guess what I see" game party)]
+		(* <- lang_en;; *);
+		[Def. (Vermutungsphrase über einen ausgedachten Gegenstand innerhalb der "Rate mal, was ich sehe"-Spielpartie)]
+		(* <- lang_de;; *);;
+	<- definition;;
+	<= nrel_sc_text_translation:
+		...
+		(*
+		-> rrel_example:
+			[Фраза, представляющая собой предположение о загаданном предмете в рамках партии игры "Угадай, что я вижу"  - это фраза, являющаяся предположением насчёт загаданного предмета в действующей партии игры "Угадай, что я вижу".]
+			(* <- lang_ru;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Assumption phrase about a thought-of item within the "Guess what I see" game party  is a phrase that is an assumption about a thought-of item in the current "Guess what I see" game party.]
+			(* <- lang_en;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Vermutungsphrase über einen ausgedachten Gegenstand innerhalb der "Rate mal, was ich sehe"-Spielpartie ist eine Phrase, die eine Vermutung über den ausgedachten Gegenstand in der aktuellen Partie des Spiels "Rate mal, was ich sehe" ist.]
+			(* <- lang_de;; *);;
+		*);;
+	<= nrel_using_constants:
+		{
+			concept_phrase;
+			concept_guess_what_i_see_game_party;
+            		nrel_suggestions;
+            		subject
+		};;
+	*);;

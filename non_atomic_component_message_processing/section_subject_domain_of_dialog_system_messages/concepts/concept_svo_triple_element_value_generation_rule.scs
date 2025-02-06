@@ -1,0 +1,46 @@
+concept_svo_triple_element_value_generation_rule
+    => nrel_main_idtf:
+        [правило генерации значения тройки субъект-глагол-объект] (* <- lang_ru;; *);
+        [subject-verb-object triple value generation rule] (* <- lang_en;; *);
+        [Wertgenerierungsregel für den Subjekt-Verb-Objekt-Tripel] (* <- lang_de;; *);
+    <-sc_node_class;
+    <= nrel_inclusion:
+        logical_formula;
+    => nrel_subdividing:
+        {
+            concept_svo_triple_element_value_generation_rule_class_by_priority_1;
+            concept_svo_triple_element_value_generation_rule_class_by_priority_2
+        };
+    => nrel_set_of_subsets:
+        concept_svo_triple_element_value_generation_rule_class_by_priority;;
+
+...
+    <- definition;
+    => nrel_main_idtf:
+        [Опр.(правило генерации значения тройки субъект-глагол-объект)] (* <- lang_ru;; *);
+        [Def.(subject-verb-object triple element value generation rule)] (* <- lang_en;; *);
+        [Def.(Wertgenerierungsregel für den Subjekt-Verb-Objekt-Tripel)] (* <- lang_de;; *);
+    -> rrel_key_sc_element:
+        concept_dialog_assistant_participation_degree_change_rule;
+    <= nrel_sc_text_translation: 
+        ...
+        (*
+            -> rrel_example:
+                [Правило генерации значения тройки субъект-глагол-объект - правило, по которому генерируется множество значений элемента тройки субъект-глагол-объект с одним элементом.](* <- lang_ru;; *);;
+        *);
+        ...
+        (*
+            -> rrel_example:
+                [Subject-verb-object triple value generation rule is a rule by which a set of values of an element for a subject-verb-object triple with one element is generated.](* <- lang_en;; *);;
+        *);
+        ...
+        (*
+            -> rrel_example:
+                [Wertgenerierungsregel für den Subjekt-Verb-Objekt-Tripel ist eine Regel, durch die eine Menge von Werten für das Subjekt-Verb-Objekt-Tripelelement mit einem einzelnen Element generiert wird.](* <- lang_de;; *);;
+        *);
+    <= nrel_using_constants:
+        {
+            logical_formula;
+            concept_svo_triple;
+            rrel_svo_triple_element_values
+        };;

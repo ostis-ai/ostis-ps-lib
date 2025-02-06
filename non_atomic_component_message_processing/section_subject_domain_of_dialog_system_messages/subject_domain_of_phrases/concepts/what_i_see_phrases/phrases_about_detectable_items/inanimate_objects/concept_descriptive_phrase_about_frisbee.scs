@@ -1,0 +1,55 @@
+concept_descriptive_phrase_about_frisbee
+<- sc_node_class;
+<= nrel_inclusion:
+	concept_descriptive_phrase_about_detectable_item;
+=> nrel_main_idtf:
+	[описывающая фраза о фрисби]
+	(* <- lang_ru;; *);
+	[descriptive phrase about a frisbee]
+	(* <- lang_en;; *);
+	[beschreibende Phrase über ein Frisbee]
+	(* <- lang_de;; *);
+<= nrel_descriptive_phrase:
+    concept_frisbee;
+<- rrel_key_sc_element:
+	...
+	(*
+	=> nrel_main_idtf:
+		[Опр. (описывающая фраза о фрисби)]
+		(* <- lang_ru;; *);
+		[Def. (descriptive phrase about a frisbee)]
+		(* <- lang_en;; *);
+		[Def. (beschreibende Phrase über ein Frisbee)]
+		(* <- lang_de;; *);;
+	<- definition;;
+	<= nrel_sc_text_translation:
+		...
+		(*
+		-> rrel_example:
+			[Описывающая фраза о фрисби - это фраза, косвенно описывающая фрисби.]
+			(* <- lang_ru;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Descriptive phrase about a frisbee is a phrase that indirectly describes a frisbee.]
+			(* <- lang_en;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Beschreibende Phrase über ein Frisbee ist eine Phrase, die ein Frisbee indirekt beschreibt.]
+			(* <- lang_de;; *);;
+		*);;
+	<= nrel_using_constants:
+		{
+			concept_frisbee
+		};;
+	*);
+->[A plate that can fly](* <- lang_en;; *);
+->[A flat hard ball that cannot be used in tennis](* <- lang_en;; *);
+->[A plate that the dogs love to bring their owners so much](* <- lang_en;; *);
+
+->[Ein Teller, der fliegen kann](* <- lang_de;; *);
+->[Ein flacher, fester Ball, der nicht zum Tennis verwendet werden kann](* <- lang_de;; *);
+->[Ein Teller, den die Hunde ihren Besitzern so gerne bringen](* <- lang_de;; *);;

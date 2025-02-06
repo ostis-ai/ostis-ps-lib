@@ -1,0 +1,55 @@
+concept_descriptive_phrase_about_suitcase
+<- sc_node_class;
+<= nrel_inclusion:
+	concept_descriptive_phrase_about_detectable_item;
+=> nrel_main_idtf:
+	[описывающая фраза о чемодане]
+	(* <- lang_ru;; *);
+	[descriptive phrase about a suitcase]
+	(* <- lang_en;; *);
+	[beschreibende Phrase über einen Koffer]
+	(* <- lang_de;; *);
+<= nrel_descriptive_phrase:
+    concept_suitcase;
+<- rrel_key_sc_element:
+	...
+	(*
+	=> nrel_main_idtf:
+		[Опр. (описывающая фраза о чемодане)]
+		(* <- lang_ru;; *);
+		[Def. (descriptive phrase about a suitcase)]
+		(* <- lang_en;; *);
+		[Def. (beschreibende Phrase über einen Koffer)]
+		(* <- lang_de;; *);;
+	<- definition;;
+	<= nrel_sc_text_translation:
+		...
+		(*
+		-> rrel_example:
+			[Описывающая фраза о чемодане - это фраза, косвенно описывающая чемодан.]
+			(* <- lang_ru;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Descriptive phrase about a suitcase is a phrase that indirectly describes a suitcase.]
+			(* <- lang_en;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Beschreibende Phrase über einen Koffer ist eine Phrase, die einen Koffer indirekt beschreibt.]
+			(* <- lang_de;; *);;
+		*);;
+	<= nrel_using_constants:
+		{
+			concept_suitcase
+		};;
+	*);
+->[An item that you will take with you on a trip, even if you are going for 1 day](* <- lang_en;; *);
+->[An indispensable friend on a trip](* <- lang_en;; *);
+->[An item that will carry your things instead of you (but you need to carry it)](* <- lang_en;; *);
+
+->[Ein Gegenstand, den Sie auf eine Reise mitnehmen, auch wenn Sie 1 Tag unterwegs sind](* <- lang_de;; *);
+->[Ein unverzichtbarer Freund auf Reisen](* <- lang_de;; *);
+->[Ein Gegenstand, der Ihre Sachen anstelle von Ihnen trägt (aber Sie müssen es tragen)](* <- lang_de;; *);;

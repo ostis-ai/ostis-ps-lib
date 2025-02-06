@@ -1,0 +1,45 @@
+concept_default_dialog_start_phrase
+<-sc_node_class;
+=>nrel_main_idtf:
+	[фраза начала диалога по умолчанию]
+	(* <- lang_ru;; *);
+	[default dialog start phrase]
+	(* <- lang_en;; *);
+	[]
+	(* <- lang_de;; *);
+-> concept_dialog_start_phrase;
+<- rrel_key_sc_element:
+	...
+	(*
+	=>nrel_main_idtf:
+		[Опр. (фраза начала диалога по умолчанию)]
+		(* <- lang_ru;; *);
+		[Def. (default dialog start phrase)]
+		(* <- lang_en;; *);
+		[Def. ()]
+		(* <- lang_de;; *);;
+	<- definition;;
+	<= nrel_sc_text_translation:
+		...
+		(*
+		->rrel_example:
+			[фраза начала диалога по умолчанию - приветственная фраза, использующаяся для начала диалога по умолчанию.]
+			(* <- lang_ru;; *);;
+		*);
+		...
+		(*
+		-> rrel_example: 
+			[Default dialog start phrase is a greeting phrase used to start a dialog by default.]
+			(* <- lang_en;; *);;
+		*);
+		...
+		(*
+		-> rrel_example: 
+			[]
+			(* <- lang_de;; *);;
+		*);;
+	<= nrel_using_constants:
+		{
+            concept_greeting_phrase
+		};;
+	*);;

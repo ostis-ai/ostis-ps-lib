@@ -1,0 +1,55 @@
+concept_descriptive_phrase_about_houseplant
+<- sc_node_class;
+<= nrel_inclusion:
+	concept_descriptive_phrase_about_detectable_item;
+=> nrel_main_idtf:
+	[описывающая фраза о комнатном растении]
+	(* <- lang_ru;; *);
+	[descriptive phrase about a houseplant]
+	(* <- lang_en;; *);
+	[beschreibende Phrase über eine Zimmerpflanze]
+	(* <- lang_de;; *);
+<= nrel_descriptive_phrase:
+    concept_houseplant;
+<- rrel_key_sc_element:
+	...
+	(*
+	=> nrel_main_idtf:
+		[Опр. (описывающая фраза о комнатном растении)]
+		(* <- lang_ru;; *);
+		[Def. (descriptive phrase about a houseplant)]
+		(* <- lang_en;; *);
+		[Def. (beschreibende Phrase über eine Zimmerpflanze)]
+		(* <- lang_de;; *);;
+	<- definition;;
+	<= nrel_sc_text_translation:
+		...
+		(*
+		-> rrel_example:
+			[Описывающая фраза о комнатном растении - это фраза, косвенно описывающая комнатное растение.]
+			(* <- lang_ru;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Descriptive phrase about a houseplant is a phrase that indirectly describes a houseplant.]
+			(* <- lang_en;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Beschreibende Phrase über eine Zimmerpflanze ist eine Phrase, die eine Zimmerpflanze indirekt beschreibt.]
+			(* <- lang_de;; *);;
+		*);;
+	<= nrel_using_constants:
+		{
+			concept_houseplant
+		};;
+	*);
+->[A piece of nature at your home](* <- lang_en;; *);
+->[An object that is hardly wait for you after your vacation, even if you asked the neighbors to water it](* <- lang_en;; *);
+->[A living being that does not need to be fed, only to be watered](* <- lang_en;; *);
+
+->[Ein Stück Natur zu Hause](* <- lang_de;; *);
+->[Ein Objekt, das nach dem Urlaub kaum auf Sie wartet, auch wenn Sie die Nachbarn bitten, es zu gießen](* <- lang_de;; *);
+->[Ein Lebewesen, das nicht gefüttert, sondern nur bewässert werden muss](* <- lang_de;; *);;

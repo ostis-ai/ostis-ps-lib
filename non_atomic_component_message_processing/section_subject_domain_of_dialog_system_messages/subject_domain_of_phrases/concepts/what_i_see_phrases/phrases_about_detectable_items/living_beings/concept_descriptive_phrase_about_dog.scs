@@ -1,0 +1,55 @@
+concept_descriptive_phrase_about_dog
+<- sc_node_class;
+<= nrel_inclusion:
+	concept_descriptive_phrase_about_detectable_item;
+=> nrel_main_idtf:
+	[описывающая фраза о собаке]
+	(* <- lang_ru;; *);
+	[descriptive phrase about a dog]
+	(* <- lang_en;; *);
+	[beschreibende Phrase über einen Hund]
+	(* <- lang_de;; *);
+<= nrel_descriptive_phrase:
+    concept_dog;
+<- rrel_key_sc_element:
+	...
+	(*
+	=> nrel_main_idtf:
+		[Опр. (описывающая фраза о собаке)]
+		(* <- lang_ru;; *);
+		[Def. (descriptive phrase about a dog)]
+		(* <- lang_en;; *);
+		[Def. (beschreibende Phrase über einen Hund)]
+		(* <- lang_de;; *);;
+	<- definition;;
+	<= nrel_sc_text_translation:
+		...
+		(*
+		-> rrel_example:
+			[Описывающая фраза о собаке - это фраза, косвенно описывающая собаку.]
+			(* <- lang_ru;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Descriptive phrase about a dog is a phrase that indirectly describes a dog.]
+			(* <- lang_en;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Beschreibende Phrase über einen Hund ist eine Phrase, die einen Hund indirekt beschreibt.]
+			(* <- lang_de;; *);;
+		*);;
+	<= nrel_using_constants:
+		{
+			concept_dog
+		};;
+	*);
+->[The best security guard for the house](* <- lang_en;; *);
+->[A strong and brave pet that can be terrified by a cute little kitten](* <- lang_en;; *);
+->[An animal that is happy to see you every minute](* <- lang_en;; *);
+
+->[Der beste Wachmann für das Haus](* <- lang_de;; *);
+->[Ein starkes und mutiges Haustier, das von einem hübschen kleinen Kätzchen erschreckt werden kann](* <- lang_de;; *);
+->[Ein Tier, das sich jede Minute freut, Sie zu sehen](* <- lang_de;; *);;

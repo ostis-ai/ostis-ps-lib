@@ -1,0 +1,49 @@
+concept_what_i_see_exit_confirmation_request_phrase
+<- sc_node_class;
+=> nrel_main_idtf:
+	[фраза, представляющая собой вопрос о желании завершить игру "Угадай, что я вижу"]
+	(* <- lang_ru;; *);
+	[phrase question about the desire to end the game "Guess what I see"]
+	(* <- lang_en;; *);
+	[Fragephrase nach dem Wunsch, das Spiel "Rate mal, was ich sehe" zu beenden]
+	(* <- lang_de;; *);
+<= nrel_inclusion:
+	concept_interrogative_phrase;
+<- rrel_key_sc_element:
+	...
+	(*
+	=> nrel_main_idtf:
+		[Опр. (фраза, представляющая собой вопрос о желании завершить игру "Угадай, что я вижу")]
+		(* <- lang_ru;; *);
+		[Def. (phrase question about the desire to end the game "Guess what I see")]
+		(* <- lang_en;; *);
+		[Def. (Fragephrase nach dem Wunsch, das Spiel "Rate mal, was ich sehe" zu beenden)]
+		(* <- lang_de;; *);;
+	<- definition;;
+	<= nrel_sc_text_translation:
+		...
+		(*
+		-> rrel_example:
+			[Фраза, представляющая собой вопрос о желании завершить игру "Угадай, что я вижу" - это фраза, являющаяся вопросом о желании завершить игроком  игру "Угадай, что я вижу".]
+			(* <- lang_ru;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Phrase question about the desire to end the game "Guess what I see" is a phrase that is a question about the desire of the player to complete the game "Guess what I see".]
+			(* <- lang_en;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Fragephrase nach dem Wunsch, das Spiel "Rate mal, was ich sehe" zu beenden ist eine Phrase, die eine Frage über den Wunsch des Spielers ist, das Spiel "Rate, was ich sehe" abzuschließen.]
+			(* <- lang_de;; *);;
+		*);;
+	<= nrel_using_constants:
+		{
+			concept_phrase;
+			concept_patient;
+			task_question;
+        		concept_guess_what_i_see_game_party
+		};;
+	*);;

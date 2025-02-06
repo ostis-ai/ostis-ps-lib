@@ -1,0 +1,53 @@
+concept_message_about_entity_property_value
+<- sc_node_class;
+=> nrel_main_idtf:
+	[сообщение о значении свойства сущности]
+	(* <- lang_ru;; *);
+	[message about the entity property value]
+	(* <- lang_en;; *);
+	[Nachricht über den Wert der Entitätseigenschaft]
+	(* <- lang_de;; *);
+=> nrel_nlp_service_idtf:
+	[entity_property_value];
+<- rrel_key_sc_element:
+	...
+	(*
+	=>nrel_main_idtf:
+		[Опр. (сообщение о значении свойства сущности)]
+		(* <- lang_ru;; *);
+		[Def. (message about the entity property value)]
+		(* <- lang_en;; *);
+		[Def. (Nachricht über den Wert der Entitätseigenschaft)]
+		(* <- lang_de;; *);;
+	<- definition;;
+	<= nrel_sc_text_translation:
+		...
+		(*
+		->rrel_example:
+			[Сообщение о значении свойства сущности - атомарное сообщение, содержащее информацию об общем состоянии сущности или значении свойства сущности в виде 
+			параметра или бинарной связки с сущностью]
+			(* <- lang_ru;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Message about the entity property value is an atomic message containing information about the general entity state or the entity property value 
+			in the form of a parameter or a binary binding with the entity.]
+			(* <- lang_en;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Nachricht über den Wert der Entitätseigenschaft ist eine atomare Nachricht, die Informationen über den allgemeinen Entitätszustand 
+			enthält oder den Wert der Entitätseigenschaft in Form eines Parameters oder einer binären Binding mit der Entität enthält.]
+			(* <- lang_de;; *);;
+		*);;
+	<= nrel_using_constants:
+		{
+			concept_atomic_message;
+			sc_element;
+			parameter;
+			binary_relation;
+			situation
+		};;
+	*);;

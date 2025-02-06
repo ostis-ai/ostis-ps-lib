@@ -1,0 +1,55 @@
+concept_descriptive_phrase_about_cat
+<- sc_node_class;
+<= nrel_inclusion:
+	concept_descriptive_phrase_about_detectable_item;
+=> nrel_main_idtf:
+	[описывающая фраза о кошке]
+	(* <- lang_ru;; *);
+	[descriptive phrase about a cat]
+	(* <- lang_en;; *);
+	[beschreibende Phrase über eine Katze]
+	(* <- lang_de;; *);
+<= nrel_descriptive_phrase:
+    concept_cat;
+<- rrel_key_sc_element:
+	...
+	(*
+	=> nrel_main_idtf:
+		[Опр. (описывающая фраза о кошке)]
+		(* <- lang_ru;; *);
+		[Def. (descriptive phrase about a cat)]
+		(* <- lang_en;; *);
+		[Def. (beschreibende Phrase über eine Katze)]
+		(* <- lang_de;; *);;
+	<- definition;;
+	<= nrel_sc_text_translation:
+		...
+		(*
+		-> rrel_example:
+			[Описывающая фраза о кошке - это фраза, косвенно описывающая кошку.]
+			(* <- lang_ru;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Descriptive phrase about a cat is a phrase that indirectly describes a cat.]
+			(* <- lang_en;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Beschreibende Phrase über eine Katze ist eine Phrase, die eine Katze indirekt beschreibt.]
+			(* <- lang_de;; *);;
+		*);;
+	<= nrel_using_constants:
+		{
+			concept_cat
+		};;
+	*);
+->[A pet that rightfully behaves like an owner in the house](* <- lang_en;; *);
+->[A living being that filled the entire Internet](* <- lang_en;; *);
+->[A small domestic predator with such cute triangular ears](* <- lang_en;; *);
+
+->[Ein Haustier, das sich mit gutem Recht wie ein Besitzer im Haus verhält](* <- lang_de;; *);
+->[Ein Lebewesen, das das gesamte Internet erfüllte](* <- lang_de;; *);
+->[Ein kleines Haus-Raubtier mit so hübschen dreieckigen Ohren](* <- lang_de;; *);;

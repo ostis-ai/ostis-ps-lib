@@ -1,0 +1,55 @@
+concept_descriptive_phrase_about_wine_glass
+<- sc_node_class;
+<= nrel_inclusion:
+	concept_descriptive_phrase_about_detectable_item;
+=> nrel_main_idtf:
+	[описывающая фраза о фужере]
+	(* <- lang_ru;; *);
+	[descriptive phrase about a wine glass]
+	(* <- lang_en;; *);
+	[beschreibende Phrase über ein Spitzglas]
+	(* <- lang_de;; *);
+<= nrel_descriptive_phrase:
+    concept_wine_glass;
+<- rrel_key_sc_element:
+	...
+	(*
+	=> nrel_main_idtf:
+		[Опр. (описывающая фраза о фужере)]
+		(* <- lang_ru;; *);
+		[Def. (descriptive phrase about a wine glass)]
+		(* <- lang_en;; *);
+		[Def. (beschreibende Phrase über ein Spitzglas)]
+		(* <- lang_de;; *);;
+	<- definition;;
+	<= nrel_sc_text_translation:
+		...
+		(*
+		-> rrel_example:
+			[Описывающая фраза о фужере - это фраза, косвенно описывающая фужер.]
+			(* <- lang_ru;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Descriptive phrase about a wine glass is a phrase that indirectly describes a wine glass.]
+			(* <- lang_en;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Beschreibende Phrase über ein Spitzglas ist eine Phrase, die ein Spitzglas indirekt beschreibt.]
+			(* <- lang_de;; *);;
+		*);;
+	<= nrel_using_constants:
+		{
+			concept_wine_glass
+		};;
+	*);
+->[An item that is put on the table for two reasons: a holiday or depression](* <- lang_en;; *);
+->[A temporary house for wine](* <- lang_en;; *);
+->[A necessary element of the holiday table](* <- lang_en;; *);
+
+->[den Tisch gestellt wird: ein Fest oder Depression](* <- lang_de;; *);
+->[Ein temporäres Haus für Wein](* <- lang_de;; *);
+->[Ein notwendiges Element des Feiertagstisches](* <- lang_de;; *);;

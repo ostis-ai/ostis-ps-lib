@@ -1,0 +1,47 @@
+concept_interception_phrase
+<- sc_node_class;
+=> nrel_main_idtf:
+	[фраза для перехвата диалога]
+	(* <- lang_ru;; *);
+	[dialogue interception phrase]
+	(* <- lang_en;; *);
+	[...]
+	(* <- lang_de;; *);
+<- rrel_key_sc_element:
+	...
+	(*
+	=> nrel_main_idtf:
+		[Опр. (фраза для перехвата диалога)]
+		(* <- lang_ru;; *);
+		[Def. (dialogue interception phrase)]
+		(* <- lang_en;; *);
+		[...]
+		(* <- lang_de;; *);;
+	<- definition;;
+	<= nrel_sc_text_translation:
+		...
+		(*
+		-> rrel_example:
+			[Фраза для перехвата диалога - декларативная фраза для перехвата инициативы в диалоге.]
+			(* <- lang_ru;; *);;
+		*);
+		...
+		(*
+		-> rrel_example: 
+			[Dialogue interception phrase is a declarative phrase for intercepting an initiative in a dialogue.]
+			(* <- lang_en;; *);;
+		*);
+		...
+		(*
+		-> rrel_example: 
+			[...]
+			(* <- lang_de;; *);;
+		*);;
+	<= nrel_using_constants:
+		{
+			concept_declarative_phrase;
+			concept_dialog
+		};;
+	*);
+=> nrel_inclusion:
+    concept_detected_objects_interception_phrase;;

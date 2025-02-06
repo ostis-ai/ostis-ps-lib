@@ -1,0 +1,55 @@
+concept_descriptive_phrase_about_bird
+<- sc_node_class;
+<= nrel_inclusion:
+	concept_descriptive_phrase_about_detectable_item;
+=> nrel_main_idtf:
+	[описывающая фраза о птице]
+	(* <- lang_ru;; *);
+	[descriptive phrase about a bird]
+	(* <- lang_en;; *);
+	[beschreibende Phrase über einen Vogel]
+	(* <- lang_de;; *);
+<= nrel_descriptive_phrase:
+    concept_bird;
+<- rrel_key_sc_element:
+	...
+	(*
+	=> nrel_main_idtf:
+		[Опр. (описывающая фраза о птице)]
+		(* <- lang_ru;; *);
+		[Def. (descriptive phrase about a bird)]
+		(* <- lang_en;; *);
+		[Def. (beschreibende Phrase über einen Vogel)]
+		(* <- lang_de;; *);;
+	<- definition;;
+	<= nrel_sc_text_translation:
+		...
+		(*
+		-> rrel_example:
+			[Описывающая фраза о птице - это фраза, косвенно описывающая птицу.]
+			(* <- lang_ru;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Descriptive phrase about a bird is a phrase that indirectly describes a bird.]
+			(* <- lang_en;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Beschreibende Phrase über einen Vogel ist eine Phrase, die einen Vogel indirekt beschreibt.]
+			(* <- lang_de;; *);;
+		*);;
+	<= nrel_using_constants:
+		{
+			concept_bird
+		};;
+	*);
+->[A flying living creature that chirps pleasantly outside the window](* <- lang_en;; *);
+->[A subject by whose voice we understand that spring has come](* <- lang_en;; *);
+->[A living being to whom you can always give unwanted bread](* <- lang_en;; *);
+
+->[Ein fliegendes Lebewesen, das angenehm vor dem Fenster zwitschert](* <- lang_de;; *);
+->[Ein Subjekt, an dessen Stimme wir verstehen, dass der Frühling gekommen ist](* <- lang_de;; *);
+->[Ein Lebewesen, dem man immer unerwünschtes Brot geben kann](* <- lang_de;; *);;

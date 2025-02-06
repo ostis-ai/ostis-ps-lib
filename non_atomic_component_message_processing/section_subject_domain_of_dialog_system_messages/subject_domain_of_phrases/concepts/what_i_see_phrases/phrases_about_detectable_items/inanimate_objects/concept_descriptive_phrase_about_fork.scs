@@ -1,0 +1,55 @@
+concept_descriptive_phrase_about_fork
+<- sc_node_class;
+<= nrel_inclusion:
+	concept_descriptive_phrase_about_detectable_item;
+=> nrel_main_idtf:
+	[описывающая фраза о вилке]
+	(* <- lang_ru;; *);
+	[descriptive phrase about a fork]
+	(* <- lang_en;; *);
+	[beschreibende Phrase über eine Gabel]
+	(* <- lang_de;; *);
+<= nrel_descriptive_phrase:
+    concept_fork;
+<- rrel_key_sc_element:
+	...
+	(*
+	=> nrel_main_idtf:
+		[Опр. (описывающая фраза о вилке)]
+		(* <- lang_ru;; *);
+		[Def. (descriptive phrase about a fork)]
+		(* <- lang_en;; *);
+		[Def. (beschreibende Phrase über eine Gabel)]
+		(* <- lang_de;; *);;
+	<- definition;;
+	<= nrel_sc_text_translation:
+		...
+		(*
+		-> rrel_example:
+			[Описывающая фраза о вилке - это фраза, косвенно описывающая вилку.]
+			(* <- lang_ru;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Descriptive phrase about a fork is a phrase that indirectly describes a fork.]
+			(* <- lang_en;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Beschreibende Phrase über eine Gabel ist eine Phrase, die eine Gabel indirekt beschreibt.]
+			(* <- lang_de;; *);;
+		*);;
+	<= nrel_using_constants:
+		{
+			concept_fork
+		};;
+	*);
+->[A cutlery that is impossible to eat soup with](* <- lang_en;; *);
+->[A cutlery that is used instead of a knife if you eat a cutlet](* <- lang_en;; *);
+->[A cutlery that is often used to eat sushi instead of chopsticks, which infuriates the Japanese](* <- lang_en;; *);
+
+->[Ein Besteck, mit dem man keine Suppe essen kann](* <- lang_de;; *);
+->[Ein Besteck, das anstelle eines Messers verwendet wird, wenn Sie ein Schnitzel essen](* <- lang_de;; *);
+->[Ein Besteck, mit dem oft Sushi anstelle von Essstäbchen gegessen wird, was die Japaner wütend macht](* <- lang_de;; *);;

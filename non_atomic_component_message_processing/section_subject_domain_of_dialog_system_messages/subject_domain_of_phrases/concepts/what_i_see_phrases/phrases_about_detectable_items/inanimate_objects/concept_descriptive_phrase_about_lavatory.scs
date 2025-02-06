@@ -1,0 +1,55 @@
+concept_descriptive_phrase_about_lavatory
+<- sc_node_class;
+<= nrel_inclusion:
+	concept_descriptive_phrase_about_detectable_item;
+=> nrel_main_idtf:
+	[описывающая фраза о туалете]
+	(* <- lang_ru;; *);
+	[descriptive phrase about a lavatory]
+	(* <- lang_en;; *);
+	[beschreibende Phrase über ein Wasserklosett]
+	(* <- lang_de;; *);
+<= nrel_descriptive_phrase:
+    concept_lavatory;
+<- rrel_key_sc_element:
+	...
+	(*
+	=> nrel_main_idtf:
+		[Опр. (описывающая фраза о туалете)]
+		(* <- lang_ru;; *);
+		[Def. (descriptive phrase about a lavatory)]
+		(* <- lang_en;; *);
+		[Def. (beschreibende Phrase über ein Wasserklosett)]
+		(* <- lang_de;; *);;
+	<- definition;;
+	<= nrel_sc_text_translation:
+		...
+		(*
+		-> rrel_example:
+			[Описывающая фраза о туалете - это фраза, косвенно описывающая туалет.]
+			(* <- lang_ru;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Descriptive phrase about a lavatory is a phrase that indirectly describes a lavatory.]
+			(* <- lang_en;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Beschreibende Phrase über ein Wasserklosett ist eine Phrase, die ein Wasserklosett indirekt beschreibt.]
+			(* <- lang_de;; *);;
+		*);;
+	<= nrel_using_constants:
+		{
+			concept_lavatory
+		};;
+	*);
+->[An object that can be used even by a cat](* <- lang_en;; *);
+->[A popular place for thinking](* <- lang_en;; *);
+->[An object that, as a rule, is personal for the cat](* <- lang_en;; *);
+
+->[Ein Objekt, das sogar von einer Katze benutzt werden kann](* <- lang_de;; *);
+->[Ein beliebter Ort zum Nachdenken](* <- lang_de;; *);
+->[Ein Objekt, das normalerweise für eine Katze persönlich ist](* <- lang_de;; *);;

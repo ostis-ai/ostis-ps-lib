@@ -1,0 +1,55 @@
+concept_descriptive_phrase_about_cake
+<- sc_node_class;
+<= nrel_inclusion:
+	concept_descriptive_phrase_about_detectable_item;
+=> nrel_main_idtf:
+	[описывающая фраза о торте]
+	(* <- lang_ru;; *);
+	[descriptive phrase about a cake]
+	(* <- lang_en;; *);
+	[beschreibende Phrase über einen Kuchen]
+	(* <- lang_de;; *);
+<= nrel_descriptive_phrase:
+    concept_cake;
+<- rrel_key_sc_element:
+	...
+	(*
+	=> nrel_main_idtf:
+		[Опр. (описывающая фраза о торте)]
+		(* <- lang_ru;; *);
+		[Def. (descriptive phrase about a cake)]
+		(* <- lang_en;; *);
+		[Def. (beschreibende Phrase über einen Kuchen)]
+		(* <- lang_de;; *);;
+	<- definition;;
+	<= nrel_sc_text_translation:
+		...
+		(*
+		-> rrel_example:
+			[Описывающая фраза о торте - это фраза, косвенно описывающая торт.]
+			(* <- lang_ru;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Descriptive phrase about a cake is a phrase that indirectly describes a cake.]
+			(* <- lang_en;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Beschreibende Phrase über einen Kuchen ist eine Phrase, die einen Kuchen indirekt beschreibt.]
+			(* <- lang_de;; *);;
+		*);;
+	<= nrel_using_constants:
+		{
+			concept_cake
+		};;
+	*);
+->[A confection that is traditionally eaten in Germany with coffee at 4 p.m.](* <- lang_en;; *);
+->[The most welcome "guest" on any holiday](* <- lang_en;; *);
+->[The most frequent birthday gift with candles](* <- lang_en;; *);
+
+->[Eine Konditoreiware, die in Deutschland traditionell um 4 Uhr nachmittags mit Kaffee gegessen wird](* <- lang_de;; *);
+->[Der willkommenste “Gast” bei jedem Fest](* <- lang_de;; *);
+->[Das häufigste Geburtstagsgeschenk mit Kerzen](* <- lang_de;; *);;

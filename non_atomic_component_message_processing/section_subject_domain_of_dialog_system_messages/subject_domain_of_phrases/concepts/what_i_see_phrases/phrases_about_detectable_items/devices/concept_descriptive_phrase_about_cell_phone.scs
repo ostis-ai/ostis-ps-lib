@@ -1,0 +1,55 @@
+concept_descriptive_phrase_about_cell_phone
+<- sc_node_class;
+<= nrel_inclusion:
+	concept_descriptive_phrase_about_detectable_item;
+=> nrel_main_idtf:
+	[описывающая фраза о сотовом телефоне]
+	(* <- lang_ru;; *);
+	[descriptive phrase about a cell phone]
+	(* <- lang_en;; *);
+	[beschreibende Phrase über ein Mobiltelefon]
+	(* <- lang_de;; *);
+<= nrel_descriptive_phrase:
+    concept_cell_phone;
+<- rrel_key_sc_element:
+	...
+	(*
+	=> nrel_main_idtf:
+		[Опр. (описывающая фраза о сотовом телефоне)]
+		(* <- lang_ru;; *);
+		[Def. (descriptive phrase about a cell phone)]
+		(* <- lang_en;; *);
+		[Def. (beschreibende Phrase über ein Mobiltelefon)]
+		(* <- lang_de;; *);;
+	<- definition;;
+	<= nrel_sc_text_translation:
+		...
+		(*
+		-> rrel_example:
+			[Описывающая фраза о сотовом телефоне - это фраза, косвенно описывающая сотовый телефон.]
+			(* <- lang_ru;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Descriptive phrase about a cell phone is a phrase that indirectly describes a cell phone.]
+			(* <- lang_en;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Beschreibende Phrase über ein Mobiltelefon ist eine Phrase, die ein Mobiltelefon indirekt beschreibt.]
+			(* <- lang_de;; *);;
+		*);;
+	<= nrel_using_constants:
+		{
+			concept_cell_phone
+		};;
+	*);
+->[A device that, despite the development of technologies, is getting larger and larger year by year](* <- lang_en;; *);
+->[A device that knows more about you than you do](* <- lang_en;; *);
+->[A small gadget with a screen that used to be written about only in science fiction books](* <- lang_en;; *);
+
+->[Ein Gerät, das trotz der Entwicklung von Technologien von Jahr zu Jahr immer größer wird](* <- lang_de;; *);
+->[Ein Gerät, das mehr über Sie weiß als Sie](* <- lang_de;; *);
+->[Ein kleines Gadget mit einem Bildschirm, über den früher nur in Science-Fiction-Büchern geschrieben wurde](* <- lang_de;; *);;

@@ -1,0 +1,55 @@
+concept_descriptive_phrase_about_apple
+<- sc_node_class;
+<= nrel_inclusion:
+	concept_descriptive_phrase_about_detectable_item;
+=> nrel_main_idtf:
+	[описывающая фраза о яблоке]
+	(* <- lang_ru;; *);
+	[descriptive phrase about an apple]
+	(* <- lang_en;; *);
+	[beschreibende Phrase über einen Apfel]
+	(* <- lang_de;; *);
+<= nrel_descriptive_phrase:
+    concept_apple;
+<- rrel_key_sc_element:
+	...
+	(*
+	=> nrel_main_idtf:
+		[Опр. (описывающая фраза о яблоке)]
+		(* <- lang_ru;; *);
+		[Def. (descriptive phrase about an apple)]
+		(* <- lang_en;; *);
+		[Def. (beschreibende Phrase über einen Apfel)]
+		(* <- lang_de;; *);;
+	<- definition;;
+	<= nrel_sc_text_translation:
+		...
+		(*
+		-> rrel_example:
+			[Описывающая фраза о яблоке - это фраза, косвенно описывающая яблоко.]
+			(* <- lang_ru;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Descriptive phrase about an apple is a phrase that indirectly describes an apple.]
+			(* <- lang_en;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Beschreibende Phrase über einen Apfel ist eine Phrase, die einen Apfel indirekt beschreibt.]
+			(* <- lang_de;; *);;
+		*);;
+	<= nrel_using_constants:
+		{
+			concept_apple
+		};;
+	*);
+->[A fruit that i-Phone lovers really adore](* <- lang_en;; *);
+->[A fruit that could contribute to physics](* <- lang_en;; *);
+->[A fruit that can be ripe and at the same time green in color](* <- lang_en;; *);
+
+->[Eine Frucht, die iPhone-Fans wirklich lieben](* <- lang_de;; *);
+->[Eine Frucht, die zur Physik beitragen könnte](* <- lang_de;; *);
+->[Eine Frucht, die reif und gleichzeitig grün sein kann](* <- lang_de;; *);;

@@ -1,0 +1,55 @@
+concept_descriptive_phrase_about_motorcycle
+<- sc_node_class;
+<= nrel_inclusion:
+	concept_descriptive_phrase_about_detectable_item;
+=> nrel_main_idtf:
+	[описывающая фраза о мотоцикле]
+	(* <- lang_ru;; *);
+	[descriptive phrase about a motorcycle]
+	(* <- lang_en;; *);
+	[beschreibende Phrase über ein Motorrad]
+	(* <- lang_de;; *);
+<= nrel_descriptive_phrase:
+    concept_motorcycle;
+<- rrel_key_sc_element:
+	...
+	(*
+	=> nrel_main_idtf:
+		[Опр. (описывающая фраза о мотоцикле)]
+		(* <- lang_ru;; *);
+		[Def. (descriptive phrase about a motorcycle)]
+		(* <- lang_en;; *);
+		[Def. (beschreibende Phrase über ein Motorrad)]
+		(* <- lang_de;; *);;
+	<- definition;;
+	<= nrel_sc_text_translation:
+		...
+		(*
+		-> rrel_example:
+			[Описывающая фраза о мотоцикле - это фраза, косвенно описывающая мотоцикл.]
+			(* <- lang_ru;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Descriptive phrase about a motorcycle is a phrase that indirectly describes a motorcycle.]
+			(* <- lang_en;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Beschreibende Phrase über ein Motorrad ist eine Phrase, die ein Motorrad indirekt beschreibt.]
+			(* <- lang_de;; *);;
+		*);;
+	<= nrel_using_constants:
+		{
+			concept_motorcycle
+		};;
+	*);
+->[The "mechanical brother" of the bicycle](* <- lang_en;; *);
+->[A bicycle with motor](* <- lang_en;; *);
+->[The Terminator Bike](* <- lang_en;; *);
+
+->[Ein “mechanischer Bruder” des Fahrrads](* <- lang_de;; *);
+->[Ein Fahrrad mit Motor](* <- lang_de;; *);
+->[Das Terminator-Fahrrad](* <- lang_de;; *);;

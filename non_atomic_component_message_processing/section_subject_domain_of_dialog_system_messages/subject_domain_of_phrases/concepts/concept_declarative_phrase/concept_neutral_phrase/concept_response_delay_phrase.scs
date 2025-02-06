@@ -1,0 +1,44 @@
+concept_response_delay_phrase
+<- sc_node_class;
+=> nrel_main_idtf:
+	[фраза отсрочки ответа]
+	(* <- lang_ru;; *);
+	[response delay phrase]
+	(* <- lang_en;; *);
+	[Antwortverzögerungsphrase]
+	(* <- lang_de;; *);
+<- rrel_key_sc_element:
+	...
+	(*
+	=> nrel_main_idtf:
+		[Опр. (фраза отсрочки ответа)]
+		(* <- lang_ru;; *);
+		[Def. (response delay phrase)]
+		(* <- lang_en;; *);
+		[Def. (Antwortverzögerungsphrase)]
+		(* <- lang_de;; *);;
+	<- definition;;
+	<= nrel_sc_text_translation:
+		...
+		(*
+		-> rrel_example:
+			[Фраза отсрочки ответа - фраза, указывающая на необходимость дополнительного времени для размышления, прежде чем дать окончательный ответ.]
+			(* <- lang_ru;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Response delay phrase is a phrase that indicates the need for additional time to think before giving a final answer.]
+			(* <- lang_en;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Antwortverzögerungsphrase ist eine Phrase, die auf den Bedarf an zusätzlicher Zeit zum Nachdenken hinweist, bevor eine endgültige Antwort gegeben wird.]
+			(* <- lang_de;; *);;
+		*);;
+	<= nrel_using_constants:
+		{
+			concept_phrase
+		};;
+	*);;

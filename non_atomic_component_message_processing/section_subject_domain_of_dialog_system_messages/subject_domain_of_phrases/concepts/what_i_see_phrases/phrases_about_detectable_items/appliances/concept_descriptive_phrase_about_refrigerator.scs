@@ -1,0 +1,55 @@
+concept_descriptive_phrase_about_refrigerator
+<- sc_node_class;
+<= nrel_inclusion:
+	concept_descriptive_phrase_about_detectable_item;
+=> nrel_main_idtf:
+	[описывающая фраза о холодильнике]
+	(* <- lang_ru;; *);
+	[descriptive phrase about a refrigerator]
+	(* <- lang_en;; *);
+	[beschreibende Phrase über einen Kühlschrank]
+	(* <- lang_de;; *);
+<= nrel_descriptive_phrase:
+    concept_refrigerator;
+<- rrel_key_sc_element:
+	...
+	(*
+	=> nrel_main_idtf:
+		[Опр. (описывающая фраза о холодильнике)]
+		(* <- lang_ru;; *);
+		[Def. (descriptive phrase about a refrigerator)]
+		(* <- lang_en;; *);
+		[Def. (beschreibende Phrase über einen Kühlschrank)]
+		(* <- lang_de;; *);;
+	<- definition;;
+	<= nrel_sc_text_translation:
+		...
+		(*
+		-> rrel_example:
+			[Описывающая фраза о холодильнике - это фраза, косвенно описывающая холодильник.]
+			(* <- lang_ru;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Descriptive phrase about a refrigerator is a phrase that indirectly describes a refrigerator.]
+			(* <- lang_en;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Beschreibende Phrase über einen Kühlschrank ist eine Phrase, die einen Kühlschrank indirekt beschreibt.]
+			(* <- lang_de;; *);;
+		*);;
+	<= nrel_using_constants:
+		{
+			concept_refrigerator
+		};;
+	*);
+->[An electrical appliance that you open every 5 minutes, although nothing delicious appears there](* <- lang_en;; *);
+->[The best friend of the human stomach](* <- lang_en;; *);
+->[Own small North Pole in the house](* <- lang_en;; *);
+
+->[Ein elektrisches Gerät, das Sie alle 5 Minuten öffnen, obwohl dort nichts Leckeres erscheint](* <- lang_de;; *);
+->[Der beste Freund des menschlichen Magens](* <- lang_de;; *);
+->[Eigener kleiner Nordpol im Haus](* <- lang_de;; *);;

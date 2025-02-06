@@ -1,0 +1,55 @@
+concept_descriptive_phrase_about_toaster
+<- sc_node_class;
+<= nrel_inclusion:
+	concept_descriptive_phrase_about_detectable_item;
+=> nrel_main_idtf:
+	[описывающая фраза о тостере]
+	(* <- lang_ru;; *);
+	[descriptive phrase about a toaster]
+	(* <- lang_en;; *);
+	[beschreibende Phrase über einen Toaster]
+	(* <- lang_de;; *);
+<= nrel_descriptive_phrase:
+    concept_toaster;
+<- rrel_key_sc_element:
+	...
+	(*
+	=> nrel_main_idtf:
+		[Опр. (описывающая фраза о тостере)]
+		(* <- lang_ru;; *);
+		[Def. (descriptive phrase about a toaster)]
+		(* <- lang_en;; *);
+		[Def. (beschreibende Phrase über einen Toaster)]
+		(* <- lang_de;; *);;
+	<- definition;;
+	<= nrel_sc_text_translation:
+		...
+		(*
+		-> rrel_example:
+			[Описывающая фраза о тостере - это фраза, косвенно описывающая тостер.]
+			(* <- lang_ru;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Descriptive phrase about a toaster is a phrase that indirectly describes a toaster.]
+			(* <- lang_en;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Beschreibende Phrase über einen Toaster ist eine Phrase, die einen Toaster indirekt beschreibt.]
+			(* <- lang_de;; *);;
+		*);;
+	<= nrel_using_constants:
+		{
+			concept_toaster
+		};;
+	*);
+->[An electrical appliance that is dangerous because bread can fly out of it very high](* <- lang_en;; *);
+->[An electrical appliance that "shoots" bread](* <- lang_en;; *);
+->[An electrical appliance that can speed up the time for bread and dry it quickly](* <- lang_en;; *);
+
+->[Ein elektrisches Gerät, das gefährlich ist, weil Brot sehr hoch herausfliegen kann](* <- lang_de;; *);
+->[Ein elektrisches Gerät, das Brot “schießt”](* <- lang_de;; *);
+->[Ein elektrisches Gerät, das die Zeit für Brot beschleunigen und schnell es trocknen kann](* <- lang_de;; *);;

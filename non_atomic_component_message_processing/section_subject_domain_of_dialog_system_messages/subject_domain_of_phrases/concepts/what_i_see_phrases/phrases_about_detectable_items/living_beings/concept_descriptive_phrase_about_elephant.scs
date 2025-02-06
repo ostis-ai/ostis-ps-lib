@@ -1,0 +1,55 @@
+concept_descriptive_phrase_about_elephant
+<- sc_node_class;
+<= nrel_inclusion:
+	concept_descriptive_phrase_about_detectable_item;
+=> nrel_main_idtf:
+	[описывающая фраза о слоне]
+	(* <- lang_ru;; *);
+	[descriptive phrase about an elephant]
+	(* <- lang_en;; *);
+	[beschreibende Phrase über einen Elefanten]
+	(* <- lang_de;; *);
+<= nrel_descriptive_phrase:
+    concept_elephant;
+<- rrel_key_sc_element:
+	...
+	(*
+	=> nrel_main_idtf:
+		[Опр. (описывающая фраза о слоне)]
+		(* <- lang_ru;; *);
+		[Def. (descriptive phrase about an elephant)]
+		(* <- lang_en;; *);
+		[Def. (beschreibende Phrase über einen Elefanten)]
+		(* <- lang_de;; *);;
+	<- definition;;
+	<= nrel_sc_text_translation:
+		...
+		(*
+		-> rrel_example:
+			[Описывающая фраза о слоне - это фраза, косвенно описывающая слона.]
+			(* <- lang_ru;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Descriptive phrase about an elephant is a phrase that indirectly describes an elephant.]
+			(* <- lang_en;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Beschreibende Phrase über einen Elefanten ist eine Phrase, die einen Elefanten indirekt beschreibt.]
+			(* <- lang_de;; *);;
+		*);;
+	<= nrel_using_constants:
+		{
+			concept_elephant
+		};;
+	*);
+->[A large animal that you can ride in India](* <- lang_en;; *);
+->[A giant who is afraid of mice](* <- lang_en;; *);
+->[A relative of Dumbo, a famous cartoon character](* <- lang_en;; *);
+
+->[Ein großes Tier, das Sie in Indien reiten können](* <- lang_de;; *);
+->[Ein Gigant, der Angst vor Mäusen hat](* <- lang_de;; *);
+->[Ein Verwandter von Dumbo, einer berühmten Trickfigur](* <- lang_de;; *);;

@@ -1,0 +1,51 @@
+concept_message_about_entity_action_with_entity
+<- sc_node_class;
+=> nrel_main_idtf:
+	[сообщение о действии сущности с сущностью]
+	(* <- lang_ru;; *);
+	[message about the entity action with an entity]
+	(* <- lang_en;; *);
+	[Nachricht über die Entitätsaktion mit einer Entität]
+	(* <- lang_de;; *);
+=> nrel_nlp_service_idtf:
+	[entity_action_entity];
+<- rrel_key_sc_element:
+	...
+	(*
+	=>nrel_main_idtf:
+		[Опр. (сообщение о действии сущности с сущностью)]
+		(* <- lang_ru;; *);
+		[Def. (message about the entity action with an entity)]
+		(* <- lang_en;; *);
+		[Def. (Nachricht über die Entitätsaktion mit einer Entität)]
+		(* <- lang_de;; *);;
+	<- definition;;
+	<= nrel_sc_text_translation:
+		...
+		(*
+		->rrel_example:
+			[Сообщение о действии сущности с сущностью - атомарное сообщение, описывающее действие сущности,
+			выполняемое с/над другой сущностью.]
+			(* <- lang_ru;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Message about the entity action with an entity is an atomic message that describes the entity action performed
+			with/on another entity.]
+			(* <- lang_en;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Nachricht über die Entitätsaktion mit einer Entität ist eine atomare Nachricht, die die Entitätsaktion beschreibt, 
+			die mit/an einer anderen Entität ausgeführt wird.]
+			(* <- lang_de;; *);;
+		*);;
+	<= nrel_using_constants:
+		{
+			concept_atomic_message;
+			sc_element;
+			question
+		};;
+	*);;

@@ -1,0 +1,24 @@
+subject_domain_of_prompts
+=> nrel_main_idtf:
+    [Предметная область промптов]
+    (* <- lang_ru;; *);
+    [Subject domain of prompts]
+    (* <- lang_en;; *);
+<- subject_domain;
+<= nrel_private_subject_domain:
+    subject_domain_of_phrases;
+-> rrel_maximum_studied_object_class:
+    concept_prompt;
+-> rrel_not_maximum_studied_object_class:
+    concept_static_prompt;
+    concept_dynamic_prompt;
+    concept_static_prompt_statement;
+    concept_static_prompt_form_statement;
+    concept_static_prompt_length_statement;
+    concept_static_prompt_role_statement;
+    concept_static_prompt_syntax_statement;
+    concept_static_prompt_semantic_statement;
+-> rrel_explored_relation:
+	nrel_initiating_class;
+	nrel_meaning_translation_example;
+	nrel_static_prompt;;

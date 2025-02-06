@@ -1,0 +1,46 @@
+concept_message_no_type
+<- sc_node_class;
+=> nrel_main_idtf:
+    [сообщение без типа]
+    (* <- lang_ru;; *);
+    [message without type]
+    (* <- lang_en;; *);
+    [Nachricht ohne Typ]
+    (* <- lang_de;; *);
+=> nrel_nlp_service_idtf:
+	[unknown];
+<- rrel_key_sc_element:
+	...
+	(*
+	=>nrel_main_idtf:
+	[Опр. (сообщение без типа)]
+	(* <- lang_ru;; *);
+	[Def. (message without type)]
+	(* <- lang_en;; *);
+	[Def. (Nachricht ohne Typ)]
+	(* <- lang_de;; *);;
+	<- definition;;
+	<= nrel_sc_text_translation:
+		...
+		(*
+		->rrel_example:
+			[Сообщение без типа - сообщение, тип которого в настоящее время не распознан.]
+			(* <- lang_ru;; *);;
+		*);
+		...
+		(*
+		-> rrel_example: 
+			[Message without type is a message whose type is not currently recognized.]
+			(* <- lang_en;; *);;
+		*);
+		...
+		(*
+		-> rrel_example: 
+			[Nachricht ohne Typ ist eine Nachricht, deren Typ derzeit nicht erkannt wird.]
+			(* <- lang_de;; *);;
+		*);;
+	<= nrel_using_constants:
+		{
+		   concept_message
+		};;		
+	*);;

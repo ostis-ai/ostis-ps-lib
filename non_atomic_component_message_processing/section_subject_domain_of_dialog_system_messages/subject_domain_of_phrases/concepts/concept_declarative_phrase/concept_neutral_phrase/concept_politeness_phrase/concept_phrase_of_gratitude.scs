@@ -1,0 +1,44 @@
+concept_phrase_of_gratitude
+<-sc_node_class;
+=>nrel_main_idtf:
+	[фраза благодарности]
+	(* <- lang_ru;; *);
+	[phrase of gratitude]
+	(* <- lang_en;; *);
+	[Phrase der Dankbarkeit]
+	(* <- lang_de;; *);
+<- rrel_key_sc_element:
+	...
+	(*
+	=>nrel_main_idtf:
+		[Опр. (фраза благодарности)]
+		(* <- lang_ru;; *);
+		[Def. (phrase of gratitude)]
+		(* <- lang_en;; *);
+		[Def. (Phrase der Dankbarkeit)]
+		(* <- lang_de;; *);;
+	<- definition;;
+	<= nrel_sc_text_translation:
+		...
+		(*
+		->rrel_example:
+			[Фраза благодарности - фраза, выражающая благодарность.]
+			(* <- lang_ru;; *);;
+		*);
+		...
+		(*
+		-> rrel_example: 
+			[Phrase of gratitude is a phrase that expresses gratitude.]
+			(* <- lang_en;; *);;
+		*);
+		...
+		(*
+		-> rrel_example: 
+			[Phrase der Dankbarkeit ist eine Phrase, die Dankbarkeit ausdrückt.]
+			(* <- lang_de;; *);;
+		*);;
+	<= nrel_using_constants:
+		{
+			concept_phrase
+		};;
+	*);;

@@ -1,0 +1,48 @@
+concept_dynamic_prompt
+<- sc_node_class;
+=> nrel_main_idtf:
+	[динамический промпт]
+	(* <- lang_ru;; *);
+	[dynamic prompt]
+	(* <- lang_en;; *);
+	[...]
+	(* <- lang_de;; *);
+
+<- rrel_key_sc_element:
+	...
+	(*
+	=> nrel_main_idtf:
+		[Опр. (динамический промпт)]
+		(* <- lang_ru;; *);
+		[Def. (dynamic prompt)]
+		(* <- lang_en;; *);
+		[Def. (...)]
+		(* <- lang_de;; *);;
+	<- definition;;
+	<= nrel_sc_text_translation:
+		...
+		(*
+		<- sc_node_tuple;;
+		-> rrel_example:
+			[Динамический промпт - промпт, который генерируется по содержимому фрагмента базы знаний.]
+			(* <- lang_ru;; *);;
+		*);
+		...
+		(*
+		<- sc_node_tuple;;
+		-> rrel_example:
+			[Dynamic prompt is a prompt that is generated from the knowledge base fragment.]
+			(* <- lang_en;; *);;
+		*);
+		...
+		(*
+		<- sc_node_tuple;;
+		-> rrel_example:
+			[...]
+			(* <- lang_de;; *);;
+		*);;
+	<= nrel_using_constants:
+		{
+		concept_prompt
+		};;
+	*);;

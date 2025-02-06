@@ -1,0 +1,44 @@
+concept_informing_phrase_about_relation
+<-sc_node_class;
+=>nrel_main_idtf:
+	[фраза информирования об отношении]
+	(* <- lang_ru;; *);
+	[informing phrase about the relation]
+	(* <- lang_en;; *);
+	[Informierensphrase über die Beziehung]
+	(* <- lang_de;; *);
+<- rrel_key_sc_element:
+	...
+	(*
+	=>nrel_main_idtf:
+		[Опр. (фраза информирования об отношении)]
+		(* <- lang_ru;; *);
+		[Def. (informing phrase about the relation)]
+		(* <- lang_en;; *);
+		[Def. (Informierensphrase über die Beziehung)]
+		(* <- lang_de;; *);;
+	<- definition;;
+	<= nrel_sc_text_translation:
+		...
+		(*
+		->rrel_example:
+			[Фраза информирования об отношении - фраза, передающая информацию об отношении.]
+			(* <- lang_ru;; *);;
+		*);
+		...
+		(*
+		-> rrel_example: 
+			[Informing phrase about the relation is a phrase that conveys information about the relation.]
+			(* <- lang_en;; *);;
+		*);
+		...
+		(*
+		-> rrel_example: 
+			[Informierensphrase über die Beziehung ist eine Phrase, die Informationen über die Beziehung übermittelt.]
+			(* <- lang_de;; *);;
+		*);;
+	<= nrel_using_constants:
+		{
+			concept_phrase
+		};;
+	*);;

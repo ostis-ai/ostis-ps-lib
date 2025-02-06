@@ -1,0 +1,55 @@
+concept_descriptive_phrase_about_clock
+<- sc_node_class;
+<= nrel_inclusion:
+	concept_descriptive_phrase_about_detectable_item;
+=> nrel_main_idtf:
+	[описывающая фраза о часах]
+	(* <- lang_ru;; *);
+	[descriptive phrase about a clock]
+	(* <- lang_en;; *);
+	[beschreibende Phrase über eine Uhr]
+	(* <- lang_de;; *);
+<= nrel_descriptive_phrase:
+    concept_clock;
+<- rrel_key_sc_element:
+	...
+	(*
+	=> nrel_main_idtf:
+		[Опр. (описывающая фраза о часах)]
+		(* <- lang_ru;; *);
+		[Def. (descriptive phrase about a clock)]
+		(* <- lang_en;; *);
+		[Def. (beschreibende Phrase über eine Uhr)]
+		(* <- lang_de;; *);;
+	<- definition;;
+	<= nrel_sc_text_translation:
+		...
+		(*
+		-> rrel_example:
+			[Описывающая фраза о часах - это фраза, косвенно описывающая часы.]
+			(* <- lang_ru;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Descriptive phrase about a clock is a phrase that indirectly describes a clock.]
+			(* <- lang_en;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Beschreibende Phrase über eine Uhr ist eine Phrase, die eine Uhr indirekt beschreibt.]
+			(* <- lang_de;; *);;
+		*);;
+	<= nrel_using_constants:
+		{
+			concept_clock
+		};;
+	*);
+->[An item that will inform you what time the movie starts](* <- lang_en;; *);
+->[An item that no matter how well ticks, will still force you to be late for work](* <- lang_en;; *);
+->[An object, the first thought when looking at which in the morning is "Oh no, 5 minutes more"](* <- lang_en;; *);
+
+->[Ein Gegenstand, der Sie darüber informiert, wann der Film beginnt](* <- lang_de;; *);
+->[Ein Gegenstand, der, egal wie gut er tickt, Sie immer noch dazu zwingt, zu spät zur Arbeit zu kommen](* <- lang_de;; *);
+->[Ein Objekt, erster Gedanke beim Schauen an der am Morgen ist “Oh nein, noch 5 Minuten”](* <- lang_de;; *);;

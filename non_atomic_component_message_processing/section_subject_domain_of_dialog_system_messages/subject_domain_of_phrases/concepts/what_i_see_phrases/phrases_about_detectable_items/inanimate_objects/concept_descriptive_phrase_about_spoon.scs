@@ -1,0 +1,55 @@
+concept_descriptive_phrase_about_spoon
+<- sc_node_class;
+<= nrel_inclusion:
+	concept_descriptive_phrase_about_detectable_item;
+=> nrel_main_idtf:
+	[описывающая фраза о ложке]
+	(* <- lang_ru;; *);
+	[descriptive phrase about a spoon]
+	(* <- lang_en;; *);
+	[beschreibende Phrase über einen Löffel]
+	(* <- lang_de;; *);
+<= nrel_descriptive_phrase:
+    concept_spoon;
+<- rrel_key_sc_element:
+	...
+	(*
+	=> nrel_main_idtf:
+		[Опр. (описывающая фраза о ложке)]
+		(* <- lang_ru;; *);
+		[Def. (descriptive phrase about a spoon)]
+		(* <- lang_en;; *);
+		[Def. (beschreibende Phrase über einen Löffel)]
+		(* <- lang_de;; *);;
+	<- definition;;
+	<= nrel_sc_text_translation:
+		...
+		(*
+		-> rrel_example:
+			[Описывающая фраза о ложке - это фраза, косвенно описывающая ложку.]
+			(* <- lang_ru;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Descriptive phrase about a spoon is a phrase that indirectly describes a spoon.]
+			(* <- lang_en;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Beschreibende Phrase über einen Löffel ist eine Phrase, die einen Löffel indirekt beschreibt.]
+			(* <- lang_de;; *);;
+		*);;
+	<= nrel_using_constants:
+		{
+			concept_spoon
+		};;
+	*);
+->[An item with which it is so delicious to eat ice cream](* <- lang_en;; *);
+->[An item that is very inconvenient to eating pasta](* <- lang_en;; *);
+->[An object used to measure the amount of salt and baking soda added to the pie](* <- lang_en;; *);
+
+->[Ein Gegenstand, mit dem es so lecker ist, Eis zu essen](* <- lang_de;; *);
+->[Ein Gegenstand, der sehr unpraktisch zum Essen von Nudeln ist](* <- lang_de;; *);
+->[Ein Gegenstand, der verwendet wird, um die Menge an Salz und Backpulver zu messen, die einem Kuchen hinzugefügt werden](* <- lang_de;; *);;

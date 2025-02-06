@@ -1,0 +1,55 @@
+concept_descriptive_phrase_about_orange
+<- sc_node_class;
+<= nrel_inclusion:
+	concept_descriptive_phrase_about_detectable_item;
+=> nrel_main_idtf:
+	[описывающая фраза об апельсине]
+	(* <- lang_ru;; *);
+	[descriptive phrase about an orange]
+	(* <- lang_en;; *);
+	[beschreibende Phrase über eine Orange]
+	(* <- lang_de;; *);
+<= nrel_descriptive_phrase:
+    concept_orange;
+<- rrel_key_sc_element:
+	...
+	(*
+	=> nrel_main_idtf:
+		[Опр. (описывающая фраза об апельсине)]
+		(* <- lang_ru;; *);
+		[Def. (descriptive phrase about an orange)]
+		(* <- lang_en;; *);
+		[Def. (beschreibende Phrase über eine Orange)]
+		(* <- lang_de;; *);;
+	<- definition;;
+	<= nrel_sc_text_translation:
+		...
+		(*
+		-> rrel_example:
+			[Описывающая фраза об апельсине - это фраза, косвенно описывающая апельсин.]
+			(* <- lang_ru;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Descriptive phrase about an orange is a phrase that indirectly describes an orange.]
+			(* <- lang_en;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Beschreibende Phrase über eine Orange ist eine Phrase, die eine Orange indirekt beschreibt.]
+			(* <- lang_de;; *);;
+		*);;
+	<= nrel_using_constants:
+		{
+			concept_orange
+		};;
+	*);
+->[A fruit that matches its color by name](* <- lang_en;; *);
+->[A fruit with the color name](* <- lang_en;; *);
+->[A small edible orange ball](* <- lang_en;; *);
+
+->[Eine Frucht, die ihrem Namen nach Farbe entspricht](* <- lang_de;; *);
+->[Eine Frucht mit dem Farbnamen](* <- lang_de;; *);
+->[Eine kleine essbare orangefarbene Kuge](* <- lang_de;; *);;

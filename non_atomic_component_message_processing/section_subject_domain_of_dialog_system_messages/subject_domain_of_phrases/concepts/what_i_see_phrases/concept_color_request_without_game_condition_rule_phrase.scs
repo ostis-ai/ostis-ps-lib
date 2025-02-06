@@ -1,0 +1,47 @@
+concept_color_request_without_game_condition_rule_phrase
+<-sc_node_class;
+=>nrel_main_idtf:
+	[фраза, представляющая собой вопрос о начале игры "Угадай, что я вижу"]
+	(* <- lang_ru;; *);
+	[phrase question about the start of the game "Guess what I see"]
+	(* <- lang_en;; *);
+	[Fragephrase zum Beginn des "Rate mal, was ich sehe"-Spiels]
+	(* <- lang_de;; *);
+<= nrel_inclusion:
+	concept_informing_phrase;
+	concept_greeting_phrase;
+<- rrel_key_sc_element:
+	...
+	(*
+	=>nrel_main_idtf:
+		[Опр. (фраза, представляющая собой вопрос о начале игры "Угадай, что я вижу")]
+		(* <- lang_ru;; *);
+		[Def. (phrase question about the start of the game "Guess what I see")]
+		(* <- lang_en;; *);
+		[Def. (Fragephrase zum Beginn des "Rate mal, was ich sehe"-Spiels)]
+		(* <- lang_de;; *);;
+	<- definition;;
+	<= nrel_sc_text_translation:
+		...
+		(*
+		->rrel_example:
+			[Фраза, представляющая собой вопрос о начале игры "Угадай, что я вижу" - это фраза, являющаяся вопросом о желании пользователя начать игру "Угадай, что я вижу".]
+			(* <- lang_ru;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Phrase question about the start of the game "Guess what I see" is a phrase that is the question about the user's desire to start the game "Guess what I see".]
+			(* <- lang_en;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Fragephrase zum Beginn des "Rate mal, was ich sehe"-Spiels ist eine Phrase, die die Frage stellt, ob der Benutzer das Spiel "Rate mal, was ich sehe" starten möchte.]
+			(* <- lang_de;; *);;
+		*);;
+	<= nrel_using_constants:
+		{
+			concept_phrase
+		};;
+	*);;

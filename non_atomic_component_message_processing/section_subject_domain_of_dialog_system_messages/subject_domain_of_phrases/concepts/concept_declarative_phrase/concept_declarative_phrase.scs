@@ -1,0 +1,48 @@
+concept_declarative_phrase
+<-sc_node_class;
+=>nrel_main_idtf:
+	[повествовательная фраза]
+	(* <- lang_ru;; *);
+	[declarative phrase]
+	(* <- lang_en;; *);
+	[deklarative Phrase]
+	(* <- lang_de;; *);
+<- rrel_key_sc_element:
+	...
+	(*
+	=>nrel_main_idtf:
+		[Опр. (повествовательная фраза)]
+		(* <- lang_ru;; *);
+		[Def. (declarative phrase)]
+		(* <- lang_en;; *);
+		[Def. (deklarative Phrase)]
+		(* <- lang_de;; *);;
+	<- definition;;
+	<= nrel_sc_text_translation:
+		...
+		(*
+		->rrel_example:
+			[Повествовательная фраза - фраза, сообщающая о каких-либо новых фактах.]
+			(* <- lang_ru;; *);;
+		*);
+		...
+		(*
+		-> rrel_example: 
+			[Declarative phrase is a phrase that reports any new facts.]
+			(* <- lang_en;; *);;
+		*);
+		...
+		(*
+		-> rrel_example: 
+			[Deklarative Phrase ist eine Phrase, die über neue Fakten berichtet.]
+			(* <- lang_de;; *);;
+		*);;
+	<= nrel_using_constants:
+		{
+			concept_phrase
+		};;
+	*);
+=> nrel_inclusion:
+	concept_neutral_phrase;
+	concept_interception_phrase;
+	concept_informing_phrase;;

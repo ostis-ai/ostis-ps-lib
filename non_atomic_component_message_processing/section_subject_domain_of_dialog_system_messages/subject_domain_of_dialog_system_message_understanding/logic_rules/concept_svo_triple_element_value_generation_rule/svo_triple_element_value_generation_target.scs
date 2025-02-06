@@ -1,0 +1,14 @@
+sc_node_not_relation
+    -> concept_svo_triple_element;
+    -> atomic_logical_formula;;
+
+sc_node_role_relation
+    -> rrel_svo_triple_element_values;;
+
+concept_svo_triple_element_value_generation_target = [*
+    _element
+        _<- concept_svo_triple_element;
+        _-> rrel_svo_triple_element_values:: _values_set;;
+*];;
+
+atomic_logical_formula -> dialog_theme_change_inference_target;;

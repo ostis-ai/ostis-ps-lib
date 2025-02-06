@@ -1,0 +1,55 @@
+concept_descriptive_phrase_about_snowboard
+<- sc_node_class;
+<= nrel_inclusion:
+	concept_descriptive_phrase_about_detectable_item;
+=> nrel_main_idtf:
+	[описывающая фраза о сноуборде]
+	(* <- lang_ru;; *);
+	[descriptive phrase about a snowboard]
+	(* <- lang_en;; *);
+	[beschreibende Phrase über ein Snowboard]
+	(* <- lang_de;; *);
+<= nrel_descriptive_phrase:
+    concept_snowboard;
+<- rrel_key_sc_element:
+	...
+	(*
+	=> nrel_main_idtf:
+		[Опр. (описывающая фраза о сноуборде)]
+		(* <- lang_ru;; *);
+		[Def. (descriptive phrase about a snowboard)]
+		(* <- lang_en;; *);
+		[Def. (beschreibende Phrase über ein Snowboard)]
+		(* <- lang_de;; *);;
+	<- definition;;
+	<= nrel_sc_text_translation:
+		...
+		(*
+		-> rrel_example:
+			[Описывающая фраза о сноуборде - это фраза, косвенно описывающая сноуборд.]
+			(* <- lang_ru;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Descriptive phrase about a snowboard is a phrase that indirectly describes a snowboard.]
+			(* <- lang_en;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Beschreibende Phrase über ein Snowboard ist eine Phrase, die ein Snowboard indirekt beschreibt.]
+			(* <- lang_de;; *);;
+		*);;
+	<= nrel_using_constants:
+		{
+			concept_snowboard
+		};;
+	*);
+->[The "older winter brother" of the skateboard](* <- lang_en;; *);
+->[A winter surfboard](* <- lang_en;; *);
+->[An equipment for riding waves](* <- lang_en;; *);
+
+->[Der “ältere Winter-Bruder” des Skateboards](* <- lang_de;; *);
+->[Ein Winter-Surfbrett](* <- lang_de;; *);
+->[Eine Ausrüstung zum Wellenreiten](* <- lang_de;; *);;

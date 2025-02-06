@@ -1,0 +1,55 @@
+concept_descriptive_phrase_about_ski
+<- sc_node_class;
+<= nrel_inclusion:
+	concept_descriptive_phrase_about_detectable_item;
+=> nrel_main_idtf:
+	[описывающая фраза о лыжах]
+	(* <- lang_ru;; *);
+	[descriptive phrase about the ski]
+	(* <- lang_en;; *);
+	[beschreibende Phrase über die Ski]
+	(* <- lang_de;; *);
+<= nrel_descriptive_phrase:
+    concept_ski;
+<- rrel_key_sc_element:
+	...
+	(*
+	=> nrel_main_idtf:
+		[Опр. (описывающая фраза о лыжах)]
+		(* <- lang_ru;; *);
+		[Def. (descriptive phrase about the ski)]
+		(* <- lang_en;; *);
+		[Def. (beschreibende Phrase über die Ski)]
+		(* <- lang_de;; *);;
+	<- definition;;
+	<= nrel_sc_text_translation:
+		...
+		(*
+		-> rrel_example:
+			[Описывающая фраза о лыжах - это фраза, косвенно описывающая лыжи.]
+			(* <- lang_ru;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Descriptive phrase about the ski is a phrase that indirectly describes the ski.]
+			(* <- lang_en;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Beschreibende Phrase über die Ski ist eine Phrase, die die Ski indirekt beschreibt.]
+			(* <- lang_de;; *);;
+		*);;
+	<= nrel_using_constants:
+		{
+			concept_ski
+		};;
+	*);
+->[A sports equipment that people often keep on the balcony all year round](* <- lang_en;; *);
+->[A means of transportation for the "enemies" of snowboarders](* <- lang_en;; *);
+->[An individual sports equipment that can be larger than a person](* <- lang_en;; *);
+
+->[Ein Sportgerät, das Menschen oft das ganze Jahr über auf dem Balkon aufbewahren](* <- lang_de;; *);
+->[Ein Transportmittel für die “Feinde” der Snowboarder](* <- lang_de;; *);
+->[Ein individuelles Sportgerät, das größer als eine Person sein kann](* <- lang_de;; *);;

@@ -1,0 +1,55 @@
+concept_descriptive_phrase_about_sheep
+<- sc_node_class;
+<= nrel_inclusion:
+	concept_descriptive_phrase_about_detectable_item;
+=> nrel_main_idtf:
+	[описывающая фраза о овце]
+	(* <- lang_ru;; *);
+	[descriptive phrase about a sheep]
+	(* <- lang_en;; *);
+	[beschreibende Phrase über ein Schaf]
+	(* <- lang_de;; *);
+<= nrel_descriptive_phrase:
+    concept_sheep;
+<- rrel_key_sc_element:
+	...
+	(*
+	=> nrel_main_idtf:
+		[Опр. (описывающая фраза о овце)]
+		(* <- lang_ru;; *);
+		[Def. (descriptive phrase about a sheep)]
+		(* <- lang_en;; *);
+		[Def. (beschreibende Phrase über ein Schaf)]
+		(* <- lang_de;; *);;
+	<- definition;;
+	<= nrel_sc_text_translation:
+		...
+		(*
+		-> rrel_example:
+			[Описывающая фраза о овце - это фраза, косвенно описывающая овцу.]
+			(* <- lang_ru;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Descriptive phrase about a sheep is a phrase that indirectly describes a sheep.]
+			(* <- lang_en;; *);;
+		*);
+		...
+		(*
+		-> rrel_example:
+			[Beschreibende Phrase über ein Schaf ist eine Phrase, die ein Schaf indirekt beschreibt.]
+			(* <- lang_de;; *);;
+		*);;
+	<= nrel_using_constants:
+		{
+			concept_sheep
+		};;
+	*);
+->[One of the animals that are counted when someone can't sleep](* <- lang_en;; *);
+->[An animal that looks like a cloud](* <- lang_en;; *);
+->[An animal with which curly-haired people are often compared](* <- lang_en;; *);
+
+->[Eines der Tiere, die gezählt werden, wenn jemand nicht schlafen kann](* <- lang_de;; *);
+->[Ein Tier, das aussieht wie eine Wolke](* <- lang_de;; *);
+->[Ein Tier, mit dem lockige Menschen oft verglichen werden](* <- lang_de;; *);;
