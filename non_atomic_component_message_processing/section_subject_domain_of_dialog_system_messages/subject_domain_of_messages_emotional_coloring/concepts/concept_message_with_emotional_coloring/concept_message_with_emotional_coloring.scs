@@ -1,47 +1,43 @@
 concept_message_with_emotional_coloring
 <- sc_node_class;
 => nrel_main_idtf:
-	[сообщение, имеющее эмоциональную окраску]
-	(* <- lang_ru;; *);
-	[message with emotional coloring]
-	(* <- lang_en;; *);
-	[Nachricht mit emotionaler Färbung]
-	(* <- lang_de;; *);
+    [сообщение, имеющее эмоциональную окраску]
+    (* <- lang_ru;; *);
+    [message with emotional coloring]
+    (* <- lang_en;; *);
+    [Nachricht mit emotionaler Färbung]
+    (* <- lang_de;; *);
 => nrel_classifier_idtf:
-	[wit$sentiment];
+    [wit$sentiment];
 <- rrel_key_sc_element:
-	...
-	(*
-	=> nrel_main_idtf:
-    	[Опр.(сообщение, имеющее эмоциональную окраску)]
-    	(* <- lang_ru;; *);
-    	[Def.(message with emotional coloring)]
-    	(* <- lang_en;; *);
-    	[Def.(Nachricht mit emotionaler Färbung)]
-    	(* <- lang_de;; *);;
-	<- definition;;
-	<= nrel_sc_text_translation:
-		...
-		(*
-		-> rrel_example:
-			[Сообщение, имеющее эмоциональную окраску - сообщение, имеющее эмоциональную окраску в какую-либо из эмоций.]
-			(* <- lang_ru;;	*);;
-		*);
-		...
-		(*
-		-> rrel_example: 
-			[Message with emotional coloring is a message, that has an emotional connotation of any of the emotions.]
-			(* <- lang_en;;	*);;
-		*);
-		...
-		(*
-		-> rrel_example: 
-			[Nachricht mit emotionaler Färbung ist eine Nachricht, die eine emotionale Färbung in einer der Emotionen hat.]
-			(* <- lang_de;;	*);;
-		*);;
-	<= nrel_using_constants:
-	{
-		concept_message;
-		concept_emotion
-	};;
-	*);;
+    ...
+    (*
+    => nrel_main_idtf:
+        [Опр.(сообщение, имеющее эмоциональную окраску)]
+        (* <- lang_ru;; *);
+        [Def.(message with emotional coloring)]
+        (* <- lang_en;; *);
+        [Def.(Nachricht mit emotionaler Färbung)]
+        (* <- lang_de;; *);;
+    <- definition;;
+    <= nrel_sc_text_translation:
+        ...
+        (*
+        -> rrel_example:
+            [Сообщение, имеющее эмоциональную окраску - сообщение, имеющее эмоциональную окраску в какую-либо из эмоций.]
+            (* <- lang_ru;;    *);;
+
+        -> rrel_example:
+            [Message with emotional coloring is a message, that has an emotional connotation of any of the emotions.]
+            (* <- lang_en;;    *);;
+
+        -> rrel_example:
+            [Nachricht mit emotionaler Färbung ist eine Nachricht, die eine emotionale Färbung in einer der Emotionen hat.]
+            (* <- lang_de;;    *);;
+        *);;
+    <= nrel_using_constants:
+    {
+        concept_message;
+        concept_emotion
+    };;
+    *);;
