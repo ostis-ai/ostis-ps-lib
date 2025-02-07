@@ -1,5 +1,5 @@
 nrel_action_class_by_message_tense
-<- sc_node_norole_relation;
+<- sc_node_non_role_relation;
 <- relation;
 <- binary_relation;
 <- oriented_relation;
@@ -55,9 +55,6 @@ nrel_action_class_by_message_tense
         -> rrel_example:
             [Action class by message tense* is a binary relation that connects a message tense with a class of action to which the action mentioned in the message belongs.]
             (* <- lang_en;; *);;
-        -> rrel_example:
-            [...]
-            (* <- lang_de;; *);;
         *);;
     <= nrel_using_constants:
         {

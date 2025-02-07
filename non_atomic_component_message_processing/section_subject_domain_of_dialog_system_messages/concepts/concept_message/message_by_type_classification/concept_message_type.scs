@@ -6,44 +6,33 @@ concept_message_type
     (* <- lang_ru;; *);
     [message type]
     (* <- lang_en;; *);
-    [...]
-    (* <- lang_de;; *);
 <- rrel_key_sc_element:
-	...
-	(*
-	=> nrel_main_idtf:
-	[Опр. (тип сообщения)]
-	(* <- lang_ru;; *);
-	[Def. (type message)]
-	(* <- lang_en;; *);
-	[Def. (...)]
-	(* <- lang_de;; *);;
-	<- definition;;
-	<= nrel_sc_text_translation:
-		...
-		(*
-		-> rrel_example:
-			[Тип сообщения - характеристика сообщения по цели высказывания.]
-			(* <- lang_ru;; *);;
-		*);
-		...
-		(*
-		-> rrel_example:
-			[Message type is a characteristic of the message depending on the purpose of the expression.]
-			(* <- lang_en;; *);;
-		*);
-		...
-		(*
-		-> rrel_example:
-			[...]
-			(* <- lang_de;; *);;
-		*);;
-	<= nrel_using_constants:
-		{
-		   parameter;
-		   concept_message
-		};;
-	*);
+    ...
+    (*
+    => nrel_main_idtf:
+    [Опр. (тип сообщения)]
+    (* <- lang_ru;; *);
+    [Def. (type message)]
+    (* <- lang_en;; *);
+    [Def. (...)]
+    (* <- lang_de;; *);;
+    <- definition;;
+    <= nrel_sc_text_translation:
+        ...
+        (*
+        -> rrel_example:
+            [Тип сообщения - характеристика сообщения по цели высказывания.]
+                (* <- lang_ru;; *);;
+        -> rrel_example:
+            [Message type is a characteristic of the message depending on the purpose of the expression.]
+            (* <- lang_en;; *);;
+        *);;
+    <= nrel_using_constants:
+        {
+           parameter;
+           concept_message
+        };;
+    *);
 -> concept_interrogative_message;
 -> concept_imperative_message;
 -> concept_declarative_message;;

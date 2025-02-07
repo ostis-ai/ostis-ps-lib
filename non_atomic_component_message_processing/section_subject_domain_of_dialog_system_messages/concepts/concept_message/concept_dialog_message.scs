@@ -1,47 +1,41 @@
 concept_dialog_message
 <- sc_node_class;
 <= nrel_inclusion:
-	 concept_message;
+     concept_message;
 => nrel_main_idtf:
-	[диалоговое сообщение]
-	(* <- lang_ru;; *);
-	[dialog message]
-	(* <- lang_en;; *);
-	[Dialognachricht]
-	(* <- lang_de;; *);
+    [диалоговое сообщение]
+    (* <- lang_ru;; *);
+    [dialog message]
+    (* <- lang_en;; *);
+    [Dialognachricht]
+    (* <- lang_de;; *);
 <- rrel_key_sc_element:
-	...
-	(*
-	=> nrel_main_idtf:
-		[Опр. (диалоговое сообщение)]
-		(* <- lang_ru;; *);
-		[Def. (dialog message)]
-		(* <- lang_en;; *);
-		[Def. (Dialognachricht)]
-		(* <- lang_de;; *);;
-	<- definition;;
-	<= nrel_sc_text_translation:
-		...
-		(*
-		-> rrel_example:
-			[Диалоговое сообщение - сообщение, передаваемое от одного участника диалога к другому или к другим участникам диалога.]
-			(* <- lang_ru;; *);;
-		*);
-		...
-		(*
-		-> rrel_example: 
-			[Dialog message is a message transmitted from one dialog participant to another or to other dialog participants.]
-			(* <- lang_en;; *);;
-		*);
-		...
-		(*
-		-> rrel_example: 
-			[Dialognachricht ist eine Nachricht, die von einem Dialogteilnehmer zu einem anderen oder zu anderen Dialogteilnehmern übertragen wird.]
-			(* <- lang_de;; *);;
-		*);;
-	<= nrel_using_constants:
-		{
-		concept_dialog;
-		concept_possible_dialog_participant
-		};;
-	*);;
+    ...
+    (*
+    => nrel_main_idtf:
+        [Опр. (диалоговое сообщение)]
+        (* <- lang_ru;; *);
+        [Def. (dialog message)]
+        (* <- lang_en;; *);
+        [Def. (Dialognachricht)]
+        (* <- lang_de;; *);;
+    <- definition;;
+    <= nrel_sc_text_translation:
+        ...
+        (*
+        -> rrel_example:
+            [Диалоговое сообщение - сообщение, передаваемое от одного участника диалога к другому или к другим участникам диалога.]
+            (* <- lang_ru;; *);;
+        -> rrel_example:
+            [Dialog message is a message transmitted from one dialog participant to another or to other dialog participants.]
+            (* <- lang_en;; *);;
+        -> rrel_example:
+            [Dialognachricht ist eine Nachricht, die von einem Dialogteilnehmer zu einem anderen oder zu anderen Dialogteilnehmern übertragen wird.]
+            (* <- lang_de;; *);;
+        *);;
+    <= nrel_using_constants:
+        {
+        concept_dialog;
+        concept_possible_dialog_participant
+        };;
+    *);;

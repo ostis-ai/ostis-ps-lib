@@ -8,37 +8,31 @@ concept_message_no_class
     [Nachricht ohne Klasse]
     (* <- lang_de;; *);
 <- rrel_key_sc_element:
-	...
-	(*
-	=>nrel_main_idtf:
-	[Опр. (сообщение без класса)]
-	(* <- lang_ru;; *);
-	[Def. (message without a class)]
-	(* <- lang_en;; *);
-	[Def. (Nachricht ohne Klasse)]
-	(* <- lang_de;; *);;
-	<- definition;;
-	<= nrel_sc_text_translation:
-		...
-		(*
-		->rrel_example:
-			[Cообщение без класса - сообщение, в настоящее время для которого не распознан класс.]
-			(* <- lang_ru;; *);;
-		*);
-		...
-		(*
-		-> rrel_example: 
-			[Message without a class is a message for which a class is not currently recognized.]
-			(* <- lang_en;; *);;
-		*);
-		...
-		(*
-		-> rrel_example: 
-			[Nachricht ohne Klasse ist eine Nachricht, für die die Klasse derzeit nicht erkannt wird.]
-			(* <- lang_de;; *);;
-		*);;
-	<= nrel_using_constants:
-		{
-		   concept_atomic_message
-		};;		
-	*);;
+    ...
+    (*
+    =>nrel_main_idtf:
+    [Опр. (сообщение без класса)]
+    (* <- lang_ru;; *);
+    [Def. (message without a class)]
+    (* <- lang_en;; *);
+    [Def. (Nachricht ohne Klasse)]
+    (* <- lang_de;; *);;
+    <- definition;;
+    <= nrel_sc_text_translation:
+        ...
+        (*
+        ->rrel_example:
+            [Cообщение без класса - сообщение, в настоящее время для которого не распознан класс.]
+            (* <- lang_ru;; *);;
+        -> rrel_example:
+            [Message without a class is a message for which a class is not currently recognized.]
+            (* <- lang_en;; *);;
+        -> rrel_example:
+            [Nachricht ohne Klasse ist eine Nachricht, für die die Klasse derzeit nicht erkannt wird.]
+            (* <- lang_de;; *);;
+        *);;
+    <= nrel_using_constants:
+        {
+           concept_atomic_message
+        };;
+    *);;

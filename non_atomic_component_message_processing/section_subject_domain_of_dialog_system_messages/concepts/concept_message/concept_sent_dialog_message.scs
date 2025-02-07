@@ -2,47 +2,41 @@ concept_sent_dialog_message
 <- sc_node_class;
 <= nrel_inclusion: concept_dialog_message;
 => nrel_main_idtf:
-	[отправленное диалоговое сообщение]
-	(* <- lang_ru;; *);
-	[sent dialog message]
-	(* <- lang_en;; *);
-	[gesendete Dialognachricht]
-	(* <- lang_de;; *);
+    [отправленное диалоговое сообщение]
+    (* <- lang_ru;; *);
+    [sent dialog message]
+    (* <- lang_en;; *);
+    [gesendete Dialognachricht]
+    (* <- lang_de;; *);
 <- rrel_key_sc_element:
-	...
-	(*
-	=> nrel_main_idtf:
-		[Опр. (отправленное диалоговое сообщение)]
-		(* <- lang_ru;; *);
-		[Def. (sent dialog message)]
-		(* <- lang_en;; *);
-		[Def. (gesendete Dialognachricht)]
-		(* <- lang_de;; *);;
-	<- definition;;
-	<= nrel_sc_text_translation:
-		...
-		(*
-		-> rrel_example:
-			[Отправленное диалоговое сообщение - диалоговое сообщение, которое имеет дату появления в диалоге и автора.]
-			(* <- lang_ru;; *);;
-		*);
-		...
-		(*
-		-> rrel_example: 
-			[Sent dialog message is a dialog message, which has the insertion date in the dialog and the author.]
-			(* <- lang_en;; *);;
-		*);
-		...
-		(*
-		-> rrel_example: 
-			[Gesendete Dialognachricht ist eine Dialognachricht, die das Einfügedatum im Dialog und den Autor hat.]
-			(* <- lang_de;; *);;
-		*);;
-	<= nrel_using_constants:
-		{
-		concept_dialog;
-		concept_possible_dialog_participant;
-		nrel_authors;
-		concept_time_point_of_gregorian_calendar
-		};;
-	*);;
+    ...
+    (*
+    => nrel_main_idtf:
+        [Опр. (отправленное диалоговое сообщение)]
+        (* <- lang_ru;; *);
+        [Def. (sent dialog message)]
+        (* <- lang_en;; *);
+        [Def. (gesendete Dialognachricht)]
+        (* <- lang_de;; *);;
+    <- definition;;
+    <= nrel_sc_text_translation:
+        ...
+        (*
+        -> rrel_example:
+            [Отправленное диалоговое сообщение - диалоговое сообщение, которое имеет дату появления в диалоге и автора.]
+            (* <- lang_ru;; *);;
+        -> rrel_example:
+            [Sent dialog message is a dialog message, which has the insertion date in the dialog and the author.]
+            (* <- lang_en;; *);;
+        -> rrel_example:
+            [Gesendete Dialognachricht ist eine Dialognachricht, die das Einfügedatum im Dialog und den Autor hat.]
+            (* <- lang_de;; *);;
+        *);;
+    <= nrel_using_constants:
+        {
+        concept_dialog;
+        concept_possible_dialog_participant;
+        nrel_authors;
+        concept_time_point_of_gregorian_calendar
+        };;
+    *);;

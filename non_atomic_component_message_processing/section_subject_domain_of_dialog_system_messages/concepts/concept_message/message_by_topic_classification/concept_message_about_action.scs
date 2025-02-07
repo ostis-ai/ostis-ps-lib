@@ -1,48 +1,43 @@
 concept_message_about_action
 <- sc_node_class;
 => nrel_main_idtf:
-	[сообщение о действии]
-	(* <- lang_ru;; *);
-	[message about an action]
-	(* <- lang_en;; *);
-	[Aktionsnachricht]
-	(* <- lang_de;; *);
+    [сообщение о действии]
+    (* <- lang_ru;; *);
+    [message about an action]
+    (* <- lang_en;; *);
+    [Aktionsnachricht]
+    (* <- lang_de;; *);
 => nrel_nlp_service_idtf:
-	[action];
+    [action];
 <- rrel_key_sc_element:
-	...
-	(*
-	=>nrel_main_idtf:
-		[Опр. (сообщение о действии)]
-		(* <- lang_ru;; *);
-		[Def. (message about an action)]
-		(* <- lang_en;; *);
-		[Def. (Aktionsnachricht)]
-		(* <- lang_de;; *);;
-	<- definition;;
-	<= nrel_sc_text_translation:
-		...
-		(*
-		->rrel_example:
-			[Сообщение о действии - атомарное сообщение, описывающее действие без уточнения аргументов, сущностей.]
-			(* <- lang_ru;; *);;
-		*);
-		...
-		(*
-		-> rrel_example:
-			[Message about an action is an atomic message that describes an action without specifying arguments, entities.]
-			(* <- lang_en;; *);;
-		*);
-		...
-		(*
-		-> rrel_example:
-			[Aktionsnachricht ist eine atomare Nachricht, die eine Aktion beschreibt, ohne Argumente oder Entitäten anzugeben.]
-			(* <- lang_de;; *);;
-		*);;
-	<= nrel_using_constants:
-		{
-			concept_atomic_message;
-			sc_element;
-			question
-		};;
-	*);;
+    ...
+    (*
+    =>nrel_main_idtf:
+        [Опр. (сообщение о действии)]
+        (* <- lang_ru;; *);
+        [Def. (message about an action)]
+        (* <- lang_en;; *);
+        [Def. (Aktionsnachricht)]
+        (* <- lang_de;; *);;
+    <- definition;;
+    <= nrel_sc_text_translation:
+        ...
+        (*
+        ->rrel_example:
+            [Сообщение о действии - атомарное сообщение, описывающее действие без уточнения аргументов, сущностей.]
+                (* <- lang_ru;; *);;
+        -> rrel_example:
+            [Message about an action is an atomic message that describes an action without specifying arguments, entities.]
+            (* <- lang_en;; *);;
+
+        -> rrel_example:
+            [Aktionsnachricht ist eine atomare Nachricht, die eine Aktion beschreibt, ohne Argumente oder Entitäten anzugeben.]
+            (* <- lang_de;; *);;
+        *);;
+    <= nrel_using_constants:
+        {
+            concept_atomic_message;
+            sc_element;
+            question
+        };;
+    *);;

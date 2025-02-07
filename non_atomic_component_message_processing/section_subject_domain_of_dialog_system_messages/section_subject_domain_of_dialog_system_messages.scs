@@ -4,7 +4,7 @@ section_subject_domain_of_dialog_system_messages
         [Section. Subject domain of dialog system messages] (* <- lang_en;; *);
 <- atomic_section;;
 
-section_subject_domain_of_messages = [*
+section_subject_domain_of_dialog_system_messages = [*
     subject_domain_of_messages
         <- subject_domain;
         ->rrel_maximum_studied_object_class:
@@ -52,8 +52,5 @@ section_subject_domain_of_messages = [*
             concept_message_about_entity_action;
             concept_message_about_entity_action_with_entity;
             concept_message_about_entity_property_value;
-            concept_message_about_entity_relation_to_entity;
-        -> rrel_explored_non_related_subject_domain_concept:
-            concept_svo_triple_element_value_generation_rule;
-            concept_svo_triple_element_value_generation_rule_class_by_priority;;
+            concept_message_about_entity_relation_to_entity;;
 *];;

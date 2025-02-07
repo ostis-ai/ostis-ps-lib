@@ -1,5 +1,5 @@
 nrel_non_atomic_message_types
-<- sc_node_norole_relation;
+<- sc_node_non_role_relation;
 <- relation;
 <- quasybinary_relation;
 <- oriented_relation;
@@ -55,9 +55,6 @@ nrel_non_atomic_message_types
         -> rrel_example:
             [Non atomic message types* is a quasybinary relation that connects a non atomic message with a set of types of this message.]
             (* <- lang_en;; *);;
-        -> rrel_example:
-            [...]
-            (* <- lang_de;; *);;
         *);;
     <= nrel_using_constants:
         {

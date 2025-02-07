@@ -1,48 +1,43 @@
 concept_interrogative_message
 <-sc_node_class;
 =>nrel_main_idtf:
-	[вопросительное сообщение]
-	(* <- lang_ru;; *);
-	[interrogative message]
-	(* <- lang_en;; *);
-	[interrogative Nachricht]
-	(* <- lang_de;; *);
+    [вопросительное сообщение]
+    (* <- lang_ru;; *);
+    [interrogative message]
+    (* <- lang_en;; *);
+    [interrogative Nachricht]
+    (* <- lang_de;; *);
 => nrel_classifier_idtf:
-	[polite_question];
+    [polite_question];
 => nrel_nlp_service_idtf:
-	[interrogative];
+    [interrogative];
 <- rrel_key_sc_element:
-	...
-	(*
-	=>nrel_main_idtf:
-		[Опр. (вопросительное сообщение)]
-		(* <- lang_ru;; *);
-		[Def. (interrogative message)]
-		(* <- lang_en;; *);
-		[Def. (interrogative Nachricht)]
-		(* <- lang_de;; *);;
-	<- definition;;
-	<= nrel_sc_text_translation:
-		...
-		(*
-		->rrel_example:
-			[Вопросительное сообщение - сообщение, выражающее вопрос.]
-			(* <- lang_ru;; *);;
-		*);
-		...
-		(*
-		-> rrel_example: 
-			[Interrogative message is a message expressing a question.]
-			(* <- lang_en;; *);;
-		*);
-		...
-		(*
-		-> rrel_example: 
-			[Interrogative Nachricht ist eine Nachricht, die eine Frage ausdrückt.]
-			(* <- lang_de;; *);;
-		*);;
-	<= nrel_using_constants:
-		{
-			concept_message
-		};;
-	*);;
+    ...
+    (*
+    =>nrel_main_idtf:
+        [Опр. (вопросительное сообщение)]
+        (* <- lang_ru;; *);
+        [Def. (interrogative message)]
+        (* <- lang_en;; *);
+        [Def. (interrogative Nachricht)]
+        (* <- lang_de;; *);;
+    <- definition;;
+    <= nrel_sc_text_translation:
+        ...
+        (*
+        ->rrel_example:
+            [Вопросительное сообщение - сообщение, выражающее вопрос.]
+                (* <- lang_ru;; *);;
+        -> rrel_example:
+            [Interrogative message is a message expressing a question.]
+            (* <- lang_en;; *);;
+
+        -> rrel_example:
+            [Interrogative Nachricht ist eine Nachricht, die eine Frage ausdrückt.]
+            (* <- lang_de;; *);;
+        *);;
+    <= nrel_using_constants:
+        {
+            concept_message
+        };;
+    *);;

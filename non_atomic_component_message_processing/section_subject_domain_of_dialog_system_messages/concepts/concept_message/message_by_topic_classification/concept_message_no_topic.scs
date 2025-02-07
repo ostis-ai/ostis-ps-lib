@@ -8,39 +8,34 @@ concept_message_no_topic
     [Nachricht ohne Thema]
     (* <- lang_de;; *);
 => nrel_nlp_service_idtf:
-	[connection error];
+    [connection error];
 <- rrel_key_sc_element:
-	...
-	(*
-	=>nrel_main_idtf:
-	[Опр. (сообщение без темы)]
-	(* <- lang_ru;; *);
-	[Def. (message without topic)]
-	(* <- lang_en;; *);
-	[Def. (Nachricht ohne Thema)]
-	(* <- lang_de;; *);;
-	<- definition;;
-	<= nrel_sc_text_translation:
-		...
-		(*
-		->rrel_example:
-			[Сообщение без темы - сообщение, тема которого в настоящее время не распознана.]
-			(* <- lang_ru;; *);;
-		*);
-		...
-		(*
-		-> rrel_example: 
-			[Message without topic is a message whose topic is not currently recognized.]
-			(* <- lang_en;; *);;
-		*);
-		...
-		(*
-		-> rrel_example: 
-			[Nachricht ohne Thema ist eine Nachricht, deren Thema derzeit nicht erkannt wird.]
-			(* <- lang_de;; *);;
-		*);;
-	<= nrel_using_constants:
-		{
-		   concept_message
-		};;		
-	*);;
+    ...
+    (*
+    =>nrel_main_idtf:
+    [Опр. (сообщение без темы)]
+    (* <- lang_ru;; *);
+    [Def. (message without topic)]
+    (* <- lang_en;; *);
+    [Def. (Nachricht ohne Thema)]
+    (* <- lang_de;; *);;
+    <- definition;;
+    <= nrel_sc_text_translation:
+        ...
+        (*
+        ->rrel_example:
+            [Сообщение без темы - сообщение, тема которого в настоящее время не распознана.]
+                (* <- lang_ru;; *);;
+        -> rrel_example:
+            [Message without topic is a message whose topic is not currently recognized.]
+            (* <- lang_en;; *);;
+
+        -> rrel_example:
+            [Nachricht ohne Thema ist eine Nachricht, deren Thema derzeit nicht erkannt wird.]
+            (* <- lang_de;; *);;
+        *);;
+    <= nrel_using_constants:
+        {
+           concept_message
+        };;
+    *);;

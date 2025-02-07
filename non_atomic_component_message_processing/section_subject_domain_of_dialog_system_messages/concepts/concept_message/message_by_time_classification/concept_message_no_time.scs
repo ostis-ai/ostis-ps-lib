@@ -8,39 +8,34 @@ concept_message_no_time
     [Nachricht ohne Zeit]
     (* <- lang_de;; *);
 => nrel_nlp_service_idtf:
-	[unknown];
+    [unknown];
 <- rrel_key_sc_element:
-	...
-	(*
-	=>nrel_main_idtf:
-	[Опр. (сообщение без времени)]
-	(* <- lang_ru;; *);
-	[Def. (message without tense)]
-	(* <- lang_en;; *);
-	[Def. (Nachricht ohne Zeit)]
-	(* <- lang_de;; *);;
-	<- definition;;
-	<= nrel_sc_text_translation:
-		...
-		(*
-		->rrel_example:
-			[Сообщение без времени - сообщение, время которого в настоящее время не распознано.]
-			(* <- lang_ru;; *);;
-		*);
-		...
-		(*
-		-> rrel_example: 
-			[Message without tense is a message whose tense is not currently recognized.]
-			(* <- lang_en;; *);;
-		*);
-		...
-		(*
-		-> rrel_example: 
-			[Nachricht ohne Zeit ist eine Nachricht, deren Zeit derzeit nicht erkannt wird.]
-			(* <- lang_de;; *);;
-		*);;
-	<= nrel_using_constants:
-		{
-		   concept_message
-		};;		
-	*);;
+    ...
+    (*
+    =>nrel_main_idtf:
+    [Опр. (сообщение без времени)]
+    (* <- lang_ru;; *);
+    [Def. (message without tense)]
+    (* <- lang_en;; *);
+    [Def. (Nachricht ohne Zeit)]
+    (* <- lang_de;; *);;
+    <- definition;;
+    <= nrel_sc_text_translation:
+        ...
+        (*
+        ->rrel_example:
+            [Сообщение без времени - сообщение, время которого в настоящее время не распознано.]
+                (* <- lang_ru;; *);;
+        -> rrel_example:
+            [Message without tense is a message whose tense is not currently recognized.]
+            (* <- lang_en;; *);;
+
+        -> rrel_example:
+            [Nachricht ohne Zeit ist eine Nachricht, deren Zeit derzeit nicht erkannt wird.]
+            (* <- lang_de;; *);;
+        *);;
+    <= nrel_using_constants:
+        {
+           concept_message
+        };;
+    *);;
