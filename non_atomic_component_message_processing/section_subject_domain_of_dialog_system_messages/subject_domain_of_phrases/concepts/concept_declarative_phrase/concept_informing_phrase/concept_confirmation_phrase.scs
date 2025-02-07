@@ -1,44 +1,38 @@
 concept_confirmation_phrase
 <-sc_node_class;
 =>nrel_main_idtf:
-	[фраза подтверждения информации]
-	(* <- lang_ru;; *);
-	[confirmation phrase]
-	(* <- lang_en;; *);
-	[Bestätigungsphrase]
-	(* <- lang_de;; *);
+    [фраза подтверждения информации]
+    (* <- lang_ru;; *);
+    [confirmation phrase]
+    (* <- lang_en;; *);
+    [Bestätigungsphrase]
+    (* <- lang_de;; *);
 <- rrel_key_sc_element:
-	...
-	(*
-	=>nrel_main_idtf:
-		[Опр. (фраза подтверждения информации)]
-		(* <- lang_ru;; *);
-		[Def. (confirmation phrase)]
-		(* <- lang_en;; *);
-		[Def. (Bestätigungsphrase)]
-		(* <- lang_de;; *);;
-	<- definition;;
-	<= nrel_sc_text_translation:
-		...
-		(*
-		->rrel_example:
-			[Фраза подтверждения информации - фраза, подтверждающая какую-либо упомянутую ранее в диалоге информацию.]
-			(* <- lang_ru;; *);;
-		*);
-		...
-		(*
-		-> rrel_example: 
-			[Confirmation phrase is a phrase that confirms any information mentioned earlier in the dialog.]
-			(* <- lang_en;; *);;
-		*);
-		...
-		(*
-		-> rrel_example: 
-			[Bestätigungsphrase ist eine Phrase, die die zuvor im Dialog erwähnten Informationen bestätigt.]
-			(* <- lang_de;; *);;
-		*);;
-	<= nrel_using_constants:
-		{
-			concept_phrase
-		};;
-	*);;
+    ...
+    (*
+    =>nrel_main_idtf:
+        [Опр. (фраза подтверждения информации)]
+        (* <- lang_ru;; *);
+        [Def. (confirmation phrase)]
+        (* <- lang_en;; *);
+        [Def. (Bestätigungsphrase)]
+        (* <- lang_de;; *);;
+    <- definition;;
+    <= nrel_sc_text_translation:
+        ...
+        (*
+        ->rrel_example:
+            [Фраза подтверждения информации - фраза, подтверждающая какую-либо упомянутую ранее в диалоге информацию.]
+            (* <- lang_ru;; *);;
+        -> rrel_example:
+            [Confirmation phrase is a phrase that confirms any information mentioned earlier in the dialog.]
+            (* <- lang_en;; *);;
+        -> rrel_example:
+            [Bestätigungsphrase ist eine Phrase, die die zuvor im Dialog erwähnten Informationen bestätigt.]
+            (* <- lang_de;; *);;
+        *);;
+    <= nrel_using_constants:
+        {
+            concept_phrase
+        };;
+    *);;

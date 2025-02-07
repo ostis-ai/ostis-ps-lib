@@ -19,6 +19,6 @@ subject_domain_of_prompts
     concept_static_prompt_syntax_statement;
     concept_static_prompt_semantic_statement;
 -> rrel_explored_relation:
-	nrel_initiating_class;
-	nrel_meaning_translation_example;
-	nrel_static_prompt;;
+    nrel_initiating_class;
+    nrel_meaning_translation_example;
+    nrel_static_prompt;;

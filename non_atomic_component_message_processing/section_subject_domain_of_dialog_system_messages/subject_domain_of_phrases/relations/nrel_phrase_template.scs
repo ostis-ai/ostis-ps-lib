@@ -6,50 +6,50 @@ nrel_phrase_template
 <- asymmetric_relation;
 <- antitransitive_relation;
 <=nrel_main_idtf:
-	[шаблон фразы*]
-	(* <-lang_ru;; *);
-	[phrase template*]
-	(* <-lang_en;; *);
-	[Phrasenmuster*]
-	(* <-lang_de;; *);
+    [шаблон фразы*]
+    (* <-lang_ru;; *);
+    [phrase template*]
+    (* <-lang_en;; *);
+    [Phrasenmuster*]
+    (* <-lang_de;; *);
 =>nrel_first_domain: file;
 =>nrel_second_domain: structure;
 =>nrel_definitional_domain:
-	...
-	(*
-	<= nrel_combination:
-		{
-		structure;
-		sheaf
-		};;
-	*);
+    ...
+    (*
+    <= nrel_combination:
+        {
+        structure;
+        sheaf
+        };;
+    *);
 <-rrel_key_sc_element:
-	...
-	(*
-	=>nrel_main_idtf:
-		[Опр. (шаблон фразы*)]
-		(* <-lang_ru;; *);
-		[Def. (phrase template*)]
-		(* <-lang_en;; *);
-		[Def. (Phrasenmuster*)]
-		(* <-lang_de;; *);;
-	<-definition;;
-	<=nrel_sc_text_translation:
-		...
-		(*
-		-> rrel_example:
-			[Шаблон фразы* - это бинарное отношение, связывающее sc-ссылку, содержащую шаблонную фразу, с контуром, содержащим шаблон, по которому будет осуществляться поиск необходимой конструкции для генерации фразы.]
-			(* <- lang_ru;; *);
-			[Phrase template* is a binary relation that connects a sc-link with a template phrase and a contour with a template, which will be used to search for the necessary construction for generating the phrase.]
-			(* <- lang_en;; *);
-			[Phrasenmuster* ist eine binäre Beziehung, die einen sc-Link, der eine Musterphrase enthält, mit einem Umriss verbindet, der ein Muster enthält, mit dem nach der erforderlichen Konstruktion zum Generieren einer Phrase gesucht wird.]
-			(* <- lang_de;; *);;
-		*);;
-	<= nrel_using_constants:
-		{
-			template_phrases_class;
-			binary_relation;
-			structure;
-			file
-		};;
-	*);;
+    ...
+    (*
+    =>nrel_main_idtf:
+        [Опр. (шаблон фразы*)]
+        (* <-lang_ru;; *);
+        [Def. (phrase template*)]
+        (* <-lang_en;; *);
+        [Def. (Phrasenmuster*)]
+        (* <-lang_de;; *);;
+    <-definition;;
+    <=nrel_sc_text_translation:
+        ...
+        (*
+        -> rrel_example:
+            [Шаблон фразы* - это бинарное отношение, связывающее sc-ссылку, содержащую шаблонную фразу, с контуром, содержащим шаблон, по которому будет осуществляться поиск необходимой конструкции для генерации фразы.]
+            (* <- lang_ru;; *);
+            [Phrase template* is a binary relation that connects a sc-link with a template phrase and a contour with a template, which will be used to search for the necessary construction for generating the phrase.]
+            (* <- lang_en;; *);
+            [Phrasenmuster* ist eine binäre Beziehung, die einen sc-Link, der eine Musterphrase enthält, mit einem Umriss verbindet, der ein Muster enthält, mit dem nach der erforderlichen Konstruktion zum Generieren einer Phrase gesucht wird.]
+            (* <- lang_de;; *);;
+        *);;
+    <= nrel_using_constants:
+        {
+            concept_template_phrases_class;
+            binary_relation;
+            structure;
+            file
+        };;
+    *);;

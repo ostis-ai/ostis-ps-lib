@@ -1,48 +1,35 @@
 concept_dialog_start_phrase
 <-sc_node_class;
 =>nrel_main_idtf:
-	[фраза начала диалога]
-	(* <- lang_ru;; *);
-	[dialog start phrase]
-	(* <- lang_en;; *);
-	[]
-	(* <- lang_de;; *);
+    [фраза начала диалога]
+    (* <- lang_ru;; *);
+    [dialog start phrase]
+    (* <- lang_en;; *);
 <= nrel_inclusion:
-	concept_informing_phrase;
-	concept_greeting_phrase;
+    concept_informing_phrase;
+    concept_greeting_phrase;
 <- rrel_key_sc_element:
-	...
-	(*
-	=>nrel_main_idtf:
-		[Опр. (начальная фраза)]
-		(* <- lang_ru;; *);
-		[Def. (dialog start phrase)]
-		(* <- lang_en;; *);
-		[Def. ()]
-		(* <- lang_de;; *);;
-	<- definition;;
-	<= nrel_sc_text_translation:
-		...
-		(*
-		->rrel_example:
-			[Фраза начала диалога - приветственная фраза, использующаяся для начала диалога.]
-			(* <- lang_ru;; *);;
-		*);
-		...
-		(*
-		-> rrel_example: 
-			[Dialog start phrase is a greeting phrase used to start a dialog.]
-			(* <- lang_en;; *);;
-		*);
-		...
-		(*
-		-> rrel_example: 
-			[]
-			(* <- lang_de;; *);;
-		*);;
-	<= nrel_using_constants:
-		{
+    ...
+    (*
+    =>nrel_main_idtf:
+        [Опр. (начальная фраза)]
+        (* <- lang_ru;; *);
+        [Def. (dialog start phrase)]
+        (* <- lang_en;; *);;
+    <- definition;;
+    <= nrel_sc_text_translation:
+        ...
+        (*
+        ->rrel_example:
+            [Фраза начала диалога - приветственная фраза, использующаяся для начала диалога.]
+            (* <- lang_ru;; *);;
+        -> rrel_example:
+            [Dialog start phrase is a greeting phrase used to start a dialog.]
+            (* <- lang_en;; *);;
+        *);;
+    <= nrel_using_constants:
+        {
             concept_greeting_phrase
-		};;
-	*);
+        };;
+    *);
 -> [It's me, your assistant! You can talk to me at any time and for any reason. I will do everything to support you and help you in any way I can. I hope that from now on we will become good friends. Tell me something about yourself, I am very interested to find out who you are and what you are interested in. Let's chat! ] (* <-lang_en ;;*);;

@@ -1,49 +1,42 @@
 concept_interrogative_phrase
 <- sc_node_class;
 => nrel_main_idtf:
-	[вопросительная фраза]
-	(* <- lang_ru;; *);
-	[interrogative phrase]
-	(* <- lang_en;; *);
-	[interrogative Phrase]
-	(* <- lang_de;; *);
+    [вопросительная фраза]
+    (* <- lang_ru;; *);
+    [interrogative phrase]
+    (* <- lang_en;; *);
+    [interrogative Phrase]
+    (* <- lang_de;; *);
 <- rrel_key_sc_element:
-	...
-	(*
-	=> nrel_main_idtf:
-		[Опр. (вопросительная фраза)]
-		(* <- lang_ru;; *);
-		[Def. (interrogative phrase)]
-		(* <- lang_en;; *);
-		[Def. (interrogative Phrase)]
-		(* <- lang_de;; *);;
-	<- definition;;
-	<= nrel_sc_text_translation:
-		...
-		(*
-		-> rrel_example:
-			[Вопросительная фраза - фраза, выражающая вопрос.]
-			(* <- lang_ru;; *);;
-		*);
-		...
-		(*
-		-> rrel_example: 
-			[Interrogative phrase is a phrase that expresses a question.]
-			(* <- lang_en;; *);;
-		*);
-		...
-		(*
-		-> rrel_example: 
-			[Interrogative Phrase ist eine Phrase, die die Frage ausdrückt.]
-			(* <- lang_de;; *);;
-		*);;
-	<= nrel_using_constants:
-		{
-			concept_phrase
-		};;
-	*);
+    ...
+    (*
+    => nrel_main_idtf:
+        [Опр. (вопросительная фраза)]
+        (* <- lang_ru;; *);
+        [Def. (interrogative phrase)]
+        (* <- lang_en;; *);
+        [Def. (interrogative Phrase)]
+        (* <- lang_de;; *);;
+    <- definition;;
+    <= nrel_sc_text_translation:
+        ...
+        (*
+        -> rrel_example:
+            [Вопросительная фраза - фраза, выражающая вопрос.]
+                (* <- lang_ru;; *);;
+        -> rrel_example:
+            [Interrogative phrase is a phrase that expresses a question.]
+            (* <- lang_en;; *);;
+
+        -> rrel_example:
+            [Interrogative Phrase ist eine Phrase, die die Frage ausdrückt.]
+            (* <- lang_de;; *);;
+        *);;
+    <= nrel_using_constants:
+        {
+            concept_phrase
+        };;
+    *);
 => nrel_inclusion:
-		concept_information_request_phrase;
-		concept_interrogative_phrase_about_location;
-		concept_interrogative_phrase_about_incomprehensible_topic;
-		concept_initiative_interception_interrogative_phrase;;
+        concept_information_request_phrase;
+        concept_initiative_interception_interrogative_phrase;;

@@ -1,44 +1,39 @@
 concept_phrase_about_present_time
 <-sc_node_class;
 =>nrel_main_idtf:
-	[фраза о настоящем]
-	(* <- lang_ru;; *);
-	[phrase about the present]
-	(* <- lang_en;; *);
-	[Phrase mit Informationen über die Gegenwart]
-	(* <- lang_de;; *);
+    [фраза о настоящем]
+    (* <- lang_ru;; *);
+    [phrase about the present]
+    (* <- lang_en;; *);
+    [Phrase mit Informationen über die Gegenwart]
+    (* <- lang_de;; *);
 <- rrel_key_sc_element:
-	...
-	(*
-	=>nrel_main_idtf:
-		[Опр. (фраза о настоящем)]
-		(* <- lang_ru;; *);
-		[Def. (phrase about the present)]
-		(* <- lang_en;; *);
-		[Def. (Phrase mit Informationen über die Gegenwart)]
-		(* <- lang_de;; *);;
-	<- definition;;
-	<= nrel_sc_text_translation:
-		...
-		(*
-		->rrel_example:
-			[Фраза о настоящем - фраза, содержащая информацию о настоящем.]
-			(* <- lang_ru;; *);;
-		*);
-		...
-		(*
-		-> rrel_example: 
-			[Phrase about the present is a phrase that contains information about the present.]
-			(* <- lang_en;; *);;
-		*);
-		...
-		(*
-		-> rrel_example: 
-			[Phrase mit Informationen über die Gegenwart ist eine Phrase, die Informationen über die Gegenwart enthält.]
-			(* <- lang_de;; *);;
-		*);;
-	<= nrel_using_constants:
-		{
-			concept_phrase
-		};;
-	*);;
+    ...
+    (*
+    =>nrel_main_idtf:
+        [Опр. (фраза о настоящем)]
+        (* <- lang_ru;; *);
+        [Def. (phrase about the present)]
+        (* <- lang_en;; *);
+        [Def. (Phrase mit Informationen über die Gegenwart)]
+        (* <- lang_de;; *);;
+    <- definition;;
+    <= nrel_sc_text_translation:
+        ...
+        (*
+        ->rrel_example:
+            [Фраза о настоящем - фраза, содержащая информацию о настоящем.]
+                (* <- lang_ru;; *);;
+        -> rrel_example:
+            [Phrase about the present is a phrase that contains information about the present.]
+            (* <- lang_en;; *);;
+
+        -> rrel_example:
+            [Phrase mit Informationen über die Gegenwart ist eine Phrase, die Informationen über die Gegenwart enthält.]
+            (* <- lang_de;; *);;
+        *);;
+    <= nrel_using_constants:
+        {
+            concept_phrase
+        };;
+    *);;

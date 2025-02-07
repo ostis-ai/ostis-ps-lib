@@ -1,44 +1,39 @@
 concept_greeting_phrase
 <-sc_node_class;
 =>nrel_main_idtf:
-	[приветственная фраза]
-	(* <- lang_ru;; *);
-	[greeting phrase]
-	(* <- lang_en;; *);
-	[Grußphrase]
-	(* <- lang_de;; *);
+    [приветственная фраза]
+    (* <- lang_ru;; *);
+    [greeting phrase]
+    (* <- lang_en;; *);
+    [Grußphrase]
+    (* <- lang_de;; *);
 <- rrel_key_sc_element:
-	...
-	(*
-	=>nrel_main_idtf:
-		[Опр. (приветственная фраза)]
-		(* <- lang_ru;; *);
-		[Def. (greeting phrase)]
-		(* <- lang_en;; *);
-		[Def. (Grußphrase)]
-		(* <- lang_de;; *);;
-	<- definition;;
-	<= nrel_sc_text_translation:
-		...
-		(*
-		->rrel_example:
-			[Приветственная фраза - фраза, являющаяся приветствием.]
-			(* <- lang_ru;; *);;
-		*);
-		...
-		(*
-		-> rrel_example: 
-			[Greeting phrase is a phrase that is a greeting.]
-			(* <- lang_en;; *);;
-		*);
-		...
-		(*
-		-> rrel_example: 
-			[Grußphrase ist eine Phrase, die eine Begrüßung ist.]
-			(* <- lang_de;; *);;
-		*);;
-	<= nrel_using_constants:
-		{
-			concept_phrase
-		};;
-	*);;
+    ...
+    (*
+    =>nrel_main_idtf:
+        [Опр. (приветственная фраза)]
+        (* <- lang_ru;; *);
+        [Def. (greeting phrase)]
+        (* <- lang_en;; *);
+        [Def. (Grußphrase)]
+        (* <- lang_de;; *);;
+    <- definition;;
+    <= nrel_sc_text_translation:
+        ...
+        (*
+        ->rrel_example:
+            [Приветственная фраза - фраза, являющаяся приветствием.]
+                (* <- lang_ru;; *);;
+        -> rrel_example:
+            [Greeting phrase is a phrase that is a greeting.]
+            (* <- lang_en;; *);;
+
+        -> rrel_example:
+            [Grußphrase ist eine Phrase, die eine Begrüßung ist.]
+            (* <- lang_de;; *);;
+        *);;
+    <= nrel_using_constants:
+        {
+            concept_phrase
+        };;
+    *);;

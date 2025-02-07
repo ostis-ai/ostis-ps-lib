@@ -1,44 +1,38 @@
 concept_dialog_end_phrase
 <-sc_node_class;
 =>nrel_main_idtf:
-	[прощальная фраза]
-	(* <- lang_ru;; *);
-	[dialog end phrase]
-	(* <- lang_en;; *);
-	[Abschiedsphrase]
-	(* <- lang_de;; *);
+    [прощальная фраза]
+    (* <- lang_ru;; *);
+    [dialog end phrase]
+    (* <- lang_en;; *);
+    [Abschiedsphrase]
+    (* <- lang_de;; *);
 <- rrel_key_sc_element:
-	...
-	(*
-	=>nrel_main_idtf:
-		[Опр. (прощальная фраза)]
-		(* <- lang_ru;; *);
-		[Def. (dialog end phrase)]
-		(* <- lang_en;; *);
-		[Def. (Abschiedsphrase)]
-		(* <- lang_de;; *);;
-	<- definition;;
-	<= nrel_sc_text_translation:
-		...
-		(*
-		->rrel_example:
-			[Прощальная фраза - фраза, являющаяся прощанием.]
-			(* <- lang_ru;; *);;
-		*);
-		...
-		(*
-		-> rrel_example: 
-			[Dialog end phrase is a phrase that ends a dialog.]
-			(* <- lang_en;; *);;
-		*);
-		...
-		(*
-		-> rrel_example: 
-			[Abschiedsphrase ist eine Phrase, die ein Abschied ist.]
-			(* <- lang_de;; *);;
-		*);;
-	<= nrel_using_constants:
-		{
-			concept_phrase
-		};;
-	*);;
+    ...
+    (*
+    =>nrel_main_idtf:
+        [Опр. (прощальная фраза)]
+        (* <- lang_ru;; *);
+        [Def. (dialog end phrase)]
+        (* <- lang_en;; *);
+        [Def. (Abschiedsphrase)]
+        (* <- lang_de;; *);;
+    <- definition;;
+    <= nrel_sc_text_translation:
+        ...
+        (*
+        ->rrel_example:
+            [Прощальная фраза - фраза, являющаяся прощанием.]
+            (* <- lang_ru;; *);;
+        -> rrel_example:
+            [Dialog end phrase is a phrase that ends a dialog.]
+            (* <- lang_en;; *);;
+        -> rrel_example:
+            [Abschiedsphrase ist eine Phrase, die ein Abschied ist.]
+            (* <- lang_de;; *);;
+        *);;
+    <= nrel_using_constants:
+        {
+            concept_phrase
+        };;
+    *);;

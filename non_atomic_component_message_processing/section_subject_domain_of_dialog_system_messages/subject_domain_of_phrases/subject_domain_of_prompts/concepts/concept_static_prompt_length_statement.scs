@@ -1,49 +1,36 @@
 concept_static_prompt_length_statement
 <- sc_node_class;
 => nrel_main_idtf:
-	[утверждение статического промпта про длину]
-	(* <- lang_ru;; *);
-	[static prompt statement about length]
-	(* <- lang_en;; *);
-	[...]
-	(* <- lang_de;; *);
+    [утверждение статического промпта про длину]
+    (* <- lang_ru;; *);
+    [static prompt statement about length]
+    (* <- lang_en;; *);
 
 <- rrel_key_sc_element:
-	...
-	(*
-	=> nrel_main_idtf:
-		[Опр. (утверждение статического промпта про длину)]
-		(* <- lang_ru;; *);
-		[Def. (static prompt statement about length)]
-		(* <- lang_en;; *);
-		[Def. (...)]
-		(* <- lang_de;; *);;
-	<- definition;;
-	<= nrel_sc_text_translation:
-		...
-		(*
-		<- sc_node_tuple;;
-		-> rrel_example:
-			[Утверждение статического промпта про длину - утверждение про длину, которое может использоваться как часть статического промпта.]
-			(* <- lang_ru;; *);;
-		*);
-		...
-		(*
-		<- sc_node_tuple;;
-		-> rrel_example:
-			[Static prompt statement about length is a statement about length that could be used as a part of a static prompt.]
-			(* <- lang_en;; *);;
-		*);
-		...
-		(*
-		<- sc_node_tuple;;
-		-> rrel_example:
-			[...]
-			(* <- lang_de;; *);;
-		*);;
-	<= nrel_using_constants:
-		{
-		statement;
-		concept_static_prompt_statement
-		};;
-	*);;
+    ...
+    (*
+    => nrel_main_idtf:
+        [Опр. (утверждение статического промпта про длину)]
+        (* <- lang_ru;; *);
+        [Def. (static prompt statement about length)]
+        (* <- lang_en;; *);;
+    <- definition;;
+    <= nrel_sc_text_translation:
+        ...
+        (*
+        <- sc_node_tuple;;
+        -> rrel_example:
+            [Утверждение статического промпта про длину - утверждение про длину, которое может использоваться как часть статического промпта.]
+            (* <- lang_ru;; *);;
+
+        <- sc_node_tuple;;
+        -> rrel_example:
+            [Static prompt statement about length is a statement about length that could be used as a part of a static prompt.]
+            (* <- lang_en;; *);;
+        *);;
+    <= nrel_using_constants:
+        {
+        statement;
+        concept_static_prompt_statement
+        };;
+    *);;

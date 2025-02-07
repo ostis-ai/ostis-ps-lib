@@ -1,44 +1,39 @@
 concept_phrase_of_pleasure
 <-sc_node_class;
 =>nrel_main_idtf:
-	[фраза радости]
-	(* <- lang_ru;; *);
-	[phrase of pleasure]
-	(* <- lang_en;; *);
-	[Phrase der Freude]
-	(* <- lang_de;; *);
+    [фраза радости]
+    (* <- lang_ru;; *);
+    [phrase of pleasure]
+    (* <- lang_en;; *);
+    [Phrase der Freude]
+    (* <- lang_de;; *);
 <- rrel_key_sc_element:
-	...
-	(*
-	=>nrel_main_idtf:
-		[Опр. (фраза радости)]
-		(* <- lang_ru;; *);
-		[Def. (phrase of pleasure)]
-		(* <- lang_en;; *);
-		[Def. (Phrase der Freude)]
-		(* <- lang_de;; *);;
-	<- definition;;
-	<= nrel_sc_text_translation:
-		...
-		(*
-		->rrel_example:
-			[Фраза радости - фраза, выражающая радость.]
-			(* <- lang_ru;; *);;
-		*);
-		...
-		(*
-		-> rrel_example: 
-			[Phrase of pleasure is a phrase that expresses pleasure.]
-			(* <- lang_en;; *);;
-		*);
-		...
-		(*
-		-> rrel_example: 
-			[Phrase der Freude ist eine Phrase, die Freude ausdrückt.]
-			(* <- lang_de;; *);;
-		*);;
-	<= nrel_using_constants:
-		{
-			concept_phrase
-		};;
-	*);;
+    ...
+    (*
+    =>nrel_main_idtf:
+        [Опр. (фраза радости)]
+        (* <- lang_ru;; *);
+        [Def. (phrase of pleasure)]
+        (* <- lang_en;; *);
+        [Def. (Phrase der Freude)]
+        (* <- lang_de;; *);;
+    <- definition;;
+    <= nrel_sc_text_translation:
+        ...
+        (*
+        ->rrel_example:
+            [Фраза радости - фраза, выражающая радость.]
+                (* <- lang_ru;; *);;
+        -> rrel_example:
+            [Phrase of pleasure is a phrase that expresses pleasure.]
+            (* <- lang_en;; *);;
+
+        -> rrel_example:
+            [Phrase der Freude ist eine Phrase, die Freude ausdrückt.]
+            (* <- lang_de;; *);;
+        *);;
+    <= nrel_using_constants:
+        {
+            concept_phrase
+        };;
+    *);;

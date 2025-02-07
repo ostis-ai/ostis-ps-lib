@@ -1,0 +1,40 @@
+concept_information_request_phrase
+<-sc_node_class;
+=>nrel_main_idtf:
+    [фраза запроса информации]
+    (* <- lang_ru;; *);
+    [information request phrase]
+    (* <- lang_en;; *);
+    [Informationsanfragephrase]
+    (* <- lang_de;; *);
+<- rrel_key_sc_element:
+    ...
+    (*
+    =>nrel_main_idtf:
+        [Опр. (фраза запроса информации)]
+        (* <- lang_ru;; *);
+        [Def. (information request phrase)]
+        (* <- lang_en;; *);
+        [Def. (Informationsanfragephrase)]
+        (* <- lang_de;; *);;
+    <- definition;;
+    <= nrel_sc_text_translation:
+        ...
+        (*
+        ->rrel_example:
+            [Фраза запроса информации - фраза, являющаяся запросом какой-либо новой информации.]
+                (* <- lang_ru;; *);;
+        -> rrel_example:
+            [Information request phrase is a phrase that is a request for some new information.]
+            (* <- lang_en;; *);;
+
+        -> rrel_example:
+            [Informationsanfragephrase ist eine Phrase, die eine Anfrage nach neuen Informationen ist.]
+            (* <- lang_de;; *);;
+        *);;
+    <= nrel_using_constants:
+        {
+            concept_phrase
+        };;
+    *);
+=> nrel_inclusion: concept_information_request_for_reasons_phrase;;
