@@ -1,22 +1,23 @@
-subject_domain_of_messages_emotional_coloring
+subject_domain_of_dialog_system_message_understanding
 => nrel_main_idtf: 
-	[Предметная область эмоцинальной окраски сообщений] 
-	(* <- lang_ru;; *);
-	[Subject domain of messages emotional coloring] 
-	(* <- lang_en;; *);
-	[Fachgebiet der emotionalen Färbung von Nachrichten] 
-	(* <- lang_de;; *);
-<- sc_node_struct;
+    [Предметная область понимания сообщений в диалоговых системах]
+    (* <- lang_ru;; *);
+    [Subject domain of dialog system message understanding]
+    (* <- lang_en;; *);
+<- sc_node_structure;
 <- subject_domain;
-<= nrel_private_subject_domain: subject_domain_of_messages;
+<= nrel_private_subject_domain: section_subject_domain_of_dialog_system_messages;
 -> rrel_maximum_studied_object_class:
-	concept_message_with_emotional_coloring;
-	concept_message_without_emotional_coloring;
--> rrel_not_maximum_studied_object_class:
-	concept_message_with_negative_emotional_coloring;
-	concept_message_with_neutral_emotional_coloring;
-	concept_message_with_positive_emotional_coloring;
-	concept_message_with_negative_tone;
-	concept_message_with_neutral_tone;
-	concept_message_with_positive_tone;
-	concept_message_with_undefined_tone;;
+    concept_svo_triple;
+    concept_svo_triple_element;
+    concept_svo_triple_element_value_generation_rule;
+    concept_svo_triple_element_value_generation_rule_class_by_priority;
+    concept_message_nl_translation_logic_rule;
+    concept_message_nl_translation_logic_rule_class_by_priority;
+->rrel_explored_relation:
+    nrel_svo_triples;
+    rrel_svo_object;
+    rrel_svo_subject;
+    rrel_svo_triple_element_token;
+    rrel_svo_triple_element_values;
+    rrel_svo_verb;;

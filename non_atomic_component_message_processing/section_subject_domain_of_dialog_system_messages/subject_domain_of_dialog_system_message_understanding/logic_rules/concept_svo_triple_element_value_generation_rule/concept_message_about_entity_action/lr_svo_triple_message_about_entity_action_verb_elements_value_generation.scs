@@ -1,4 +1,4 @@
-sc_node_not_relation
+sc_node_class
     -> atomic_logical_formula;
     -> concept_message;
     -> concept_svo_triple;
@@ -7,7 +7,7 @@ sc_node_not_relation
     -> concept_message_about_entity_action;
     -> _class_value;;
 
-sc_node_norole_relation
+sc_node_non_role_relation
     -> nrel_svo_triples;
     -> nrel_implication;;
 
@@ -21,21 +21,21 @@ sc_node_tuple
 
 @rule_condition = [*
     _message
-        _<- concept_message;
-        _<- concept_message_about_entity_action;;
+        <-_ concept_message;
+        <-_ concept_message_about_entity_action;;
     _message _=> nrel_svo_triples:: _tuple;;
     _svo_triple
-        _<- concept_svo_triple;
-        _<- _tuple;
+        <-_ concept_svo_triple;
+        <-_ _tuple;
         _-> rrel_svo_verb:: _element;;
-    _element _<- concept_svo_triple_element;;
+    _element <-_ concept_svo_triple_element;;
 *];;
 
 @rule_result = [*
     _element _-> rrel_svo_triple_element_values:: _values_set;;
     _class_value
-        _<- _values_set;
-        _<= nrel_inclusion:: action;;
+        <-_ _values_set;
+        <=_ nrel_inclusion:: action;;
 *];;
 
 atomic_logical_formula

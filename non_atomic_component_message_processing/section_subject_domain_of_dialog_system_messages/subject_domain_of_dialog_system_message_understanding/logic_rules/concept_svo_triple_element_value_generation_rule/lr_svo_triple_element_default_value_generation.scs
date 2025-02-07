@@ -1,11 +1,11 @@
-sc_node_not_relation
+sc_node_class
     -> atomic_logical_formula;
     -> concept_message;
     -> concept_svo_triple;
     -> concept_svo_triple_element;
     -> not_enough_specified_essence;;
 
-sc_node_norole_relation
+sc_node_non_role_relation
     -> nrel_svo_triples;
     -> nrel_implication;;
 
@@ -21,16 +21,16 @@ sc_node_tuple
     concept_message _-> _message;;
     _message _=> nrel_svo_triples:: _tuple;;
     _svo_triple
-        _<- concept_svo_triple;
-        _<- _tuple;
+        <-_ concept_svo_triple;
+        <-_ _tuple;
         _-> _element;;
-    _element _<- concept_svo_triple_element;;
+    _element <-_ concept_svo_triple_element;;
 *];;
 
 @rule_result = [*
     _element _-> rrel_svo_triple_element_values:: _values_set;;
     _value
-        _<- _values_set;
+        <-_ _values_set;
         _<~ not_enough_specified_essence;;
 *];;
 

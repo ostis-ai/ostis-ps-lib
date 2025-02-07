@@ -1,0 +1,15 @@
+concept_svo_triple_element_value_generation_rule_class_by_priority
+    => nrel_main_idtf:
+        [множество правил генерации значения тройки субъект-глагол-объект] (* <- lang_ru;; *);
+        [set of rules for subject-verb-object triple value generation] (* <- lang_en;; *);
+        [Menge von Regeln für die Generierung des Wertes eines Subjekts-Verbs-Objekt-Tripels] (* <- lang_de;; *);
+    <-sc_node_class;
+    <- concept_rules_classes_set_by_priority;;
+
+@access_arc_1 = (concept_svo_triple_element_value_generation_rule_class_by_priority -> rrel_1: concept_svo_triple_element_value_generation_rule_class_by_priority_1);;
+@access_arc_2 = (concept_svo_triple_element_value_generation_rule_class_by_priority -> concept_svo_triple_element_value_generation_rule_class_by_priority_2);;
+
+@sequence_arc_1 = (@access_arc_1 => @access_arc_2);;
+
+nrel_basic_sequence -> @sequence_arc_1;;
+

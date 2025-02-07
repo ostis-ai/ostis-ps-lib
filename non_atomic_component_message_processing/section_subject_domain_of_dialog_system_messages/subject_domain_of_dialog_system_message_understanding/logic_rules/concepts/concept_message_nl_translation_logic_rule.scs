@@ -1,0 +1,50 @@
+concept_message_nl_translation_logic_rule
+=> nrel_main_idtf:
+    [правило естественно-языковой трансляции сообщения] (* <- lang_ru;; *);
+    [rule of the natural language translation of the message] (* <- lang_en;; *);
+    [Regel für die natürlichsprachige Übertragung der Nachricht] (* <- lang_de;; *);
+<- sc_node_class;
+<= nrel_inclusion:
+    logical_formula;
+=> nrel_subdividing:
+    {
+        concept_message_nl_translation_logic_rule_class_by_priority_1;
+        concept_message_nl_translation_logic_rule_class_by_priority_2;
+        concept_message_nl_translation_logic_rule_class_by_priority_3
+    };
+=> nrel_set_of_subsets:
+    concept_message_nl_translation_logic_rule_class_by_priority;
+<- rrel_key_sc_element:
+    ...
+    (*
+    => nrel_main_idtf:
+        [Опр. (правило естественно-языковой трансляции сообщения)]
+        (* <- lang_ru;; *);
+        [Def. (rule of the natural language translation of the message)]
+        (* <- lang_en;; *);
+        [Def. (Regel für die natürlichsprachige Übertragung der Nachricht)]
+        (* <- lang_de;; *);;
+    <- definition;;
+    <= nrel_sc_text_translation:
+        ...
+        (*
+        -> rrel_example:
+            [Правило естественно-языковой трансляции сообщения - логическая формула, в соответствии с которой осуществляется
+            трансляция естественно-языкового сообщения в sc-текст.]
+                (* <- lang_ru;; *);;
+        -> rrel_example:
+            [Rule of the natural language translation of the message is a logical formula according to which a natural
+            language message is translated into the sc-text.]
+            (* <- lang_en;; *);;
+
+        -> rrel_example:
+            [Regel für die natürlichsprachige Übertragung der Nachricht ist eine logische Formel, nach der eine natürlichsprachige
+            Nachricht in den sc-Text übersetzt wird.]
+            (* <- lang_de;; *);;
+        *);;
+    <= nrel_using_constants:
+        {
+        logical_formula;
+        concept_message
+        };;
+    *);;
