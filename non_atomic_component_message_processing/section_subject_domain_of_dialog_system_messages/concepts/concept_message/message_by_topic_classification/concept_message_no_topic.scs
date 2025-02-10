@@ -12,7 +12,7 @@ concept_message_no_topic
 <- rrel_key_sc_element:
     ...
     (*
-    =>nrel_main_idtf:
+    => nrel_main_idtf:
     [Опр. (сообщение без темы)]
     (* <- lang_ru;; *);
     [Def. (message without topic)]
@@ -23,7 +23,7 @@ concept_message_no_topic
     <= nrel_sc_text_translation:
         ...
         (*
-        ->rrel_example:
+        -> rrel_example:
             [Сообщение без темы - сообщение, тема которого в настоящее время не распознана.]
                 (* <- lang_ru;; *);;
         -> rrel_example:

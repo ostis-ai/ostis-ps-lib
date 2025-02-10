@@ -12,7 +12,7 @@ concept_message_no_type
 <- rrel_key_sc_element:
     ...
     (*
-    =>nrel_main_idtf:
+    => nrel_main_idtf:
     [Опр. (сообщение без типа)]
     (* <- lang_ru;; *);
     [Def. (message without type)]
@@ -23,7 +23,7 @@ concept_message_no_type
     <= nrel_sc_text_translation:
         ...
         (*
-        ->rrel_example:
+        -> rrel_example:
             [Сообщение без типа - сообщение, тип которого в настоящее время не распознан.]
             (* <- lang_ru;; *);;
         -> rrel_example:

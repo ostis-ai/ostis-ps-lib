@@ -1,13 +1,13 @@
 concept_hortative_phrase
 <-sc_node_class;
-=>nrel_main_idtf:
+=> nrel_main_idtf:
     [побудительная фраза]
     (* <- lang_ru;; *);
     [hortative phrase]
     (* <- lang_en;; *);
     [kausative Phrase]
     (* <- lang_de;; *);
-=>nrel_idtf:
+=> nrel_idtf:
     [императивная фраза]
     (* <- lang_ru;; *);
     [imperative phrase]
@@ -17,7 +17,7 @@ concept_hortative_phrase
 <- rrel_key_sc_element:
     ...
     (*
-    =>nrel_main_idtf:
+    => nrel_main_idtf:
         [Опр. (побудительная фраза)]
         (* <- lang_ru;; *);
         [Def. (hortative phrase)]
@@ -28,7 +28,7 @@ concept_hortative_phrase
     <= nrel_sc_text_translation:
         ...
         (*
-        ->rrel_example:
+        -> rrel_example:
             [Побудительная фраза - фраза, побуждающая к какому-либо действию.]
             (* <- lang_ru;; *);;
         -> rrel_example:

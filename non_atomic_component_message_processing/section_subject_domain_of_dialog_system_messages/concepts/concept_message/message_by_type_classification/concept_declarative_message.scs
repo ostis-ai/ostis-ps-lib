@@ -1,6 +1,6 @@
 concept_declarative_message
 <-sc_node_class;
-=>nrel_main_idtf:
+=> nrel_main_idtf:
     [повествовательное сообщение]
     (* <- lang_ru;; *);
     [declarative message]
@@ -12,7 +12,7 @@ concept_declarative_message
 <- rrel_key_sc_element:
     ...
     (*
-    =>nrel_main_idtf:
+    => nrel_main_idtf:
         [Опр. (повествовательное сообщение)]
         (* <- lang_ru;; *);
         [Def. (declarative message)]
@@ -23,7 +23,7 @@ concept_declarative_message
     <= nrel_sc_text_translation:
         ...
         (*
-        ->rrel_example:
+        -> rrel_example:
             [Повествовательное сообщение - атомарное сообщение, сообщающее о каких-либо новых фактах.]
                 (* <- lang_ru;; *);;
         -> rrel_example:

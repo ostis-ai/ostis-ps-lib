@@ -1,6 +1,6 @@
 concept_imperative_message
 <-sc_node_class;
-=>nrel_main_idtf:
+=> nrel_main_idtf:
     [императивное сообщение]
     (* <- lang_ru;; *);
     [imperative message]
@@ -12,7 +12,7 @@ concept_imperative_message
 <- rrel_key_sc_element:
     ...
     (*
-    =>nrel_main_idtf:
+    => nrel_main_idtf:
         [Опр. (императивное сообщение)]
         (* <- lang_ru;; *);
         [Def. (imperative message)]
@@ -23,7 +23,7 @@ concept_imperative_message
     <= nrel_sc_text_translation:
         ...
         (*
-        ->rrel_example:
+        -> rrel_example:
             [Императивное сообщение - сообщение, содержащее побуждение к чему-либо.]
                 (* <- lang_ru;; *);;
         -> rrel_example:

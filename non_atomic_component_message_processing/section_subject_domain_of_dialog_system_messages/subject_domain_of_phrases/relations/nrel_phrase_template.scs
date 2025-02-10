@@ -12,9 +12,9 @@ nrel_phrase_template
     (* <-lang_en;; *);
     [Phrasenmuster*]
     (* <-lang_de;; *);
-=>nrel_first_domain: file;
-=>nrel_second_domain: structure;
-=>nrel_definitional_domain:
+=> nrel_first_domain: file;
+=> nrel_second_domain: structure;
+=> nrel_definitional_domain:
     ...
     (*
     <= nrel_combination:
@@ -26,7 +26,7 @@ nrel_phrase_template
 <-rrel_key_sc_element:
     ...
     (*
-    =>nrel_main_idtf:
+    => nrel_main_idtf:
         [Опр. (шаблон фразы*)]
         (* <-lang_ru;; *);
         [Def. (phrase template*)]

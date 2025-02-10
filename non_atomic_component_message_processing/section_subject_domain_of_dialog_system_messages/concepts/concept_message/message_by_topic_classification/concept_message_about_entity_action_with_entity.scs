@@ -12,7 +12,7 @@ concept_message_about_entity_action_with_entity
 <- rrel_key_sc_element:
     ...
     (*
-    =>nrel_main_idtf:
+    => nrel_main_idtf:
         [Опр. (сообщение о действии сущности с сущностью)]
         (* <- lang_ru;; *);
         [Def. (message about the entity action with an entity)]
@@ -23,7 +23,7 @@ concept_message_about_entity_action_with_entity
     <= nrel_sc_text_translation:
         ...
         (*
-        ->rrel_example:
+        -> rrel_example:
             [Сообщение о действии сущности с сущностью - атомарное сообщение, описывающее действие сущности,
             выполняемое с/над другой сущностью.]
                 (* <- lang_ru;; *);;

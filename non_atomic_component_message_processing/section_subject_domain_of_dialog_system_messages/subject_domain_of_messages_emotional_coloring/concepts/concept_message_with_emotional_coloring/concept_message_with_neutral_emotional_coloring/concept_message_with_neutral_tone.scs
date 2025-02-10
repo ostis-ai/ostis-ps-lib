@@ -1,6 +1,6 @@
 concept_message_with_neutral_tone
 <-sc_node_class;
-=>nrel_main_idtf:
+=> nrel_main_idtf:
     [сообщение с нейтральной тональностью]
     (* <- lang_ru;; *);
     [message with neutral tone]
@@ -10,7 +10,7 @@ concept_message_with_neutral_tone
 <- rrel_key_sc_element:
     ...
     (*
-    =>nrel_main_idtf:
+    => nrel_main_idtf:
         [Опр. (сообщение с нейтральной тональностью)]
         (* <- lang_ru;; *);
         [Def. (message with neutral tone)]
@@ -21,7 +21,7 @@ concept_message_with_neutral_tone
     <= nrel_sc_text_translation:
         ...
         (*
-        ->rrel_example:
+        -> rrel_example:
             [Сообщение с нейтральной тональностью - атомарное сообщение, содержащее слова и выражения, которые имеют нейтральную окраску.]
                 (* <- lang_ru;; *);;
         -> rrel_example:

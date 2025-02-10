@@ -1,6 +1,6 @@
 concept_neutral_phrase
 <-sc_node_class;
-=>nrel_main_idtf:
+=> nrel_main_idtf:
     [нейтральная фраза]
     (* <- lang_ru;; *);
     [neutral phrase]
@@ -10,7 +10,7 @@ concept_neutral_phrase
 <- rrel_key_sc_element:
     ...
     (*
-    =>nrel_main_idtf:
+    => nrel_main_idtf:
         [Опр. (нейтральная фраза)]
         (* <- lang_ru;; *);
         [Def. (neutral phrase)]
@@ -21,7 +21,7 @@ concept_neutral_phrase
     <= nrel_sc_text_translation:
         ...
         (*
-        ->rrel_example:
+        -> rrel_example:
             [Нейтральная фраза - фраза, не несущая какую-либо новую информацию, а также не подтверждающая и не опровергающая какую-либо озвученную ранее информацию.]
                 (* <- lang_ru;; *);;
         -> rrel_example:

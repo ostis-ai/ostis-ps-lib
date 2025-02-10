@@ -1,6 +1,6 @@
 concept_phrase_of_pleasure
 <-sc_node_class;
-=>nrel_main_idtf:
+=> nrel_main_idtf:
     [фраза радости]
     (* <- lang_ru;; *);
     [phrase of pleasure]
@@ -10,7 +10,7 @@ concept_phrase_of_pleasure
 <- rrel_key_sc_element:
     ...
     (*
-    =>nrel_main_idtf:
+    => nrel_main_idtf:
         [Опр. (фраза радости)]
         (* <- lang_ru;; *);
         [Def. (phrase of pleasure)]
@@ -21,7 +21,7 @@ concept_phrase_of_pleasure
     <= nrel_sc_text_translation:
         ...
         (*
-        ->rrel_example:
+        -> rrel_example:
             [Фраза радости - фраза, выражающая радость.]
                 (* <- lang_ru;; *);;
         -> rrel_example:

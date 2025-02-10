@@ -1,6 +1,6 @@
 concept_default_dialog_start_phrase
 <-sc_node_class;
-=>nrel_main_idtf:
+=> nrel_main_idtf:
     [фраза начала диалога по умолчанию]
     (* <- lang_ru;; *);
     [default dialog start phrase]
@@ -9,7 +9,7 @@ concept_default_dialog_start_phrase
 <- rrel_key_sc_element:
     ...
     (*
-    =>nrel_main_idtf:
+    => nrel_main_idtf:
         [Опр. (фраза начала диалога по умолчанию)]
         (* <- lang_ru;; *);
         [Def. (default dialog start phrase)]
@@ -18,7 +18,7 @@ concept_default_dialog_start_phrase
     <= nrel_sc_text_translation:
         ...
         (*
-        ->rrel_example:
+        -> rrel_example:
             [фраза начала диалога по умолчанию - приветственная фраза, использующаяся для начала диалога по умолчанию.]
                 (* <- lang_ru;; *);;
         -> rrel_example:

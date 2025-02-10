@@ -12,7 +12,7 @@ concept_message_about_action
 <- rrel_key_sc_element:
     ...
     (*
-    =>nrel_main_idtf:
+    => nrel_main_idtf:
         [Опр. (сообщение о действии)]
         (* <- lang_ru;; *);
         [Def. (message about an action)]
@@ -23,7 +23,7 @@ concept_message_about_action
     <= nrel_sc_text_translation:
         ...
         (*
-        ->rrel_example:
+        -> rrel_example:
             [Сообщение о действии - атомарное сообщение, описывающее действие без уточнения аргументов, сущностей.]
                 (* <- lang_ru;; *);;
         -> rrel_example:

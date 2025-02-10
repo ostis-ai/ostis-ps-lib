@@ -10,7 +10,7 @@ concept_message_no_class
 <- rrel_key_sc_element:
     ...
     (*
-    =>nrel_main_idtf:
+    => nrel_main_idtf:
     [Опр. (сообщение без класса)]
     (* <- lang_ru;; *);
     [Def. (message without a class)]
@@ -21,7 +21,7 @@ concept_message_no_class
     <= nrel_sc_text_translation:
         ...
         (*
-        ->rrel_example:
+        -> rrel_example:
             [Cообщение без класса - сообщение, в настоящее время для которого не распознан класс.]
             (* <- lang_ru;; *);;
         -> rrel_example:

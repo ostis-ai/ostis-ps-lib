@@ -12,7 +12,7 @@ concept_message_no_time
 <- rrel_key_sc_element:
     ...
     (*
-    =>nrel_main_idtf:
+    => nrel_main_idtf:
     [Опр. (сообщение без времени)]
     (* <- lang_ru;; *);
     [Def. (message without tense)]
@@ -23,7 +23,7 @@ concept_message_no_time
     <= nrel_sc_text_translation:
         ...
         (*
-        ->rrel_example:
+        -> rrel_example:
             [Сообщение без времени - сообщение, время которого в настоящее время не распознано.]
                 (* <- lang_ru;; *);;
         -> rrel_example:

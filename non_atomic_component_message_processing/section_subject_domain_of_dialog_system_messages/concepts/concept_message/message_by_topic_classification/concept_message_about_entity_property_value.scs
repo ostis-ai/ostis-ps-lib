@@ -12,7 +12,7 @@ concept_message_about_entity_property_value
 <- rrel_key_sc_element:
     ...
     (*
-    =>nrel_main_idtf:
+    => nrel_main_idtf:
         [Опр. (сообщение о значении свойства сущности)]
         (* <- lang_ru;; *);
         [Def. (message about the entity property value)]
@@ -23,7 +23,7 @@ concept_message_about_entity_property_value
     <= nrel_sc_text_translation:
         ...
         (*
-        ->rrel_example:
+        -> rrel_example:
             [Сообщение о значении свойства сущности - атомарное сообщение, содержащее информацию об общем состоянии сущности или значении свойства сущности в виде
             параметра или бинарной связки с сущностью]
                 (* <- lang_ru;; *);;

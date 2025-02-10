@@ -7,10 +7,10 @@ section_subject_domain_of_dialog_system_messages
 section_subject_domain_of_dialog_system_messages = [*
     subject_domain_of_messages
         <- subject_domain;
-        ->rrel_maximum_studied_object_class:
+        -> rrel_maximum_studied_object_class:
             concept_message;
             concept_empty_string;
-        ->rrel_explored_relation:
+        -> rrel_explored_relation:
             nrel_message_sequence;
             nrel_reply;
             rrel_entity;
@@ -24,7 +24,7 @@ section_subject_domain_of_dialog_system_messages = [*
             nrel_decomposition_into_tokens;
             nrel_token_sequence;
             rrel_message_theme;
-        ->rrel_not_maximum_studied_object_class:
+        -> rrel_not_maximum_studied_object_class:
             concept_atomic_message;
             concept_non_atomic_message;
             concept_dialog_message;

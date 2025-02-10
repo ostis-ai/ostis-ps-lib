@@ -1,6 +1,6 @@
 concept_informing_phrase
 <-sc_node_class;
-=>nrel_main_idtf:
+=> nrel_main_idtf:
     [фраза информирования]
     (* <- lang_ru;; *);
     [informing phrase]
@@ -10,7 +10,7 @@ concept_informing_phrase
 <- rrel_key_sc_element:
     ...
     (*
-    =>nrel_main_idtf:
+    => nrel_main_idtf:
         [Опр. (фраза информирования)]
         (* <- lang_ru;; *);
         [Def. (informing phrase)]
@@ -21,7 +21,7 @@ concept_informing_phrase
     <= nrel_sc_text_translation:
         ...
         (*
-        ->rrel_example:
+        -> rrel_example:
             [Фраза информирования - фраза, передающая какую-либо информацию.]
             (* <- lang_ru;; *);;
         -> rrel_example:

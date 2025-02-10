@@ -1,6 +1,6 @@
 concept_information_request_phrase
 <-sc_node_class;
-=>nrel_main_idtf:
+=> nrel_main_idtf:
     [фраза запроса информации]
     (* <- lang_ru;; *);
     [information request phrase]
@@ -10,7 +10,7 @@ concept_information_request_phrase
 <- rrel_key_sc_element:
     ...
     (*
-    =>nrel_main_idtf:
+    => nrel_main_idtf:
         [Опр. (фраза запроса информации)]
         (* <- lang_ru;; *);
         [Def. (information request phrase)]
@@ -21,7 +21,7 @@ concept_information_request_phrase
     <= nrel_sc_text_translation:
         ...
         (*
-        ->rrel_example:
+        -> rrel_example:
             [Фраза запроса информации - фраза, являющаяся запросом какой-либо новой информации.]
                 (* <- lang_ru;; *);;
         -> rrel_example:

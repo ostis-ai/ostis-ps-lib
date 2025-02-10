@@ -12,7 +12,7 @@ concept_message_about_entity_relation_to_entity
 <- rrel_key_sc_element:
     ...
     (*
-    =>nrel_main_idtf:
+    => nrel_main_idtf:
         [Опр. (сообщение об отношении сущности к сущности)]
         (* <- lang_ru;; *);
         [Def. (message about the entity relation to an entity)]
@@ -23,7 +23,7 @@ concept_message_about_entity_relation_to_entity
     <= nrel_sc_text_translation:
         ...
         (*
-        ->rrel_example:
+        -> rrel_example:
             [Сообщение об отношении сущности к сущности - атомарное сообщение, описывающее отношение между сущностями
             (отношение одной сущности к другой сущности).]
                 (* <- lang_ru;; *);;

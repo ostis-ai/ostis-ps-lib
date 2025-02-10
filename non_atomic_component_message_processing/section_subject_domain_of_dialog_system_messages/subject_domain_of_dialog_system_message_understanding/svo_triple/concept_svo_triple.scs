@@ -1,6 +1,6 @@
 concept_svo_triple
 <-sc_node_class;
-=>nrel_main_idtf:
+=> nrel_main_idtf:
     [тройка субъект-глагол-объект]
     (* <- lang_ru;; *);
     [subject-verb-object triple]
@@ -10,7 +10,7 @@ concept_svo_triple
 <- rrel_key_sc_element:
     ...
     (*
-    =>nrel_main_idtf:
+    => nrel_main_idtf:
         [Опр. (тройка субъект-глагол-объект)]
         (* <- lang_ru;; *);
         [Def. (subject-verb-object triple)]
@@ -21,7 +21,7 @@ concept_svo_triple
     <= nrel_sc_text_translation:
         ...
         (*
-        ->rrel_example:
+        -> rrel_example:
             [Тройка субъект-глагол-объект - это множество из трех сущностей, которое кодифицирует утверждение о
             семантических данных в форме выражений субъект–глагол–объект.]
                 (* <- lang_ru;; *);;

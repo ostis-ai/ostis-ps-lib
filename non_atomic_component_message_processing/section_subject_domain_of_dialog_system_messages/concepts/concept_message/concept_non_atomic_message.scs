@@ -1,6 +1,6 @@
 concept_non_atomic_message
 <-sc_node_class;
-=>nrel_main_idtf:
+=> nrel_main_idtf:
     [неатомарное сообщение]
     (* <- lang_ru;; *);
     [non-atomic message]
@@ -10,7 +10,7 @@ concept_non_atomic_message
 <- rrel_key_sc_element:
     ...
     (*
-    =>nrel_main_idtf:
+    => nrel_main_idtf:
         [Опр. (неатомарное сообщение)]
         (* <- lang_ru;; *);
         [Def. (non-atomic message)]
@@ -21,7 +21,7 @@ concept_non_atomic_message
     <= nrel_sc_text_translation:
         ...
         (*
-        ->rrel_example:
+        -> rrel_example:
             [Неатомарное сообщение - сообщение, в состав которого входят другие сообщения.]
             (* <- lang_ru;; *);;
         -> rrel_example:

@@ -1,6 +1,6 @@
 concept_message_about_present
 <-sc_node_class;
-=>nrel_main_idtf:
+=> nrel_main_idtf:
     [сообщение о настоящем]
     (* <- lang_ru;; *);
     [message about the present]
@@ -14,7 +14,7 @@ concept_message_about_present
 <- rrel_key_sc_element:
     ...
     (*
-    =>nrel_main_idtf:
+    => nrel_main_idtf:
         [Опр. (сообщение о настоящем)]
         (* <- lang_ru;; *);
         [Def. (message about the present)]
@@ -25,7 +25,7 @@ concept_message_about_present
     <= nrel_sc_text_translation:
         ...
         (*
-        ->rrel_example:
+        -> rrel_example:
             [Сообщение  о настоящем - атомарное сообщение, содержащее информацию о настоящем.]
             (* <- lang_ru;; *);;
         -> rrel_example:

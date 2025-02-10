@@ -1,6 +1,6 @@
 concept_phrase_of_compassion
 <-sc_node_class;
-=>nrel_main_idtf:
+=> nrel_main_idtf:
     [фраза сочувствия]
     (* <- lang_ru;; *);
     [phrase of compassion]
@@ -10,7 +10,7 @@ concept_phrase_of_compassion
 <- rrel_key_sc_element:
     ...
     (*
-    =>nrel_main_idtf:
+    => nrel_main_idtf:
         [Опр. (фраза сочувствия)]
         (* <- lang_ru;; *);
         [Def. (phrase of compassion)]
@@ -21,7 +21,7 @@ concept_phrase_of_compassion
     <= nrel_sc_text_translation:
         ...
         (*
-        ->rrel_example:
+        -> rrel_example:
             [Фраза сочувствия - фраза, выражающая сочувствие.]
                 (* <- lang_ru;; *);;
         -> rrel_example:

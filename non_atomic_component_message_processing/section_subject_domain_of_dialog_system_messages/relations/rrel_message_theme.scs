@@ -7,16 +7,16 @@ rrel_message_theme
 <-antireflexive_relation;
 <-antitransitive_relation;
 <-asymmetric_relation;
-=>nrel_main_idtf:
+=> nrel_main_idtf:
     [тема сообщения']
     (* <- lang_ru;; *);
     [message theme']
     (* <- lang_en;; *);
     [Thema der Nachricht']
     (* <- lang_de;; *);
-=>nrel_first_domain: concept_message;
-=>nrel_second_domain: sc_node;
-=>nrel_definitional_domain:
+=> nrel_first_domain: concept_message;
+=> nrel_second_domain: sc_node;
+=> nrel_definitional_domain:
     ...
     (*
     <= nrel_combination:
@@ -28,7 +28,7 @@ rrel_message_theme
 <-rrel_key_sc_element:
     ...
     (*
-    =>nrel_main_idtf:
+    => nrel_main_idtf:
         [Опр. (тема сообщения')]
         (* <- lang_ru;; *);
         [Def. (message theme')]

@@ -1,6 +1,6 @@
 concept_interrogative_message
 <-sc_node_class;
-=>nrel_main_idtf:
+=> nrel_main_idtf:
     [вопросительное сообщение]
     (* <- lang_ru;; *);
     [interrogative message]
@@ -14,7 +14,7 @@ concept_interrogative_message
 <- rrel_key_sc_element:
     ...
     (*
-    =>nrel_main_idtf:
+    => nrel_main_idtf:
         [Опр. (вопросительное сообщение)]
         (* <- lang_ru;; *);
         [Def. (interrogative message)]
@@ -25,7 +25,7 @@ concept_interrogative_message
     <= nrel_sc_text_translation:
         ...
         (*
-        ->rrel_example:
+        -> rrel_example:
             [Вопросительное сообщение - сообщение, выражающее вопрос.]
                 (* <- lang_ru;; *);;
         -> rrel_example:

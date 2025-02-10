@@ -1,6 +1,6 @@
 concept_message_with_undefined_tone
 <-sc_node_class;
-=>nrel_main_idtf:
+=> nrel_main_idtf:
     [сообщение с неопределенной тональностью]
     (* <- lang_ru;; *);
     [message with an undefined tone]
@@ -10,7 +10,7 @@ concept_message_with_undefined_tone
 <- rrel_key_sc_element:
     ...
     (*
-    =>nrel_main_idtf:
+    => nrel_main_idtf:
         [Опр. (сообщение с неопределенной тональностью)]
         (* <- lang_ru;; *);
         [Def. (message with an undefined tone)]
@@ -21,7 +21,7 @@ concept_message_with_undefined_tone
     <= nrel_sc_text_translation:
         ...
         (*
-        ->rrel_example:
+        -> rrel_example:
             [Сообщение с неопределенной тональностью - атомарное сообщение, содержащее слова и выражения, которые имеют неопределенную окраску.]
                 (* <- lang_ru;; *);;
         -> rrel_example:

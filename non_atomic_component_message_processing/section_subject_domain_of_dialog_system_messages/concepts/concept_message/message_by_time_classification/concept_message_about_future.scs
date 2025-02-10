@@ -1,6 +1,6 @@
 concept_message_about_future
 <-sc_node_class;
-=>nrel_main_idtf:
+=> nrel_main_idtf:
     [сообщение о будущем]
     (* <- lang_ru;; *);
     [message about the future]
@@ -14,7 +14,7 @@ concept_message_about_future
 <- rrel_key_sc_element:
     ...
     (*
-    =>nrel_main_idtf:
+    => nrel_main_idtf:
         [Опр. (сообщение о будущем)]
         (* <- lang_ru;; *);
         [Def. (message about the future)]
@@ -25,7 +25,7 @@ concept_message_about_future
     <= nrel_sc_text_translation:
         ...
         (*
-        ->rrel_example:
+        -> rrel_example:
             [Сообщение о будущем - атомарное сообщение, содержащее информацию о будущем.]
             (* <- lang_ru;; *);;
         -> rrel_example:

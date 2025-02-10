@@ -1,6 +1,6 @@
 concept_phrase_of_gratitude
 <-sc_node_class;
-=>nrel_main_idtf:
+=> nrel_main_idtf:
     [фраза благодарности]
     (* <- lang_ru;; *);
     [phrase of gratitude]
@@ -10,7 +10,7 @@ concept_phrase_of_gratitude
 <- rrel_key_sc_element:
     ...
     (*
-    =>nrel_main_idtf:
+    => nrel_main_idtf:
         [Опр. (фраза благодарности)]
         (* <- lang_ru;; *);
         [Def. (phrase of gratitude)]
@@ -21,7 +21,7 @@ concept_phrase_of_gratitude
     <= nrel_sc_text_translation:
         ...
         (*
-        ->rrel_example:
+        -> rrel_example:
             [Фраза благодарности - фраза, выражающая благодарность.]
                 (* <- lang_ru;; *);;
         -> rrel_example:

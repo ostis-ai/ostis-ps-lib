@@ -12,7 +12,7 @@ concept_message_about_entity
 <- rrel_key_sc_element:
     ...
     (*
-    =>nrel_main_idtf:
+    => nrel_main_idtf:
         [Опр. (сообщение о сущности)]
         (* <- lang_ru;; *);
         [Def. (message about an entity)]
@@ -23,7 +23,7 @@ concept_message_about_entity
     <= nrel_sc_text_translation:
         ...
         (*
-        ->rrel_example:
+        -> rrel_example:
             [Сообщение о сущности - атомарное сообщение, содержащее информацию о сущности.]
             (* <- lang_ru;; *);;
         -> rrel_example:

@@ -1,6 +1,6 @@
 concept_politeness_phrase
 <-sc_node_class;
-=>nrel_main_idtf:
+=> nrel_main_idtf:
     [фраза вежливости]
     (* <- lang_ru;; *);
     [politeness phrase]
@@ -12,7 +12,7 @@ concept_politeness_phrase
 <- rrel_key_sc_element:
     ...
     (*
-    =>nrel_main_idtf:
+    => nrel_main_idtf:
         [Опр. (фраза вежливости)]
         (* <- lang_ru;; *);
         [Def. (politeness phrase)]
@@ -23,7 +23,7 @@ concept_politeness_phrase
     <= nrel_sc_text_translation:
         ...
         (*
-        ->rrel_example:
+        -> rrel_example:
             [Фраза вежливости - фраза, выражающая вежливость.]
                 (* <- lang_ru;; *);;
         -> rrel_example:
@@ -39,7 +39,7 @@ concept_politeness_phrase
             concept_phrase
         };;
     *);
-=>nrel_inclusion:
+=> nrel_inclusion:
         concept_phrase_of_compassion;
         concept_phrase_of_gratitude;
         concept_phrase_of_pleasure;;

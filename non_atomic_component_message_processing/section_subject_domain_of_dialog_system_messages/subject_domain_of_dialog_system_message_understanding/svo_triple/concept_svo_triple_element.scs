@@ -1,6 +1,6 @@
 concept_svo_triple_element
 <-sc_node_class;
-=>nrel_main_idtf:
+=> nrel_main_idtf:
     [элемент тройки субъект-глагол-объект]
     (* <- lang_ru;; *);
     [subject-verb-object triple element]
@@ -10,7 +10,7 @@ concept_svo_triple_element
 <- rrel_key_sc_element:
     ...
     (*
-    =>nrel_main_idtf:
+    => nrel_main_idtf:
         [Опр. (элемент тройки субъект-глагол-объект)]
         (* <- lang_ru;; *);
         [Def. (subject-verb-object triple)]
@@ -21,7 +21,7 @@ concept_svo_triple_element
     <= nrel_sc_text_translation:
         ...
         (*
-        ->rrel_example:
+        -> rrel_example:
             [Элемент тройки субъект-глагол-объект - один из элементов тройки субъект-глагол-объект, характеризующийся
              токеном и соответствующими ему сущностями в рамках текущего состояния базы знаний.]
                 (* <- lang_ru;; *);;

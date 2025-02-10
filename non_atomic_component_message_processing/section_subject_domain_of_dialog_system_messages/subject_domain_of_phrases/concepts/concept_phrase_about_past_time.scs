@@ -1,6 +1,6 @@
 concept_phrase_about_past_time
 <-sc_node_class;
-=>nrel_main_idtf:
+=> nrel_main_idtf:
     [фраза о прошлом]
     (* <- lang_ru;; *);
     [phrase about the past]
@@ -10,7 +10,7 @@ concept_phrase_about_past_time
 <- rrel_key_sc_element:
     ...
     (*
-    =>nrel_main_idtf:
+    => nrel_main_idtf:
         [Опр. (фраза о прошлом)]
         (* <- lang_ru;; *);
         [Def. (phrase about the past)]
@@ -21,7 +21,7 @@ concept_phrase_about_past_time
     <= nrel_sc_text_translation:
         ...
         (*
-        ->rrel_example:
+        -> rrel_example:
             [Фраза о прошлом - фраза, содержащая информацию о прошлом.]
             (* <- lang_ru;; *);;
         -> rrel_example:

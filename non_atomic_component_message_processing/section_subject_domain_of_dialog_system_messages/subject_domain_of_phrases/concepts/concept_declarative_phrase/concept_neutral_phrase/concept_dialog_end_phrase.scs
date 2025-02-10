@@ -1,6 +1,6 @@
 concept_dialog_end_phrase
 <-sc_node_class;
-=>nrel_main_idtf:
+=> nrel_main_idtf:
     [прощальная фраза]
     (* <- lang_ru;; *);
     [dialog end phrase]
@@ -10,7 +10,7 @@ concept_dialog_end_phrase
 <- rrel_key_sc_element:
     ...
     (*
-    =>nrel_main_idtf:
+    => nrel_main_idtf:
         [Опр. (прощальная фраза)]
         (* <- lang_ru;; *);
         [Def. (dialog end phrase)]
@@ -21,7 +21,7 @@ concept_dialog_end_phrase
     <= nrel_sc_text_translation:
         ...
         (*
-        ->rrel_example:
+        -> rrel_example:
             [Прощальная фраза - фраза, являющаяся прощанием.]
             (* <- lang_ru;; *);;
         -> rrel_example:

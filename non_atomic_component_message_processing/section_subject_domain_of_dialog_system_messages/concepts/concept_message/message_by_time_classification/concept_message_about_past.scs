@@ -1,6 +1,6 @@
 concept_message_about_past
 <-sc_node_class;
-=>nrel_main_idtf:
+=> nrel_main_idtf:
     [сообщение о прошлом]
     (* <- lang_ru;; *);
     [message about the past]
@@ -14,7 +14,7 @@ concept_message_about_past
 <- rrel_key_sc_element:
     ...
     (*
-    =>nrel_main_idtf:
+    => nrel_main_idtf:
         [Опр. (сообщение о прошлом)]
         (* <- lang_ru;; *);
         [Def. (message about the past)]
@@ -25,7 +25,7 @@ concept_message_about_past
     <= nrel_sc_text_translation:
         ...
         (*
-        ->rrel_example:
+        -> rrel_example:
             [Сообщение о прошлом - атомарное сообщение, содержащее информацию о прошлом.]
             (* <- lang_ru;; *);;
         -> rrel_example:

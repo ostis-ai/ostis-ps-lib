@@ -1,6 +1,6 @@
 concept_declarative_phrase
 <-sc_node_class;
-=>nrel_main_idtf:
+=> nrel_main_idtf:
     [повествовательная фраза]
     (* <- lang_ru;; *);
     [declarative phrase]
@@ -10,7 +10,7 @@ concept_declarative_phrase
 <- rrel_key_sc_element:
     ...
     (*
-    =>nrel_main_idtf:
+    => nrel_main_idtf:
         [Опр. (повествовательная фраза)]
         (* <- lang_ru;; *);
         [Def. (declarative phrase)]
@@ -21,7 +21,7 @@ concept_declarative_phrase
     <= nrel_sc_text_translation:
         ...
         (*
-        ->rrel_example:
+        -> rrel_example:
             [Повествовательная фраза - фраза, сообщающая о каких-либо новых фактах.]
             (* <- lang_ru;; *);;
         -> rrel_example:
