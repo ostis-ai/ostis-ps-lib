@@ -9,6 +9,7 @@ concept_imperative_message
     (* <- lang_de;; *);
 => nrel_nlp_service_idtf:
     [imperative];
+<= nrel_inclusion: concept_message;
 <- rrel_key_sc_element:
     ...
     (*

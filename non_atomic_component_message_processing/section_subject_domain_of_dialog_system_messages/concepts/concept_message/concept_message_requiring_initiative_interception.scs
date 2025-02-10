@@ -5,6 +5,7 @@ concept_message_requiring_initiative_interception
     (* <- lang_ru;; *);
     [message requiring initiative interception]
     (* <- lang_en;; *);
+<= nrel_inclusion: concept_message;
 <- rrel_key_sc_element:
     ...
     (*

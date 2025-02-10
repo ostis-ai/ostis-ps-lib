@@ -58,22 +58,4 @@ concept_message
         concept_message_about_entity_action;
         concept_message_about_entity_action_with_entity;
         concept_message_about_action
-    };
-=> nrel_inclusion:
-    concept_declarative_message;
-    concept_imperative_message;
-    concept_interrogative_message;
-=> nrel_inclusion:
-    concept_agreement_message;
-    concept_rejection_message;
-    concept_greeting_message;
-    concept_dialog_end_message;
-    concept_message_about_achievement;
-    concept_message_about_health;
-    concept_message_about_location;
-    concept_message_about_mental_status;
-    concept_message_about_problem;
-    concept_message_about_weather;
-    concept_play_guess_what_i_see_request_message;
-    concept_guess_an_object_by_color_in_the_game_guess_what_i_see_request_message;
-    concept_message_requiring_initiative_interception;;
+    };;
