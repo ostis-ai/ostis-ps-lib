@@ -48,16 +48,17 @@ void checkTranslation(ScAgentContext & context, std::string const & filename)
   std::string const resultLinkContent = getResultLinkContent(context, testAction);
   std::string const expectedResult = readFile(FORMAT_TRANSLATORS_MODULE_EXPECTED_FILES_DIR_PATH + filename + ".gwf");
   EXPECT_EQ(resultLinkContent, expectedResult) << resultLinkContent;
+  // std::ofstream outputFile(FORMAT_TRANSLATORS_MODULE_EXPECTED_FILES_DIR_PATH + "" + filename + ".gwf");
+  // if (outputFile.is_open())
+  // {
+  //   outputFile << resultLinkContent;
+  //   outputFile.close();
+  // }
 }
 
 TEST_F(FormatTranslatorsTest, emptyKeyElementsTest)
 {
   checkTranslation(*m_ctx, "emptyKeyElements");
-}
-
-TEST_F(FormatTranslatorsTest, emptyStructureTest)
-{
-  checkTranslation(*m_ctx, "emptyStructure");
 }
 
 TEST_F(FormatTranslatorsTest, structureWithoutConnectorsTest)
@@ -105,6 +106,11 @@ TEST_F(FormatTranslatorsTest, hugeStructureDoesNotCausesTimeoutTest)
   checkTranslation(*m_ctx, "hugeStructure");
 }
 
+TEST_F(FormatTranslatorsTest, aLotOfTriplesDoesNotCausesTimeoutTest)
+{
+  checkTranslation(*m_ctx, "aLotOfTriples");
+}
+
 TEST_F(FormatTranslatorsTest, frenchIdentifiersTest)
 {
   checkTranslation(*m_ctx, "frenchIdentifiers");
@@ -135,6 +141,11 @@ TEST_F(FormatTranslatorsTest, complexSuccessfulTranslation)
   checkTranslation(*m_ctx, "complex");
 }
 
+TEST_F(FormatTranslatorsTest, xOverflow)
+{
+  checkTranslation(*m_ctx, "xOverflow");
+}
+
 void checkTranslationWithError(ScAgentContext & context, std::string const & filename)
 {
   loader.loadScsFile(context, FORMAT_TRANSLATORS_MODULE_TEST_FILES_DIR_PATH + filename + ".scs");
@@ -146,6 +157,11 @@ void checkTranslationWithError(ScAgentContext & context, std::string const & fil
   EXPECT_TRUE(testAction.InitiateAndWait(WAIT_TIME));
   EXPECT_TRUE(testAction.IsFinishedWithError());
   context.UnsubscribeAgent<formatTranslators::SCgVisualisationTranslatorAgent>();
+}
+
+TEST_F(FormatTranslatorsTest, emptyStructureTest)
+{
+  checkTranslation(*m_ctx, "emptyStructure");
 }
 
 TEST_F(FormatTranslatorsTest, noStructureTest)

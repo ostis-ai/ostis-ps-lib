@@ -12,6 +12,7 @@
 namespace formatTranslators
 {
 class Connector;
+class Node;
 class Visitor;
 
 class Element
@@ -50,7 +51,7 @@ public:
   void setId(std::string const & id);
 
 private:
-  mutable std::string id;
+  std::string id;
   ScAddr scAddress;
   ScType scType;
   std::list<std::shared_ptr<Connector>> connectors;

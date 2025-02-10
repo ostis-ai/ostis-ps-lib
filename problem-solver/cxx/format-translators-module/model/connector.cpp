@@ -3,6 +3,7 @@
 #include "visitor/visitor.hpp"
 
 #include <sstream>
+#include <sc-memory/sc_debug.hpp>
 
 namespace formatTranslators
 {
@@ -43,7 +44,7 @@ void Connector::setBaseElementX(float baseElementX)
 
 float Connector::getBaseElementBalance() const
 {
-  return baseElementBalance;
+  return baseElementBalance == 1.f ? 0.99999f : baseElementBalance;
 }
 
 void Connector::setBaseElementBalance(float baseElementBalance)
@@ -84,7 +85,7 @@ void Connector::setOtherElementY(float otherElementY)
 
 float Connector::getOtherElementBalance() const
 {
-  return otherElementBalance;
+  return otherElementBalance == 1.f ? 0.99999f : otherElementBalance;
 }
 
 void Connector::setOtherElementBalance(float otherElementBalance)

@@ -1,4 +1,3 @@
-#include <sc-memory/utils/sc_log.hpp>
 #include "node.hpp"
 #include "connector.hpp"
 
@@ -9,6 +8,12 @@ namespace formatTranslators
 void Node::acceptVisitor(Visitor & visitor)
 {
   visitor.visitNode(*this);
+}
+
+std::string const & Node::getContent() const
+{
+  static std::string EMPTY_CONTENT;
+  return EMPTY_CONTENT;
 }
 
 Node::Node()
@@ -83,6 +88,23 @@ size_t Node::calculateReservedVerticalElementsOnParent()
       reservedVerticalElementsOnParent = 1;
   }
   return reservedVerticalElementsOnParent;
+}
+
+std::shared_ptr<Node> Node::copy() const
+{
+  std::shared_ptr<Node> node = std::make_shared<Node>();
+  copy(*node);
+  return node;
+}
+
+void Node::copy(Node & copiedNode) const
+{
+  copiedNode.setScAddress(getScAddress());
+  copiedNode.setScType(getScType());
+  copiedNode.setIdentifier(getIdentifier());
+  copiedNode.setIdentifierPosition(getIdentifierPosition());
+  copiedNode.setBottomY(getBottomY());
+  copiedNode.setTopY(getTopY());
 }
 
 }  // namespace formatTranslators

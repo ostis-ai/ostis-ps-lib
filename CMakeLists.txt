@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.11)
-project(2)
+project(ui-translators)
 set(SC_BUILD_TESTS ON)
 if(${SC_BUILD_TESTS})
     include(CTest)

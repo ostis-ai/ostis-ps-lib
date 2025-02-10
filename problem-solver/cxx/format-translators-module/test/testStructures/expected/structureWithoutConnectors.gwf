@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GWF version="2.0">
     <staticSector>
-        <node type="node/const/perm/general" idtf="root_element" shapeColor="0" id="0" parent="0" x="0" y="0" haveBus="false" idtf_pos="0">
+        <node type="node/const/perm/general" idtf="root_element" shapeColor="0" id="0" parent="0" x="200" y="0" haveBus="false" idtf_pos="0"  sc_addr="66006">
             <content type="0" mime_type="" content_visibility="false" file_name=""/>
         </node>
     </staticSector>

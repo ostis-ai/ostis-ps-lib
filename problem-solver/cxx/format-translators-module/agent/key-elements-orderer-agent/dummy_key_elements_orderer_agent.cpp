@@ -35,7 +35,7 @@ ScResult DummyKeyElementsOrdererAgent::DoProgram(ScAction & action)
 
     ScAddr lastConnector;
     ScAddr const & elementsOrder = m_context.GenerateNode(ScType::ConstNodeTuple);
-    std::list<ScType> nodeTypes = {
+    std::list nodeTypes = {
         ScType::NodeClass, ScType::NodeLink, ScType::NodeRole, ScType::NodeNonRole, ScType::NodeTuple, ScType::Node};
 
     for (auto const & nodeType : nodeTypes)
@@ -48,7 +48,7 @@ ScResult DummyKeyElementsOrdererAgent::DoProgram(ScAction & action)
   }
   catch (utils::ScException const & exception)
   {
-    SC_AGENT_LOG_ERROR(exception.Description());
+    m_logger.Error(exception.Description());
     return action.FinishWithError();
   }
 }

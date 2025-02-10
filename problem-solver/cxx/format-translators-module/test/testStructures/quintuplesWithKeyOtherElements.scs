@@ -15,8 +15,8 @@ test_structure =
 [*
 root_element
 _=> nrel_relation_1:
-    not_root_1;
     not_root_2;
+    not_root_1;
 ..> rrel_relation_1:
     not_root_5;;
 

@@ -9,6 +9,8 @@ class Node : public Element
 public:
   Node();
 
+  virtual std::string const & getContent() const;
+
   float getX() const;
 
   void setX(float x);
@@ -34,6 +36,11 @@ public:
   size_t calculateReservedVerticalElementsOnParent();
 
   void acceptVisitor(Visitor & visitor) override;
+
+  virtual std::shared_ptr<Node> copy() const;
+
+protected:
+  void copy(Node & copiedNode) const;
 
 private:
   float x;

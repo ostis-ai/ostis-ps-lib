@@ -57,7 +57,7 @@ ScResult StructureTranslatorAgent::DoProgram(
 
     ScAction scgVisualiseAction = m_context.GenerateAction(FormatTranslatorsKeynodes::action_visualise_to_scg);
     scgVisualiseAction.SetArguments(structureToTranslate, identifiersLanguage);
-    scgVisualiseAction.InitiateAndWait(1000);
+    scgVisualiseAction.InitiateAndWait(300000);
     ScAddr const & scgVisualiseActionResult = scgVisualiseAction.GetResult();
     auto const & it1 =
         m_context.CreateIterator3(scgVisualiseActionResult, ScType::ConstPermPosArc, ScType::ConstNodeLink);
@@ -74,7 +74,7 @@ ScResult StructureTranslatorAgent::DoProgram(
   }
   catch (utils::ScException const & exception)
   {
-    SC_AGENT_LOG_ERROR(exception.Description());
+    m_logger.Error(exception.Description());
     return fakeAction.FinishWithError();
   }
 }
