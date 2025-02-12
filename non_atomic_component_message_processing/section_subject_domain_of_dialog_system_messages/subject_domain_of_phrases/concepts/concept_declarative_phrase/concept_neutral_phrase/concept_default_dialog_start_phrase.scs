@@ -16,15 +16,12 @@ concept_default_dialog_start_phrase
         (* <- lang_en;; *);;
     <- definition;;
     <= nrel_sc_text_translation:
-        ...
-        (*
-        -> rrel_example:
-            [фраза начала диалога по умолчанию - приветственная фраза, использующаяся для начала диалога по умолчанию.]
-                (* <- lang_ru;; *);;
-        -> rrel_example:
-            [Default dialog start phrase is a greeting phrase used to start a dialog by default.]
-            (* <- lang_en;; *);;
-        *);;
+        {
+            rrel_example: [фраза начала диалога по умолчанию - приветственная фраза, использующаяся для начала диалога по умолчанию.]
+            (* <- lang_ru;; *);
+            rrel_example: [Default dialog start phrase is a greeting phrase used to start a dialog by default.]
+            (* <- lang_en;; *)
+        };;
     <= nrel_using_constants:
         {
             concept_greeting_phrase

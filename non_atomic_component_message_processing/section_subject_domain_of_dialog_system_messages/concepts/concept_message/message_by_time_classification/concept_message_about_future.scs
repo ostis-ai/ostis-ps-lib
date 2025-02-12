@@ -23,18 +23,17 @@ concept_message_about_future
         (* <- lang_de;; *);;
     <- definition;;
     <= nrel_sc_text_translation:
-        ...
-        (*
-        -> rrel_example:
-            [Сообщение о будущем - атомарное сообщение, содержащее информацию о будущем.]
-            (* <- lang_ru;; *);;
-        -> rrel_example:
-            [Message about the future is an atomic message that contains information about the future.]
-            (* <- lang_en;; *);;
-        -> rrel_example:
-            [Nachricht mit Informationen über die Zukunft ist eine atomare Nachricht, die Informationen über die Zukunft enthält.]
-            (* <- lang_de;; *);;
-        *);;
+        {
+            rrel_example:
+                [Сообщение о будущем - атомарное сообщение, содержащее информацию о будущем.]
+                (* <- lang_ru;; *);
+            rrel_example:
+                [Message about the future is an atomic message that contains information about the future.]
+                (* <- lang_en;; *);
+            rrel_example:
+                [Nachricht mit Informationen über die Zukunft ist eine atomare Nachricht, die Informationen über die Zukunft enthält.]
+                (* <- lang_de;; *)
+        };;
     <= nrel_using_constants:
         {
             concept_atomic_message

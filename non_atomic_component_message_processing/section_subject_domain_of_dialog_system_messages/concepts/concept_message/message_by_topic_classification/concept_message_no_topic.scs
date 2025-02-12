@@ -21,19 +21,17 @@ concept_message_no_topic
     (* <- lang_de;; *);;
     <- definition;;
     <= nrel_sc_text_translation:
-        ...
-        (*
-        -> rrel_example:
-            [Сообщение без темы - сообщение, тема которого в настоящее время не распознана.]
-                (* <- lang_ru;; *);;
-        -> rrel_example:
-            [Message without topic is a message whose topic is not currently recognized.]
-            (* <- lang_en;; *);;
-
-        -> rrel_example:
-            [Nachricht ohne Thema ist eine Nachricht, deren Thema derzeit nicht erkannt wird.]
-            (* <- lang_de;; *);;
-        *);;
+        {
+            rrel_example:
+                [Сообщение без темы - сообщение, тема которого в настоящее время не распознана.]
+                (* <- lang_ru;; *);
+            rrel_example:
+                [Message without topic is a message whose topic is not currently recognized.]
+                (* <- lang_en;; *);
+            rrel_example:
+                [Nachricht ohne Thema ist eine Nachricht, deren Thema derzeit nicht erkannt wird.]
+                (* <- lang_de;; *)
+        };;
     <= nrel_using_constants:
         {
            concept_message

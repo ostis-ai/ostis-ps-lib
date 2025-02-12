@@ -19,19 +19,14 @@ concept_information_request_phrase
         (* <- lang_de;; *);;
     <- definition;;
     <= nrel_sc_text_translation:
-        ...
-        (*
-        -> rrel_example:
-            [Фраза запроса информации - фраза, являющаяся запросом какой-либо новой информации.]
-                (* <- lang_ru;; *);;
-        -> rrel_example:
-            [Information request phrase is a phrase that is a request for some new information.]
-            (* <- lang_en;; *);;
-
-        -> rrel_example:
-            [Informationsanfragephrase ist eine Phrase, die eine Anfrage nach neuen Informationen ist.]
-            (* <- lang_de;; *);;
-        *);;
+        {
+            rrel_example: [Фраза запроса информации - фраза, являющаяся запросом какой-либо новой информации.]
+            (* <- lang_ru;; *);
+            rrel_example: [Information request phrase is a phrase that is a request for some new information.]
+            (* <- lang_en;; *);
+         rrel_example: [Informationsanfragephrase ist eine Phrase, die eine Anfrage nach neuen Informationen ist.]
+         (* <- lang_de;; *)
+        };;
     <= nrel_using_constants:
         {
             concept_phrase

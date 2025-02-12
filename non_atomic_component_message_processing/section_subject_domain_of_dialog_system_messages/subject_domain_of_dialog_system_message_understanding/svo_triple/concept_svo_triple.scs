@@ -19,22 +19,17 @@ concept_svo_triple
         (* <- lang_de;; *);;
     <- definition;;
     <= nrel_sc_text_translation:
-        ...
-        (*
-        -> rrel_example:
-            [Тройка субъект-глагол-объект - это множество из трех сущностей, которое кодифицирует утверждение о
+        {
+            rrel_example: [Тройка субъект-глагол-объект - это множество из трех сущностей, которое кодифицирует утверждение о
             семантических данных в форме выражений субъект–глагол–объект.]
-                (* <- lang_ru;; *);;
-        -> rrel_example:
-            [Subject-verb-object triple is a set of three entities, that codifies a statement about semantic data
+            (* <- lang_ru;; *);
+            rrel_example: [Subject-verb-object triple is a set of three entities, that codifies a statement about semantic data
             in the form of subject-verb-object expressions.]
-            (* <- lang_en;; *);;
-
-        -> rrel_example:
-            [Subjekt-Verb-Objekt-Tripel ist eine Menge von drei Entitäten, die eine Aussage über semantische Daten in
+            (* <- lang_en;; *);
+         rrel_example: [Subjekt-Verb-Objekt-Tripel ist eine Menge von drei Entitäten, die eine Aussage über semantische Daten in
             Form von Subjekt-Verb-Objekt-Ausdrücken kodifiziert.]
-            (* <- lang_de;; *);;
-        *);;
+         (* <- lang_de;; *)
+        };;
     <= nrel_using_constants:
         {
         set;

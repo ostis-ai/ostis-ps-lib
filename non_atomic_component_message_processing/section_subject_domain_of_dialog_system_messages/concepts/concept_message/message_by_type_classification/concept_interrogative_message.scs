@@ -24,19 +24,17 @@ concept_interrogative_message
         (* <- lang_de;; *);;
     <- definition;;
     <= nrel_sc_text_translation:
-        ...
-        (*
-        -> rrel_example:
-            [Вопросительное сообщение - сообщение, выражающее вопрос.]
-                (* <- lang_ru;; *);;
-        -> rrel_example:
-            [Interrogative message is a message expressing a question.]
-            (* <- lang_en;; *);;
-
-        -> rrel_example:
-            [Interrogative Nachricht ist eine Nachricht, die eine Frage ausdrückt.]
-            (* <- lang_de;; *);;
-        *);;
+        {
+            rrel_example:
+                [Вопросительное сообщение - сообщение, выражающее вопрос.]
+                (* <- lang_ru;; *);
+            rrel_example:
+                [Interrogative message is a message expressing a question.]
+                (* <- lang_en;; *);
+            rrel_example:
+                [Interrogative Nachricht ist eine Nachricht, die eine Frage ausdrückt.]
+                (* <- lang_de;; *)
+        };;
     <= nrel_using_constants:
         {
             concept_message

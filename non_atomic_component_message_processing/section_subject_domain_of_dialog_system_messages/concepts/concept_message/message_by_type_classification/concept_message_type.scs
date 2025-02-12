@@ -18,15 +18,12 @@ concept_message_type
     (* <- lang_de;; *);;
     <- definition;;
     <= nrel_sc_text_translation:
-        ...
-        (*
-        -> rrel_example:
-            [Тип сообщения - характеристика сообщения по цели высказывания.]
-                (* <- lang_ru;; *);;
-        -> rrel_example:
-            [Message type is a characteristic of the message depending on the purpose of the expression.]
-            (* <- lang_en;; *);;
-        *);;
+        {
+            rrel_example: [Тип сообщения - характеристика сообщения по цели высказывания.]
+            (* <- lang_ru;; *);
+            rrel_example: [Message type is a characteristic of the message depending on the purpose of the expression.]
+            (* <- lang_en;; *)
+        };;
     <= nrel_using_constants:
         {
            parameter;

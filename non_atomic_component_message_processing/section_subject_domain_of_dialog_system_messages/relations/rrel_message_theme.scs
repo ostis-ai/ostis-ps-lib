@@ -37,19 +37,14 @@ rrel_message_theme
         (* <- lang_de;; *);;
     <-definition;;
     <=nrel_sc_text_translation:
-        ...
-        (*
-        -> rrel_example:
-            [Тема сообщения' - отношение, связывающее сообщение c тем, о чем говорится в сообщении.]
-            (* <- lang_ru;; *);;
-        -> rrel_example:
-            [Message theme' is the relationship, that connects the message with what the message says.]
-            (* <- lang_en;; *);;
-
-        -> rrel_example:
-            [Thema der Nachricht' ist eine Beziehung, die eine Nachricht mit dem verbindet, worüber es in der Nachricht gesprochen wird.]
-            (* <- lang_de;; *);;
-        *);;
+        {
+            rrel_example: [Тема сообщения' - отношение, связывающее сообщение c тем, о чем говорится в сообщении.]
+            (* <- lang_ru;; *);
+            rrel_example: [Message theme' is the relationship, that connects the message with what the message says.]
+            (* <- lang_en;; *);
+         rrel_example: [Thema der Nachricht' ist eine Beziehung, die eine Nachricht mit dem verbindet, worüber es in der Nachricht gesprochen wird.]
+         (* <- lang_de;; *)
+        };;
     <= nrel_using_constants:
         {
         concept_message;

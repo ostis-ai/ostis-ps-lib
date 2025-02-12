@@ -46,16 +46,14 @@ nrel_non_atomic_message_types
         (* <- lang_de;; *);;
     <- definition;;
     <= nrel_sc_text_translation:
-        ...
-        (*
-        <- sc_node_tuple;;
-        -> rrel_example:
-            [Типы неатомарного сообщения* - квазибинарное отношение, связывающее неатомарное сообщения и множество типов этого сообщения.]
-            (* <- lang_ru;; *);;
-        -> rrel_example:
-            [Non atomic message types* is a quasybinary relation that connects a non atomic message with a set of types of this message.]
-            (* <- lang_en;; *);;
-        *);;
+        {
+            rrel_example:
+                [Типы неатомарного сообщения* - квазибинарное отношение, связывающее неатомарное сообщения и множество типов этого сообщения.]
+                (* <- lang_ru;; *);
+            rrel_example:
+                [Non atomic message types* is a quasybinary relation that connects a non atomic message with a set of types of this message.]
+                (* <- lang_en;; *)
+        };;
     <= nrel_using_constants:
         {
         quasybinary_relation;

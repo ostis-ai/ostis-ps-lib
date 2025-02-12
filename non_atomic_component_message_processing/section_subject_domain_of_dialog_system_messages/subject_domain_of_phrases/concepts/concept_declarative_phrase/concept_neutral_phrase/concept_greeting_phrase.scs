@@ -19,19 +19,14 @@ concept_greeting_phrase
         (* <- lang_de;; *);;
     <- definition;;
     <= nrel_sc_text_translation:
-        ...
-        (*
-        -> rrel_example:
-            [Приветственная фраза - фраза, являющаяся приветствием.]
-                (* <- lang_ru;; *);;
-        -> rrel_example:
-            [Greeting phrase is a phrase that is a greeting.]
-            (* <- lang_en;; *);;
-
-        -> rrel_example:
-            [Grußphrase ist eine Phrase, die eine Begrüßung ist.]
-            (* <- lang_de;; *);;
-        *);;
+        {
+            rrel_example: [Приветственная фраза - фраза, являющаяся приветствием.]
+            (* <- lang_ru;; *);
+            rrel_example: [Greeting phrase is a phrase that is a greeting.]
+            (* <- lang_en;; *);
+         rrel_example: [Grußphrase ist eine Phrase, die eine Begrüßung ist.]
+         (* <- lang_de;; *)
+        };;
     <= nrel_using_constants:
         {
             concept_phrase

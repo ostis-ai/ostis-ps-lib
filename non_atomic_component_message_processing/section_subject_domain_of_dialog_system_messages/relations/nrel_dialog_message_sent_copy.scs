@@ -36,19 +36,14 @@ nrel_dialog_message_sent_copy
         (* <- lang_de;; *);;
     <-  definition;;
     <= nrel_sc_text_translation:
-        ...
-        (*
-        -> rrel_example:
-            [Отправленная копия диалогового сообщения* - бинарное отношение, связывающее диалоговое сообщение и его копию, использованную в диалоге.]
-                (* <- lang_ru;; *);;
-        -> rrel_example:
-            [Sent copy of the dialog message* is a binary relation that connects a dialog message with its copy used in the dialog.]
-            (* <- lang_en;; *);;
-
-        -> rrel_example:
-            [Gesendete Kopie der Dialognachricht* ist eine binäre Beziehung, die eine Dialognachricht mit ihrer im Dialog verwendeten Kopie verbindet.]
-            (* <- lang_de;; *);;
-        *);;
+        {
+            rrel_example: [Отправленная копия диалогового сообщения* - бинарное отношение, связывающее диалоговое сообщение и его копию, использованную в диалоге.]
+            (* <- lang_ru;; *);
+            rrel_example: [Sent copy of the dialog message* is a binary relation that connects a dialog message with its copy used in the dialog.]
+            (* <- lang_en;; *);
+         rrel_example: [Gesendete Kopie der Dialognachricht* ist eine binäre Beziehung, die eine Dialognachricht mit ihrer im Dialog verwendeten Kopie verbindet.]
+         (* <- lang_de;; *)
+        };;
     <= nrel_using_constants:
         {
         concept_sent_dialog_message;

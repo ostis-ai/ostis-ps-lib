@@ -40,26 +40,17 @@ nrel_corresponding_contexts
         [Def. (relevante Kontexte*)](* <- lang_de;; *);;
     <- definition;;
     <= nrel_sc_text_translation:
-        ...
-        (*
-        -> rrel_example:
-        [Соответствующие контексты* - это квазибинарное ориентированное отношение, связывающее сообщение с соответствующими ему контекстами.]
-        (* <- lang_ru;; *);;
-        *);
-
-        ...
-        (*
-        -> rrel_example:
-        [Corresponding contexts* is a quasybinary oriented relation that connects message and its corresponding contexts.]
-        (* <- lang_en;; *);;
-        *);
-
-        ...
-        (*
-        -> rrel_example:
-        [Relevante Kontext* ist eine quasi-binäre relation, die eine Verbindung zwischen einer Nachricht und ihren entsprechenden Kontexten herstellt.]
-        (* <- lang_de;; *);;
-        *);;
+        {
+            rrel_example:
+                [Соответствующие контексты* - это квазибинарное ориентированное отношение, связывающее сообщение с соответствующими ему контекстами.]
+                (* <- lang_ru;; *);
+            rrel_example:
+                [Corresponding contexts* is a quasybinary oriented relation that connects message and its corresponding contexts.]
+                (* <- lang_en;; *);
+            rrel_example:
+                [Relevante Kontext* ist eine quasi-binäre relation, die eine Verbindung zwischen einer Nachricht und ihren entsprechenden Kontexten herstellt.]
+                (* <- lang_de;; *)
+        };;
         <= nrel_using_constants:
         {
             quasybinary_relation;

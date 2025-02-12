@@ -19,19 +19,14 @@ concept_phrase_of_compassion
         (* <- lang_de;; *);;
     <- definition;;
     <= nrel_sc_text_translation:
-        ...
-        (*
-        -> rrel_example:
-            [Фраза сочувствия - фраза, выражающая сочувствие.]
-                (* <- lang_ru;; *);;
-        -> rrel_example:
-            [Phrase of compassion is a phrase that expresses compassion.]
-            (* <- lang_en;; *);;
-
-        -> rrel_example:
-            [Phrase der Empathie ist eine Phrase, die Empathie ausdrückt.]
-            (* <- lang_de;; *);;
-        *);;
+        {
+            rrel_example: [Фраза сочувствия - фраза, выражающая сочувствие.]
+            (* <- lang_ru;; *);
+            rrel_example: [Phrase of compassion is a phrase that expresses compassion.]
+            (* <- lang_en;; *);
+         rrel_example: [Phrase der Empathie ist eine Phrase, die Empathie ausdrückt.]
+         (* <- lang_de;; *)
+        };;
     <= nrel_using_constants:
         {
             concept_phrase

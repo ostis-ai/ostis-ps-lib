@@ -36,21 +36,17 @@ nrel_svo_triples
         (* <- lang_de;; *);;
     <-  definition;;
     <= nrel_sc_text_translation:
-        ...
-        (*
-        -> rrel_example:
-            [Тройки субъект-глагол-объект* - квазибинарное ориентированное отношение, связывающее сообщение и множество
+        {
+            rrel_example: [Тройки субъект-глагол-объект* - квазибинарное ориентированное отношение, связывающее сообщение и множество
             троек субъект-глагол-объект, выделенных nlp-сервисом в данном сообщении.]
-            (* <- lang_ru;; *);;
-        -> rrel_example:
-            [Subject-verb-object triples is a quasi-binary oriented relation that connects the message and the set of
+            (* <- lang_ru;; *);
+            rrel_example: [Subject-verb-object triples is a quasi-binary oriented relation that connects the message and the set of
             subject-verb-object triples allocated in this message by the nlp service.]
-            (* <- lang_en;; *);;
-        -> rrel_example:
-            [Subjekt-Verb-Objekt-Tripel ist eine quasibinäre orientierte Beziehung, die die Nachricht und die Menge
+            (* <- lang_en;; *);
+         rrel_example: [Subjekt-Verb-Objekt-Tripel ist eine quasibinäre orientierte Beziehung, die die Nachricht und die Menge
             der vom NLP-Dienst in dieser Nachricht zugewiesenen Subjekt-Verb-Objekt-Tripel verbindet.]
-            (* <- lang_de;; *);;
-        *);;
+         (* <- lang_de;; *)
+        };;
     <= nrel_using_constants:
         {
         quasybinary_relation;

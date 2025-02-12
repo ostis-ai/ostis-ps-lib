@@ -25,24 +25,17 @@ nrel_decomposition_into_tokens
             [Def. (Zerlegung in Tokens*)](* <- lang_de;; *);;
         <-definition;;
         <=nrel_sc_text_translation:
-            ...
-            (*
-            -> rrel_example:
-                [Декомпозиция на токены* - квазибинарное отношение, связывающее файл с текстом cо множеством файлов, содержащих токены, на которые данный текст декомпозируется.]
-                (* <- lang_ru;; *);;
-            *);
-            ...
-            (*
-            -> rrel_example:
-                [Decomposition into tokens* is a quasibinary relation connecting a file with a text with a set of files containing tokens, into which this text is decomposed.]
-                (* <- lang_en;; *);;
-            *);
-            ...
-            (*
-            -> rrel_example:
-                [Zerlegung in Tokens* ist eine quasibinäre Beziehung, die eine Datei mit einem Text mit einer Reihe von Dateien verbindet, die Tokens enthalten, in die dieser Text zerlegt wird.]
-                (* <- lang_de;; *);;
-            *);;
+            {
+                rrel_example:
+                    [Декомпозиция на токены* - квазибинарное отношение, связывающее файл с текстом cо множеством файлов, содержащих токены, на которые данный текст декомпозируется.]
+                    (* <- lang_ru;; *);
+                rrel_example:
+                    [Decomposition into tokens* is a quasibinary relation connecting a file with a text with a set of files containing tokens, into which this text is decomposed.]
+                    (* <- lang_en;; *);
+                rrel_example:
+                    [Zerlegung in Tokens* ist eine quasibinäre Beziehung, die eine Datei mit einem Text mit einer Reihe von Dateien verbindet, die Tokens enthalten, in die dieser Text zerlegt wird.]
+                    (* <- lang_de;; *)
+            };;
         <= nrel_using_constants:
             {
                 quasybinary_relation;

@@ -19,18 +19,17 @@ concept_message
         (* <- lang_de;; *);;
     <- definition;;
     <= nrel_sc_text_translation:
-        ...
-        (*
-        -> rrel_example:
-            [Сообщение - информация, передаваемая (пересылаемая) от одной кибернетической системы к другой или к другим кибернетическим системам.]
-            (* <- lang_ru;; *);;
-        -> rrel_example:
-            [Message is information transmitted (forwarded) from one cybernetic system to another or to other cybernetic systems.]
-            (* <- lang_en;; *);;
-        -> rrel_example:
-            [Nachricht ist Information, die von einem kybernetischen System zu einem anderen oder zu anderen kybernetischen Systemen übertragen (übermittelt) wird.]
-            (* <- lang_de;; *);;
-        *);;
+        {
+            rrel_example:
+                [Сообщение - информация, передаваемая (пересылаемая) от одной кибернетической системы к другой или к другим кибернетическим системам.]
+                (* <- lang_ru;; *);
+            rrel_example:
+                [Message is information transmitted (forwarded) from one cybernetic system to another or to other cybernetic systems.]
+                (* <- lang_en;; *);
+            rrel_example:
+                [Nachricht ist Information, die von einem kybernetischen System zu einem anderen oder zu anderen kybernetischen Systemen übertragen (übermittelt) wird.]
+                (* <- lang_de;; *)
+        };;
     *);
 <= nrel_inclusion: sc_element;
 => nrel_subdividing:

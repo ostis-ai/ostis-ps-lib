@@ -16,17 +16,16 @@ concept_message_requiring_initiative_interception
         (* <- lang_en;; *);;
     <- definition;;
     <= nrel_sc_text_translation:
-        ...
-        (*
-        -> rrel_example:
-            [Cообщение, требующее перехвата инициативы - сообщение, после отправки в диалог которого может возникнуть
-             необходимость перехватить инициативу общения.]
-            (* <- lang_ru;; *);;
-        -> rrel_example:
-            [Message requiring initiative interception is a message, after sending it to the dialog, which may occur
-            the need to intercept the initiative of dialogue.]
-            (* <- lang_en;; *);;
-        *);;
+        {
+            rrel_example:
+                [Cообщение, требующее перехвата инициативы - сообщение, после отправки в диалог которого может возникнуть
+                 необходимость перехватить инициативу общения.]
+                (* <- lang_ru;; *);
+            rrel_example:
+                [Message requiring initiative interception is a message, after sending it to the dialog, which may occur
+                the need to intercept the initiative of dialogue.]
+                (* <- lang_en;; *)
+        };;
     <= nrel_using_constants:
         {
             concept_message;

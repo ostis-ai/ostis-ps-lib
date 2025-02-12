@@ -19,19 +19,14 @@ concept_phrase
         (* <- lang_de;; *);;
     <- definition;;
     <= nrel_sc_text_translation:
-        ...
-        (*
-        -> rrel_example:
-            [Фраза - сочетание слов, выражающее законченную мысль.]
-                (* <- lang_ru;; *);;
-        -> rrel_example:
-            [Phrase is a combination of words that expresses a complete thought.]
-            (* <- lang_en;; *);;
-
-        -> rrel_example:
-            [Phrase ist eine Kombination von Wörtern, die einen fertigen Gedanken ausdrückt.]
-            (* <- lang_de;; *);;
-        *);;
+        {
+            rrel_example: [Фраза - сочетание слов, выражающее законченную мысль.]
+            (* <- lang_ru;; *);
+            rrel_example: [Phrase is a combination of words that expresses a complete thought.]
+            (* <- lang_en;; *);
+         rrel_example: [Phrase ist eine Kombination von Wörtern, die einen fertigen Gedanken ausdrückt.]
+         (* <- lang_de;; *)
+        };;
     <= nrel_using_constants:
         {
         concept_word

@@ -16,17 +16,14 @@ concept_prompt
         (* <- lang_en;; *);;
     <- definition;;
     <= nrel_sc_text_translation:
-        ...
-        (*
-        <- sc_node_tuple;;
-        -> rrel_example:
-            [Промпт - текстовое описание задания, передаваемое chatGPT.]
-            (* <- lang_ru;; *);;
-        <- sc_node_tuple;;
-        -> rrel_example:
-            [Prompt is a text description of a task passed to chatGPT.]
-            (* <- lang_en;; *);;
-        *);;
+        {
+            rrel_example:
+                [Промпт - текстовое описание задания, передаваемое chatGPT.]
+                (* <- lang_ru;; *);
+            rrel_example:
+                [Prompt is a text description of a task passed to chatGPT.]
+                (* <- lang_en;; *)
+        };;
     *);
 => nrel_subdividing:
     {

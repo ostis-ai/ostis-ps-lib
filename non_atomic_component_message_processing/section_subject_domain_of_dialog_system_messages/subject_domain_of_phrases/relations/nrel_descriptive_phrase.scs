@@ -36,19 +36,14 @@ nrel_descriptive_phrase
         (* <- lang_de;; *);;
     <-  definition;;
     <= nrel_sc_text_translation:
-        ...
-        (*
-        -> rrel_example:
-            [Описывающая фраза* - это квазибинарное отношение; предмет и фраза, которой его можно косвенно описать, распознаваемы.]
-                (* <- lang_ru;; *);;
-        -> rrel_example:
-            [Descriptive phrase* is a quasi-binary relation; an item and a phrase that can indirectly describe it are recognizable.]
-            (* <- lang_en;; *);;
-
-        -> rrel_example:
-            [Beschreibende Phrase* ist eine quasibinäre Beziehung; ein Gegenstand und eine Phrase, mit der er indirekt beschrieben werden kann, sind erkennbar.]
-            (* <- lang_de;; *);;
-        *);;
+        {
+            rrel_example: [Описывающая фраза* - это квазибинарное отношение; предмет и фраза, которой его можно косвенно описать, распознаваемы.]
+            (* <- lang_ru;; *);
+            rrel_example: [Descriptive phrase* is a quasi-binary relation; an item and a phrase that can indirectly describe it are recognizable.]
+            (* <- lang_en;; *);
+         rrel_example: [Beschreibende Phrase* ist eine quasibinäre Beziehung; ein Gegenstand und eine Phrase, mit der er indirekt beschrieben werden kann, sind erkennbar.]
+         (* <- lang_de;; *)
+        };;
     <= nrel_using_constants:
         {
         concept_detected_item;

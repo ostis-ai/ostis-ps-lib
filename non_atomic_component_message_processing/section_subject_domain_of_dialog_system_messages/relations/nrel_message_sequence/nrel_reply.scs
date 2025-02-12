@@ -28,19 +28,14 @@ nrel_reply
         (* <- lang_de;; *);;
     <- definition;;
     <= nrel_sc_text_translation:
-        ...
-        (*
-        -> rrel_example:
-            [Ответ* - бинарное ориентированное отношение, связывающее сообщение-вопрос с сообщением, явлюящимся ответом на него.]
-                (* <- lang_ru;; *);;
-        -> rrel_example:
-            [Reply* is a binary oriented relationship, that connects a question message with a message, that is the answer to it.]
-            (* <- lang_en;; *);;
-
-        -> rrel_example:
-            [Antwort* ist eine binäre orientierte Beziehung, die eine Nachricht-Frage mit einer Nachricht verbindet, die die Antwort darauf ist.]
-            (* <- lang_de;; *);;
-        *);;
+        {
+            rrel_example: [Ответ* - бинарное ориентированное отношение, связывающее сообщение-вопрос с сообщением, явлюящимся ответом на него.]
+            (* <- lang_ru;; *);
+            rrel_example: [Reply* is a binary oriented relationship, that connects a question message with a message, that is the answer to it.]
+            (* <- lang_en;; *);
+         rrel_example: [Antwort* ist eine binäre orientierte Beziehung, die eine Nachricht-Frage mit einer Nachricht verbindet, die die Antwort darauf ist.]
+         (* <- lang_de;; *)
+        };;
     <= nrel_using_constants:
         {
         concept_message;

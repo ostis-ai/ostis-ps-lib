@@ -46,16 +46,14 @@ nrel_action_class_by_message_tense
         (* <- lang_de;; *);;
     <- definition;;
     <= nrel_sc_text_translation:
-        ...
-        (*
-        <- sc_node_tuple;;
-        -> rrel_example:
-            [Класс действия по времени сообщения* - бинарное отношение, связывающее время сообщения и класс действия, которому принадлежит упоминаемое в сообщении действие.]
-            (* <- lang_ru;; *);;
-        -> rrel_example:
-            [Action class by message tense* is a binary relation that connects a message tense with a class of action to which the action mentioned in the message belongs.]
-            (* <- lang_en;; *);;
-        *);;
+        {
+            rrel_example:
+                [Класс действия по времени сообщения* - бинарное отношение, связывающее время сообщения и класс действия, которому принадлежит упоминаемое в сообщении действие.]
+                (* <- lang_ru;; *);
+            rrel_example:
+                [Action class by message tense* is a binary relation that connects a message tense with a class of action to which the action mentioned in the message belongs.]
+                (* <- lang_en;; *)
+        };;
     <= nrel_using_constants:
         {
         concept_message_tense;

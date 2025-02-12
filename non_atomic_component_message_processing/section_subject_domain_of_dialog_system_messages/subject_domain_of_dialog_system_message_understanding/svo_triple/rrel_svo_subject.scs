@@ -39,23 +39,17 @@ rrel_svo_subject
         (* <-  lang_de;; *);;
     <- definition;;
     <= nrel_sc_text_translation:
-        ...
-        (*
-        -> rrel_example:
-            [Субъект тройки субъект-глагол-объект' - ролевое отношение, связывающее тройку субъект–глагол–объект и
+        {
+            rrel_example: [Субъект тройки субъект-глагол-объект' - ролевое отношение, связывающее тройку субъект–глагол–объект и
             сущность, представляющую субъект, в рамках данной тройки.]
-            (* <-  lang_ru;; *);;
-
-        -> rrel_example:
-            [Subject of the subject-verb-object triple' is a role relation that connects the subject-verb-object
+            (* <-  lang_ru;; *);
+            rrel_example: [Subject of the subject-verb-object triple' is a role relation that connects the subject-verb-object
             triple and the entity representing the subject within this triple.]
-            (* <-  lang_en;; *);;
-
-        -> rrel_example:
-            [Subjekt des Subjekt-Verb-Objekt-Tripels' ist eine Rollenbeziehung, die das Subjekt-Verb-Objekt-Tripel
+            (* <-  lang_en;; *);
+         rrel_example: [Subjekt des Subjekt-Verb-Objekt-Tripels' ist eine Rollenbeziehung, die das Subjekt-Verb-Objekt-Tripel
             und die Entität, die das Subjekt darstellt, innerhalb dieses Tripels verbindet.]
-            (* <-  lang_de;; *);;
-        *);;
+         (* <-  lang_de;; *)
+        };;
     <= nrel_using_constants:
         {
         sc_element;

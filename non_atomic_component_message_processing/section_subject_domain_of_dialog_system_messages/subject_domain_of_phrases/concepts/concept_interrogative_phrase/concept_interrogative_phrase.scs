@@ -19,19 +19,14 @@ concept_interrogative_phrase
         (* <- lang_de;; *);;
     <- definition;;
     <= nrel_sc_text_translation:
-        ...
-        (*
-        -> rrel_example:
-            [Вопросительная фраза - фраза, выражающая вопрос.]
-                (* <- lang_ru;; *);;
-        -> rrel_example:
-            [Interrogative phrase is a phrase that expresses a question.]
-            (* <- lang_en;; *);;
-
-        -> rrel_example:
-            [Interrogative Phrase ist eine Phrase, die die Frage ausdrückt.]
-            (* <- lang_de;; *);;
-        *);;
+        {
+            rrel_example: [Вопросительная фраза - фраза, выражающая вопрос.]
+            (* <- lang_ru;; *);
+            rrel_example: [Interrogative phrase is a phrase that expresses a question.]
+            (* <- lang_en;; *);
+         rrel_example: [Interrogative Phrase ist eine Phrase, die die Frage ausdrückt.]
+         (* <- lang_de;; *)
+        };;
     <= nrel_using_constants:
         {
             concept_phrase

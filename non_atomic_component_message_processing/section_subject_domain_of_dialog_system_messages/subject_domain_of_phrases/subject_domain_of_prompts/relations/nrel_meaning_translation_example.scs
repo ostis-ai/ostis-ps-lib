@@ -45,18 +45,14 @@ nrel_meaning_translation_example
         (* <- lang_de;; *);;
     <-  definition;;
     <= nrel_sc_text_translation:
-        ...
-        (*
-        <- sc_node_tuple;;
-        -> rrel_example:
-            [Пример трансляции смысла* - бинарное отношение, связывающее множество ориентированных пар и тип сообщения.]
-            (* <- lang_ru;; *);;
-
-        <- sc_node_tuple;;
-        -> rrel_example:
-            [Meaning translation example* is a binary relation that connects a set of oriented pairs and message type.]
-            (* <- lang_en;; *);;
-        *);;
+        {
+            rrel_example:
+                [Пример трансляции смысла* - бинарное отношение, связывающее множество ориентированных пар и тип сообщения.]
+                (* <- lang_ru;; *);
+            rrel_example:
+                [Meaning translation example* is a binary relation that connects a set of oriented pairs and message type.]
+                (* <- lang_en;; *)
+        };;
     <= nrel_using_constants:
         {
         concept_static_prompt_statement;

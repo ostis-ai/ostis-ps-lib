@@ -19,18 +19,14 @@ concept_denial_phrase
         (* <- lang_de;; *);;
     <- definition;;
     <= nrel_sc_text_translation:
-        ...
-        (*
-        -> rrel_example:
-            [Фраза отрицания информации - фраза, отрицающая какую-либо упомянутую ранее в диалоге информацию.]
-            (* <- lang_ru;; *);;
-        -> rrel_example:
-            [Denial phrase is a phrase that denies any information mentioned earlier in the dialog.]
-            (* <- lang_en;; *);;
-        -> rrel_example:
-            [Leugnungsphrase ist eine Phrase, die die zuvor im Dialog erwähnten Informationen leugnet.]
-            (* <- lang_de;; *);;
-        *);;
+        {
+            rrel_example: [Фраза отрицания информации - фраза, отрицающая какую-либо упомянутую ранее в диалоге информацию.]
+            (* <- lang_ru;; *);
+            rrel_example: [Denial phrase is a phrase that denies any information mentioned earlier in the dialog.]
+            (* <- lang_en;; *);
+         rrel_example: [Leugnungsphrase ist eine Phrase, die die zuvor im Dialog erwähnten Informationen leugnet.]
+         (* <- lang_de;; *)
+        };;
     <= nrel_using_constants:
         {
             concept_phrase

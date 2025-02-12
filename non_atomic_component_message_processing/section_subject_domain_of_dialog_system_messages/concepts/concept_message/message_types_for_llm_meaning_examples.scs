@@ -17,16 +17,14 @@ message_types_for_llm_meaning_examples
         (* <- lang_en;; *);;
     <- definition;;
     <= nrel_sc_text_translation:
-        ...
-        (*
-        <- sc_node_tuple;;
-        -> rrel_example:
-            [Типы сообщения для примеров смыслов для LLM - это ориентированное множество, задающее порядок типов сообщений при составлении примеров трансляций смыслов сообщений для отправки на chatGPT.]
-            (* <- lang_ru;; *);;
-        -> rrel_example:
-            [Message types for LLM meaning examples is an oriented set that specifies the order of message types when composing example translations of message meanings to send to chatGPT.]
-            (* <- lang_en;; *);;
-        *);;
+        {
+            rrel_example:
+                [Типы сообщения для примеров смыслов для LLM - это ориентированное множество, задающее порядок типов сообщений при составлении примеров трансляций смыслов сообщений для отправки на chatGPT.]
+                (* <- lang_ru;; *);
+            rrel_example:
+                [Message types for LLM meaning examples is an oriented set that specifies the order of message types when composing example translations of message meanings to send to chatGPT.]
+                (* <- lang_en;; *)
+        };;
     <= nrel_using_constants:
         {
            oriented_set;

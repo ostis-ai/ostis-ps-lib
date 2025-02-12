@@ -23,20 +23,14 @@ concept_message_with_negative_emotional_coloring
         (* <- lang_de;; *);;
     <- definition;;
     <= nrel_sc_text_translation:
-        ...
-        (*
-        -> rrel_example:
-            [Cообщение, имеющее негативную эмоциональную окраску - сообщение, имеющее эмоциональную окраску в одну из эмоций, являющихся негативным эмоциональным состоянием.]
-            (* <- lang_ru;;    *);;
-
-        -> rrel_example:
-            [Message with negative coloring is a message, that has an emotional connotation of one of the emotions, that is a negative emotional state.]
-            (* <- lang_en;;    *);;
-
-        -> rrel_example:
-            [Nachricht mit negativer Färbung ist eine Nachricht, die eine emotionale Färbung in eine der Emotionen hat, die ein negativer emotionaler Zustand ist.]
-            (* <- lang_de;;    *);;
-    *);;
+        {
+            rrel_example: [Cообщение, имеющее негативную эмоциональную окраску - сообщение, имеющее эмоциональную окраску в одну из эмоций, являющихся негативным эмоциональным состоянием.]
+            (* <- lang_ru;;    *);
+            rrel_example: [Message with negative coloring is a message, that has an emotional connotation of one of the emotions, that is a negative emotional state.]
+            (* <- lang_en;;    *);
+         rrel_example: [Nachricht mit negativer Färbung ist eine Nachricht, die eine emotionale Färbung in eine der Emotionen hat, die ein negativer emotionaler Zustand ist.]
+         (* <- lang_de;;    *)
+        };;
     <= nrel_using_constants:
         {
         concept_message;

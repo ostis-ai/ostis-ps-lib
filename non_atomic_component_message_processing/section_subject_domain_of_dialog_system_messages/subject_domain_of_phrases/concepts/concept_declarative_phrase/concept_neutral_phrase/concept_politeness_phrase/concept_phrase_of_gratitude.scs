@@ -19,19 +19,14 @@ concept_phrase_of_gratitude
         (* <- lang_de;; *);;
     <- definition;;
     <= nrel_sc_text_translation:
-        ...
-        (*
-        -> rrel_example:
-            [Фраза благодарности - фраза, выражающая благодарность.]
-                (* <- lang_ru;; *);;
-        -> rrel_example:
-            [Phrase of gratitude is a phrase that expresses gratitude.]
-            (* <- lang_en;; *);;
-
-        -> rrel_example:
-            [Phrase der Dankbarkeit ist eine Phrase, die Dankbarkeit ausdrückt.]
-            (* <- lang_de;; *);;
-        *);;
+        {
+            rrel_example: [Фраза благодарности - фраза, выражающая благодарность.]
+            (* <- lang_ru;; *);
+            rrel_example: [Phrase of gratitude is a phrase that expresses gratitude.]
+            (* <- lang_en;; *);
+         rrel_example: [Phrase der Dankbarkeit ist eine Phrase, die Dankbarkeit ausdrückt.]
+         (* <- lang_de;; *)
+        };;
     <= nrel_using_constants:
         {
             concept_phrase

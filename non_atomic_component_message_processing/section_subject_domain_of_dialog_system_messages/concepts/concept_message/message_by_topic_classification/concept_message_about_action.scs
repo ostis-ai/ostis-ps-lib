@@ -21,19 +21,17 @@ concept_message_about_action
         (* <- lang_de;; *);;
     <- definition;;
     <= nrel_sc_text_translation:
-        ...
-        (*
-        -> rrel_example:
-            [Сообщение о действии - атомарное сообщение, описывающее действие без уточнения аргументов, сущностей.]
-                (* <- lang_ru;; *);;
-        -> rrel_example:
-            [Message about an action is an atomic message that describes an action without specifying arguments, entities.]
-            (* <- lang_en;; *);;
-
-        -> rrel_example:
-            [Aktionsnachricht ist eine atomare Nachricht, die eine Aktion beschreibt, ohne Argumente oder Entitäten anzugeben.]
-            (* <- lang_de;; *);;
-        *);;
+        {
+            rrel_example:
+                [Сообщение о действии - атомарное сообщение, описывающее действие без уточнения аргументов, сущностей.]
+                (* <- lang_ru;; *);
+            rrel_example:
+                [Message about an action is an atomic message that describes an action without specifying arguments, entities.]
+                (* <- lang_en;; *);
+            rrel_example:
+                [Aktionsnachricht ist eine atomare Nachricht, die eine Aktion beschreibt, ohne Argumente oder Entitäten anzugeben.]
+                (* <- lang_de;; *)
+        };;
     <= nrel_using_constants:
         {
             concept_atomic_message;

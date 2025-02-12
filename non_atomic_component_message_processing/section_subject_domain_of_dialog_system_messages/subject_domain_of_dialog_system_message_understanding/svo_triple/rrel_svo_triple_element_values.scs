@@ -37,24 +37,18 @@ rrel_svo_triple_element_values
         (* <-  lang_de;; *);;
     <- definition;;
     <= nrel_sc_text_translation:
-        ...
-        (*
-        -> rrel_example:
-            [Значение элемента тройки субъект-глагол-объект' - ролевое отношение, связывающее элемент тройки
+        {
+            rrel_example: [Значение элемента тройки субъект-глагол-объект' - ролевое отношение, связывающее элемент тройки
             и множество сущностей, которые соответствуют данному элементу в рамках текущего состояния базы знаний.]
-            (* <-  lang_ru;; *);;
-
-        -> rrel_example:
-            [Value of the subject-verb-object triple element' is a role relation that connects the triple element and a
+            (* <-  lang_ru;; *);
+            rrel_example: [Value of the subject-verb-object triple element' is a role relation that connects the triple element and a
             set of entities that correspond to this element within the current state of the knowledge base.]
-            (* <-  lang_en;; *);;
-
-        -> rrel_example:
-            [Wert des Subjekt-Verb-Objekt-Tripelelements' Wert des Subjekt-Verb-Objekt-Tripelelements) ist eine
+            (* <-  lang_en;; *);
+         rrel_example: [Wert des Subjekt-Verb-Objekt-Tripelelements' Wert des Subjekt-Verb-Objekt-Tripelelements) ist eine
             Rollenbeziehung, die das Tripelelement und eine Menge von Entitäten verbindet, die diesem Element innerhalb
             des aktuellen Zustands der Wissensdatenbank entsprechen.]
-            (* <-  lang_de;; *);;
-        *);;
+         (* <-  lang_de;; *)
+        };;
     <= nrel_using_constants:
         {
         sc_element;

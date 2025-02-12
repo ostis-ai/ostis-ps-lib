@@ -25,24 +25,17 @@ nrel_token_sequence
             [Def. (Aufeinanderfolge von Tokens*)](* <- lang_de;; *);;
         <-definition;;
         <=nrel_sc_text_translation:
-            ...
-            (*
-            -> rrel_example:
-                [Последовательность токенов* - отношение, связывающее упорядоченные относительно друг друга токены.]
-                (* <- lang_ru;; *);;
-            *);
-            ...
-            (*
-            -> rrel_example:
-                [Token sequence* is a relation that connects tokens ordered relative to each other.]
-                (* <- lang_en;; *);;
-            *);
-            ...
-            (*
-            -> rrel_example:
-                [Aufeinanderfolge von Tokens* ist eine Beziehung, die Tokens verbindet, die relativ zueinander geordnet sind.]
-                (* <- lang_de;; *);;
-            *);;
+            {
+                rrel_example:
+                    [Последовательность токенов* - отношение, связывающее упорядоченные относительно друг друга токены.]
+                    (* <- lang_ru;; *);
+                rrel_example:
+                    [Token sequence* is a relation that connects tokens ordered relative to each other.]
+                    (* <- lang_en;; *);
+                rrel_example:
+                    [Aufeinanderfolge von Tokens* ist eine Beziehung, die Tokens verbindet, die relativ zueinander geordnet sind.]
+                    (* <- lang_de;; *)
+            };;
         <= nrel_using_constants:
             {
                 quasybinary_relation;

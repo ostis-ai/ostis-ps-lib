@@ -19,19 +19,14 @@ concept_message_with_negative_tone
         (* <- lang_de;; *);;
     <- definition;;
     <= nrel_sc_text_translation:
-        ...
-        (*
-        -> rrel_example:
-            [Сообщение с отрицательной тональностью - атомарное сообщение, содержащее слова и выражения, которые имеют отрицательную окраску.]
-                (* <- lang_ru;; *);;
-        -> rrel_example:
-            [Message with negative tone is an atomic message that contains words and expressions that have a negative connotation.]
-            (* <- lang_en;; *);;
-
-        -> rrel_example:
-            [Nachricht mit negativem Ton ist eine Nachricht, die Wörter und Ausdrücke enthält, die eine negative Konnotation haben.]
-            (* <- lang_de;; *);;
-        *);;
+        {
+            rrel_example: [Сообщение с отрицательной тональностью - атомарное сообщение, содержащее слова и выражения, которые имеют отрицательную окраску.]
+            (* <- lang_ru;; *);
+            rrel_example: [Message with negative tone is an atomic message that contains words and expressions that have a negative connotation.]
+            (* <- lang_en;; *);
+         rrel_example: [Nachricht mit negativem Ton ist eine Nachricht, die Wörter und Ausdrücke enthält, die eine negative Konnotation haben.]
+         (* <- lang_de;; *)
+        };;
     <= nrel_using_constants:
         {
             concept_atomic_message

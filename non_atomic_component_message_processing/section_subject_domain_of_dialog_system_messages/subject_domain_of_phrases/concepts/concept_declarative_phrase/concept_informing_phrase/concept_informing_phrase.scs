@@ -19,18 +19,17 @@ concept_informing_phrase
         (* <- lang_de;; *);;
     <- definition;;
     <= nrel_sc_text_translation:
-        ...
-        (*
-        -> rrel_example:
-            [Фраза информирования - фраза, передающая какую-либо информацию.]
-            (* <- lang_ru;; *);;
-        -> rrel_example:
-            [Informing phrase is a phrase that conveys some information.]
-            (* <- lang_en;; *);;
-        -> rrel_example:
-            [Informierensphrase ist eine Phrase, die Informationen übermittelt.]
-            (* <- lang_de;; *);;
-        *);;
+        {
+            rrel_example:
+                [Фраза информирования - фраза, передающая какую-либо информацию.]
+                (* <- lang_ru;; *);
+            rrel_example:
+                [Informing phrase is a phrase that conveys some information.]
+                (* <- lang_en;; *);
+            rrel_example:
+                [Informierensphrase ist eine Phrase, die Informationen übermittelt.]
+                (* <- lang_de;; *)
+        };;
     <= nrel_using_constants:
         {
             concept_phrase

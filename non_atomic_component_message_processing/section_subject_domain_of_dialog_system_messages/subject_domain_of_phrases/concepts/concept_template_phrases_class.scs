@@ -15,15 +15,17 @@ concept_template_phrases_class
     -> rrel_key_sc_element:
         concept_template_phrases_class;
     <= nrel_sc_text_translation:
-        ...
-        (*
-            -> rrel_example:
-                [Класс шаблонных фраз - множество файлов, являющихся взаимозаменяемыми текстами для какого-либо сообщения.](* <- lang_ru;; *);;
-            -> rrel_example:
-                [Template phrases class is a set of files that are interchangeable texts for a message.](* <- lang_en;; *);;
-            -> rrel_example:
-                [Klasse der Musterphrasen ist eine Anzahl von Dateien, die austauschbare Texte für eine Nachricht sind.](* <- lang_de;; *);;
-        *);
+        {
+            rrel_example:
+                [Класс шаблонных фраз - множество файлов, являющихся взаимозаменяемыми текстами для какого-либо сообщения.]
+                (* <- lang_ru;; *);
+            rrel_example:
+                [Template phrases class is a set of files that are interchangeable texts for a message.]
+                (* <- lang_en;; *);
+            rrel_example:
+                [Klasse der Musterphrasen ist eine Anzahl von Dateien, die austauschbare Texte für eine Nachricht sind.]
+                (* <- lang_de;; *)
+        };
     <= nrel_using_constants:
         {
             set;

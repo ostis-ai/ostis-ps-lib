@@ -23,18 +23,17 @@ concept_message_about_past
         (* <- lang_de;; *);;
     <- definition;;
     <= nrel_sc_text_translation:
-        ...
-        (*
-        -> rrel_example:
-            [Сообщение о прошлом - атомарное сообщение, содержащее информацию о прошлом.]
-            (* <- lang_ru;; *);;
-        -> rrel_example:
-            [Message about the past is an atomic message that contains information about the past.]
-            (* <- lang_en;; *);;
-        -> rrel_example:
-            [Nachricht mit Informationen über die Vergangenheit ist eine atomare Nachricht, die Informationen über die Vergangenheit enthält.]
-            (* <- lang_de;; *);;
-        *);;
+        {
+            rrel_example:
+                [Сообщение о прошлом - атомарное сообщение, содержащее информацию о прошлом.]
+                (* <- lang_ru;; *);
+            rrel_example:
+                [Message about the past is an atomic message that contains information about the past.]
+                (* <- lang_en;; *);
+            rrel_example:
+                [Nachricht mit Informationen über die Vergangenheit ist eine atomare Nachricht, die Informationen über die Vergangenheit enthält.]
+                (* <- lang_de;; *)
+        };;
     <= nrel_using_constants:
         {
             concept_atomic_message

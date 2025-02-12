@@ -19,18 +19,17 @@ concept_non_atomic_message
         (* <- lang_de;; *);;
     <- definition;;
     <= nrel_sc_text_translation:
-        ...
-        (*
-        -> rrel_example:
-            [Неатомарное сообщение - сообщение, в состав которого входят другие сообщения.]
-            (* <- lang_ru;; *);;
-        -> rrel_example:
-            [Non-atomic message is a message that includes other messages.]
-            (* <- lang_en;; *);;
-        -> rrel_example:
-            [Unatomare Nachricht ist eine Nachricht, die andere Nachrichten enthält.]
-            (* <- lang_de;; *);;
-        *);;
+        {
+            rrel_example:
+                [Неатомарное сообщение - сообщение, в состав которого входят другие сообщения.]
+                (* <- lang_ru;; *);
+            rrel_example:
+                [Non-atomic message is a message that includes other messages.]
+                (* <- lang_en;; *);
+            rrel_example:
+                [Unatomare Nachricht ist eine Nachricht, die andere Nachrichten enthält.]
+                (* <- lang_de;; *)
+        };;
     <= nrel_using_constants:
         {
             concept_message

@@ -36,16 +36,13 @@ nrel_message_meaning
         (* <- lang_de;; *);;
     <-  definition;;
     <= nrel_sc_text_translation:
-        ...
-        (*
-        -> rrel_example:
-            [Cмысл сообщения* - бинарное ориентированное отношение, связывающее виртуального ассистента и распознанный им
+        {
+            rrel_example: [Cмысл сообщения* - бинарное ориентированное отношение, связывающее виртуального ассистента и распознанный им
             смысл входящего от собеседника сообщения.]
-                (* <- lang_ru;; *);;
-        -> rrel_example:
-            [Message meaning* is a binary oriented relation.]
-            (* <- lang_en;; *);;
-        *);;
+            (* <- lang_ru;; *);
+            rrel_example: [Message meaning* is a binary oriented relation.]
+            (* <- lang_en;; *)
+        };;
     <= nrel_using_constants:
         {
         binary_relation;

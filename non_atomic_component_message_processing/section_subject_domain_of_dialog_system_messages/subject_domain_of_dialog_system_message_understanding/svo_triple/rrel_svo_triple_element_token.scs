@@ -37,20 +37,14 @@ rrel_svo_triple_element_token
         (* <-  lang_de;; *);;
     <- definition;;
     <= nrel_sc_text_translation:
-        ...
-        (*
-        -> rrel_example:
-            [Лексема элемента тройки субъект-глагол-объект' - ролевое отношение, связывающее элемент тройки и его лексему.]
-            (* <-  lang_ru;; *);;
-
-        -> rrel_example:
-            [Token of the subject-verb-object triple element' is a role relation that connects the triple element and its token.]
-            (* <-  lang_en;; *);;
-
-        -> rrel_example:
-            [Token des Subjekt-Verb-Objekt-Tripelelements' ist eine Rollenbeziehung, die das Tripelelement und sein Token verbindet.]
-            (* <-  lang_de;; *);;
-        *);;
+        {
+            rrel_example: [Лексема элемента тройки субъект-глагол-объект' - ролевое отношение, связывающее элемент тройки и его лексему.]
+            (* <-  lang_ru;; *);
+            rrel_example: [Token of the subject-verb-object triple element' is a role relation that connects the triple element and its token.]
+            (* <-  lang_en;; *);
+         rrel_example: [Token des Subjekt-Verb-Objekt-Tripelelements' ist eine Rollenbeziehung, die das Tripelelement und sein Token verbindet.]
+         (* <-  lang_de;; *)
+        };;
     <= nrel_using_constants:
         {
         concept_svo_triple;

@@ -16,15 +16,12 @@ concept_misunderstanding_phrase
         (* <- lang_ru;; *);;
     <- definition;;
     <= nrel_sc_text_translation:
-        ...
-        (*
-        -> rrel_example:
-            [Фраза непонимания - фраза, высказывающая непонимание.]
-            (* <- lang_ru;; *);;
-        -> rrel_example:
-            [Misunderstanding phrase - phrase expressing misunderstanding.]
-            (* <- lang_en;; *);;
-        *);;
+        {
+            rrel_example: [Фраза непонимания - фраза, высказывающая непонимание.]
+            (* <- lang_ru;; *);
+            rrel_example: [Misunderstanding phrase - phrase expressing misunderstanding.]
+            (* <- lang_en;; *)
+        };;
     <= nrel_using_constants:
         {
             concept_phrase

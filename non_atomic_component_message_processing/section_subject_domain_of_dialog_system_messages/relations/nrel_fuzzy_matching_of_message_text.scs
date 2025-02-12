@@ -35,26 +35,21 @@ nrel_fuzzy_matching_of_message_text
         (* <- lang_de;; *);;
     <-  definition;;
     <= nrel_sc_text_translation:
-        ...
-        (*
-        -> rrel_example:
-            [Нечеткое соответствие текста сообщений* - бинарное ориентированное отношение. Отношение связывает два сообщения в том случае, когда
+        {
+            rrel_example: [Нечеткое соответствие текста сообщений* - бинарное ориентированное отношение. Отношение связывает два сообщения в том случае, когда
             после нормализации текста этих сообщений (т.е. после удаления запятых, пробелов, приведения к нижнему регистру) редакционное расстояние
             строк меньше указанного значения.]
-                (* <- lang_ru;; *);;
-        -> rrel_example:
-            [Fuzzy matching of the message text* is a binary undirected relation. The relation connects two messages in
+            (* <- lang_ru;; *);
+            rrel_example: [Fuzzy matching of the message text* is a binary undirected relation. The relation connects two messages in
             the case when, after the normalization of the text of these messages (i.e., after removing commas, spaces,
             reducing to lowercase), the editing line distance is less than the specified value.]
-            (* <- lang_en;; *);;
-
-        -> rrel_example:
-            [Fuzzyübereinstimmung des Nachrichtentextes* ist eine binäre ungerichtete Beziehung. Die Beziehung verbindet
+            (* <- lang_en;; *);
+         rrel_example: [Fuzzyübereinstimmung des Nachrichtentextes* ist eine binäre ungerichtete Beziehung. Die Beziehung verbindet
              zwei Nachrichten in dem Fall, wenn nach der Normalisierung des Textes dieser Nachrichten (d. h. nach dem
              Entfernen von Kommas, Leerzeichen, Reduzieren auf Kleinbuchstaben) der Bearbeitungszeilenabstand kleiner
              als der angegebene Wert ist.]
-            (* <- lang_de;; *);;
-        *);;
+         (* <- lang_de;; *)
+        };;
     <= nrel_using_constants:
         {
         binary_relation;

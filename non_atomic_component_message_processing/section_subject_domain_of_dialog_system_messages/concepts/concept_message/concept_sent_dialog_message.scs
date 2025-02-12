@@ -20,18 +20,17 @@ concept_sent_dialog_message
         (* <- lang_de;; *);;
     <- definition;;
     <= nrel_sc_text_translation:
-        ...
-        (*
-        -> rrel_example:
-            [Отправленное диалоговое сообщение - диалоговое сообщение, которое имеет дату появления в диалоге и автора.]
-            (* <- lang_ru;; *);;
-        -> rrel_example:
-            [Sent dialog message is a dialog message, which has the insertion date in the dialog and the author.]
-            (* <- lang_en;; *);;
-        -> rrel_example:
-            [Gesendete Dialognachricht ist eine Dialognachricht, die das Einfügedatum im Dialog und den Autor hat.]
-            (* <- lang_de;; *);;
-        *);;
+        {
+            rrel_example:
+                [Отправленное диалоговое сообщение - диалоговое сообщение, которое имеет дату появления в диалоге и автора.]
+                (* <- lang_ru;; *);
+            rrel_example:
+                [Sent dialog message is a dialog message, which has the insertion date in the dialog and the author.]
+                (* <- lang_en;; *);
+            rrel_example:
+                [Gesendete Dialognachricht ist eine Dialognachricht, die das Einfügedatum im Dialog und den Autor hat.]
+                (* <- lang_de;; *)
+        };;
     <= nrel_using_constants:
         {
         concept_dialog;

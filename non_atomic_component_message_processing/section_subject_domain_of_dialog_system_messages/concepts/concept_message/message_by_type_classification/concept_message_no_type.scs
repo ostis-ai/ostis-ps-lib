@@ -21,18 +21,14 @@ concept_message_no_type
     (* <- lang_de;; *);;
     <- definition;;
     <= nrel_sc_text_translation:
-        ...
-        (*
-        -> rrel_example:
-            [Сообщение без типа - сообщение, тип которого в настоящее время не распознан.]
-            (* <- lang_ru;; *);;
-        -> rrel_example:
-            [Message without type is a message whose type is not currently recognized.]
-            (* <- lang_en;; *);;
-        -> rrel_example:
-            [Nachricht ohne Typ ist eine Nachricht, deren Typ derzeit nicht erkannt wird.]
-            (* <- lang_de;; *);;
-        *);;
+        {
+            rrel_example: [Сообщение без типа - сообщение, тип которого в настоящее время не распознан.]
+            (* <- lang_ru;; *);
+            rrel_example: [Message without type is a message whose type is not currently recognized.]
+            (* <- lang_en;; *);
+         rrel_example: [Nachricht ohne Typ ist eine Nachricht, deren Typ derzeit nicht erkannt wird.]
+         (* <- lang_de;; *)
+        };;
     <= nrel_using_constants:
         {
            concept_message

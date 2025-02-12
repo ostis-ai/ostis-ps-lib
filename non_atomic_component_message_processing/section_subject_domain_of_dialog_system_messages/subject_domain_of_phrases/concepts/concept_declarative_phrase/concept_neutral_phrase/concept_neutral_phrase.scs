@@ -19,19 +19,14 @@ concept_neutral_phrase
         (* <- lang_de;; *);;
     <- definition;;
     <= nrel_sc_text_translation:
-        ...
-        (*
-        -> rrel_example:
-            [Нейтральная фраза - фраза, не несущая какую-либо новую информацию, а также не подтверждающая и не опровергающая какую-либо озвученную ранее информацию.]
-                (* <- lang_ru;; *);;
-        -> rrel_example:
-            [Neutral phrase is a phrase that doesn't carry any new information as well as doesn't confirm or deny any previously announced information.]
-            (* <- lang_en;; *);;
-
-        -> rrel_example:
-            [Neutrale Phrase ist eine Phrase, die keine neuen Informationen trägt und auch keine zuvor geäußerten Informationen bestätigt oder widerlegt.]
-            (* <- lang_de;; *);;
-        *);;
+        {
+            rrel_example: [Нейтральная фраза - фраза, не несущая какую-либо новую информацию, а также не подтверждающая и не опровергающая какую-либо озвученную ранее информацию.]
+            (* <- lang_ru;; *);
+            rrel_example: [Neutral phrase is a phrase that doesn't carry any new information as well as doesn't confirm or deny any previously announced information.]
+            (* <- lang_en;; *);
+         rrel_example: [Neutrale Phrase ist eine Phrase, die keine neuen Informationen trägt und auch keine zuvor geäußerten Informationen bestätigt oder widerlegt.]
+         (* <- lang_de;; *)
+        };;
     <= nrel_using_constants:
         {
             concept_phrase

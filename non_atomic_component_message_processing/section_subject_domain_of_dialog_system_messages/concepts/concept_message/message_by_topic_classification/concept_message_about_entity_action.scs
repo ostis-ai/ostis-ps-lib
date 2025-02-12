@@ -21,19 +21,17 @@ concept_message_about_entity_action
         (* <- lang_de;; *);;
     <- definition;;
     <= nrel_sc_text_translation:
-        ...
-        (*
-        -> rrel_example:
-            [Сообщение о действии сущности - атомарное сообщение, описывающее действие сущности без указания подробностей.]
-                (* <- lang_ru;; *);;
-        -> rrel_example:
-            [Message about the entity action is an atomic message that describes the entity action without specifying details.]
-            (* <- lang_en;; *);;
-
-        -> rrel_example:
-            [Nachricht über die Entitätsaktion ist eine atomare Nachricht, die die Entitätsaktion beschreibt, ohne Details anzugeben.]
-            (* <- lang_de;; *);;
-        *);;
+        {
+            rrel_example:
+                [Сообщение о действии сущности - атомарное сообщение, описывающее действие сущности без указания подробностей.]
+                (* <- lang_ru;; *);
+            rrel_example:
+                [Message about the entity action is an atomic message that describes the entity action without specifying details.]
+                (* <- lang_en;; *);
+            rrel_example:
+                [Nachricht über die Entitätsaktion ist eine atomare Nachricht, die die Entitätsaktion beschreibt, ohne Details anzugeben.]
+                (* <- lang_de;; *)
+        };;
     <= nrel_using_constants:
         {
             concept_atomic_message;

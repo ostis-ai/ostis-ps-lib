@@ -15,15 +15,12 @@ concept_interception_phrase
         (* <- lang_en;; *);;
     <- definition;;
     <= nrel_sc_text_translation:
-        ...
-        (*
-        -> rrel_example:
-            [Фраза для перехвата диалога - декларативная фраза для перехвата инициативы в диалоге.]
-                (* <- lang_ru;; *);;
-        -> rrel_example:
-            [Dialogue interception phrase is a declarative phrase for intercepting an initiative in a dialogue.]
-            (* <- lang_en;; *);;
-        *);;
+        {
+            rrel_example: [Фраза для перехвата диалога - декларативная фраза для перехвата инициативы в диалоге.]
+            (* <- lang_ru;; *);
+            rrel_example: [Dialogue interception phrase is a declarative phrase for intercepting an initiative in a dialogue.]
+            (* <- lang_en;; *)
+        };;
     <= nrel_using_constants:
         {
             concept_declarative_phrase;

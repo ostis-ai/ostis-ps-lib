@@ -15,15 +15,12 @@ concept_no_audio_phrase
         (* <- lang_en;; *);;
     <- definition;;
     <= nrel_sc_text_translation:
-        ...
-        (*
-        -> rrel_example:
-            [Фраза ошибки генерации ответа на пустое аудио-сообщение - фраза ошибки генерации ответа, причиной которой является отсутствие звуковых данных в аудио-сообщении пользователя.]
-                (* <- lang_ru;; *);;
-        -> rrel_example:
-            [Answer generation error phrase to an empty audio message is an answer generation error phrase, caused by the absence of audio data in the user's audio message.]
-            (* <- lang_en;; *);;
-        *);;
+        {
+            rrel_example: [Фраза ошибки генерации ответа на пустое аудио-сообщение - фраза ошибки генерации ответа, причиной которой является отсутствие звуковых данных в аудио-сообщении пользователя.]
+            (* <- lang_ru;; *);
+            rrel_example: [Answer generation error phrase to an empty audio message is an answer generation error phrase, caused by the absence of audio data in the user's audio message.]
+            (* <- lang_en;; *)
+        };;
     <= nrel_using_constants:
         {
             concept_answer_generation_error_phrase;

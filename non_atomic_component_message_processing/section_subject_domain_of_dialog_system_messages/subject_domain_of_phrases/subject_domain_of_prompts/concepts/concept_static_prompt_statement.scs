@@ -19,18 +19,14 @@ concept_static_prompt_statement
         (* <- lang_en;; *);;
     <- definition;;
     <= nrel_sc_text_translation:
-        ...
-        (*
-        <- sc_node_tuple;;
-        -> rrel_example:
-            [Утверждение статического промпта - утверждение, которое может использоваться как часть статического промпта.]
-            (* <- lang_ru;; *);;
-
-        <- sc_node_tuple;;
-        -> rrel_example:
-            [Static prompt statement is a statement that could be used as a part of a static prompt.]
-            (* <- lang_en;; *);;
-        *);;
+        {
+            rrel_example:
+                [Утверждение статического промпта - утверждение, которое может использоваться как часть статического промпта.]
+                (* <- lang_ru;; *);
+            rrel_example:
+                [Static prompt statement is a statement that could be used as a part of a static prompt.]
+                (* <- lang_en;; *)
+        };;
     <= nrel_using_constants:
         {
         statement

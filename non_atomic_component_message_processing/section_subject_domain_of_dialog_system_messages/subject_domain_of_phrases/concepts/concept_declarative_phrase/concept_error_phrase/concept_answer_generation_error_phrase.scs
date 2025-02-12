@@ -5,8 +5,6 @@ concept_answer_generation_error_phrase
     (* <- lang_ru;; *);
     [answer generation error phrase]
     (* <- lang_en;; *);
-    [Antwortgenerierungsfehler-Phrase]
-    (* <- lang_de;; *);
 <- rrel_key_sc_element:
     ...
     (*
@@ -14,24 +12,15 @@ concept_answer_generation_error_phrase
         [Опр. (фраза ошибки генерации ответа)]
         (* <- lang_ru;; *);
         [Def. (answer generation error phrase)]
-        (* <- lang_en;; *);
-        [Antwortgenerierungsfehler-Phrase]
-        (* <- lang_de;; *);;
+        (* <- lang_en;; *);;
     <- definition;;
     <= nrel_sc_text_translation:
-        ...
-        (*
-        -> rrel_example:
-            [Фраза ошибки генерации ответа - фраза ошибки, указывающая на ошибку генерации ответа на сообщение пользователя.]
-                (* <- lang_ru;; *);;
-        -> rrel_example:
-            [Answer generation error phrase is an error message that indicates an answer generation error for the user's message.]
-            (* <- lang_en;; *);;
-
-        -> rrel_example:
-            [Antwortgenerierungsfehler-Phrase ...]
-            (* <- lang_de;; *);;
-        *);;
+        {
+            rrel_example: [Фраза ошибки генерации ответа - фраза ошибки, указывающая на ошибку генерации ответа на сообщение пользователя.]
+            (* <- lang_ru;; *);
+            rrel_example: [Answer generation error phrase is an error message that indicates an answer generation error for the user's message.]
+            (* <- lang_en;; *)
+        };;
     <= nrel_using_constants:
         {
             concept_error_phrase;

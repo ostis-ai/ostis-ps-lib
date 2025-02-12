@@ -21,19 +21,14 @@ concept_politeness_phrase
         (* <- lang_de;; *);;
     <- definition;;
     <= nrel_sc_text_translation:
-        ...
-        (*
-        -> rrel_example:
-            [Фраза вежливости - фраза, выражающая вежливость.]
-                (* <- lang_ru;; *);;
-        -> rrel_example:
-            [Politeness phrase is a phrase that expresses politeness.]
-            (* <- lang_en;; *);;
-
-        -> rrel_example:
-            [Höflichkeitsphrase ist eine Phrase, die Höflichkeit ausdrückt.]
-            (* <- lang_de;; *);;
-        *);;
+        {
+            rrel_example: [Фраза вежливости - фраза, выражающая вежливость.]
+            (* <- lang_ru;; *);
+            rrel_example: [Politeness phrase is a phrase that expresses politeness.]
+            (* <- lang_en;; *);
+         rrel_example: [Höflichkeitsphrase ist eine Phrase, die Höflichkeit ausdrückt.]
+         (* <- lang_de;; *)
+        };;
     <= nrel_using_constants:
         {
             concept_phrase

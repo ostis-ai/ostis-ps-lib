@@ -45,18 +45,14 @@ nrel_static_prompt
         (* <- lang_de;; *);;
     <-  definition;;
     <= nrel_sc_text_translation:
-        ...
-        (*
-        <- sc_node_tuple;;
-        -> rrel_example:
-            [Статический промпт* - это квазибинарное отношение, связывающее клиент chatGPT и ориентированное множество его статических промптов.]
-            (* <- lang_ru;; *);;
-
-        <- sc_node_tuple;;
-        -> rrel_example:
-            [Static prompt* is a quasi-binary relation that connects a chatGPT client with its oriented set of static prompts.]
-            (* <- lang_en;; *);;
-        *);;
+        {
+            rrel_example:
+                [Статический промпт* - это квазибинарное отношение, связывающее клиент chatGPT и ориентированное множество его статических промптов.]
+                (* <- lang_ru;; *);
+            rrel_example:
+                [Static prompt* is a quasi-binary relation that connects a chatGPT client with its oriented set of static prompts.]
+                (* <- lang_en;; *)
+        };;
     <= nrel_using_constants:
         {
         concept_chat_gpt_client;

@@ -11,24 +11,17 @@ d_concept_exclamatory_message => nrel_main_idtf: [Def.(Ausrufenachricht)] (* <- 
  
 d_concept_exclamatory_message -> rrel_key_sc_element: concept_exclamatory_message;;
 d_concept_exclamatory_message <= nrel_sc_text_translation: 
-    ...
-    (*
-    -> rrel_example:
-        [Восклицательное сообщение - атомарное сообщение, имеющее восклицательную интонацию.]
-        (* <- lang_ru;; *);;
-    *);
-    ...
-    (*
-    -> rrel_example:
-        [Exclamatory message is an atomic message with exclamation intonation.]
-        (* <- lang_en;; *);;
-    *);
-    ...
-    (*
-    -> rrel_example:
-        [Ausrufenachricht ist die atomare Nachricht mit Ausrufintonation.]
-        (* <- lang_de;; *);;
-    *);;
+    {
+        rrel_example:
+            [Восклицательное сообщение - атомарное сообщение, имеющее восклицательную интонацию.]
+            (* <- lang_ru;; *);
+        rrel_example:
+            [Exclamatory message is an atomic message with exclamation intonation.]
+            (* <- lang_en;; *);
+        rrel_example:
+            [Ausrufenachricht ist die atomare Nachricht mit Ausrufintonation.]
+            (* <- lang_de;; *)
+    };;
 
 d_concept_exclamatory_message <= nrel_using_constants:
     {

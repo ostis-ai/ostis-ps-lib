@@ -18,15 +18,14 @@ concept_message_tense
     (* <- lang_de;; *);;
     <- definition;;
     <= nrel_sc_text_translation:
-        ...
-        (*
-        -> rrel_example:
-            [Время сообщения - характеристика сообщения по отношению времени описываемой в сообщении ситуации к моменту отправки сообщения.]
-                (* <- lang_ru;; *);;
-        -> rrel_example:
-            [Message tense is a characteristic of a message in relation to the time of the situation described in the message to the moment when the message was sent.]
-            (* <- lang_en;; *);;
-        *);;
+        {
+            rrel_example:
+                [Время сообщения - характеристика сообщения по отношению времени описываемой в сообщении ситуации к моменту отправки сообщения.]
+                (* <- lang_ru;; *);
+            rrel_example:
+                [Message tense is a characteristic of a message in relation to the time of the situation described in the message to the moment when the message was sent.]
+                (* <- lang_en;; *)
+        };;
     <= nrel_using_constants:
         {
             parameter;

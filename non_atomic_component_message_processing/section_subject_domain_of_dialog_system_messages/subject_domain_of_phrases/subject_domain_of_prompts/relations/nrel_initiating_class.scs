@@ -46,18 +46,14 @@ nrel_initiating_class
         (* <- lang_de;; *);;
     <-  definition;;
     <= nrel_sc_text_translation:
-        ...
-        (*
-        <- sc_node_tuple;;
-        -> rrel_example:
-            [Инициирующий класс* - бинарное отношение, связывающее множество утверждений статического промпта и класс, который инициирует использование этого множества.]
-            (* <- lang_ru;; *);;
-
-        <- sc_node_tuple;;
-        -> rrel_example:
-            [Initiating class* is a binary relation that connects a set of static prompt statements with a class, which initiates usage of this set.]
-            (* <- lang_en;; *);;
-        *);;
+        {
+            rrel_example:
+                [Инициирующий класс* - бинарное отношение, связывающее множество утверждений статического промпта и класс, который инициирует использование этого множества.]
+                (* <- lang_ru;; *);
+            rrel_example:
+                [Initiating class* is a binary relation that connects a set of static prompt statements with a class, which initiates usage of this set.]
+                (* <- lang_en;; *)
+        };;
     <= nrel_using_constants:
         {
         concept_static_prompt_statement;

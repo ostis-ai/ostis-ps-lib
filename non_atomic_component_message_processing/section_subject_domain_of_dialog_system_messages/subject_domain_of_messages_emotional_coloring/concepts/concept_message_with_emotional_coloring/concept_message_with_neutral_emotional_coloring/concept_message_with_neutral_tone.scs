@@ -19,19 +19,14 @@ concept_message_with_neutral_tone
         (* <- lang_de;; *);;
     <- definition;;
     <= nrel_sc_text_translation:
-        ...
-        (*
-        -> rrel_example:
-            [Сообщение с нейтральной тональностью - атомарное сообщение, содержащее слова и выражения, которые имеют нейтральную окраску.]
-                (* <- lang_ru;; *);;
-        -> rrel_example:
-            [Message with neutral tone is an atomic message that contains words and expressions that have a neutral connotation.]
-            (* <- lang_en;; *);;
-
-        -> rrel_example:
-            [Nachricht mit neutralem Ton ist eine Nachricht, die Wörter und Ausdrücke enthält, die eine neutrale Konnotation haben.]
-            (* <- lang_de;; *);;
-        *);;
+        {
+            rrel_example: [Сообщение с нейтральной тональностью - атомарное сообщение, содержащее слова и выражения, которые имеют нейтральную окраску.]
+            (* <- lang_ru;; *);
+            rrel_example: [Message with neutral tone is an atomic message that contains words and expressions that have a neutral connotation.]
+            (* <- lang_en;; *);
+         rrel_example: [Nachricht mit neutralem Ton ist eine Nachricht, die Wörter und Ausdrücke enthält, die eine neutrale Konnotation haben.]
+         (* <- lang_de;; *)
+        };;
     <= nrel_using_constants:
         {
             concept_atomic_message

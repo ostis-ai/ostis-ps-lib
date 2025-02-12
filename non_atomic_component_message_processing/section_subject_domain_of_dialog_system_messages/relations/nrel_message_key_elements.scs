@@ -36,19 +36,14 @@ nrel_message_key_elements
         (* <- lang_de;; *);;
     <- definition;;
     <= nrel_sc_text_translation:
-        ...
-        (*
-        -> rrel_example:
-            [Ключевые элементы сообщения* - отношение, связывающее класс сообщений со множествами характерных для него классов лексем.]
-                (* <- lang_ru;; *);;
-        -> rrel_example:
-            [Message key elements* is a relation, that connects a message class with sets of typical of it token classes.]
-            (* <- lang_en;; *);;
-
-        -> rrel_example:
-               [Schlüsselelemente der Nachricht* ist eine Beziehung, die eine Nachrichtenklasse mit vielen charakteristischen Token-Klassen verknüpft.]
-            (* <- lang_de;; *);;
-        *);;
+        {
+            rrel_example: [Ключевые элементы сообщения* - отношение, связывающее класс сообщений со множествами характерных для него классов лексем.]
+            (* <- lang_ru;; *);
+            rrel_example: [Message key elements* is a relation, that connects a message class with sets of typical of it token classes.]
+            (* <- lang_en;; *);
+         rrel_example: [Schlüsselelemente der Nachricht* ist eine Beziehung, die eine Nachrichtenklasse mit vielen charakteristischen Token-Klassen verknüpft.]
+         (* <- lang_de;; *)
+        };;
     <=nrel_using_constants:
         {
         relation;

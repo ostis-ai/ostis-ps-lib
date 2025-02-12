@@ -22,19 +22,17 @@ concept_declarative_message
         (* <- lang_de;; *);;
     <- definition;;
     <= nrel_sc_text_translation:
-        ...
-        (*
-        -> rrel_example:
-            [Повествовательное сообщение - атомарное сообщение, сообщающее о каких-либо новых фактах.]
-                (* <- lang_ru;; *);;
-        -> rrel_example:
-            [Declarative message is an atomic message that reports any new facts.]
-            (* <- lang_en;; *);;
-
-        -> rrel_example:
-            [Deklarative Nachricht ist eine atomare Nachricht, die neue Fakten meldet.]
-            (* <- lang_de;; *);;
-        *);;
+        {
+            rrel_example:
+                [Повествовательное сообщение - атомарное сообщение, сообщающее о каких-либо новых фактах.]
+                (* <- lang_ru;; *);
+            rrel_example:
+                [Declarative message is an atomic message that reports any new facts.]
+                (* <- lang_en;; *);
+            rrel_example:
+                [Deklarative Nachricht ist eine atomare Nachricht, die neue Fakten meldet.]
+                (* <- lang_de;; *)
+        };;
     <= nrel_using_constants:
         {
             concept_atomic_message

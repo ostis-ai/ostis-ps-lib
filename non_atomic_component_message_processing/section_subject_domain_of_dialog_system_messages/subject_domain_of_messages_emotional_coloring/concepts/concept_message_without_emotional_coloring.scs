@@ -19,20 +19,14 @@ concept_message_without_emotional_coloring
         (* <- lang_de;; *);;
     <- definition;;
     <= nrel_sc_text_translation:
-        ...
-        (*
-        -> rrel_example:
-            [Сообщение, не имеющее эмоциональной окраски - сообщение, не имеющее эмоциональную окраску в какую-либо из эмоций.]
-            (* <- lang_ru;;    *);;
-
-        -> rrel_example:
-            [Message without emotional coloring is a message, that doesn't have an emotional connotation of any of the emotions.]
-            (* <- lang_en;;    *);;
-
-        -> rrel_example:
-            [Nachricht ohne emotionale Färbung ist eine Nachricht, die keine emotionale Färbung in einer der Emotionen hat.]
-            (* <- lang_de;;    *);;
-        *);;
+        {
+            rrel_example: [Сообщение, не имеющее эмоциональной окраски - сообщение, не имеющее эмоциональную окраску в какую-либо из эмоций.]
+            (* <- lang_ru;;    *);
+            rrel_example: [Message without emotional coloring is a message, that doesn't have an emotional connotation of any of the emotions.]
+            (* <- lang_en;;    *);
+         rrel_example: [Nachricht ohne emotionale Färbung ist eine Nachricht, die keine emotionale Färbung in einer der Emotionen hat.]
+         (* <- lang_de;;    *)
+        };;
     <= nrel_using_constants:
         {
             concept_message;

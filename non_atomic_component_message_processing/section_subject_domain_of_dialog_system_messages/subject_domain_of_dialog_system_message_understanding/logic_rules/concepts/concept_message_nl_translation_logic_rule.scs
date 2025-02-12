@@ -26,22 +26,17 @@ concept_message_nl_translation_logic_rule
         (* <- lang_de;; *);;
     <- definition;;
     <= nrel_sc_text_translation:
-        ...
-        (*
-        -> rrel_example:
-            [Правило естественно-языковой трансляции сообщения - логическая формула, в соответствии с которой осуществляется
+        {
+            rrel_example: [Правило естественно-языковой трансляции сообщения - логическая формула, в соответствии с которой осуществляется
             трансляция естественно-языкового сообщения в sc-текст.]
-                (* <- lang_ru;; *);;
-        -> rrel_example:
-            [Rule of the natural language translation of the message is a logical formula according to which a natural
+            (* <- lang_ru;; *);
+            rrel_example: [Rule of the natural language translation of the message is a logical formula according to which a natural
             language message is translated into the sc-text.]
-            (* <- lang_en;; *);;
-
-        -> rrel_example:
-            [Regel für die natürlichsprachige Übertragung der Nachricht ist eine logische Formel, nach der eine natürlichsprachige
+            (* <- lang_en;; *);
+         rrel_example: [Regel für die natürlichsprachige Übertragung der Nachricht ist eine logische Formel, nach der eine natürlichsprachige
             Nachricht in den sc-Text übersetzt wird.]
-            (* <- lang_de;; *);;
-        *);;
+         (* <- lang_de;; *)
+        };;
     <= nrel_using_constants:
         {
         logical_formula;

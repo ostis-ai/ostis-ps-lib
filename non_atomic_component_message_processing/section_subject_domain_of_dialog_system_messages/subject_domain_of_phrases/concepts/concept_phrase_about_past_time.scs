@@ -19,18 +19,14 @@ concept_phrase_about_past_time
         (* <- lang_de;; *);;
     <- definition;;
     <= nrel_sc_text_translation:
-        ...
-        (*
-        -> rrel_example:
-            [Фраза о прошлом - фраза, содержащая информацию о прошлом.]
-            (* <- lang_ru;; *);;
-        -> rrel_example:
-            [Phrase about the past is a phrase that contains information about the past.]
-            (* <- lang_en;; *);;
-        -> rrel_example:
-            [Phrase mit Informationen über die Vergangenheit ist eine Phrase, die Informationen über die Vergangenheit enthält.]
-            (* <- lang_de;; *);;
-        *);;
+        {
+            rrel_example: [Фраза о прошлом - фраза, содержащая информацию о прошлом.]
+            (* <- lang_ru;; *);
+            rrel_example: [Phrase about the past is a phrase that contains information about the past.]
+            (* <- lang_en;; *);
+         rrel_example: [Phrase mit Informationen über die Vergangenheit ist eine Phrase, die Informationen über die Vergangenheit enthält.]
+         (* <- lang_de;; *)
+        };;
     <= nrel_using_constants:
         {
             concept_phrase

@@ -19,18 +19,17 @@ concept_empty_string
         (* <- lang_de;; *);;
     <- definition;;
     <= nrel_sc_text_translation:
-        ...
-        (*
-        -> rrel_example:
-            [Пустая строка - файл, содержащий строку нулевой длины.]
-            (* <- lang_ru;; *);;
-        -> rrel_example:
-            [Empty string is a file containing a zero-length string.]
-            (* <- lang_en;; *);;
-        -> rrel_example:
-            [Leerzeile ist eine Datei, die eine Zeichenfolge mit der Null-Länge enthält.]
-            (* <- lang_de;; *);;
-        *);;
+        {
+            rrel_example:
+                [Пустая строка - файл, содержащий строку нулевой длины.]
+                (* <- lang_ru;; *);
+            rrel_example:
+                [Empty string is a file containing a zero-length string.]
+                (* <- lang_en;; *);
+            rrel_example:
+                [Leerzeile ist eine Datei, die eine Zeichenfolge mit der Null-Länge enthält.]
+                (* <- lang_de;; *)
+        };;
     <= nrel_using_constants:
         {
         file

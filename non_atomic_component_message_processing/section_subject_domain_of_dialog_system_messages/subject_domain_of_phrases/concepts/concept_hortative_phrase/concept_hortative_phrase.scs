@@ -26,18 +26,14 @@ concept_hortative_phrase
         (* <- lang_de;; *);;
     <- definition;;
     <= nrel_sc_text_translation:
-        ...
-        (*
-        -> rrel_example:
-            [Побудительная фраза - фраза, побуждающая к какому-либо действию.]
-            (* <- lang_ru;; *);;
-        -> rrel_example:
-            [Hortative phrase is a phrase that encourages an action.]
-            (* <- lang_en;; *);;
-        -> rrel_example:
-            [Kausative Phrase ist eine Phrase, die zu einer Handlung anregt.]
-            (* <- lang_de;; *);;
-        *);;
+        {
+            rrel_example: [Побудительная фраза - фраза, побуждающая к какому-либо действию.]
+            (* <- lang_ru;; *);
+            rrel_example: [Hortative phrase is a phrase that encourages an action.]
+            (* <- lang_en;; *);
+         rrel_example: [Kausative Phrase ist eine Phrase, die zu einer Handlung anregt.]
+         (* <- lang_de;; *)
+        };;
     <= nrel_using_constants:
         {
             concept_phrase

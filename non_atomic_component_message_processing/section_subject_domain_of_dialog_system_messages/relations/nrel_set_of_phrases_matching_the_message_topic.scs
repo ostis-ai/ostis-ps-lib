@@ -28,23 +28,18 @@ nrel_set_of_phrases_matching_the_message_topic
         (* <- lang_de;; *);;
     <-  definition;;
     <= nrel_sc_text_translation:
-        ...
-        (*
-        -> rrel_example:
-            [Множество фраз, соответствующих теме сообщения* - квазибинарное ориентированное отношение, связывающее
+        {
+            rrel_example: [Множество фраз, соответствующих теме сообщения* - квазибинарное ориентированное отношение, связывающее
             класс сообщений с классами фраз, которые соответствуют теме данной группы сообщений.]
-                (* <- lang_ru;; *);;
-        -> rrel_example:
-            [Set of phrases matching the message topic* is a quasi-binary oriented relation linking a message class
+            (* <- lang_ru;; *);
+            rrel_example: [Set of phrases matching the message topic* is a quasi-binary oriented relation linking a message class
             with classes of phrases that correspond to the topic of a given group of messages.]
-            (* <- lang_en;; *);;
-
-        -> rrel_example:
-            [Menge von Phrasen, die das Thema der Nachricht entsprechen* ist eine quasi-binäre orientierte Beziehung,
+            (* <- lang_en;; *);
+         rrel_example: [Menge von Phrasen, die das Thema der Nachricht entsprechen* ist eine quasi-binäre orientierte Beziehung,
             die eine Nachrichtenklasse mit Klassen von Phrasen verbindet, die dem Thema einer bestimmten Gruppe von
             Nachrichten entsprechen.]
-            (* <- lang_de;; *);;
-        *);;
+         (* <- lang_de;; *)
+        };;
     <= nrel_using_constants:
         {
         quasybinary_relation;

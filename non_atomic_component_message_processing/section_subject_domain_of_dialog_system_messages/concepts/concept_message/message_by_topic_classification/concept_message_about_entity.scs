@@ -21,18 +21,17 @@ concept_message_about_entity
         (* <- lang_de;; *);;
     <- definition;;
     <= nrel_sc_text_translation:
-        ...
-        (*
-        -> rrel_example:
-            [Сообщение о сущности - атомарное сообщение, содержащее информацию о сущности.]
-            (* <- lang_ru;; *);;
-        -> rrel_example:
-            [Message about an entity is an atomic message that contains information about an entity.]
-            (* <- lang_en;; *);;
-        -> rrel_example:
-            [Nachricht über eine Entität ist eine atomare Nachricht, die Informationen über eine Entität enthält.]
-            (* <- lang_de;; *);;
-        *);;
+        {
+            rrel_example:
+                [Сообщение о сущности - атомарное сообщение, содержащее информацию о сущности.]
+                (* <- lang_ru;; *);
+            rrel_example:
+                [Message about an entity is an atomic message that contains information about an entity.]
+                (* <- lang_en;; *);
+            rrel_example:
+                [Nachricht über eine Entität ist eine atomare Nachricht, die Informationen über eine Entität enthält.]
+                (* <- lang_de;; *)
+        };;
     <= nrel_using_constants:
         {
             concept_atomic_message;

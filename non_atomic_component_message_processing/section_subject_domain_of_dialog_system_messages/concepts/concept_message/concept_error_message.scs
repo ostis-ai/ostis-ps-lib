@@ -20,18 +20,17 @@ concept_error_message
     (* <- lang_de;; *);;
     <- definition;;
     <= nrel_sc_text_translation:
-        ...
-        (*
-        -> rrel_example:
-            [Сообщение об ошибке - атомарное сообщение, которое оповещает об ошибке, которая произошла в системе.]
-            (* <- lang_ru;; *);;
-        -> rrel_example:
-            [Error message is an atomic message that notifies about an error that has occurred in the system.]
-            (* <- lang_en;; *);;
-        -> rrel_example:
-            [Fehlermeldung ist eine atomare Nachricht, die über einen Fehler informiert, der im System aufgetreten ist.]
-            (* <- lang_de;; *);;
-        *);;
+        {
+            rrel_example:
+                [Сообщение об ошибке - атомарное сообщение, которое оповещает об ошибке, которая произошла в системе.]
+                (* <- lang_ru;; *);
+            rrel_example:
+                [Error message is an atomic message that notifies about an error that has occurred in the system.]
+                (* <- lang_en;; *);
+            rrel_example:
+                [Fehlermeldung ist eine atomare Nachricht, die über einen Fehler informiert, der im System aufgetreten ist.]
+                (* <- lang_de;; *)
+        };;
     <= nrel_using_constants:
         {
             concept_atomic_message

@@ -15,16 +15,14 @@ concept_dynamic_prompt
         (* <- lang_en;; *);;
     <- definition;;
     <= nrel_sc_text_translation:
-        ...
-        (*
-        <- sc_node_tuple;;
-        -> rrel_example:
-            [Динамический промпт - промпт, который генерируется по содержимому фрагмента базы знаний.]
-            (* <- lang_ru;; *);;
-        -> rrel_example:
-            [Dynamic prompt is a prompt that is generated from the knowledge base fragment.]
-            (* <- lang_en;; *);;
-        *);;
+        {
+            rrel_example:
+                [Динамический промпт - промпт, который генерируется по содержимому фрагмента базы знаний.]
+                (* <- lang_ru;; *);
+            rrel_example:
+                [Dynamic prompt is a prompt that is generated from the knowledge base fragment.]
+                (* <- lang_en;; *)
+        };;
     <= nrel_using_constants:
         {
         concept_prompt

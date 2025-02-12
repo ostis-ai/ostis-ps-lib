@@ -21,22 +21,20 @@ concept_message_about_entity_relation_to_entity
         (* <- lang_de;; *);;
     <- definition;;
     <= nrel_sc_text_translation:
-        ...
-        (*
-        -> rrel_example:
-            [Сообщение об отношении сущности к сущности - атомарное сообщение, описывающее отношение между сущностями
-            (отношение одной сущности к другой сущности).]
-                (* <- lang_ru;; *);;
-        -> rrel_example:
-            [Message about the entity relation to an entity is an atomic message that describes the relation between entities
-             (relation of one entity to another entity).]
-            (* <- lang_en;; *);;
-
-        -> rrel_example:
-            [Nachricht über die Entitätsbeziehung zu einer Entität ist eine atomare Nachricht, die die Beziehung zwischen Entitäten beschreibt
-            (Beziehung einer Entität zu einer anderen Entität)]
-            (* <- lang_de;; *);;
-        *);;
+        {
+            rrel_example:
+                [Сообщение об отношении сущности к сущности - атомарное сообщение, описывающее отношение между сущностями
+                (отношение одной сущности к другой сущности).]
+                (* <- lang_ru;; *);
+            rrel_example:
+                [Message about the entity relation to an entity is an atomic message that describes the relation between entities
+                 (relation of one entity to another entity).]
+                (* <- lang_en;; *);
+            rrel_example:
+                [Nachricht über die Entitätsbeziehung zu einer Entität ist eine atomare Nachricht, die die Beziehung zwischen Entitäten beschreibt
+                (Beziehung einer Entität zu einer anderen Entität)]
+                (* <- lang_de;; *)
+        };;
     <= nrel_using_constants:
         {
             concept_atomic_message;

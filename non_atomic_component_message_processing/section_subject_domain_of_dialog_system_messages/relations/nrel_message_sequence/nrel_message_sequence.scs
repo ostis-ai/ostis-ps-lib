@@ -28,19 +28,14 @@ nrel_message_sequence
         (* <- lang_de;; *);;
     <- definition;;
     <= nrel_sc_text_translation:
-        ...
-        (*
-        -> rrel_example:
-            [Последовательность сообщений* - отношение, связывающее упорядоченные относительно друг друга сообщения.]
-                (* <- lang_ru;; *);;
-        -> rrel_example:
-            [Message sequence* is a relationship, that connects messages, that are ordered relative to each other.]
-            (* <- lang_en;; *);;
-
-        -> rrel_example:
-            [Nachrichtensequenz* ist eine Beziehung, die relativ zueinander geordnete Nachrichten verbindet.]
-            (* <- lang_de;; *);;
-        *);;
+        {
+            rrel_example: [Последовательность сообщений* - отношение, связывающее упорядоченные относительно друг друга сообщения.]
+            (* <- lang_ru;; *);
+            rrel_example: [Message sequence* is a relationship, that connects messages, that are ordered relative to each other.]
+            (* <- lang_en;; *);
+         rrel_example: [Nachrichtensequenz* ist eine Beziehung, die relativ zueinander geordnete Nachrichten verbindet.]
+         (* <- lang_de;; *)
+        };;
     <= nrel_using_constants:
         {
         concept_message;
