@@ -7,8 +7,6 @@ concept_message_about_entity_relation_to_entity
     (* <- lang_en;; *);
     [Nachricht über die Entitätsbeziehung zu einer Entität]
     (* <- lang_de;; *);
-=> nrel_nlp_service_idtf:
-    [entity_relation_to_entity];
 <- rrel_key_sc_element:
     ...
     (*

@@ -7,8 +7,6 @@ concept_message_no_topic
     (* <- lang_en;; *);
     [Nachricht ohne Thema]
     (* <- lang_de;; *);
-=> nrel_nlp_service_idtf:
-    [connection error];
 <- rrel_key_sc_element:
     ...
     (*

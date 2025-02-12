@@ -7,8 +7,6 @@ concept_message_about_action
     (* <- lang_en;; *);
     [Aktionsnachricht]
     (* <- lang_de;; *);
-=> nrel_nlp_service_idtf:
-    [action];
 <- rrel_key_sc_element:
     ...
     (*

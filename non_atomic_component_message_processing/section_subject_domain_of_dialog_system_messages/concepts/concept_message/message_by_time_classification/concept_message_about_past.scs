@@ -7,8 +7,6 @@ concept_message_about_past
     (* <- lang_en;; *);
     [Nachricht mit Informationen über die Vergangenheit]
     (* <- lang_de;; *);
-=> nrel_nlp_service_idtf:
-    [past];
 => nrel_action_class_by_message_tense:
     question_finished;
 <- rrel_key_sc_element:

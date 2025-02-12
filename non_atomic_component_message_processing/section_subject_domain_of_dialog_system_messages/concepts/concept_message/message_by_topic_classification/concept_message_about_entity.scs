@@ -7,8 +7,6 @@ concept_message_about_entity
     (* <- lang_en;; *);
     [Nachricht über eine Entität]
     (* <- lang_de;; *);
-=> nrel_nlp_service_idtf:
-    [entity];
 <- rrel_key_sc_element:
     ...
     (*

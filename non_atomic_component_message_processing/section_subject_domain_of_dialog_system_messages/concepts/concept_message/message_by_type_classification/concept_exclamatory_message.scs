@@ -1,7 +1,6 @@
 concept_exclamatory_message => nrel_main_idtf: [восклицательное сообщение] (* <- lang_ru;; *);;
 concept_exclamatory_message => nrel_main_idtf: [exclamatory message] (* <- lang_en;; *);;
 concept_exclamatory_message => nrel_main_idtf: [Ausrufenachricht] (* <- lang_de;; *);;
-concept_exclamatory_message => nrel_nlp_service_idtf: [exclamatory];;
 
 d_concept_exclamatory_message <- definition;;
 

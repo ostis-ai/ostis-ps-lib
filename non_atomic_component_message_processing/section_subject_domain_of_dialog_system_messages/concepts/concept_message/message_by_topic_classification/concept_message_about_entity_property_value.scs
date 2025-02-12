@@ -7,8 +7,6 @@ concept_message_about_entity_property_value
     (* <- lang_en;; *);
     [Nachricht über den Wert der Entitätseigenschaft]
     (* <- lang_de;; *);
-=> nrel_nlp_service_idtf:
-    [entity_property_value];
 <- rrel_key_sc_element:
     ...
     (*

@@ -7,8 +7,6 @@ concept_message_about_present
     (* <- lang_en;; *);
     [Nachricht mit Informationen über die Gegenwart]
     (* <- lang_de;; *);
-=> nrel_nlp_service_idtf:
-    [present];
 => nrel_action_class_by_message_tense:
     performed_action;
 <- rrel_key_sc_element:

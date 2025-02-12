@@ -7,8 +7,6 @@ concept_message_no_time
     (* <- lang_en;; *);
     [Nachricht ohne Zeit]
     (* <- lang_de;; *);
-=> nrel_nlp_service_idtf:
-    [unknown];
 <- rrel_key_sc_element:
     ...
     (*

@@ -14,8 +14,6 @@ rrel_svo_object
     (* <-  lang_en;; *);
     [Objekt des Subjekt-Verb-Objekt-Tripels']
     (* <-  lang_de;; *);
-=> nrel_nlp_service_idtf:
-    [object];
 => nrel_first_domain: concept_svo_triple;
 => nrel_second_domain: concept_svo_triple_element;
 => nrel_definitional_domain:

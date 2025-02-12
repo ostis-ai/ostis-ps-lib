@@ -1,7 +1,6 @@
 concept_non_exclamatory_message => nrel_main_idtf: [невосклицательное сообщение] (* <- lang_ru;; *);;
 concept_non_exclamatory_message => nrel_main_idtf: [non-exclamatory message] (* <- lang_en;; *);;
 concept_non_exclamatory_message => nrel_main_idtf: [nicht-Ausrufenachricht] (* <- lang_de;; *);;
-concept_non_exclamatory_message => nrel_nlp_service_idtf: [non_exclamatory];;
 
 d_concept_non_exclamatory_message <- definition;;
 

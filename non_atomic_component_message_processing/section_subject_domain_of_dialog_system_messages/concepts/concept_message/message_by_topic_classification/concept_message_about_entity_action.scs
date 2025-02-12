@@ -7,8 +7,6 @@ concept_message_about_entity_action
     (* <- lang_en;; *);
     [Nachricht über die Entitätsaktion]
     (* <- lang_de;; *);
-=> nrel_nlp_service_idtf:
-    [entity_action];
 <- rrel_key_sc_element:
     ...
     (*

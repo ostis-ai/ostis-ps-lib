@@ -7,8 +7,6 @@ concept_message_no_type
     (* <- lang_en;; *);
     [Nachricht ohne Typ]
     (* <- lang_de;; *);
-=> nrel_nlp_service_idtf:
-    [unknown];
 <- rrel_key_sc_element:
     ...
     (*
