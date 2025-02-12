@@ -14,8 +14,6 @@ concept_message_type
     (* <- lang_ru;; *);
     [Def. (type message)]
     (* <- lang_en;; *);
-    [Def. (...)]
-    (* <- lang_de;; *);;
     <- definition;;
     <= nrel_sc_text_translation:
         {

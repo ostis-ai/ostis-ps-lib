@@ -14,8 +14,6 @@ concept_message_tense
     (* <- lang_ru;; *);
     [Def. (message tense)]
     (* <- lang_en;; *);
-    [Def. (...)]
-    (* <- lang_de;; *);;
     <- definition;;
     <= nrel_sc_text_translation:
         {
