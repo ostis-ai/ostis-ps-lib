@@ -7,8 +7,6 @@ concept_interrogative_message
     (* <- lang_en;; *);
     [interrogative Nachricht]
     (* <- lang_de;; *);
-=> nrel_classifier_idtf:
-    [polite_question];
 <= nrel_inclusion: concept_message;
 <- rrel_key_sc_element:
     ...

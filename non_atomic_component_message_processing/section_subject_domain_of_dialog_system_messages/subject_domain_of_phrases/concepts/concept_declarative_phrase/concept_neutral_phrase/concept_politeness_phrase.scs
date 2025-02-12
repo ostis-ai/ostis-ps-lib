@@ -7,8 +7,6 @@ concept_politeness_phrase
     (* <- lang_en;; *);
     [Höflichkeitsphrase]
     (* <- lang_de;; *);
-=> nrel_classifier_idtf:
-    [polite_phrase];
 <- rrel_key_sc_element:
     ...
     (*

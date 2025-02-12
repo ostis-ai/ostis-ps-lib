@@ -7,8 +7,6 @@ concept_message_with_emotional_coloring
     (* <- lang_en;; *);
     [Nachricht mit emotionaler Färbung]
     (* <- lang_de;; *);
-=> nrel_classifier_idtf:
-    [wit$sentiment];
 <- rrel_key_sc_element:
     ...
     (*

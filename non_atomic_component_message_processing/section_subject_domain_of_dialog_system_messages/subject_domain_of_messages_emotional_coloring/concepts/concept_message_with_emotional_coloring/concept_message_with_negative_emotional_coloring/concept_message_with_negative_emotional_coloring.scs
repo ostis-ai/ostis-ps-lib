@@ -7,8 +7,6 @@ concept_message_with_negative_emotional_coloring
     (* <- lang_en;; *);
     [Nachricht mit negativer Färbung]
     (* <- lang_de;; *);
-=> nrel_classifier_idtf:
-    [negative];
 <= nrel_inclusion:
     concept_message_with_emotional_coloring;
 <- rrel_key_sc_element:

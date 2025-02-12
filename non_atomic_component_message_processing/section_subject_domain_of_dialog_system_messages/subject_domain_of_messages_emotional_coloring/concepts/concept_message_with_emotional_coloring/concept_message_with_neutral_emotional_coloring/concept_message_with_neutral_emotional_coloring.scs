@@ -7,8 +7,6 @@ concept_message_with_neutral_emotional_coloring
     (* <- lang_en;; *);
     [Nachricht mit neutraler Färbung]
     (* <- lang_de;; *);
-=> nrel_classifier_idtf:
-    [neutral];
 <= nrel_inclusion:
     concept_message_with_emotional_coloring;
 <- rrel_key_sc_element:
