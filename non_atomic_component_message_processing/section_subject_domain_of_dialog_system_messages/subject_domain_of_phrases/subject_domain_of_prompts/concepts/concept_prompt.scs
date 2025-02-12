@@ -18,10 +18,10 @@ concept_prompt
     <= nrel_sc_text_translation:
         {
             rrel_example:
-                [Промпт - текстовое описание задания, передаваемое chatGPT.]
+                [Промпт - текстовое описание задания, передаваемое LLM.]
                 (* <- lang_ru;; *);
             rrel_example:
-                [Prompt is a text description of a task passed to chatGPT.]
+                [Prompt is a text description of a task passed to LLM.]
                 (* <- lang_en;; *)
         };;
     *);
