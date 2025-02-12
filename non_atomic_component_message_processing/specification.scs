@@ -12,6 +12,7 @@ dialog_system_message_processing_module_reusable_component_specification = [*
     <- concept_reusable_dynamically_installed_component;;
 
     => nrel_main_idtf: [Dialog system message processing module] (* <- lang_en;; *);;
+    => nrel_main_idtf: [Модуль обработки сообщений диалоговых систем] (* <- lang_ru;; *);;
 
     => nrel_note: [Currently component contains subject domain of dialog system messages] (* <- lang_en;; *);;
     => nrel_purpose: [Component aimed at application in dialog systems for message processing](* <- lang_en;; *);;

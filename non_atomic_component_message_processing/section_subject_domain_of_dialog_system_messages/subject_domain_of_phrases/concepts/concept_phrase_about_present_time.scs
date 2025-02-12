@@ -1,4 +1,4 @@
-concept_phrase_about_present_time
+concept_phrase_about_present
 <-sc_node_class;
 => nrel_main_idtf:
     [фраза о настоящем]

@@ -38,7 +38,7 @@ concept_phrase
     concept_interrogative_phrase;
 => nrel_subdividing:
     {
-        concept_phrase_about_future_time;
-        concept_phrase_about_present_time;
-        concept_phrase_about_past_time
+        concept_phrase_about_future;
+        concept_phrase_about_present;
+        concept_phrase_about_past
     };;

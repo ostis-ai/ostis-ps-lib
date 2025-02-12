@@ -5,7 +5,7 @@ nrel_corresponding_contexts
 <- quasybinary_relation;
 <- oriented_relation;
 <- antireflexive_relation;
-<- transitive_relation;
+<- antitransitive_relation;
 <- asymmetric_relation;
 => nrel_main_idtf:
     [соответствующие контексты*](* <- lang_ru;; *);

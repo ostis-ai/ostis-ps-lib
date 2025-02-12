@@ -37,9 +37,9 @@ subject_domain_of_phrases
     concept_information_request_phrase;
     concept_initiative_interception_interrogative_phrase;
     concept_interrogative_phrase;
-    concept_phrase_about_future_time;
-    concept_phrase_about_past_time;
-    concept_phrase_about_present_time;
+    concept_phrase_about_future;
+    concept_phrase_about_past;
+    concept_phrase_about_present;
     concept_template_phrases_class;
 -> rrel_explored_relation:
     nrel_descriptive_phrase;

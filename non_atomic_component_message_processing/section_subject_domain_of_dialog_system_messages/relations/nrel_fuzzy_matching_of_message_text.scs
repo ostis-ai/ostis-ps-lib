@@ -2,8 +2,8 @@ nrel_fuzzy_matching_of_message_text
 <- sc_node_non_role_relation;
 <- relation;
 <- binary_relation;
-<- oriented_relation;
-<- antireflexive_relation;
+<- non_oriented_relation;
+<- reflexive_relation;
 <- asymmetric_relation;
 <- antitransitive_relation;
 => nrel_main_idtf:
@@ -36,11 +36,11 @@ nrel_fuzzy_matching_of_message_text
     <-  definition;;
     <= nrel_sc_text_translation:
         {
-            rrel_example: [Нечеткое соответствие текста сообщений* - бинарное ориентированное отношение. Отношение связывает два сообщения в том случае, когда
+            rrel_example: [Нечеткое соответствие текста сообщений* - бинарное неориентированное отношение. Отношение связывает два сообщения в том случае, когда
             после нормализации текста этих сообщений (т.е. после удаления запятых, пробелов, приведения к нижнему регистру) редакционное расстояние
             строк меньше указанного значения.]
             (* <- lang_ru;; *);
-            rrel_example: [Fuzzy matching of the message text* is a binary undirected relation. The relation connects two messages in
+            rrel_example: [Fuzzy matching of the message text* is a binary non oriented relation. The relation connects two messages in
             the case when, after the normalization of the text of these messages (i.e., after removing commas, spaces,
             reducing to lowercase), the editing line distance is less than the specified value.]
             (* <- lang_en;; *);

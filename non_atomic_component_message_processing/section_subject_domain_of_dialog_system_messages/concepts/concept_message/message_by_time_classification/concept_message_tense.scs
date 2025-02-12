@@ -9,26 +9,26 @@ concept_message_tense
 <- rrel_key_sc_element:
     ...
     (*
-    => nrel_main_idtf:
-    [Опр. (время сообщения)]
-    (* <- lang_ru;; *);
-    [Def. (message tense)]
-    (* <- lang_en;; *);
-    <- definition;;
-    <= nrel_sc_text_translation:
-        {
-            rrel_example:
-                [Время сообщения - характеристика сообщения по отношению времени описываемой в сообщении ситуации к моменту отправки сообщения.]
-                (* <- lang_ru;; *);
-            rrel_example:
-                [Message tense is a characteristic of a message in relation to the time of the situation described in the message to the moment when the message was sent.]
-                (* <- lang_en;; *)
-        };;
-    <= nrel_using_constants:
-        {
-            parameter;
-            concept_message
-        };;
+        => nrel_main_idtf:
+            [Опр. (время сообщения)]
+            (* <- lang_ru;; *);
+            [Def. (message tense)]
+            (* <- lang_en;; *);;
+        <- definition;;
+        <= nrel_sc_text_translation:
+            {
+                rrel_example:
+                    [Время сообщения - характеристика сообщения по отношению времени описываемой в сообщении ситуации к моменту отправки сообщения.]
+                    (* <- lang_ru;; *);
+                rrel_example:
+                    [Message tense is a characteristic of a message in relation to the time of the situation described in the message to the moment when the message was sent.]
+                    (* <- lang_en;; *)
+            };;
+        <= nrel_using_constants:
+            {
+                parameter;
+                concept_message
+            };;
     *);
 -> concept_message_no_time;
 -> concept_message_about_past;

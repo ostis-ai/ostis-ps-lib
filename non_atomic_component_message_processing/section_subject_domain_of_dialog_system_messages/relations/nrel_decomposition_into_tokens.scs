@@ -28,7 +28,7 @@ nrel_decomposition_into_tokens
             {
                 rrel_example:
                     [Декомпозиция на токены* - квазибинарное отношение, связывающее файл с текстом cо множеством файлов, содержащих токены, на которые данный текст декомпозируется.]
-                    (* <- lang_ru;; *);;
+                    (* <- lang_ru;; *);
                 rrel_example:
                     [Decomposition into tokens* is a quasibinary relation connecting a file with a text with a set of files containing tokens, into which this text is decomposed.]
                     (* <- lang_en;; *);

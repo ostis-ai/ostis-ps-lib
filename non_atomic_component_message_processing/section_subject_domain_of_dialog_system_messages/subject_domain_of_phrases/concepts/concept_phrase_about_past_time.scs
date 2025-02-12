@@ -1,4 +1,4 @@
-concept_phrase_about_past_time
+concept_phrase_about_past
 <-sc_node_class;
 => nrel_main_idtf:
     [фраза о прошлом]

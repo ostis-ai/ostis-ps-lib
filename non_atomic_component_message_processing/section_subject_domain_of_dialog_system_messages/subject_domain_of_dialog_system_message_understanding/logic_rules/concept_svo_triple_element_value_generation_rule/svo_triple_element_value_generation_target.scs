@@ -11,4 +11,4 @@ concept_svo_triple_element_value_generation_target = [*
         _-> rrel_svo_triple_element_values:: _values_set;;
 *];;
 
-atomic_logical_formula -> dialog_theme_change_inference_target;;
+atomic_logical_formula -> concept_svo_triple_element_value_generation_target;;
