@@ -1,7 +1,7 @@
 nrel_message_decomposition
 <-sc_node_non_role_relation;
 <-relation;
-<-norole_relation;
+<-non_role_relation;
 <-quasybinary_relation;
 <-oriented_relation;
 <-antireflexive_relation;

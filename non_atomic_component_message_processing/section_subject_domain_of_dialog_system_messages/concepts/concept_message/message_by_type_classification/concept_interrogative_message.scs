@@ -25,7 +25,7 @@ concept_interrogative_message
                 [Вопросительное сообщение - сообщение, выражающее вопрос.]
                 (* <- lang_ru;; *);
             rrel_example:
-                [Interrogative message is a message expressing a question.]
+                [Interrogative message is a message expressing a action.]
                 (* <- lang_en;; *);
             rrel_example:
                 [Interrogative Nachricht ist eine Nachricht, die eine Frage ausdrückt.]

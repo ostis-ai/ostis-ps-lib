@@ -33,10 +33,10 @@ message_types_for_llm_meaning_examples
         };;
     *);;
 
-@edge1 = (message_types_for_llm_meaning_examples -> concept_declarative_message);;
-@edge2 = (message_types_for_llm_meaning_examples -> concept_imperative_message);;
-@edge3 = (message_types_for_llm_meaning_examples -> concept_interrogative_message);;
+@arc1 = (message_types_for_llm_meaning_examples -> concept_declarative_message);;
+@arc2 = (message_types_for_llm_meaning_examples -> concept_imperative_message);;
+@arc3 = (message_types_for_llm_meaning_examples -> concept_interrogative_message);;
 
-rrel_1 -> @edge1;;
-@edge1 => nrel_basic_sequence: @edge2;;
-@edge2 => nrel_basic_sequence: @edge3;;
+rrel_1 -> @arc1;;
+@arc1 => nrel_basic_sequence: @arc2;;
+@arc2 => nrel_basic_sequence: @arc3;;

@@ -19,7 +19,7 @@ nrel_action_class_by_message_tense
     ...
     (*
         <- boolean;;
-        <= nrel_boolean: question;;
+        <= nrel_boolean: action;;
     *);
 => nrel_definitional_domain:
     ...
@@ -29,7 +29,7 @@ nrel_action_class_by_message_tense
             ...
             (*
                 <- boolean;;
-                <= nrel_boolean: question;;
+                <= nrel_boolean: action;;
             *);
             concept_message_tense
         };;
@@ -57,7 +57,7 @@ nrel_action_class_by_message_tense
     <= nrel_using_constants:
         {
         concept_message_tense;
-        question;
+        action;
         binary_relation;
         concept_message
         };;

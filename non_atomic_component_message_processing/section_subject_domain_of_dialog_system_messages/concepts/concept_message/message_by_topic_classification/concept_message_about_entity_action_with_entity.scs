@@ -34,6 +34,6 @@ concept_message_about_entity_action_with_entity
         {
             concept_atomic_message;
             sc_element;
-            question
+            action
         };;
     *);;
