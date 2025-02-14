@@ -1,0 +1,20 @@
+name: Test non-atomic-action-interpreter-module
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'non-atomic-action-interpreter-module/**'
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  test-non-atomic-action-interpreter-module:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Run common checks for non-atomic-action-interpreter-module component
+        uses: ./common-checks/
+        with:
+          directory: 'non-atomic-action-interpreter-module'
