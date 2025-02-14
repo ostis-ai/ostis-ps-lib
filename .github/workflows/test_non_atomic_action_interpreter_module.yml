@@ -14,7 +14,10 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
       - name: Run common checks for non-atomic-action-interpreter-module component
-        uses: ./common-checks/
+        uses: ./.github/actions/common
         with:
           directory: 'non-atomic-action-interpreter-module'
