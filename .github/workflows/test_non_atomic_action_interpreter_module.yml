@@ -14,9 +14,6 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
       - name: Run common checks for non-atomic-action-interpreter-module component
         uses: ostis-ai/test-conan@0.1.0
         with:
