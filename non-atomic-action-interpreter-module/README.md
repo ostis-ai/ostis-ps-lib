@@ -2,7 +2,30 @@
 
 This module is part of the ostis-ps-lib and is responsible for interpreting non-atomic actions within the OSTIS.
 
-## Prerequisites
+## Using module as an Extension for sc-machine
+
+The non-atomic action interpreter Module can be used as an extension to the sc-machine. Follow these steps to integrate it:
+
+### 1. Download sc-machine Artifacts
+
+   - Download pre-built artifacts of sc-machine from [GitHub Releases](https://github.com/ostis-ai/sc-machine/releases) and extract them to a location of your choice.
+   - Alternatively, you can build sc-machine from source and use the resulting artifacts.
+   - For more details on installing and using sc-machine artifacts, refer to the [sc-machine quick start guide](https://ostis-ai.github.io/sc-machine/quick_start/).
+
+### 2. Specify Extension Paths
+
+   - When running the sc-machine binary, specify the path to the `lib/extensions` directory from the extracted Non-Atomic Action Interpreter Module folder:
+
+   ```sh
+   ./path/to/sc-machine/binary -s path/to/kb.bin \
+       -e "non-atomic-action-interpreter-module/build/<Debug|Release>/lib/extensions;path/to/sc-machine/lib/extensions"
+   ```
+
+   Replace `path/to/sc-machine/binary` with the path to the sc-machine binary, and `path/to/kb.bin` with the path to your knowledge base file.
+
+## Developing Module
+
+### Installation Prerequisites
 
 Before you begin, ensure you have the following installed:
 
@@ -14,9 +37,9 @@ Before you begin, ensure you have the following installed:
 !!! Note
     This project is not supported on Windows OS.
 
-## Installation and Build Process
+### Installation & Build
 
-### 1. Clone Repository
+#### 1. Clone Repository
 
 First, clone the repository containing the Non-Atomic Action Interpreter Module:
 
@@ -25,7 +48,7 @@ git clone https://github.com/ostis-ai/ostis-ps-lib.git
 cd ostis-ps-lib/non-atomic-action-interpreter-module
 ```
 
-### 2. Install Dependencies with Conan
+#### 2. Install Dependencies with Conan
 
 The project uses Conan to manage dependencies. Install the required dependencies:
 
@@ -33,7 +56,7 @@ The project uses Conan to manage dependencies. Install the required dependencies
 conan install . --build=missing
 ```
 
-### 3. Configure Project
+#### 3. Configure Project
 
 You can configure the project using CMake presets. There are three main configuration options:
 
@@ -55,7 +78,7 @@ You can configure the project using CMake presets. There are three main configur
   cmake --preset release-with-tests-conan
   ```
 
-### 4. Build Project
+#### 4. Build Project
 
 After configuring, you can build the project:
 
@@ -71,7 +94,7 @@ For release build:
 cmake --build --preset release
 ```
 
-### 5. Run Tests
+#### 5. Run Tests
 
 If you've configured the project with tests, you can run them using CTest:
 
@@ -80,7 +103,7 @@ cd build/<Debug|Release>
 ctest -V
 ```
 
-## Configuration Options
+### Configuration Options
 
 The following options can be set when configuring the project:
 
@@ -93,24 +116,6 @@ Example of setting an option:
 ```sh
 cmake --preset release-with-tests-conan -DSC_CLANG_FORMAT_CODE=ON <other_options>
 ```
-
-## Using as an Extension for sc-machine
-
-The non-atomic action interpreter Module can be used as an extension to the sc-machine. Follow these steps to integrate it:
-
-### 1. Download sc-machine Artifacts
-
-   - Download pre-built artifacts of sc-machine from [GitHub Releases](https://github.com/ostis-ai/sc-machine/releases) and extract them to a location of your choice.
-   - Alternatively, you can build sc-machine from source and use the resulting artifacts.
-   - For more details on installing and using sc-machine artifacts, refer to the [sc-machine quick start guide](https://ostis-ai.github.io/sc-machine/quick_start/).
-
-### 2. Specify Extension Paths
-
-   - When running the sc-machine binary, specify the path to the `lib/extensions` directory from the extracted Non-Atomic Action Interpreter Module folder:
-
-   ```sh
-   ./path/to/sc-machine/binary -s path/to/kb.bin \
-       -e "non-atomic-action-interpreter-module/build/<Debug|Release>/lib/extensions;path/to/sc-machine/lib/extensions"
 
 ## Troubleshooting
 

@@ -1,5 +1,10 @@
 # OSTIS Problem-Solver Library
 
+[![license](https://img.shields.io/badge/License-Apache-yellow.svg)](LICENSE)
+
+[![Docs](https://img.shields.io/badge/Docs-gray?style=for-the-badge&logo=read-the-docs)](https://ostis-ai.github.io/ostis-ps-lib)
+[![Community](https://img.shields.io/badge/-Community-teal?style=for-the-badge&logo=matrix)](https://app.element.io/index.html#/room/#ostis_tech_support:matrix.org)
+
 This repository is a centralized storage for the components of problem-solver for systems made with the [OSTIS Technology](https://github.com/ostis-ai).
 
 ostis-ps-lib is a collection of reusable components and libraries designed to facilitate the development of problem-solvers of systems in the OSTIS Technology. The repository is organized into several modules, each with its own set of functionalities and responsibilities.

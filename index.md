@@ -11,8 +11,8 @@ Table of contents:
 
 - **Components** - *list of components of problem-solver for ostis-systems*
     * [Library of Common Utilities](common/README.md) - *library of common functions, utils, and classes for agents of ostis-systems*
-    * [Non-Atomic Action Interpreter Module](non-atomic-action-interpreter-module/README.md) - *module for working with non-atomic actions**
-- **Development** - **Instructions for developers*
+    * [Non-Atomic Action Interpreter Module](non-atomic-action-interpreter-module/README.md) - *module for working with non-atomic actions*
+- **Development** - *Instructions for developers*
     * [Contributing Guide](docs/CONTRIBUTING.md) - *how to contribute to the project*
     * [Codestyle Guide](https://ostis-ai.github.io/sc-machine/dev/codestyle/) - *how to write code in the project*
 - [License](https://github.com/ostis-ai/scp-machine/blob/main/LICENSE)
