@@ -5,6 +5,7 @@ It's a library that provides common utilities and functions, likely to be used a
 ## Prerequisites
 
 Before you begin, ensure you have the following installed:
+
 - CMake (version 3.24 or higher);
 - C++ Compiler with C++17 support;
 - Conan package manager;

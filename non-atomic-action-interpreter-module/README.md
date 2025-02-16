@@ -5,6 +5,7 @@ This module is part of the ostis-ps-lib and is responsible for interpreting non-
 ## Prerequisites
 
 Before you begin, ensure you have the following installed:
+
 - CMake (version 3.24 or higher);
 - C++ Compiler with C++17 support;
 - Conan package manager;
