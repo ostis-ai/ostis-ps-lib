@@ -1,0 +1,17 @@
+services:
+  docs:
+    image: squidfunk/mkdocs-material
+    ports:
+      - "127.0.0.1:8002:8002"
+    volumes:
+      - ./mkdocs.yml:/docs/mkdocs.yml
+      - ./docs/:/docs/docs/
+    command:
+      - "serve"
+      - "-a"
+      - "0.0.0.0:8002"
+
+networks:
+  ostis-ps-lib:
+    name: ostis-ps-lib-network
+    driver: bridge

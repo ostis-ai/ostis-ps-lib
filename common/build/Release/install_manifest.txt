@@ -1,0 +1,11 @@
+/Users/nikitazotov/Development/apps/ostis/ostis-ai/ostis-ps-lib/common/build/Release/_CPack_Packages/Darwin/TGZ/common-0.1.0-Darwin/include/common/keynodes.hpp
+/Users/nikitazotov/Development/apps/ostis/ostis-ai/ostis-ps-lib/common/build/Release/_CPack_Packages/Darwin/TGZ/common-0.1.0-Darwin/include/common/utils/relation_utils.hpp
+/Users/nikitazotov/Development/apps/ostis/ostis-ai/ostis-ps-lib/common/build/Release/_CPack_Packages/Darwin/TGZ/common-0.1.0-Darwin/include/common/utils/macros.hpp
+/Users/nikitazotov/Development/apps/ostis/ostis-ai/ostis-ps-lib/common/build/Release/_CPack_Packages/Darwin/TGZ/common-0.1.0-Darwin/include/common/utils/logic_utils.hpp
+/Users/nikitazotov/Development/apps/ostis/ostis-ai/ostis-ps-lib/common/build/Release/_CPack_Packages/Darwin/TGZ/common-0.1.0-Darwin/include/common/utils/template_params_utils.hpp
+/Users/nikitazotov/Development/apps/ostis/ostis-ai/ostis-ps-lib/common/build/Release/_CPack_Packages/Darwin/TGZ/common-0.1.0-Darwin/include/common/action_cancelled_exception.hpp
+/Users/nikitazotov/Development/apps/ostis/ostis-ai/ostis-ps-lib/common/build/Release/_CPack_Packages/Darwin/TGZ/common-0.1.0-Darwin/lib/libcommon-utils.dylib
+/Users/nikitazotov/Development/apps/ostis/ostis-ai/ostis-ps-lib/common/build/Release/_CPack_Packages/Darwin/TGZ/common-0.1.0-Darwin/lib/cmake/common/commonTargets.cmake
+/Users/nikitazotov/Development/apps/ostis/ostis-ai/ostis-ps-lib/common/build/Release/_CPack_Packages/Darwin/TGZ/common-0.1.0-Darwin/lib/cmake/common/commonTargets-release.cmake
+/Users/nikitazotov/Development/apps/ostis/ostis-ai/ostis-ps-lib/common/build/Release/_CPack_Packages/Darwin/TGZ/common-0.1.0-Darwin/lib/cmake/common/common-config.cmake
+/Users/nikitazotov/Development/apps/ostis/ostis-ai/ostis-ps-lib/common/build/Release/_CPack_Packages/Darwin/TGZ/common-0.1.0-Darwin/lib/cmake/common/common-config-version.cmake
