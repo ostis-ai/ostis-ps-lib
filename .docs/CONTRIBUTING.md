@@ -50,7 +50,7 @@ Examples:
 Possible tags:
 
   * `[bug]` or `[fix]` - commits with fixes;
-  * `[feature]` - commits with new features;
+  * `[feat]` - commits with new features;
   * `[refactor]` - commits with some code refactoring;
   * `[tests]` or `[test]` - changes in tests;
   * `[config]` - commits with changes in configuration;
