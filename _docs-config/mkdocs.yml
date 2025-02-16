@@ -2,9 +2,13 @@ site_name: ostis-ps-lib
 dev_addr: 127.0.0.1:8021
 repo_url: https://github.com/ostis-ai/ostis-ps-lib
 edit_uri: edit/main/docs/
+
+site_dir: ../../site
 docs_dir: ..
 
-exclude_docs: /README.md
+exclude_docs: |
+  /README.md
+  build
 
 extra_css:
   - .docs/_assets/main.css
@@ -17,10 +21,10 @@ nav:
       - Library of Common Utilities: common/README.md
       - Non-Atomic Action Interpreter Module: non-atomic-action-interpreter-module/README.md
   - Development:
-      - Contributing Guide: .docs/CONTRIBUTING.md
+      - Contributing Guide: _docs/CONTRIBUTING.md
       - Codestyle Guide: https://ostis-ai.github.io/ostis-ps-lib/dev/codestyle/
   - License: https://github.com/ostis-ai/ostis-ps-lib/blob/main/LICENSE
-  - Changelog: .docs/changelog.md
+  - Changelog: _docs/changelog.md
 
 plugins:
    - search:
