@@ -8,7 +8,7 @@ Before you begin, ensure you have the following installed:
 - CMake (version 3.24 or higher);
 - C++ Compiler with C++17 support;
 - Conan package manager;
-- ccache (optional, for faster rebuilds).
+- ccache (for faster rebuilds).
 
 !!! Note
     This project is not supported on Windows OS.
@@ -70,12 +70,13 @@ For release build:
 cmake --build --preset release
 ```
 
-### 5. Run Tests (Optional)
+### 5. Run Tests
 
 If you've configured the project with tests, you can run them using CTest:
 
-```bash
-ctest
+```sh
+cd build/<Debug|Release>
+ctest -V
 ```
 
 ## Configuration Options
