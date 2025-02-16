@@ -18,3 +18,5 @@ jobs:
         uses: ostis-ai/test-conan@0.1.0
         with:
           directory: 'common'
+          configure-preset: release-with-tests-conan
+          build-preset: release
