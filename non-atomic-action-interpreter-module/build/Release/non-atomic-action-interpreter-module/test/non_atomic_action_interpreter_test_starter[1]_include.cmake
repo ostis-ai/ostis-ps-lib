@@ -1,5 +1,0 @@
-if(EXISTS "/Users/nikitazotov/Development/apps/ostis/ostis-ai/ostis-ps-lib/non-atomic-action-interpreter-module/build/Release/non-atomic-action-interpreter-module/test/non_atomic_action_interpreter_test_starter[1]_tests.cmake")
-  include("/Users/nikitazotov/Development/apps/ostis/ostis-ai/ostis-ps-lib/non-atomic-action-interpreter-module/build/Release/non-atomic-action-interpreter-module/test/non_atomic_action_interpreter_test_starter[1]_tests.cmake")
-else()
-  add_test(non_atomic_action_interpreter_test_starter_NOT_BUILT non_atomic_action_interpreter_test_starter_NOT_BUILT)
-endif()

@@ -1,1 +1,0 @@
-. "/Users/nikitazotov/Development/apps/ostis/ostis-ai/ostis-ps-lib/common/build/Release/generators/deactivate_conanrunenv-release-armv8.sh"

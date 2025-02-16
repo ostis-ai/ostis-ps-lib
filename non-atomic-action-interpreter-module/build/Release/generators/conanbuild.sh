@@ -1,1 +1,0 @@
-. "/Users/nikitazotov/Development/apps/ostis/ostis-ai/ostis-ps-lib/non-atomic-action-interpreter-module/build/Release/generators/conanbuildenv-release-armv8.sh"
