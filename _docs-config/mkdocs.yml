@@ -11,9 +11,9 @@ exclude_docs: |
   build
 
 extra_css:
-  - .docs/_assets/main.css
+  - _docs/_assets/main.css
 extra_javascript:
-  - .docs/_assets/main.js
+  - _docs/_assets/main.js
 
 nav:
   - Home: index.md
@@ -33,8 +33,8 @@ plugins:
 
 theme: 
   name: material
-  favicon: .docs/ostis-logo.png
-  logo: .docs/ostis-logo.png
+  favicon: _docs/ostis-logo.png
+  logo: _docs/ostis-logo.png
   palette:  # Defines color schemes for light and dark modes
     - media: "(prefers-color-scheme: light)"
       scheme: default
