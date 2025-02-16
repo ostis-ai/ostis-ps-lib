@@ -29,7 +29,7 @@ For more information about the Non-Atomic Action Interpreter Module, [refer to t
 
     ```sh
     pip3 install mkdocs mkdocs-material
-    mkdocs serve
+    mkdocs serve --config-file docs-config/mkdocs.yml
     # and open http://127.0.0.1:8021/ in your browser
     ```
     </details>
