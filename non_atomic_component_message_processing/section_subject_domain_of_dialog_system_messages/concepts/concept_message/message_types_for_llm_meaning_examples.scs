@@ -1,6 +1,13 @@
-message_types_for_llm_meaning_examples
-<- sc_node_class;
+@message_types_for_llm_meaning_examples = <
+    concept_declarative_message;
+    concept_imperative_message;
+    concept_interrogative_message
+>;;
+
+@message_types_for_llm_meaning_examples
 <- oriented_set;
+=> nrel_system_identifier:
+    [message_types_for_llm_meaning_examples];
 => nrel_main_idtf:
     [типы сообщения для примеров смыслов для LLM]
     (* <- lang_ru;; *);
@@ -32,11 +39,3 @@ message_types_for_llm_meaning_examples
            concept_message
         };;
     *);;
-
-@arc1 = (message_types_for_llm_meaning_examples -> concept_declarative_message);;
-@arc2 = (message_types_for_llm_meaning_examples -> concept_imperative_message);;
-@arc3 = (message_types_for_llm_meaning_examples -> concept_interrogative_message);;
-
-rrel_1 -> @arc1;;
-@arc1 => nrel_basic_sequence: @arc2;;
-@arc2 => nrel_basic_sequence: @arc3;;
