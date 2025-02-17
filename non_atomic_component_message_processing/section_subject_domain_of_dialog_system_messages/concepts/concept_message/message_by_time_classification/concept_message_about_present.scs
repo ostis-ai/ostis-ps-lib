@@ -23,7 +23,7 @@ concept_message_about_present
     <= nrel_sc_text_translation:
         {
             rrel_example:
-                [Сообщение  о настоящем - атомарное сообщение, содержащее информацию о настоящем.]
+                [Сообщение о настоящем - атомарное сообщение, содержащее информацию о настоящем.]
                 (* <- lang_ru;; *);
             rrel_example:
                 [Message about the present is an atomic message that contains information about the present.]

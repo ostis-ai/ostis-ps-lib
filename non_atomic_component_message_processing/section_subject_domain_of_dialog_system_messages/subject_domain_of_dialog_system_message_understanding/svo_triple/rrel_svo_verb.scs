@@ -38,7 +38,7 @@ rrel_svo_verb
     <- definition;;
     <= nrel_sc_text_translation:
         {
-            rrel_example: [Глагол тройки субъект-глагол-объект' - ролевое  отношение, связывающее тройку субъект–глагол–объект и
+            rrel_example: [Глагол тройки субъект-глагол-объект' - ролевое отношение, связывающее тройку субъект–глагол–объект и
             сущность, представляющую действие, в рамках данной тройки.]
             (* <-  lang_ru;; *);
             rrel_example: [Verb of the subject-verb-object triple' is a role relation that connects the subject-verb-object triple

@@ -35,10 +35,10 @@ nrel_set_of_phrases_matching_the_message_topic
             rrel_example: [Set of phrases matching the message topic* is a quasi-binary oriented relation linking a message class
             with classes of phrases that correspond to the topic of a given group of messages.]
             (* <- lang_en;; *);
-         rrel_example: [Menge von Phrasen, die das Thema der Nachricht entsprechen* ist eine quasi-binäre orientierte Beziehung,
+            rrel_example: [Menge von Phrasen, die das Thema der Nachricht entsprechen* ist eine quasi-binäre orientierte Beziehung,
             die eine Nachrichtenklasse mit Klassen von Phrasen verbindet, die dem Thema einer bestimmten Gruppe von
             Nachrichten entsprechen.]
-         (* <- lang_de;; *)
+            (* <- lang_de;; *)
         };;
     <= nrel_using_constants:
         {
