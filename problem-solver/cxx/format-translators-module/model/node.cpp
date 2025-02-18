@@ -5,12 +5,12 @@
 
 namespace formatTranslators
 {
-void Node::acceptVisitor(Visitor & visitor)
+void Node::AcceptVisitor(Visitor & visitor)
 {
-  visitor.visitNode(*this);
+  visitor.VisitNode(*this);
 }
 
-std::string const & Node::getContent() const
+std::string const & Node::GetContent() const
 {
   static std::string EMPTY_CONTENT;
   return EMPTY_CONTENT;
@@ -21,68 +21,68 @@ Node::Node()
 {
 }
 
-float Node::getX() const
+float Node::GetX() const
 {
   return x;
 }
 
-void Node::setX(float x)
+void Node::SetX(float x)
 {
   this->x = x;
 }
 
-float Node::getTopY() const
+float Node::GetTopY() const
 {
   return topY;
 }
 
-void Node::setTopY(float topY)
+void Node::SetTopY(float topY)
 {
   this->topY = topY;
 }
 
-float Node::getBottomY() const
+float Node::GetBottomY() const
 {
   return bottomY;
 }
 
-void Node::setBottomY(float bottomY)
+void Node::SetBottomY(float bottomY)
 {
   this->bottomY = bottomY;
 }
 
-bool Node::hasBus() const
+bool Node::HasBus() const
 {
-  return getConnectors().size() > 1;
+  return GetConnectors().size() > 1;
 }
 
-std::string Node::getIdForBaseElement() const
+std::string Node::GetIdForBaseElement() const
 {
-  return hasBus() ? getBusId() : getNodeId();
+  return HasBus() ? GetBusId() : GetNodeId();
 }
 
-std::string Node::getIdForOtherElement() const
+std::string Node::GetIdForOtherElement() const
 {
-  return getNodeId();
+  return GetNodeId();
 }
 
-std::string Node::getNodeId() const
+std::string Node::GetNodeId() const
 {
-  return getId();
+  return GetId();
 }
 
-std::string Node::getBusId() const
+std::string Node::GetBusId() const
 {
-  return getId() + "_bus";
+  return GetId() + "_bus";
 }
 
-size_t Node::calculateReservedVerticalElementsOnParent()
+size_t Node::CalculateReservedVerticalElementsOnParent()
 {
   if (reservedVerticalElementsOnParent == 0)
   {
-    for (auto const & connector : getConnectors())
-      reservedVerticalElementsOnParent += connector->getOtherElement()->calculateReservedVerticalElementsOnParent();
-    if (hasBus())
+    for (auto const & connector : GetConnectors())
+      reservedVerticalElementsOnParent += connector->GetOtherElement()->CalculateReservedVerticalElementsOnParent();
+    if (HasBus())
       reservedVerticalElementsOnParent++;
     if (reservedVerticalElementsOnParent == 0)
       reservedVerticalElementsOnParent = 1;
@@ -90,21 +90,21 @@ size_t Node::calculateReservedVerticalElementsOnParent()
   return reservedVerticalElementsOnParent;
 }
 
-std::shared_ptr<Node> Node::copy() const
+std::shared_ptr<Node> Node::Copy() const
 {
   std::shared_ptr<Node> node = std::make_shared<Node>();
-  copy(*node);
+  Copy(*node);
   return node;
 }
 
-void Node::copy(Node & copiedNode) const
+void Node::Copy(Node & copiedNode) const
 {
-  copiedNode.setScAddress(getScAddress());
-  copiedNode.setScType(getScType());
-  copiedNode.setIdentifier(getIdentifier());
-  copiedNode.setIdentifierPosition(getIdentifierPosition());
-  copiedNode.setBottomY(getBottomY());
-  copiedNode.setTopY(getTopY());
+  copiedNode.SetScAddress(GetScAddress());
+  copiedNode.SetScType(GetScType());
+  copiedNode.SetIdentifier(GetIdentifier());
+  copiedNode.SetIdentifierPosition(GetIdentifierPosition());
+  copiedNode.SetBottomY(GetBottomY());
+  copiedNode.SetTopY(GetTopY());
 }
 
 }  // namespace formatTranslators

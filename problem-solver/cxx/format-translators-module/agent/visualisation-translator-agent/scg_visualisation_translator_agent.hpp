@@ -14,7 +14,7 @@ class Connector;
 class SCgVisualisationTranslatorAgent : public ScActionInitiatedAgent
 {
 public:
-  ScAddr GetActionClass() const noexcept(false) override;
+  ScAddr GetActionClass() const override;
 
   bool CheckInitiationCondition(ScActionInitiatedEvent const & event) override;
 
@@ -51,7 +51,7 @@ private:
     ScAddrToValueUnorderedMap<
         std::map<std::pair<ScAddr, ScAddr>, std::list<std::tuple<ScAddr, ScAddr, bool>>, ScAddrComparator>> &
         structureTriples;
-    size_t getValue(std::pair<ScAddr, ScAddr> const & key) const;
+    size_t GetValue(std::pair<ScAddr, ScAddr> const & key) const;
   };
 
   ScAddrToValueUnorderedMap<
@@ -60,57 +60,57 @@ private:
   ScAddrUnorderedSet rootElements;
   ScAddrUnorderedSet walkedConnectors;
   std::vector<std::list<std::shared_ptr<Node>>> parsedStructure;
-  void parseKeyElementsOrder(ScAddr const & keyElementsOrderTuple);
+  void ParseKeyElementsOrder(ScAddr const & keyElementsOrderTuple);
 
-  void parseStructureIntoTriples();
+  void ParseStructureIntoTriples();
 
-  void addTripleToParsedTriples(
+  void AddTripleToParsedTriples(
       ScAddr const & baseAddr,
       ScAddr const & connectorAddr,
       ScAddr const & otherElementAddr,
       bool const isReversed);
 
-  std::shared_ptr<Node> walkBFS(ScAddr const & root, size_t currentLevel);
+  std::shared_ptr<Node> WalkBFS(ScAddr const & root, size_t currentLevel);
 
-  std::shared_ptr<Node> createNode(ScAddr const & nodeAddr, ScType const & nodeType) const;
+  std::shared_ptr<Node> CreateNode(ScAddr const & nodeAddr, ScType const & nodeType) const;
 
-  std::shared_ptr<Connector> createConnector(
+  std::shared_ptr<Connector> CreateConnector(
       ScAddr const & connector,
       std::shared_ptr<Element> const & baseElement,
       std::shared_ptr<Node> const & otherElement,
       bool const isReversed) const;
 
-  void addVerticalConnector(
+  void AddVerticalConnector(
       ScAddr const & otherAddr,
       ScAddr const & connectorAddr,
       std::shared_ptr<Connector> const & baseConnector,
       bool const isReversed) const;
 
-  static float calculateIndentCausedByLinkContent(
+  static float CalculateIndentCausedByLinkContent(
       std::list<std::shared_ptr<Connector>> const & connectorsToNextLevelRoots,
       float & previousLevelMaxLinkContentSize);
 
-  static void calculateNextLevelElementsAndIdentifiersLengths(
+  static void CalculateNextLevelElementsAndIdentifiersLengths(
       std::list<std::shared_ptr<Node>> const & currentLevelRoots,
       std::list<std::shared_ptr<Connector>> & connectorsToNextLevelRoots,
       std::list<std::shared_ptr<Node>> & nextLevelRoots,
       float & maxRelationIdentifierLength,
       float & maxLevelElementIdentifierLength);
 
-  static void updateNextLevelRoots(
+  static void UpdateNextLevelRoots(
       std::list<std::shared_ptr<Node>> & treeRoots,
       std::list<std::shared_ptr<Connector>> & connectorsToNextLevelRoots,
       std::list<std::shared_ptr<Node>> & nextLevelRoots);
 
-  static void setRelationIndent(std::list<std::shared_ptr<Node>> const & currentLevelRoots, float relationIndent);
+  static void SetRelationIndent(std::list<std::shared_ptr<Node>> const & currentLevelRoots, float relationIndent);
 
-  void setSystemIdentifierIfExists(ScAddr const & elementAddr, std::shared_ptr<Element> const & element) const;
+  void SetSystemIdentifierIfExists(ScAddr const & elementAddr, std::shared_ptr<Element> const & element) const;
 
-  static std::list<std::shared_ptr<Node>> assignXCoordinates(std::shared_ptr<Node> const & rootElement);
+  static std::list<std::shared_ptr<Node>> AssignXCoordinates(std::shared_ptr<Node> const & rootElement);
 
-  void assignYCoordinates(std::shared_ptr<Node> const & rootElement);
+  void AssignYCoordinates(std::shared_ptr<Node> const & rootElement);
 
-  void processTriple(std::shared_ptr<Node> const & rootElement, std::shared_ptr<Connector> const & connectorElement);
+  void ProcessTriple(std::shared_ptr<Node> const & rootElement, std::shared_ptr<Connector> const & connectorElement);
 };
 
 }  // namespace formatTranslators

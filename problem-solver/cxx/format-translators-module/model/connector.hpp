@@ -11,65 +11,65 @@ namespace formatTranslators
 class Connector : public Element
 {
 public:
-  std::shared_ptr<Element> const & getBaseElement() const;
+  std::shared_ptr<Element> const & GetBaseElement() const;
 
-  void setBaseElement(std::shared_ptr<Element> const & baseElement);
+  void SetBaseElement(std::shared_ptr<Element> const & baseElement);
 
-  std::shared_ptr<Node> const & getOtherElement() const;
+  std::shared_ptr<Node> const & GetOtherElement() const;
 
-  void setOtherElement(std::shared_ptr<Node> const & otherElement);
+  void SetOtherElement(std::shared_ptr<Node> const & otherElement);
 
-  float getBaseElementX() const;
+  float GetBaseElementX() const;
 
-  void setBaseElementX(float baseElementX);
+  void SetBaseElementX(float baseElementX);
 
-  float getBaseElementY() const;
+  float GetBaseElementY() const;
 
-  void setBaseElementY(float baseElementY);
+  void SetBaseElementY(float baseElementY);
 
-  float getBaseElementBalance() const;
+  float GetBaseElementBalance() const;
 
-  void setBaseElementBalance(float baseElementBalance);
+  void SetBaseElementBalance(float baseElementBalance);
 
-  float getOtherElementX() const;
+  float GetOtherElementX() const;
 
-  void setOtherElementX(float otherElementX);
+  void SetOtherElementX(float otherElementX);
 
-  float getOtherElementY() const;
+  float GetOtherElementY() const;
 
-  void setOtherElementY(float otherElementY);
+  void SetOtherElementY(float otherElementY);
 
-  float getOtherElementBalance() const;
+  float GetOtherElementBalance() const;
 
-  void setOtherElementBalance(float otherElementBalance);
+  void SetOtherElementBalance(float otherElementBalance);
 
-  bool getIsReversed() const;
+  bool GetIsReversed() const;
 
-  void setIsReversed(bool const isReversed);
+  void SetIsReversed(bool const isReversed);
 
-  std::list<std::pair<float, float>> const & getBendPoints() const;
+  std::list<std::pair<float, float>> const & GetBendPoints() const;
 
-  std::shared_ptr<Element> getSourceElement() const;
+  std::shared_ptr<Element> GetSourceElement() const;
 
-  std::string getSourceElementIdForConnector() const;
+  std::string GetSourceElementIdForConnector() const;
 
-  float getSourceElementX() const;
+  float GetSourceElementX() const;
 
-  float getSourceElementY() const;
+  float GetSourceElementY() const;
 
-  float getSourceElementBalance() const;
+  float GetSourceElementBalance() const;
 
-  std::shared_ptr<Element> getTargetElement() const;
+  std::shared_ptr<Element> GetTargetElement() const;
 
-  std::string getTargetElementIdForConnector() const;
+  std::string GetTargetElementIdForConnector() const;
 
-  float getTargetElementX() const;
+  float GetTargetElementX() const;
 
-  float getTargetElementY() const;
+  float GetTargetElementY() const;
 
-  float getTargetElementBalance() const;
+  float GetTargetElementBalance() const;
 
-  void acceptVisitor(Visitor & visitor) override;
+  void AcceptVisitor(Visitor & visitor) override;
 
 private:
   std::shared_ptr<Element> baseElement;

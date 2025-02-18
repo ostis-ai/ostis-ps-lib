@@ -9,38 +9,38 @@ class Node : public Element
 public:
   Node();
 
-  virtual std::string const & getContent() const;
+  virtual std::string const & GetContent() const;
 
-  float getX() const;
+  float GetX() const;
 
-  void setX(float x);
+  void SetX(float x);
 
-  float getTopY() const;
+  float GetTopY() const;
 
-  void setTopY(float topY);
+  void SetTopY(float topY);
 
-  float getBottomY() const;
+  float GetBottomY() const;
 
-  void setBottomY(float bottomY);
+  void SetBottomY(float bottomY);
 
-  bool hasBus() const;
+  bool HasBus() const;
 
-  std::string getIdForBaseElement() const override;
+  std::string GetIdForBaseElement() const override;
 
-  std::string getIdForOtherElement() const override;
+  std::string GetIdForOtherElement() const override;
 
-  std::string getNodeId() const;
+  std::string GetNodeId() const;
 
-  std::string getBusId() const;
+  std::string GetBusId() const;
 
-  size_t calculateReservedVerticalElementsOnParent();
+  size_t CalculateReservedVerticalElementsOnParent();
 
-  void acceptVisitor(Visitor & visitor) override;
+  void AcceptVisitor(Visitor & visitor) override;
 
-  virtual std::shared_ptr<Node> copy() const;
+  virtual std::shared_ptr<Node> Copy() const;
 
 protected:
-  void copy(Node & copiedNode) const;
+  void Copy(Node & copiedNode) const;
 
 private:
   float x;

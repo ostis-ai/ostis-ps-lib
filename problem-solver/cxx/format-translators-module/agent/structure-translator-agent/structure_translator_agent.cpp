@@ -4,12 +4,12 @@
 
 namespace formatTranslators
 {
-ScAddr StructureTranslatorAgent::GetEventSubscriptionElement() const noexcept(false)
+ScAddr StructureTranslatorAgent::GetEventSubscriptionElement() const
 {
   return FormatTranslatorsKeynodes::ui_command_initiated;
 }
 
-ScAddr StructureTranslatorAgent::GetActionClass() const noexcept(false)
+ScAddr StructureTranslatorAgent::GetActionClass() const
 {
   return FormatTranslatorsKeynodes::ui_command_translate_from_sc;
 }

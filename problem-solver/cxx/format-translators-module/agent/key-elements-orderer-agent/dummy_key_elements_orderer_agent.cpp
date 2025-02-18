@@ -4,7 +4,7 @@
 
 namespace formatTranslators
 {
-ScAddr DummyKeyElementsOrdererAgent::GetActionClass() const noexcept(false)
+ScAddr DummyKeyElementsOrdererAgent::GetActionClass() const
 {
   return FormatTranslatorsKeynodes::action_order_key_elements;
 }
@@ -39,7 +39,7 @@ ScResult DummyKeyElementsOrdererAgent::DoProgram(ScAction & action)
         ScType::NodeClass, ScType::NodeLink, ScType::NodeRole, ScType::NodeNonRole, ScType::NodeTuple, ScType::Node};
 
     for (auto const & nodeType : nodeTypes)
-      addNodesToOrder(structure, elementsOrder, elementsInOrder, lastConnector, nodeType);
+      AddNodesToOrder(structure, elementsOrder, elementsInOrder, lastConnector, nodeType);
 
     ScAddr const & arc = m_context.GenerateConnector(ScType::ConstCommonArc, structure, elementsOrder);
     m_context.GenerateConnector(ScType::ConstPermPosArc, FormatTranslatorsKeynodes::nrel_key_elements_order, arc);
@@ -53,7 +53,7 @@ ScResult DummyKeyElementsOrdererAgent::DoProgram(ScAction & action)
   }
 }
 
-void DummyKeyElementsOrdererAgent::addNodesToOrder(
+void DummyKeyElementsOrdererAgent::AddNodesToOrder(
     ScAddr const & structure,
     ScAddr const & elementsOrder,
     ScAddrUnorderedSet & elementsInOrder,

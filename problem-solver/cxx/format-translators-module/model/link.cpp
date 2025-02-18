@@ -4,9 +4,9 @@
 
 namespace formatTranslators
 {
-void Link::acceptVisitor(Visitor & visitor)
+void Link::AcceptVisitor(Visitor & visitor)
 {
-  visitor.visitLink(*this);
+  visitor.VisitLink(*this);
 }
 
 Link::Link()
@@ -14,26 +14,26 @@ Link::Link()
 {
 }
 
-std::string const & Link::getContent() const
+std::string const & Link::GetContent() const
 {
   return content;
 }
 
-void Link::setContent(std::string const & content)
+void Link::SetContent(std::string const & content)
 {
   this->content = content;
 }
 
-std::shared_ptr<Node> Link::copy() const
+std::shared_ptr<Node> Link::Copy() const
 {
   std::shared_ptr<Link> link = std::make_shared<Link>();
-  copy(*link);
+  Copy(*link);
   return link;
 }
 
-void Link::copy(Link & copiedLink) const
+void Link::Copy(Link & copiedLink) const
 {
-  Node::copy(copiedLink);
-  copiedLink.setContent(getContent());
+  Node::Copy(copiedLink);
+  copiedLink.SetContent(GetContent());
 }
 }  // namespace formatTranslators

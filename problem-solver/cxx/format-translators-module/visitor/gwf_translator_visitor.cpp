@@ -64,22 +64,22 @@ std::unordered_map<ScType, std::string, GWFTranslatorVisitor::ScTypeHash> const 
     {ScType::VarFuzArc, "pair/var/fuz/perm/orient/membership"},
 };
 
-std::string GWFTranslatorVisitor::getStaticSectorContent() const
+std::string GWFTranslatorVisitor::GetStaticSectorContent() const
 {
   return staticSectorContent.str();
 }
 
-void GWFTranslatorVisitor::visitConnector(Connector & connector)
+void GWFTranslatorVisitor::VisitConnector(Connector & connector)
 {
-  connector.getOtherElement()->acceptVisitor(*this);
-  staticSectorContent << "        <pair type=\"" << getGWFConnectorType(connector) << "\" idtf=\""
-                      << connector.getIdentifier() << "\" shapeColor=\"0\" id=\"" << getGWFId(connector)
-                      << "\" parent=\"0\" id_b=\"" << connector.getSourceElementIdForConnector() << "\" id_e=\""
-                      << connector.getTargetElementIdForConnector() << "\" dotBBalance=\""
-                      << connector.getSourceElementBalance() << "\" dotEBalance=\""
-                      << connector.getTargetElementBalance() << "\" sc_addr=\"" << connector.getScAddress().Hash()
+  connector.GetOtherElement()->AcceptVisitor(*this);
+  staticSectorContent << "        <pair type=\"" << GetGWFConnectorType(connector) << "\" idtf=\""
+                      << connector.GetIdentifier() << "\" shapeColor=\"0\" id=\"" << GetGWFId(connector)
+                      << "\" parent=\"0\" id_b=\"" << connector.GetSourceElementIdForConnector() << "\" id_e=\""
+                      << connector.GetTargetElementIdForConnector() << "\" dotBBalance=\""
+                      << connector.GetSourceElementBalance() << "\" dotEBalance=\""
+                      << connector.GetTargetElementBalance() << "\" sc_addr=\"" << connector.GetScAddress().Hash()
                       << "\">\n";
-  auto const & bendPoints = connector.getBendPoints();
+  auto const & bendPoints = connector.GetBendPoints();
   if (bendPoints.empty())
   {
     staticSectorContent << "          <points/>\n";
@@ -91,96 +91,96 @@ void GWFTranslatorVisitor::visitConnector(Connector & connector)
                           << "\"/>\n";
   }
   staticSectorContent << "        </pair>\n";
-  visitIncidentConnectors(connector);
+  VisitIncidentConnectors(connector);
 }
 
-void GWFTranslatorVisitor::visitLink(Link & link)
+void GWFTranslatorVisitor::VisitLink(Link & link)
 {
-  bool haveBus = link.hasBus();
-  staticSectorContent << "        <node type=\"" << getGWFNodeType(link) << "\" idtf=\"" << link.getIdentifier()
-                      << "\" shapeColor=\"0\" id=\"" << getGWFId(link) << "\" parent=\"0\" x=\"" << link.getX()
-                      << "\" y=\"" << link.getTopY() << "\" haveBus=\"" << (haveBus ? "true" : "false")
-                      << "\" idtf_pos=\"" << static_cast<int>(link.getIdentifierPosition()) << "\" sc_addr=\""
-                      << link.getScAddress().Hash()
+  bool haveBus = link.HasBus();
+  staticSectorContent << "        <node type=\"" << GetGWFNodeType(link) << "\" idtf=\"" << link.GetIdentifier()
+                      << "\" shapeColor=\"0\" id=\"" << GetGWFId(link) << "\" parent=\"0\" x=\"" << link.GetX()
+                      << "\" y=\"" << link.GetTopY() << "\" haveBus=\"" << (haveBus ? "true" : "false")
+                      << "\" idtf_pos=\"" << static_cast<int>(link.GetIdentifierPosition()) << "\" sc_addr=\""
+                      << link.GetScAddress().Hash()
                       << "\">\n"
                          "          <content type=\""
-                      << getLinkContentType(link) << "\" mime_type=\"" << getLinkMimeType(link)
-                      << "\" content_visibility=\"true\" file_name=\"\"><![CDATA[" << link.getContent()
+                      << GetLinkContentType(link) << "\" mime_type=\"" << GetLinkMimeType(link)
+                      << "\" content_visibility=\"true\" file_name=\"\"><![CDATA[" << link.GetContent()
                       << "]]></content>\n"
                          "        </node>\n";
   if (haveBus)
-    addBus(link);
-  visitIncidentConnectors(link);
+    AddBus(link);
+  VisitIncidentConnectors(link);
 }
 
-void GWFTranslatorVisitor::visitNode(Node & node)
+void GWFTranslatorVisitor::VisitNode(Node & node)
 {
-  bool haveBus = node.hasBus();
-  std::string identifier = node.getIdentifier();
+  bool haveBus = node.HasBus();
+  std::string identifier = node.GetIdentifier();
   staticSectorContent
-      << "        <node type=\"" << getGWFNodeType(node) << "\" idtf=\"" << identifier << "\" shapeColor=\"0\" id=\""
-      << getGWFId(node) << "\" parent=\"0\" x=\"" << node.getX() << "\" y=\"" << node.getTopY() << "\" haveBus=\""
-      << (haveBus ? "true" : "false") << "\" idtf_pos=\"" << static_cast<int>(node.getIdentifierPosition())
-      << "\"  sc_addr=\"" << node.getScAddress().Hash() << "\">\n"
+      << "        <node type=\"" << GetGWFNodeType(node) << "\" idtf=\"" << identifier << "\" shapeColor=\"0\" id=\""
+      << GetGWFId(node) << "\" parent=\"0\" x=\"" << node.GetX() << "\" y=\"" << node.GetTopY() << "\" haveBus=\""
+      << (haveBus ? "true" : "false") << "\" idtf_pos=\"" << static_cast<int>(node.GetIdentifierPosition())
+      << "\"  sc_addr=\"" << node.GetScAddress().Hash() << "\">\n"
       << "            <content type=\"0\" mime_type=\"\" content_visibility=\"false\" file_name=\"\"/>\n"
          "        </node>\n";
   if (haveBus)
-    addBus(node);
-  visitIncidentConnectors(node);
+    AddBus(node);
+  VisitIncidentConnectors(node);
 }
 
-std::string GWFTranslatorVisitor::getGWFId(Element & element)
+std::string GWFTranslatorVisitor::GetGWFId(Element & element)
 {
-  std::string id = element.getId();
+  std::string id = element.GetId();
   if (id.empty())
   {
     id = std::to_string(nextIdToAssign++);
-    element.setId(id);
+    element.GetId(id);
   }
   return id;
 }
 
-std::string GWFTranslatorVisitor::getGWFConnectorType(Connector const & connector) const
+std::string GWFTranslatorVisitor::GetGWFConnectorType(Connector const & connector) const
 {
-  auto const & type = connectorTypes.find(connector.getScType());
+  auto const & type = connectorTypes.find(connector.GetScType());
   if (type == connectorTypes.cend())
     SC_THROW_EXCEPTION(
         utils::ExceptionInvalidType,
-        "GWFTranslatorVisitor: cannot convert connector type " << std::string(connector.getScType()) << " to gwf");
+        "GWFTranslatorVisitor: cannot convert connector type " << std::string(connector.GetScType()) << " to gwf");
   return type->second;
 }
 
-std::string GWFTranslatorVisitor::getGWFNodeType(Node const & node) const
+std::string GWFTranslatorVisitor::GetGWFNodeType(Node const & node) const
 {
-  auto const & type = nodeTypes.find(node.getScType());
+  auto const & type = nodeTypes.find(node.GetScType());
   if (type == nodeTypes.cend())
     SC_THROW_EXCEPTION(
         utils::ExceptionInvalidType,
-        "GWFTranslatorVisitor: cannot convert node type " << std::string(node.getScType()) << " to gwf");
+        "GWFTranslatorVisitor: cannot convert node type " << std::string(node.GetScType()) << " to gwf");
   return type->second;
 }
 
-std::string GWFTranslatorVisitor::getLinkMimeType(Link const & link) const
+std::string GWFTranslatorVisitor::GetLinkMimeType(Link const & link) const
 {
   return "content/term";
 }
 
-std::string GWFTranslatorVisitor::getLinkContentType(Link const & link) const
+std::string GWFTranslatorVisitor::GetLinkContentType(Link const & link) const
 {
   return "1";
 }
 
-void GWFTranslatorVisitor::visitIncidentConnectors(Element const & element)
+void GWFTranslatorVisitor::VisitIncidentConnectors(Element const & element)
 {
-  for (auto const & connector : element.getConnectors())
-    connector->acceptVisitor(*this);
+  for (auto const & connector : element.GetConnectors())
+    connector->AcceptVisitor(*this);
 }
 
-void GWFTranslatorVisitor::addBus(Node const & node)
+void GWFTranslatorVisitor::AddBus(Node const & node)
 {
-  staticSectorContent << "        <bus type=\"bus\" idtf=\"\" shapeColor=\"0\" id=\"" << node.getBusId()
-                      << "\" parent=\"0\" owner=\"" << node.getNodeId() << "\" b_x=\"" << node.getX() << "\" b_y=\""
-                      << node.getTopY() << "\" e_x=\"" << node.getX() << "\" e_y=\"" << node.getBottomY()
+  staticSectorContent << "        <bus type=\"bus\" idtf=\"\" shapeColor=\"0\" id=\"" << node.GetBusId()
+                      << "\" parent=\"0\" owner=\"" << node.GetNodeId() << "\" b_x=\"" << node.GetX() << "\" b_y=\""
+                      << node.GetTopY() << "\" e_x=\"" << node.GetX() << "\" e_y=\"" << node.GetBottomY()
                       << "\">\n"
                          "            <points/>\n"
                          "        </bus>\n";

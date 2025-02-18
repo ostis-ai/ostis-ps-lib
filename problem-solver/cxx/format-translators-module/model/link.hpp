@@ -9,18 +9,18 @@ class Link : public Node
 public:
   Link();
 
-  std::string const & getContent() const override;
+  std::string const & GetContent() const override;
 
-  void setContent(std::string const & content);
+  void SetContent(std::string const & content);
 
-  void acceptVisitor(Visitor & visitor) override;
+  void AcceptVisitor(Visitor & visitor) override;
 
-  std::shared_ptr<Node> copy() const override;
+  std::shared_ptr<Node> Copy() const override;
 
 private:
   std::string content;
 
-  void copy(Link & copiedLink) const;
+  void Copy(Link & copiedLink) const;
 };
 
 }  // namespace formatTranslators

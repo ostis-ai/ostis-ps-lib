@@ -20,35 +20,35 @@ class Element
 public:
   Element();
 
-  std::string const & getIdentifier() const;
+  std::string const & GetIdentifier() const;
 
-  void setIdentifier(std::string const & identifier);
+  void SetIdentifier(std::string const & identifier);
 
-  IdentifierPosition getIdentifierPosition() const;
+  IdentifierPosition GetIdentifierPosition() const;
 
-  void setIdentifierPosition(IdentifierPosition identifierPosition);
+  void SetIdentifierPosition(IdentifierPosition identifierPosition);
 
-  void addConnector(std::shared_ptr<Connector> const & connector);
+  void AddConnector(std::shared_ptr<Connector> const & connector);
 
-  std::list<std::shared_ptr<Connector>> const & getConnectors() const;
+  std::list<std::shared_ptr<Connector>> const & GetConnectors() const;
 
-  ScAddr const & getScAddress() const;
+  ScAddr const & GetScAddress() const;
 
-  void setScAddress(ScAddr const & scAddress);
+  void SetScAddress(ScAddr const & scAddress);
 
-  ScType const & getScType() const;
+  ScType const & GetScType() const;
 
-  void setScType(ScType const & scType);
+  void SetScType(ScType const & scType);
 
-  virtual void acceptVisitor(Visitor & visitor) = 0;
+  virtual void AcceptVisitor(Visitor & visitor) = 0;
 
-  virtual std::string getIdForBaseElement() const;
+  virtual std::string GetIdForBaseElement() const;
 
-  virtual std::string getIdForOtherElement() const;
+  virtual std::string GetIdForOtherElement() const;
 
-  std::string getId() const;
+  std::string GetId() const;
 
-  void setId(std::string const & id);
+  void GetId(std::string const & id);
 
 private:
   std::string id;

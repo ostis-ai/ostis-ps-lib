@@ -15,28 +15,28 @@ class Element;
 class GWFTranslatorVisitor : public Visitor
 {
 public:
-  std::string getStaticSectorContent() const;
+  std::string GetStaticSectorContent() const;
 
-  void visitConnector(Connector & connector) override;
+  void VisitConnector(Connector & connector) override;
 
-  void visitLink(Link & link) override;
+  void VisitLink(Link & link) override;
 
-  void visitNode(Node & node) override;
+  void VisitNode(Node & node) override;
 
 private:
-  void visitIncidentConnectors(Element const & element);
+  void VisitIncidentConnectors(Element const & element);
 
-  void addBus(Node const & node);
+  void AddBus(Node const & node);
 
-  std::string getGWFId(Element & element);
+  std::string GetGWFId(Element & element);
 
-  std::string getGWFConnectorType(Connector const & connector) const;
+  std::string GetGWFConnectorType(Connector const & connector) const;
 
-  std::string getGWFNodeType(Node const & node) const;
+  std::string GetGWFNodeType(Node const & node) const;
 
-  std::string getLinkMimeType(Link const & link) const;
+  std::string GetLinkMimeType(Link const & link) const;
 
-  std::string getLinkContentType(Link const & link) const;
+  std::string GetLinkContentType(Link const & link) const;
 
   std::stringstream staticSectorContent;
 

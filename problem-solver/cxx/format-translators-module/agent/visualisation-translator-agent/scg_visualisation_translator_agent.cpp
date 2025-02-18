@@ -26,7 +26,7 @@ float const SCgVisualisationTranslatorAgent::MIN_X = 200;
 float const SCgVisualisationTranslatorAgent::MAX_Y = 800;
 float const SCgVisualisationTranslatorAgent::MAX_LINK_WIDTH = 60;
 
-ScAddr SCgVisualisationTranslatorAgent::GetActionClass() const noexcept(false)
+ScAddr SCgVisualisationTranslatorAgent::GetActionClass() const
 {
   return FormatTranslatorsKeynodes::action_visualise_to_scg;
 }
@@ -52,21 +52,21 @@ ScResult SCgVisualisationTranslatorAgent::DoProgram(ScAction & action)
         &m_context, structureToTranslate, FormatTranslatorsKeynodes::rrel_main_key_sc_element);
     if (!m_context.IsElement(mainKeyElement))
       SC_THROW_EXCEPTION(utils::ExceptionItemNotFound, "Cannot find main key element for structure to translate");
-    parseKeyElementsOrder(keyElementsOrderTuple);
-    parseStructureIntoTriples();
-    auto const & rootElement = walkBFS(mainKeyElement, 0);
-    auto const & treeRoots = assignXCoordinates(rootElement);
+    ParseKeyElementsOrder(keyElementsOrderTuple);
+    ParseStructureIntoTriples();
+    auto const & rootElement = WalkBFS(mainKeyElement, 0);
+    auto const & treeRoots = AssignXCoordinates(rootElement);
     GWFTranslatorVisitor visitor;
     lastAssignedY = 0;
     for (auto const & tree : treeRoots)
     {
-      assignYCoordinates(tree);
-      tree->acceptVisitor(visitor);
+      AssignYCoordinates(tree);
+      tree->AcceptVisitor(visitor);
     }
     ScAddr const & resultLink = m_context.GenerateLink(ScType::ConstNodeLink);
     m_context.SetLinkContent(
         resultLink,
-        GWF_CONTENT_BEFORE_STATIC_SECTOR_CONTENT + visitor.getStaticSectorContent()
+        GWF_CONTENT_BEFORE_STATIC_SECTOR_CONTENT + visitor.GetStaticSectorContent()
             + GWF_CONTENT_AFTER_STATIC_SECTOR_CONTENT);
     action.FormResult(resultLink);
     return action.FinishSuccessfully();
@@ -78,7 +78,7 @@ ScResult SCgVisualisationTranslatorAgent::DoProgram(ScAction & action)
   }
 }
 
-void SCgVisualisationTranslatorAgent::parseKeyElementsOrder(ScAddr const & keyElementsOrderTuple)
+void SCgVisualisationTranslatorAgent::ParseKeyElementsOrder(ScAddr const & keyElementsOrderTuple)
 {
   auto const & firstElementIterator = m_context.CreateIterator5(
       keyElementsOrderTuple, ScType::ConstPermPosArc, ScType::Node, ScType::ConstPermPosArc, ScKeynodes::rrel_1);
@@ -109,7 +109,7 @@ void SCgVisualisationTranslatorAgent::parseKeyElementsOrder(ScAddr const & keyEl
   }
 }
 
-void SCgVisualisationTranslatorAgent::parseStructureIntoTriples()
+void SCgVisualisationTranslatorAgent::ParseStructureIntoTriples()
 {
   auto const & structureConnectorsIterator =
       m_context.CreateIterator3(structureToTranslate, ScType::ConstPermPosArc, ScType::Connector);
@@ -124,7 +124,7 @@ void SCgVisualisationTranslatorAgent::parseStructureIntoTriples()
     {
       if (keyElementsOrder.count(second))
       {
-        addTripleToParsedTriples(first, connector, second, false);
+        AddTripleToParsedTriples(first, connector, second, false);
         auto const & notInParsedIterator = triplesWithConnectorNotInParsedStructure.find(connector);
         if (notInParsedIterator != triplesWithConnectorNotInParsedStructure.cend())
         {
@@ -145,7 +145,7 @@ void SCgVisualisationTranslatorAgent::parseStructureIntoTriples()
     {
       if (keyElementsOrder.count(first))
       {
-        addTripleToParsedTriples(second, connector, first, true);
+        AddTripleToParsedTriples(second, connector, first, true);
         auto const & notInParsedIterator = triplesWithConnectorNotInParsedStructure.find(connector);
         if (notInParsedIterator != triplesWithConnectorNotInParsedStructure.cend())
         {
@@ -169,14 +169,14 @@ void SCgVisualisationTranslatorAgent::parseStructureIntoTriples()
     {
       auto const & [first, second] = firstAndSecond;
       if (m_context.GetElementType(second).IsNode())
-        addTripleToParsedTriples(first, connector, second, false);
+        AddTripleToParsedTriples(first, connector, second, false);
       if (m_context.GetElementType(first).IsNode())
-        addTripleToParsedTriples(second, connector, first, true);
+        AddTripleToParsedTriples(second, connector, first, true);
     }
   }
 }
 
-void SCgVisualisationTranslatorAgent::addTripleToParsedTriples(
+void SCgVisualisationTranslatorAgent::AddTripleToParsedTriples(
     ScAddr const & baseAddr,
     ScAddr const & connectorAddr,
     ScAddr const & otherElementAddr,
@@ -196,14 +196,14 @@ void SCgVisualisationTranslatorAgent::addTripleToParsedTriples(
   }
 }
 
-std::shared_ptr<Node> SCgVisualisationTranslatorAgent::walkBFS(ScAddr const & root, size_t currentLevel)
+std::shared_ptr<Node> SCgVisualisationTranslatorAgent::WalkBFS(ScAddr const & root, size_t currentLevel)
 {
   ScType const & rootType = m_context.GetElementType(root);
   if (!rootType.IsNode())
     SC_THROW_EXCEPTION(
         utils::ExceptionInvalidParams,
         "Only node is allowed to be a root, got " << std::string(rootType) << " instead");
-  auto rootElement = createNode(root, rootType);
+  auto rootElement = CreateNode(root, rootType);
   if (rootElements.count(root))
     return rootElement;
   rootElements.insert(root);
@@ -217,30 +217,30 @@ std::shared_ptr<Node> SCgVisualisationTranslatorAgent::walkBFS(ScAddr const & ro
       if (walkedConnectors.count(connectorAddr))
         continue;
       walkedConnectors.insert(connectorAddr);
-      auto const & subtreeRoot = walkBFS(otherElementAddr, currentLevel + 1);
-      auto const & connectorElement = createConnector(connectorAddr, rootElement, subtreeRoot, isReversed);
-      processTriple(rootElement, connectorElement);
+      auto const & subtreeRoot = WalkBFS(otherElementAddr, currentLevel + 1);
+      auto const & connectorElement = CreateConnector(connectorAddr, rootElement, subtreeRoot, isReversed);
+      ProcessTriple(rootElement, connectorElement);
     }
   }
   return rootElement;
 }
 
-void SCgVisualisationTranslatorAgent::processTriple(
+void SCgVisualisationTranslatorAgent::ProcessTriple(
     std::shared_ptr<Node> const & rootElement,
     std::shared_ptr<Connector> const & connectorElement)
 {
-  rootElement->addConnector(connectorElement);
+  rootElement->AddConnector(connectorElement);
 
-  auto const & pairsIterator = structureTriples.find(connectorElement->getScAddress());
+  auto const & pairsIterator = structureTriples.find(connectorElement->GetScAddress());
   if (pairsIterator != structureTriples.cend())
   {
     for (auto const & [_, otherElementAndConnectorWithReverse] : pairsIterator->second)
       for (auto const & [relationAddr, connectorAddr, isReversed] : otherElementAndConnectorWithReverse)
-        addVerticalConnector(relationAddr, connectorAddr, connectorElement, isReversed);
+        AddVerticalConnector(relationAddr, connectorAddr, connectorElement, isReversed);
   }
 }
 
-std::shared_ptr<Node> SCgVisualisationTranslatorAgent::createNode(ScAddr const & nodeAddr, ScType const & nodeType)
+std::shared_ptr<Node> SCgVisualisationTranslatorAgent::CreateNode(ScAddr const & nodeAddr, ScType const & nodeType)
     const
 {
   if (!nodeType.IsNode())
@@ -251,19 +251,19 @@ std::shared_ptr<Node> SCgVisualisationTranslatorAgent::createNode(ScAddr const &
     auto const linkElement = std::make_shared<Link>();
     std::string linkContent;
     m_context.GetLinkContent(nodeAddr, linkContent);
-    linkElement->setContent(linkContent);
+    linkElement->SetContent(linkContent);
     nodeElement = linkElement;
   }
   else
     nodeElement = std::make_shared<Node>();
-  nodeElement->setScAddress(nodeAddr);
-  nodeElement->setScType(m_context.GetElementType(nodeAddr));
-  setSystemIdentifierIfExists(nodeAddr, nodeElement);
+  nodeElement->SetScAddress(nodeAddr);
+  nodeElement->SetScType(m_context.GetElementType(nodeAddr));
+  SetSystemIdentifierIfExists(nodeAddr, nodeElement);
 
   return nodeElement;
 }
 
-void SCgVisualisationTranslatorAgent::setSystemIdentifierIfExists(
+void SCgVisualisationTranslatorAgent::SetSystemIdentifierIfExists(
     ScAddr const & elementAddr,
     std::shared_ptr<Element> const & element) const
 {
@@ -279,54 +279,54 @@ void SCgVisualisationTranslatorAgent::setSystemIdentifierIfExists(
   if (identifier.empty())
     identifier = m_context.GetElementSystemIdentifier(elementAddr);
   if (!identifier.empty())
-    element->setIdentifier(identifier);
-  element->setIdentifierPosition(IdentifierPosition::BOTTOM_RIGHT);
+    element->SetIdentifier(identifier);
+  element->SetIdentifierPosition(IdentifierPosition::BOTTOM_RIGHT);
 }
 
-std::shared_ptr<Connector> SCgVisualisationTranslatorAgent::createConnector(
+std::shared_ptr<Connector> SCgVisualisationTranslatorAgent::CreateConnector(
     ScAddr const & connector,
     std::shared_ptr<Element> const & baseElement,
     std::shared_ptr<Node> const & otherElement,
     bool const isReversed) const
 {
   auto const & connectorElement = std::make_shared<Connector>();
-  connectorElement->setScAddress(connector);
-  connectorElement->setScType(m_context.GetElementType(connector));
+  connectorElement->SetScAddress(connector);
+  connectorElement->SetScType(m_context.GetElementType(connector));
 
-  setSystemIdentifierIfExists(connector, connectorElement);
+  SetSystemIdentifierIfExists(connector, connectorElement);
 
-  connectorElement->setBaseElement(baseElement);
-  connectorElement->setOtherElement(otherElement);
-  connectorElement->setIsReversed(isReversed);
+  connectorElement->SetBaseElement(baseElement);
+  connectorElement->SetOtherElement(otherElement);
+  connectorElement->SetIsReversed(isReversed);
 
   return connectorElement;
 }
 
-void SCgVisualisationTranslatorAgent::addVerticalConnector(
+void SCgVisualisationTranslatorAgent::AddVerticalConnector(
     ScAddr const & otherAddr,
     ScAddr const & connectorAddr,
     std::shared_ptr<Connector> const & baseConnector,
     bool const isReversed) const
 {
-  auto const otherElement = createNode(otherAddr, m_context.GetElementType(otherAddr));
-  auto const & connectorElement = createConnector(connectorAddr, baseConnector, otherElement, isReversed);
-  baseConnector->addConnector(connectorElement);
+  auto const otherElement = CreateNode(otherAddr, m_context.GetElementType(otherAddr));
+  auto const & connectorElement = CreateConnector(connectorAddr, baseConnector, otherElement, isReversed);
+  baseConnector->AddConnector(connectorElement);
 }
 
-std::list<std::shared_ptr<Node>> SCgVisualisationTranslatorAgent::assignXCoordinates(
+std::list<std::shared_ptr<Node>> SCgVisualisationTranslatorAgent::AssignXCoordinates(
     std::shared_ptr<Node> const & rootElement)
 {
-  float previousLevelMaxLinkContentSize = rootElement->getContent().size();
+  float previousLevelMaxLinkContentSize = rootElement->GetContent().size();
   if (previousLevelMaxLinkContentSize > MAX_LINK_WIDTH)
     previousLevelMaxLinkContentSize = MAX_LINK_WIDTH;
   float nextLevelIndent = MIN_X;
   float const scaleX = 6;
-  rootElement->setX(nextLevelIndent);
+  rootElement->SetX(nextLevelIndent);
   auto treeRoots = std::list{rootElement};
 
   for (auto const & treeRoot : treeRoots)
   {
-    treeRoot->setX(nextLevelIndent);
+    treeRoot->SetX(nextLevelIndent);
     auto currentLevelRoots = std::list{treeRoot};
     while (!currentLevelRoots.empty())
     {
@@ -334,26 +334,26 @@ std::list<std::shared_ptr<Node>> SCgVisualisationTranslatorAgent::assignXCoordin
       std::list<std::shared_ptr<Node>> nextLevelRoots;
       float maxRelationIdentifierLength = 0;
       float maxLevelElementIdentifierLength = 0;
-      calculateNextLevelElementsAndIdentifiersLengths(
+      CalculateNextLevelElementsAndIdentifiersLengths(
           currentLevelRoots,
           connectorsToNextLevelRoots,
           nextLevelRoots,
           maxRelationIdentifierLength,
           maxLevelElementIdentifierLength);
       float const indentCausedByLinkContent =
-          calculateIndentCausedByLinkContent(connectorsToNextLevelRoots, previousLevelMaxLinkContentSize);
+          CalculateIndentCausedByLinkContent(connectorsToNextLevelRoots, previousLevelMaxLinkContentSize);
       float const indentDifference =
           (std::max(maxLevelElementIdentifierLength, maxRelationIdentifierLength) + indentCausedByLinkContent + 8)
           * scaleX;
       nextLevelIndent += indentDifference;
       bool const reachedEndOfIndent = nextLevelIndent >= MAX_Y;
       if (reachedEndOfIndent)
-        updateNextLevelRoots(treeRoots, connectorsToNextLevelRoots, nextLevelRoots);
+        UpdateNextLevelRoots(treeRoots, connectorsToNextLevelRoots, nextLevelRoots);
 
       for (auto const & nextLevelElement : nextLevelRoots)
-        nextLevelElement->setX(nextLevelIndent);
+        nextLevelElement->SetX(nextLevelIndent);
       float const relationIndent = nextLevelIndent - indentDifference * CONNECTOR_INCIDENT_POINT_PERCENT;
-      setRelationIndent(currentLevelRoots, relationIndent);
+      SetRelationIndent(currentLevelRoots, relationIndent);
       if (reachedEndOfIndent)
       {
         nextLevelIndent = MIN_X;
@@ -368,16 +368,16 @@ std::list<std::shared_ptr<Node>> SCgVisualisationTranslatorAgent::assignXCoordin
   return treeRoots;
 }
 
-float SCgVisualisationTranslatorAgent::calculateIndentCausedByLinkContent(
+float SCgVisualisationTranslatorAgent::CalculateIndentCausedByLinkContent(
     std::list<std::shared_ptr<Connector>> const & connectorsToNextLevelRoots,
     float & previousLevelMaxLinkContentSize)
 {
   float indentCausedByLinkContent = 0;
   for (auto const & connectorToNextLevelElement : connectorsToNextLevelRoots)
   {
-    auto const & nextLevelElement = connectorToNextLevelElement->getOtherElement();
-    if (nextLevelElement->getContent().size() > indentCausedByLinkContent)
-      indentCausedByLinkContent = nextLevelElement->getContent().size();
+    auto const & nextLevelElement = connectorToNextLevelElement->GetOtherElement();
+    if (nextLevelElement->GetContent().size() > indentCausedByLinkContent)
+      indentCausedByLinkContent = nextLevelElement->GetContent().size();
   }
   auto const & maxNextLevelLinkContentSize = std::min(indentCausedByLinkContent, MAX_LINK_WIDTH);
   indentCausedByLinkContent = std::max(maxNextLevelLinkContentSize, previousLevelMaxLinkContentSize);
@@ -385,7 +385,7 @@ float SCgVisualisationTranslatorAgent::calculateIndentCausedByLinkContent(
   return indentCausedByLinkContent;
 }
 
-void SCgVisualisationTranslatorAgent::calculateNextLevelElementsAndIdentifiersLengths(
+void SCgVisualisationTranslatorAgent::CalculateNextLevelElementsAndIdentifiersLengths(
     std::list<std::shared_ptr<Node>> const & currentLevelRoots,
     std::list<std::shared_ptr<Connector>> & connectorsToNextLevelRoots,
     std::list<std::shared_ptr<Node>> & nextLevelRoots,
@@ -394,25 +394,25 @@ void SCgVisualisationTranslatorAgent::calculateNextLevelElementsAndIdentifiersLe
 {
   for (auto const & levelElement : currentLevelRoots)
   {
-    if (levelElement->getIdentifier().size() > maxLevelElementIdentifierLength)
-      maxLevelElementIdentifierLength = levelElement->getIdentifier().size();
+    if (levelElement->GetIdentifier().size() > maxLevelElementIdentifierLength)
+      maxLevelElementIdentifierLength = levelElement->GetIdentifier().size();
 
-    for (auto const & levelElementConnector : levelElement->getConnectors())
+    for (auto const & levelElementConnector : levelElement->GetConnectors())
     {
       connectorsToNextLevelRoots.push_back(levelElementConnector);
-      nextLevelRoots.push_back(levelElementConnector->getOtherElement());
+      nextLevelRoots.push_back(levelElementConnector->GetOtherElement());
       auto const levelElementConnectorIdentifierLength =
-          levelElementConnector->getIdentifier().size() / CONNECTOR_IDENTIFIER_SCALE;
+          levelElementConnector->GetIdentifier().size() / CONNECTOR_IDENTIFIER_SCALE;
       if (levelElementConnectorIdentifierLength > maxRelationIdentifierLength)
         maxRelationIdentifierLength = levelElementConnectorIdentifierLength;
-      for (auto const & levelElementConnectorConnector : levelElementConnector->getConnectors())
+      for (auto const & levelElementConnectorConnector : levelElementConnector->GetConnectors())
       {
         auto const levelElementConnectorConnectorIdentifierLength =
-            levelElementConnectorConnector->getIdentifier().size() / CONNECTOR_INCIDENT_POINT_PERCENT;
+            levelElementConnectorConnector->GetIdentifier().size() / CONNECTOR_INCIDENT_POINT_PERCENT;
         if (levelElementConnectorConnectorIdentifierLength > maxRelationIdentifierLength)
           maxRelationIdentifierLength = levelElementConnectorConnectorIdentifierLength;
         auto const levelElementConnectorConnectorOtherElementIdentifierLength =
-            levelElementConnectorConnector->getOtherElement()->getIdentifier().size()
+            levelElementConnectorConnector->GetOtherElement()->GetIdentifier().size()
             / CONNECTOR_INCIDENT_POINT_PERCENT;
         if (levelElementConnectorConnectorOtherElementIdentifierLength > maxRelationIdentifierLength)
           maxRelationIdentifierLength = levelElementConnectorConnectorOtherElementIdentifierLength;
@@ -421,7 +421,7 @@ void SCgVisualisationTranslatorAgent::calculateNextLevelElementsAndIdentifiersLe
   }
 }
 
-void SCgVisualisationTranslatorAgent::updateNextLevelRoots(
+void SCgVisualisationTranslatorAgent::UpdateNextLevelRoots(
     std::list<std::shared_ptr<Node>> & treeRoots,
     std::list<std::shared_ptr<Connector>> & connectorsToNextLevelRoots,
     std::list<std::shared_ptr<Node>> & nextLevelRoots)
@@ -432,20 +432,20 @@ void SCgVisualisationTranslatorAgent::updateNextLevelRoots(
   while (connectorToNextLevelElementIterator != connectorsToNextLevelRoots.end())
   {
     auto & connectorToNextLevel = *connectorToNextLevelElementIterator;
-    auto const & otherElement = connectorToNextLevel->getOtherElement();
-    if (!otherElement->getConnectors().empty())
+    auto const & otherElement = connectorToNextLevel->GetOtherElement();
+    if (!otherElement->GetConnectors().empty())
     {
       treeRoots.push_back(otherElement);
-      auto copyOfNextLevelElement = otherElement->copy();
+      auto copyOfNextLevelElement = otherElement->Copy();
       connectorToNextLevelElementIterator = connectorsToNextLevelRoots.erase(connectorToNextLevelElementIterator);
-      connectorToNextLevel->setOtherElement(copyOfNextLevelElement);
+      connectorToNextLevel->SetOtherElement(copyOfNextLevelElement);
       updatedNextLevel.push_back(connectorToNextLevel);
       nextLevelRoots.push_back(copyOfNextLevelElement);
     }
     else
     {
       updatedNextLevel.push_back(connectorToNextLevel);
-      nextLevelRoots.push_back(connectorToNextLevel->getOtherElement());
+      nextLevelRoots.push_back(connectorToNextLevel->GetOtherElement());
       ++connectorToNextLevelElementIterator;
     }
   }
@@ -453,50 +453,50 @@ void SCgVisualisationTranslatorAgent::updateNextLevelRoots(
   connectorsToNextLevelRoots.splice(connectorsToNextLevelRoots.begin(), updatedNextLevel);
 }
 
-void SCgVisualisationTranslatorAgent::setRelationIndent(
+void SCgVisualisationTranslatorAgent::SetRelationIndent(
     std::list<std::shared_ptr<Node>> const & currentLevelRoots,
     float relationIndent)
 {
   for (auto const & levelElement : currentLevelRoots)
   {
-    for (auto const & levelElementConnector : levelElement->getConnectors())
+    for (auto const & levelElementConnector : levelElement->GetConnectors())
     {
-      for (auto const & levelElementConnectorConnector : levelElementConnector->getConnectors())
+      for (auto const & levelElementConnectorConnector : levelElementConnector->GetConnectors())
       {
-        levelElementConnectorConnector->setOtherElementX(relationIndent);
-        if (levelElementConnector->getIsReversed())
-          levelElementConnectorConnector->setBaseElementBalance(CONNECTOR_INCIDENT_POINT_PERCENT);
+        levelElementConnectorConnector->SetOtherElementX(relationIndent);
+        if (levelElementConnector->GetIsReversed())
+          levelElementConnectorConnector->SetBaseElementBalance(CONNECTOR_INCIDENT_POINT_PERCENT);
         else
-          levelElementConnectorConnector->setBaseElementBalance(1 - CONNECTOR_INCIDENT_POINT_PERCENT);
+          levelElementConnectorConnector->SetBaseElementBalance(1 - CONNECTOR_INCIDENT_POINT_PERCENT);
       }
     }
   }
 }
 
-void SCgVisualisationTranslatorAgent::assignYCoordinates(std::shared_ptr<Node> const & rootElement)
+void SCgVisualisationTranslatorAgent::AssignYCoordinates(std::shared_ptr<Node> const & rootElement)
 {
-  rootElement->setTopY(lastAssignedY);
-  if (rootElement->hasBus())
+  rootElement->SetTopY(lastAssignedY);
+  if (rootElement->HasBus())
     lastAssignedY += Y_INCREMENT;
   float levelElementConnectorIndex = 1;
-  size_t rootElementConnectorsSize = rootElement->calculateReservedVerticalElementsOnParent() - 1;
-  for (auto const & connector : rootElement->getConnectors())
+  size_t rootElementConnectorsSize = rootElement->CalculateReservedVerticalElementsOnParent() - 1;
+  for (auto const & connector : rootElement->GetConnectors())
   {
     float const relationElementY = lastAssignedY - Y_INCREMENT / 2;
-    for (auto const & relationConnector : connector->getConnectors())
+    for (auto const & relationConnector : connector->GetConnectors())
     {
-      auto relationOtherElement = relationConnector->getOtherElement();
-      relationOtherElement->setTopY(relationElementY);
-      relationOtherElement->setBottomY(relationElementY);
+      auto relationOtherElement = relationConnector->GetOtherElement();
+      relationOtherElement->SetTopY(relationElementY);
+      relationOtherElement->SetBottomY(relationElementY);
     }
-    auto otherElement = connector->getOtherElement();
-    assignYCoordinates(otherElement);
-    connector->setBaseElementBalance(levelElementConnectorIndex / rootElementConnectorsSize);
-    levelElementConnectorIndex += otherElement->calculateReservedVerticalElementsOnParent();
+    auto otherElement = connector->GetOtherElement();
+    AssignYCoordinates(otherElement);
+    connector->SetBaseElementBalance(levelElementConnectorIndex / rootElementConnectorsSize);
+    levelElementConnectorIndex += otherElement->CalculateReservedVerticalElementsOnParent();
   }
 
-  rootElement->setBottomY(rootElement->hasBus() ? lastAssignedY - Y_INCREMENT : lastAssignedY);
-  if (rootElement->getConnectors().empty())
+  rootElement->SetBottomY(rootElement->HasBus() ? lastAssignedY - Y_INCREMENT : lastAssignedY);
+  if (rootElement->GetConnectors().empty())
     lastAssignedY += Y_INCREMENT;
 }
 
@@ -510,7 +510,7 @@ SCgVisualisationTranslatorAgent::ScAddrComparator::ScAddrComparator(
 {
 }
 
-size_t SCgVisualisationTranslatorAgent::ScAddrComparator::getValue(std::pair<ScAddr, ScAddr> const & key) const
+size_t SCgVisualisationTranslatorAgent::ScAddrComparator::GetValue(std::pair<ScAddr, ScAddr> const & key) const
 {
   if (order.count(key.first))
     return order.at(key.first);
@@ -524,8 +524,8 @@ bool SCgVisualisationTranslatorAgent::ScAddrComparator::operator()(
     std::pair<ScAddr, ScAddr> const & first,
     std::pair<ScAddr, ScAddr> const & second) const
 {
-  size_t const firstValue = getValue(first);
-  size_t const secondValue = getValue(second);
+  size_t const firstValue = GetValue(first);
+  size_t const secondValue = GetValue(second);
   return firstValue < secondValue;
 }
 }  // namespace formatTranslators

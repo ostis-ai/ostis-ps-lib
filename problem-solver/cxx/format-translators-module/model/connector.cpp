@@ -7,154 +7,154 @@
 
 namespace formatTranslators
 {
-void Connector::acceptVisitor(Visitor & visitor)
+void Connector::AcceptVisitor(Visitor & visitor)
 {
-  visitor.visitConnector(*this);
+  visitor.VisitConnector(*this);
 }
 
-std::shared_ptr<Element> const & Connector::getBaseElement() const
+std::shared_ptr<Element> const & Connector::GetBaseElement() const
 {
   return baseElement;
 }
 
-void Connector::setBaseElement(std::shared_ptr<Element> const & baseElement)
+void Connector::SetBaseElement(std::shared_ptr<Element> const & baseElement)
 {
   this->baseElement = baseElement;
 }
 
-std::shared_ptr<Node> const & Connector::getOtherElement() const
+std::shared_ptr<Node> const & Connector::GetOtherElement() const
 {
   return otherElement;
 }
 
-void Connector::setOtherElement(std::shared_ptr<Node> const & otherElement)
+void Connector::SetOtherElement(std::shared_ptr<Node> const & otherElement)
 {
   this->otherElement = otherElement;
 }
 
-float Connector::getBaseElementX() const
+float Connector::GetBaseElementX() const
 {
   return baseElementX;
 }
 
-void Connector::setBaseElementX(float baseElementX)
+void Connector::SetBaseElementX(float baseElementX)
 {
   this->baseElementX = baseElementX;
 }
 
-float Connector::getBaseElementBalance() const
+float Connector::GetBaseElementBalance() const
 {
   return baseElementBalance == 1.f ? 0.99999f : baseElementBalance;
 }
 
-void Connector::setBaseElementBalance(float baseElementBalance)
+void Connector::SetBaseElementBalance(float baseElementBalance)
 {
   this->baseElementBalance = baseElementBalance;
 }
 
-float Connector::getBaseElementY() const
+float Connector::GetBaseElementY() const
 {
   return baseElementY;
 }
 
-void Connector::setBaseElementY(float baseElementY)
+void Connector::SetBaseElementY(float baseElementY)
 {
   this->baseElementY = baseElementY;
 }
 
-float Connector::getOtherElementX() const
+float Connector::GetOtherElementX() const
 {
   return otherElementX;
 }
 
-void Connector::setOtherElementX(float otherElementX)
+void Connector::SetOtherElementX(float otherElementX)
 {
   this->otherElementX = otherElementX;
-  otherElement->setX(otherElementX);
+  otherElement->SetX(otherElementX);
 }
 
-float Connector::getOtherElementY() const
+float Connector::GetOtherElementY() const
 {
   return otherElementY;
 }
 
-void Connector::setOtherElementY(float otherElementY)
+void Connector::SetOtherElementY(float otherElementY)
 {
   this->otherElementY = otherElementY;
 }
 
-float Connector::getOtherElementBalance() const
+float Connector::GetOtherElementBalance() const
 {
   return otherElementBalance == 1.f ? 0.99999f : otherElementBalance;
 }
 
-void Connector::setOtherElementBalance(float otherElementBalance)
+void Connector::SetOtherElementBalance(float otherElementBalance)
 {
   this->otherElementBalance = otherElementBalance;
 }
 
-bool Connector::getIsReversed() const
+bool Connector::GetIsReversed() const
 {
   return isReversed;
 }
 
-void Connector::setIsReversed(bool const isReversed)
+void Connector::SetIsReversed(bool const isReversed)
 {
   this->isReversed = isReversed;
 }
 
-std::list<std::pair<float, float>> const & Connector::getBendPoints() const
+std::list<std::pair<float, float>> const & Connector::GetBendPoints() const
 {
   return bendPoints;
 }
 
-std::shared_ptr<Element> Connector::getSourceElement() const
+std::shared_ptr<Element> Connector::GetSourceElement() const
 {
-  return isReversed ? getOtherElement() : getBaseElement();
+  return isReversed ? GetOtherElement() : GetBaseElement();
 }
 
-std::string Connector::getSourceElementIdForConnector() const
+std::string Connector::GetSourceElementIdForConnector() const
 {
-  return isReversed ? getOtherElement()->getIdForOtherElement() : getBaseElement()->getIdForBaseElement();
+  return isReversed ? GetOtherElement()->GetIdForOtherElement() : GetBaseElement()->GetIdForBaseElement();
 }
 
-float Connector::getSourceElementX() const
+float Connector::GetSourceElementX() const
 {
-  return isReversed ? getOtherElementX() : getBaseElementX();
+  return isReversed ? GetOtherElementX() : GetBaseElementX();
 }
 
-float Connector::getSourceElementY() const
+float Connector::GetSourceElementY() const
 {
-  return isReversed ? getOtherElementY() : getBaseElementY();
+  return isReversed ? GetOtherElementY() : GetBaseElementY();
 }
 
-float Connector::getSourceElementBalance() const
+float Connector::GetSourceElementBalance() const
 {
-  return isReversed ? getOtherElementBalance() : getBaseElementBalance();
+  return isReversed ? GetOtherElementBalance() : GetBaseElementBalance();
 }
 
-std::shared_ptr<Element> Connector::getTargetElement() const
+std::shared_ptr<Element> Connector::GetTargetElement() const
 {
-  return isReversed ? getBaseElement() : getOtherElement();
+  return isReversed ? GetBaseElement() : GetOtherElement();
 }
 
-std::string Connector::getTargetElementIdForConnector() const
+std::string Connector::GetTargetElementIdForConnector() const
 {
-  return isReversed ? getBaseElement()->getIdForBaseElement() : getOtherElement()->getIdForOtherElement();
+  return isReversed ? GetBaseElement()->GetIdForBaseElement() : GetOtherElement()->GetIdForOtherElement();
 }
 
-float Connector::getTargetElementX() const
+float Connector::GetTargetElementX() const
 {
-  return isReversed ? getBaseElementX() : getOtherElementX();
+  return isReversed ? GetBaseElementX() : GetOtherElementX();
 }
 
-float Connector::getTargetElementY() const
+float Connector::GetTargetElementY() const
 {
-  return isReversed ? getBaseElementY() : getOtherElementY();
+  return isReversed ? GetBaseElementY() : GetOtherElementY();
 }
 
-float Connector::getTargetElementBalance() const
+float Connector::GetTargetElementBalance() const
 {
-  return isReversed ? getBaseElementBalance() : getOtherElementBalance();
+  return isReversed ? GetBaseElementBalance() : GetOtherElementBalance();
 }
 }  // namespace formatTranslators
