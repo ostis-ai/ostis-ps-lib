@@ -49,8 +49,8 @@ ScResult StructureTranslatorAgent::DoProgram(
     ScAction action = m_context.ConvertToAction(event.GetOtherElement());
     if (!m_context.IsElement(structureToTranslate))
       SC_THROW_EXCEPTION(utils::ExceptionInvalidParams, "Cannot find structure to translate");
-    ScAddr const & identifiersLanguage =
-        action.GetArgument(FormatTranslatorsKeynodes::ui_rrel_user_lang, FormatTranslatorsConstants::GetDefaultLanguage());
+    ScAddr const & identifiersLanguage = action.GetArgument(
+        FormatTranslatorsKeynodes::ui_rrel_user_lang, FormatTranslatorsConstants::GetDefaultLanguage());
 
     ScAction keyElementsOrderAction = m_context.GenerateAction(FormatTranslatorsKeynodes::action_order_key_elements);
     keyElementsOrderAction.SetArguments(structureToTranslate);

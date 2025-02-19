@@ -16,7 +16,7 @@ struct GWFTranslatorVisitor::ScTypeHash
   }
 };
 
-std::unordered_map<ScType, std::string, GWFTranslatorVisitor::ScTypeHash> const GWFTranslatorVisitor::nodeTypes = {
+std::unordered_map<ScType, std::string, GWFTranslatorVisitor::ScTypeHash> const GWFTranslatorVisitor::NODE_TYPES = {
     {ScType::Node, "node/-/-/not_define"},
 
     {ScType::ConstNode, "node/const/perm/general"},
@@ -43,25 +43,26 @@ std::unordered_map<ScType, std::string, GWFTranslatorVisitor::ScTypeHash> const 
     {ScType::VarNodeLinkClass, "node/var/perm/general"},
 };
 
-std::unordered_map<ScType, std::string, GWFTranslatorVisitor::ScTypeHash> const GWFTranslatorVisitor::connectorTypes = {
-    {ScType::CommonEdge, "pair/-/-/-/noorient"},
-    {ScType::CommonArc, "pair/-/-/-/orient"},
+std::unordered_map<ScType, std::string, GWFTranslatorVisitor::ScTypeHash> const GWFTranslatorVisitor::CONNECTOR_TYPES =
+    {
+        {ScType::CommonEdge, "pair/-/-/-/noorient"},
+        {ScType::CommonArc, "pair/-/-/-/orient"},
 
-    {ScType::ConstCommonEdge, "pair/const/-/perm/noorien"},
-    {ScType::ConstCommonArc, "pair/const/-/perm/orient"},
-    {ScType::ConstPermPosArc, "pair/const/pos/perm/orient/membership"},
-    {ScType::ConstTempPosArc, "pair/const/pos/temp/orient/membership"},
-    {ScType::ConstPermNegArc, "pair/const/neg/perm/orient/membership"},
-    {ScType::ConstTempNegArc, "pair/const/neg/temp/orient/membership"},
-    {ScType::ConstFuzArc, "pair/const/fuz/perm/orient/membership"},
+        {ScType::ConstCommonEdge, "pair/const/-/perm/noorien"},
+        {ScType::ConstCommonArc, "pair/const/-/perm/orient"},
+        {ScType::ConstPermPosArc, "pair/const/pos/perm/orient/membership"},
+        {ScType::ConstTempPosArc, "pair/const/pos/temp/orient/membership"},
+        {ScType::ConstPermNegArc, "pair/const/neg/perm/orient/membership"},
+        {ScType::ConstTempNegArc, "pair/const/neg/temp/orient/membership"},
+        {ScType::ConstFuzArc, "pair/const/fuz/perm/orient/membership"},
 
-    {ScType::VarCommonEdge, "pair/var/-/perm/noorien"},
-    {ScType::VarCommonArc, "pair/var/-/perm/orient"},
-    {ScType::VarPermPosArc, "pair/var/pos/perm/orient/membership"},
-    {ScType::VarTempPosArc, "pair/var/pos/temp/orient/membership"},
-    {ScType::VarPermNegArc, "pair/var/neg/perm/orient/membership"},
-    {ScType::VarTempNegArc, "pair/var/neg/temp/orient/membership"},
-    {ScType::VarFuzArc, "pair/var/fuz/perm/orient/membership"},
+        {ScType::VarCommonEdge, "pair/var/-/perm/noorien"},
+        {ScType::VarCommonArc, "pair/var/-/perm/orient"},
+        {ScType::VarPermPosArc, "pair/var/pos/perm/orient/membership"},
+        {ScType::VarTempPosArc, "pair/var/pos/temp/orient/membership"},
+        {ScType::VarPermNegArc, "pair/var/neg/perm/orient/membership"},
+        {ScType::VarTempNegArc, "pair/var/neg/temp/orient/membership"},
+        {ScType::VarFuzArc, "pair/var/fuz/perm/orient/membership"},
 };
 
 std::string GWFTranslatorVisitor::GetStaticSectorContent() const
@@ -142,8 +143,8 @@ std::string GWFTranslatorVisitor::GetGWFId(Element & element)
 
 std::string GWFTranslatorVisitor::GetGWFConnectorType(Connector const & connector) const
 {
-  auto const & type = connectorTypes.find(connector.GetScType());
-  if (type == connectorTypes.cend())
+  auto const & type = CONNECTOR_TYPES.find(connector.GetScType());
+  if (type == CONNECTOR_TYPES.cend())
     SC_THROW_EXCEPTION(
         utils::ExceptionInvalidType,
         "GWFTranslatorVisitor: cannot convert connector type " << std::string(connector.GetScType()) << " to gwf");
@@ -152,8 +153,8 @@ std::string GWFTranslatorVisitor::GetGWFConnectorType(Connector const & connecto
 
 std::string GWFTranslatorVisitor::GetGWFNodeType(Node const & node) const
 {
-  auto const & type = nodeTypes.find(node.GetScType());
-  if (type == nodeTypes.cend())
+  auto const & type = NODE_TYPES.find(node.GetScType());
+  if (type == NODE_TYPES.cend())
     SC_THROW_EXCEPTION(
         utils::ExceptionInvalidType,
         "GWFTranslatorVisitor: cannot convert node type " << std::string(node.GetScType()) << " to gwf");
@@ -162,11 +163,13 @@ std::string GWFTranslatorVisitor::GetGWFNodeType(Node const & node) const
 
 std::string GWFTranslatorVisitor::GetLinkMimeType(Link const & link) const
 {
+  // todo(kilativ-dotcom): support other mime types
   return "content/term";
 }
 
 std::string GWFTranslatorVisitor::GetLinkContentType(Link const & link) const
 {
+  // todo(kilativ-dotcom): support other content types
   return "1";
 }
 

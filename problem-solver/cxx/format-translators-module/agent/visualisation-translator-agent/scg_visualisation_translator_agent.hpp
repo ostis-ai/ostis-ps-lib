@@ -21,17 +21,7 @@ public:
   ScResult DoProgram(ScAction & action) override;
 
 private:
-  static std::string const GWF_CONTENT_BEFORE_STATIC_SECTOR_CONTENT;
-  static std::string const GWF_CONTENT_AFTER_STATIC_SECTOR_CONTENT;
   float lastAssignedY = 0;
-  // CONNECTOR_IDENTIFIER_SCALE was set after a couple of experiments because it makes connector long enough
-  // for identifier to not overlap with other element
-  static float const CONNECTOR_IDENTIFIER_SCALE;
-  static float const CONNECTOR_INCIDENT_POINT_PERCENT;
-  static float const Y_INCREMENT;
-  static float const MIN_X;
-  static float const MAX_Y;
-  static float const MAX_LINK_WIDTH;
   ScAddr structureToTranslate;
   ScAddr identifiersLanguage;
   ScAddrToValueUnorderedMap<size_t> keyElementsOrder;
@@ -65,12 +55,12 @@ private:
   void ParseStructureIntoTriples();
 
   void ParseTriple(
-    ScAddr const & baseAddr,
-    ScAddr const & connectorAddr,
-    ScAddr const & otherElementAddr,
-    bool const isReversed,
-    ScAddrToValueUnorderedMap<std::pair<ScAddr, ScAddr>> & triplesWithConnectorNotInParsedStructure,
-    ScAddrToValueUnorderedMap<std::pair<ScAddr, ScAddr>> & triplesWithConnectorInParsedStructure);
+      ScAddr const & baseAddr,
+      ScAddr const & connectorAddr,
+      ScAddr const & otherElementAddr,
+      bool const isReversed,
+      ScAddrToValueUnorderedMap<std::pair<ScAddr, ScAddr>> & triplesWithConnectorNotInParsedStructure,
+      ScAddrToValueUnorderedMap<std::pair<ScAddr, ScAddr>> & triplesWithConnectorInParsedStructure);
 
   void AddTripleToParsedTriplesIfOtherIsNode(
       ScAddr const & baseAddr,

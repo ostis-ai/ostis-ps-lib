@@ -2,7 +2,6 @@
 
 #include <sstream>
 #include <unordered_map>
-#include <mutex>
 
 #include <sc-memory/sc_type.hpp>
 
@@ -41,8 +40,8 @@ private:
   std::stringstream staticSectorContent;
 
   struct ScTypeHash;
-  static std::unordered_map<ScType, std::string, ScTypeHash> const nodeTypes;
-  static std::unordered_map<ScType, std::string, ScTypeHash> const connectorTypes;
+  static std::unordered_map<ScType, std::string, ScTypeHash> const NODE_TYPES;
+  static std::unordered_map<ScType, std::string, ScTypeHash> const CONNECTOR_TYPES;
   size_t nextIdToAssign = 0;
 };
 

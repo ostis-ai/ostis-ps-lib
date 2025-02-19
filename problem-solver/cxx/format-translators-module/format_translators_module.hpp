@@ -6,8 +6,6 @@ namespace formatTranslators
 {
 class FormatTranslatorsModule : public ScModule
 {
-public:
-private:
 };
 
 }  // namespace formatTranslators
