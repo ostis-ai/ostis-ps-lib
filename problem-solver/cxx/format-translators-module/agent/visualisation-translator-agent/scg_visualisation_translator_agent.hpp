@@ -64,7 +64,15 @@ private:
 
   void ParseStructureIntoTriples();
 
-  void AddTripleToParsedTriples(
+  void ParseTriple(
+    ScAddr const & baseAddr,
+    ScAddr const & connectorAddr,
+    ScAddr const & otherElementAddr,
+    bool const isReversed,
+    ScAddrToValueUnorderedMap<std::pair<ScAddr, ScAddr>> & triplesWithConnectorNotInParsedStructure,
+    ScAddrToValueUnorderedMap<std::pair<ScAddr, ScAddr>> & triplesWithConnectorInParsedStructure);
+
+  void AddTripleToParsedTriplesIfOtherIsNode(
       ScAddr const & baseAddr,
       ScAddr const & connectorAddr,
       ScAddr const & otherElementAddr,
@@ -104,7 +112,7 @@ private:
 
   static void SetRelationIndent(std::list<std::shared_ptr<Node>> const & currentLevelRoots, float relationIndent);
 
-  void SetSystemIdentifierIfExists(ScAddr const & elementAddr, std::shared_ptr<Element> const & element) const;
+  void SetIdentifierIfExists(ScAddr const & elementAddr, std::shared_ptr<Element> const & element) const;
 
   static std::list<std::shared_ptr<Node>> AssignXCoordinates(std::shared_ptr<Node> const & rootElement);
 

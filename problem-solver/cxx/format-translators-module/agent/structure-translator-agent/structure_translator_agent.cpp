@@ -1,5 +1,6 @@
 #include "structure_translator_agent.hpp"
 
+#include "constants/format_translators_constants.hpp"
 #include "keynodes/format_translators_keynodes.hpp"
 
 namespace formatTranslators
@@ -41,7 +42,7 @@ bool StructureTranslatorAgent::CheckInitiationCondition(ScActionInitiatedEvent c
 
 ScResult StructureTranslatorAgent::DoProgram(
     ScEventAfterGenerateOutgoingArc<ScType::ConstPermPosArc> const & event,
-    ScAction & fakeAction)
+    ScAction & executedAction)
 {
   try
   {
@@ -49,15 +50,16 @@ ScResult StructureTranslatorAgent::DoProgram(
     if (!m_context.IsElement(structureToTranslate))
       SC_THROW_EXCEPTION(utils::ExceptionInvalidParams, "Cannot find structure to translate");
     ScAddr const & identifiersLanguage =
-        action.GetArgument(FormatTranslatorsKeynodes::ui_rrel_user_lang, FormatTranslatorsKeynodes::lang_en);
+        action.GetArgument(FormatTranslatorsKeynodes::ui_rrel_user_lang, FormatTranslatorsConstants::GetDefaultLanguage());
 
     ScAction keyElementsOrderAction = m_context.GenerateAction(FormatTranslatorsKeynodes::action_order_key_elements);
     keyElementsOrderAction.SetArguments(structureToTranslate);
-    keyElementsOrderAction.InitiateAndWait(1000);
+    keyElementsOrderAction.InitiateAndWait(FormatTranslatorsConstants::KEY_ELEMENTS_ORDERING_WAIT_TIME);
+    // todo(kilativ-dotcom): add actions finish check
 
     ScAction scgVisualiseAction = m_context.GenerateAction(FormatTranslatorsKeynodes::action_visualise_to_scg);
     scgVisualiseAction.SetArguments(structureToTranslate, identifiersLanguage);
-    scgVisualiseAction.InitiateAndWait(300000);
+    scgVisualiseAction.InitiateAndWait(FormatTranslatorsConstants::SCG_VISUALISATION_WAIT_TIME);
     ScAddr const & scgVisualiseActionResult = scgVisualiseAction.GetResult();
     auto const & it1 =
         m_context.CreateIterator3(scgVisualiseActionResult, ScType::ConstPermPosArc, ScType::ConstNodeLink);
@@ -69,13 +71,13 @@ ScResult StructureTranslatorAgent::DoProgram(
     arc = m_context.GenerateConnector(ScType::ConstCommonArc, structureToTranslate, resultLink);
     m_context.GenerateConnector(ScType::ConstPermPosArc, FormatTranslatorsKeynodes::nrel_translation, arc);
 
-    fakeAction.SetResult(resultLink);
-    return fakeAction.FinishSuccessfully();
+    executedAction.SetResult(resultLink);
+    return executedAction.FinishSuccessfully();
   }
   catch (utils::ScException const & exception)
   {
     m_logger.Error(exception.Description());
-    return fakeAction.FinishWithError();
+    return executedAction.FinishWithError();
   }
 }
 }  // namespace formatTranslators
