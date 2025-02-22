@@ -6,20 +6,20 @@ It's a library that provides common utilities and functions, likely to be used a
 
 The Common library can be used as a Conan package in other projects. Here's how to integrate it:
 
-1. Add the following to your `conanfile.txt`:
+### 1. Add the following to your `conanfile.txt`:
 
     ```
     [requires]
     common/0.1.0
     ```
 
-2. Run Conan to install the package:
+### 2. Run Conan to install the package:
 
     ```bash
     conan install . --build=missing
     ```
 
-3. In your CMakeLists.txt, add the following to find and link the library:
+### 3. In your CMakeLists.txt, add the following to find and link the library:
 
     ```cmake
     find_package(common REQUIRED)
@@ -28,17 +28,21 @@ The Common library can be used as a Conan package in other projects. Here's how 
     target_link_libraries(your_target PRIVATE common::common-utils)
     ```
 
-4. Configure your project:
+### 4. Configure your project:
 
     ```sh
     cmake --preset conan-release
     ```
 
-5. Build your project as usual:
+### 5. Build your project as usual:
 
     ```sh
     cmake --build --preset conan-release
     ```
+
+### 6. Download sc-machine Artifacts
+
+   - Download pre-built artifacts of sc-machine from [GitHub Releases](https://github.com/ostis-ai/sc-machine/releases) and extract them to a location of your choice. After that you can use sc-machine binaries to load extensions with agents that use the Common library.
 
 !!! Note
     The `common::common-utils` target provides all the necessary include directories and linked libraries. You don't need to specify them separately.
@@ -96,10 +100,18 @@ cd ostis-ps-lib/common
 
 #### 2. Install Dependencies with Conan
 
-The project uses Conan to manage dependencies. Install the required dependencies:
+The project uses Conan to manage dependencies. Choose build mode and install the required dependencies:
+
+- Debug:
 
 ```bash
-conan install . --build=missing
+conan install . -s build_type=Debug --build=missing
+```
+
+- Release
+
+```bash
+conan install . -s build_type=Release --build=missing
 ```
 
 #### 3. Configure Project
