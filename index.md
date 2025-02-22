@@ -5,6 +5,7 @@ Welcome to the [ostis-ps-lib](https://github.com/ostis-ai/ostis-ps-lib) document
 ## What is ostis-ps-lib?
 
 ostis-ps-lib is a collection of reusable components and libraries designed to facilitate the development of knowledge bases and problem solvers of systems in the OSTIS Technology. The repository is organized into several modules, each with its own set of functionalities and responsibilities. These modules are designed to work together seamlessly, allowing for the creation of complex and intelligent problem-solving systems.
+
 The primary goal of ostis-ps-lib is to provide a modular and extensible framework for building advanced AI systems, enabling developers to focus on the specific problem-solving tasks at hand. By leveraging the capabilities of the OSTIS Technology, ostis-ps-lib aims to streamline the development process, reduce code duplication, and promote collaboration among developers.
 
 Table of contents:
