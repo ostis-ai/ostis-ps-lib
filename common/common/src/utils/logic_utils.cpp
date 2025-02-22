@@ -28,7 +28,9 @@ bool LogicUtils::CheckLogicalFormula(
     result = !formulaSearchResult.IsEmpty();
   }
   else
-    SC_LOG_DEBUG("LogicUtils: the statement cannot be checked - only atomic logical formulas are currently supported.");
+    SC_THROW_EXCEPTION(
+        utils::ExceptionNotImplemented,
+        "LogicUtils: the statement cannot be checked - only atomic logical formulas are currently supported.");
 
   return result;
 }
