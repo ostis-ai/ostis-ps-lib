@@ -9,19 +9,24 @@ The non-atomic action interpreter Module can be used as an extension to the sc-m
 ### 1. Download sc-machine Artifacts
 
    - Download pre-built artifacts of sc-machine from [GitHub Releases](https://github.com/ostis-ai/sc-machine/releases) and extract them to a location of your choice.
-   - Alternatively, you can build sc-machine from source and use the resulting artifacts.
+   - Alternatively, you can build sc-machine from sources and use the resulting artifacts.
    - For more details on installing and using sc-machine artifacts, refer to the [sc-machine quick start guide](https://ostis-ai.github.io/sc-machine/quick_start/).
+  
+### 2. Download  Non-Atomic Action Interpreter Module Artifacts
 
-### 2. Specify Extension Paths
+   - Download pre-built artifacts of Non-Atomic Action Interpreter Module from [GitHub Releases](https://github.com/ostis-ai/ostis-ps-lib/releases) and extract them to a location of your choice.
+   - Alternatively, you can build Non-Atomic Action Interpreter Module from sources and use the resulting artifacts (see Developing Module section).
+
+### 3. Specify Extension Paths
 
    - When running the sc-machine binary, specify the path to the `lib/extensions` directory from the extracted Non-Atomic Action Interpreter Module folder:
 
    ```sh
    ./path/to/sc-machine/binary -s path/to/kb.bin \
-       -e "non-atomic-action-interpreter-module/build/<Debug|Release>/lib/extensions;path/to/sc-machine/lib/extensions"
+       -e "path/to/sc-machine/lib/extensions;path/to/extracted/non-atomic-action-interpreter-module/lib/extensions"
    ```
 
-   Replace `path/to/sc-machine/binary` with the path to the sc-machine binary, and `path/to/kb.bin` with the path to your knowledge base file.
+   Replace `path/to/sc-machine/binary` with the path to the sc-machine binary, `path/to/kb.bin` with the path to your knowledge base file, `path/to/extracted/non-atomic-action-interpreter-module/lib/extensions` with the path to extensions of Non-Atomic Action Interpreter Module and `path/to/sc-machine/lib/extensions` with the path to extensions of the sc-machine.
 
 ## Developing Module
 
@@ -50,10 +55,18 @@ cd ostis-ps-lib/non-atomic-action-interpreter-module
 
 #### 2. Install Dependencies with Conan
 
-The project uses Conan to manage dependencies. Install the required dependencies:
+The project uses Conan to manage dependencies. Choose build mode and install the required dependencies:
+
+- Debug:
 
 ```bash
-conan install . --build=missing
+conan install . -s build_type=Debug --build=missing
+```
+
+- Release
+
+```bash
+conan install . -s build_type=Release --build=missing
 ```
 
 #### 3. Configure Project
