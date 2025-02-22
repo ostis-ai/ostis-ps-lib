@@ -5,9 +5,9 @@
 [![Docs](https://img.shields.io/badge/Docs-gray?style=for-the-badge&logo=read-the-docs)](https://ostis-ai.github.io/ostis-ps-lib)
 [![Community](https://img.shields.io/badge/-Community-teal?style=for-the-badge&logo=matrix)](https://app.element.io/index.html#/room/#ostis_tech_support:matrix.org)
 
-This repository is a centralized storage for the components of problem-solver for systems made with the [OSTIS Technology](https://github.com/ostis-ai).
+This repository is a centralized storage for the components of knowledge base and problem solver for systems made with the [OSTIS Technology](https://github.com/ostis-ai).
 
-ostis-ps-lib is a collection of reusable components and libraries designed to facilitate the development of problem-solvers of systems in the OSTIS Technology. The repository is organized into several modules, each with its own set of functionalities and responsibilities.
+ostis-ps-lib is a collection of reusable components and libraries designed to facilitate the development of knowledge bases and problem solvers of systems in the OSTIS Technology. The repository is organized into several modules, each with its own set of functionalities and responsibilities.
 
 It contains the following components: 
 
@@ -41,7 +41,7 @@ For more information about the Non-Atomic Action Interpreter Module, [refer to t
 
 ## Further Reading
 
-For more information about the OSTIS problem-solver components and the ostis-ps-lib project, refer to the following resources:
+For more information about the ostis-ps-lib project, refer to the following resources:
 
 - [ostis-ps-lib GitHub repository](https://github.com/ostis-ai/ostis-ps-lib);
 - [ostis-ai GitHub organization](https://github.com/ostis-ai);
@@ -50,7 +50,7 @@ For more information about the OSTIS problem-solver components and the ostis-ps-
 
 ## Feedback
 
-Contributions to the OSTIS problem-solver components and the ostis-ps-lib project are welcome! If you have any suggestions, bug reports, or feature requests, please open an issue or submit a pull request on the GitHub repository.
+Contributions to the ostis-ps-lib project are welcome! If you have any suggestions, bug reports, or feature requests, please open an issue or submit a pull request on the GitHub repository.
 
 ## License
 

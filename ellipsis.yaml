@@ -1,6 +1,6 @@
 version: 1.3
 about:
-  - "This repository is a centralized storage for the components of problem-solver for systems made with the OSTIS Technology"
+  - "This repository is a centralized storage for the components of knowledge base and problem solver for systems made with the OSTIS Technology"
 
 pr_review:
   rules:
