@@ -5,6 +5,10 @@ cmake-build-*
 /bin
 /ConanPresets.json
 
+CMakeCache.txt
+CMakeFiles
+DartConfiguration.tcl
+
 kb.bin
 
 .DS_Store
