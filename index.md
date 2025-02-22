@@ -16,5 +16,5 @@ Table of contents:
 - **Development** - *Instructions for developers*
     * [Contributing Guide](_docs/CONTRIBUTING.md) - *how to contribute to the project*
     * [Codestyle Guide](https://ostis-ai.github.io/sc-machine/dev/codestyle/) - *how to write code in the project*
-- [License](https://github.com/ostis-ai/scp-machine/blob/main/LICENSE)
+- [License](https://github.com/ostis-ai/ostis-ps-lib/blob/main/LICENSE)
 - [Changelog](_docs/changelog.md)
