@@ -9,6 +9,10 @@ docs_dir: ..
 exclude_docs: |
   /README.md
   build
+  cmake
+  common/common
+  non-atomic-action-interpreter-module/non-atomic-action-interpreter-module
+  scripts
 
 extra_css:
   - _docs/_assets/main.css
