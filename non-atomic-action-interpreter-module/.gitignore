@@ -1,0 +1,10 @@
+.idea
+.vscode
+cmake-build-*
+/build
+/bin
+/ConanPresets.json
+
+kb.bin
+
+.DS_Store
