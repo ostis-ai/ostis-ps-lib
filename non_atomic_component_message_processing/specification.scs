@@ -7,6 +7,8 @@ dialog_system_message_processing_module_reusable_component_specification = [*
     <- concept_reusable_component;;
     <- concept_non_atomic_reusable_component;;
     <- concept_dependent_reusable_component;;
+    // until introduction of agents
+    <- concept_reusable_kb_component;;
     // until introduction of platform dependent agents
     <- concept_platform_independent_reusable_component;;
     <- concept_reusable_dynamically_installed_component;;
