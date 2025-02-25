@@ -48,12 +48,6 @@ void checkTranslation(ScAgentContext & context, std::string const & filename)
   std::string const resultLinkContent = getResultLinkContent(context, testAction);
   std::string const expectedResult = readFile(FORMAT_TRANSLATORS_MODULE_EXPECTED_FILES_DIR_PATH + filename + ".gwf");
   EXPECT_EQ(resultLinkContent, expectedResult) << resultLinkContent;
-  // std::ofstream outputFile(FORMAT_TRANSLATORS_MODULE_EXPECTED_FILES_DIR_PATH + "" + filename + ".gwf");
-  // if (outputFile.is_open())
-  // {
-  //   outputFile << resultLinkContent;
-  //   outputFile.close();
-  // }
 }
 
 TEST_F(FormatTranslatorsTest, emptyKeyElementsTest)
@@ -144,6 +138,11 @@ TEST_F(FormatTranslatorsTest, complexSuccessfulTranslation)
 TEST_F(FormatTranslatorsTest, xOverflow)
 {
   checkTranslation(*m_ctx, "xOverflow");
+}
+
+TEST_F(FormatTranslatorsTest, defaultEnIdtfIsUsed)
+{
+  checkTranslation(*m_ctx, "defaultEnIdtfIsUsed");
 }
 
 void checkTranslationWithError(ScAgentContext & context, std::string const & filename)
