@@ -31,7 +31,7 @@ sc_node_tuple
     _element _-> rrel_svo_triple_element_values:: _values_set;;
     _value
         <-_ _values_set;
-        _<~ not_enough_specified_essence;;
+        <~_ not_enough_specified_essence;;
 *];;
 
 atomic_logical_formula
