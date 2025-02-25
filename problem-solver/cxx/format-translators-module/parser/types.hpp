@@ -8,6 +8,9 @@ namespace formatTranslators
 {
 
 class ScAddrComparator;
+// this is map that has baseElement as key and another map as value
+// value map has <otherElement, connector> pair as key and list of triples as value
+// triple <otherElement, connector, isReversed> stores if connector between baseElement and otherElement is reversed
 using Triples = ScAddrToValueUnorderedMap<
     std::map<std::pair<ScAddr, ScAddr>, std::list<std::tuple<ScAddr, ScAddr, bool>>, ScAddrComparator>>;
 
@@ -33,12 +36,23 @@ private:
 
   size_t GetValue(std::pair<ScAddr, ScAddr> const & key) const
   {
-    if (order.count(key.first))
-      return order.at(key.first);
-    ScAddr const & firstOtherElementForConnector = structureTriples.at(key.second).begin()->first.first;
-    if (order.count(firstOtherElementForConnector))
-      return order.at(firstOtherElementForConnector);
-    return key.first.Hash() + key.second.Hash();
+    bool const hasDirectValue = order.count(key.first);
+    bool const hasIndirectValue = structureTriples.count(key.second);
+    if (hasIndirectValue)
+    {
+      ScAddr const & firstOtherElementForConnector = structureTriples.at(key.second).begin()->first.first;
+      if (hasDirectValue)
+        return std::min(order.at(key.first), order.at(firstOtherElementForConnector));
+      else
+        return order.at(firstOtherElementForConnector);
+    }
+    else
+    {
+      if (hasDirectValue)
+        return order.at(key.first);
+      else
+        return key.first.Hash() + key.second.Hash();
+    }
   }
 };
 

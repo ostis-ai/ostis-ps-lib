@@ -145,6 +145,11 @@ TEST_F(FormatTranslatorsTest, defaultEnIdtfIsUsed)
   checkTranslation(*m_ctx, "defaultEnIdtfIsUsed");
 }
 
+TEST_F(FormatTranslatorsTest, relationPriorityIsUsed)
+{
+  checkTranslation(*m_ctx, "relationPriorityIsUsed");
+}
+
 void checkTranslationWithError(ScAgentContext & context, std::string const & filename)
 {
   loader.loadScsFile(context, FORMAT_TRANSLATORS_MODULE_TEST_FILES_DIR_PATH + filename + ".scs");
