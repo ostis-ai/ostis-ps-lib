@@ -9,10 +9,7 @@ void Link::AcceptVisitor(Visitor & visitor)
   visitor.VisitLink(*this);
 }
 
-Link::Link()
-  : Node()
-{
-}
+Link::Link() {}
 
 std::string const & Link::GetContent() const
 {

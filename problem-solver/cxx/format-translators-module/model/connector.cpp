@@ -37,17 +37,18 @@ float Connector::GetBaseElementX() const
   return baseElementX;
 }
 
-void Connector::SetBaseElementX(float baseElementX)
+void Connector::SetBaseElementX(float const baseElementX)
 {
   this->baseElementX = baseElementX;
 }
 
 float Connector::GetBaseElementBalance() const
 {
+  // 1 cannot be returned because kbe renders connector going from but start in that case
   return baseElementBalance == 1.f ? 0.99999f : baseElementBalance;
 }
 
-void Connector::SetBaseElementBalance(float baseElementBalance)
+void Connector::SetBaseElementBalance(float const baseElementBalance)
 {
   this->baseElementBalance = baseElementBalance;
 }
@@ -57,7 +58,7 @@ float Connector::GetBaseElementY() const
   return baseElementY;
 }
 
-void Connector::SetBaseElementY(float baseElementY)
+void Connector::SetBaseElementY(float const baseElementY)
 {
   this->baseElementY = baseElementY;
 }
@@ -67,7 +68,7 @@ float Connector::GetOtherElementX() const
   return otherElementX;
 }
 
-void Connector::SetOtherElementX(float otherElementX)
+void Connector::SetOtherElementX(float const otherElementX)
 {
   this->otherElementX = otherElementX;
   otherElement->SetX(otherElementX);
@@ -78,17 +79,18 @@ float Connector::GetOtherElementY() const
   return otherElementY;
 }
 
-void Connector::SetOtherElementY(float otherElementY)
+void Connector::SetOtherElementY(float const otherElementY)
 {
   this->otherElementY = otherElementY;
 }
 
 float Connector::GetOtherElementBalance() const
 {
+  // 1 cannot be returned because kbe renders connector going from but start in that case
   return otherElementBalance == 1.f ? 0.99999f : otherElementBalance;
 }
 
-void Connector::SetOtherElementBalance(float otherElementBalance)
+void Connector::SetOtherElementBalance(float const otherElementBalance)
 {
   this->otherElementBalance = otherElementBalance;
 }

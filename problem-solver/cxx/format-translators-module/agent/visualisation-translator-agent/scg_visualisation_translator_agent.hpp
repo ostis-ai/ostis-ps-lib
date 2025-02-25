@@ -1,10 +1,10 @@
 #pragma once
 
-#include <map>
-
 #include <sc-memory/sc_agent.hpp>
 
 #include "model/element.hpp"
+
+#include "parser/types.hpp"
 
 namespace formatTranslators
 {
@@ -26,63 +26,10 @@ private:
   ScAddr identifiersLanguage;
   ScAddrToValueUnorderedMap<size_t> keyElementsOrder;
 
-  class ScAddrComparator
-  {
-  public:
-    explicit ScAddrComparator(
-        ScAddrToValueUnorderedMap<size_t> & order,
-        ScAddrToValueUnorderedMap<
-            std::map<std::pair<ScAddr, ScAddr>, std::list<std::tuple<ScAddr, ScAddr, bool>>, ScAddrComparator>> &
-            structureTriples);
-    bool operator()(std::pair<ScAddr, ScAddr> const & first, std::pair<ScAddr, ScAddr> const & second) const;
-
-  private:
-    ScAddrToValueUnorderedMap<size_t> & order;
-    ScAddrToValueUnorderedMap<
-        std::map<std::pair<ScAddr, ScAddr>, std::list<std::tuple<ScAddr, ScAddr, bool>>, ScAddrComparator>> &
-        structureTriples;
-    size_t GetValue(std::pair<ScAddr, ScAddr> const & key) const;
-  };
-
-  ScAddrToValueUnorderedMap<
-      std::map<std::pair<ScAddr, ScAddr>, std::list<std::tuple<ScAddr, ScAddr, bool>>, ScAddrComparator>>
-      structureTriples;
+  Triples structureTriples;
   ScAddrUnorderedSet rootElements;
   ScAddrUnorderedSet walkedConnectors;
-  std::vector<std::list<std::shared_ptr<Node>>> parsedStructure;
   void ParseKeyElementsOrder(ScAddr const & keyElementsOrderTuple);
-
-  void ParseStructureIntoTriples();
-
-  void ParseTriple(
-      ScAddr const & baseAddr,
-      ScAddr const & connectorAddr,
-      ScAddr const & otherElementAddr,
-      bool const isReversed,
-      ScAddrToValueUnorderedMap<std::pair<ScAddr, ScAddr>> & triplesWithConnectorNotInParsedStructure,
-      ScAddrToValueUnorderedMap<std::pair<ScAddr, ScAddr>> & triplesWithConnectorInParsedStructure);
-
-  void AddTripleToParsedTriplesIfOtherIsNode(
-      ScAddr const & baseAddr,
-      ScAddr const & connectorAddr,
-      ScAddr const & otherElementAddr,
-      bool const isReversed);
-
-  std::shared_ptr<Node> WalkBFS(ScAddr const & root, size_t currentLevel);
-
-  std::shared_ptr<Node> CreateNode(ScAddr const & nodeAddr, ScType const & nodeType) const;
-
-  std::shared_ptr<Connector> CreateConnector(
-      ScAddr const & connector,
-      std::shared_ptr<Element> const & baseElement,
-      std::shared_ptr<Node> const & otherElement,
-      bool const isReversed) const;
-
-  void AddVerticalConnector(
-      ScAddr const & otherAddr,
-      ScAddr const & connectorAddr,
-      std::shared_ptr<Connector> const & baseConnector,
-      bool const isReversed) const;
 
   static float CalculateIndentCausedByLinkContent(
       std::list<std::shared_ptr<Connector>> const & connectorsToNextLevelRoots,
@@ -102,13 +49,9 @@ private:
 
   static void SetRelationIndent(std::list<std::shared_ptr<Node>> const & currentLevelRoots, float relationIndent);
 
-  void SetIdentifierIfExists(ScAddr const & elementAddr, std::shared_ptr<Element> const & element) const;
-
   static std::list<std::shared_ptr<Node>> AssignXCoordinates(std::shared_ptr<Node> const & rootElement);
 
   void AssignYCoordinates(std::shared_ptr<Node> const & rootElement);
-
-  void ProcessTriple(std::shared_ptr<Node> const & rootElement, std::shared_ptr<Connector> const & connectorElement);
 };
 
 }  // namespace formatTranslators

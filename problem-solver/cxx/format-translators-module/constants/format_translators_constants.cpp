@@ -24,6 +24,7 @@ float const FormatTranslatorsConstants::MIN_X = 200;
 float const FormatTranslatorsConstants::MAX_Y = 800;
 float const FormatTranslatorsConstants::MAX_LINK_WIDTH = 60;
 float const FormatTranslatorsConstants::EMPTY_SPACE_AFTER_IDENTIFIER = 8;
+float const FormatTranslatorsConstants::IDENTIFIER_CHARACTER_WIDTH = 6;
 
 ScAddr FormatTranslatorsConstants::GetDefaultLanguage()
 {

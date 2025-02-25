@@ -25,6 +25,7 @@ public:
   static float const MAX_Y;
   static float const MAX_LINK_WIDTH;
   static float const EMPTY_SPACE_AFTER_IDENTIFIER;
+  static float const IDENTIFIER_CHARACTER_WIDTH;
 
   static ScAddr GetDefaultLanguage();
 };

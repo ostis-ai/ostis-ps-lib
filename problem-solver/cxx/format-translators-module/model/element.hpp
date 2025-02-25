@@ -20,6 +20,8 @@ class Element
 public:
   Element();
 
+  virtual ~Element() = default;
+
   std::string const & GetIdentifier() const;
 
   void SetIdentifier(std::string const & identifier);

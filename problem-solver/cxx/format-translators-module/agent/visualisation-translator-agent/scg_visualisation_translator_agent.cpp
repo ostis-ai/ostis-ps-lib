@@ -7,8 +7,10 @@
 #include "constants/format_translators_constants.hpp"
 
 #include "model/node.hpp"
-#include "model/link.hpp"
 #include "model/connector.hpp"
+
+#include "parser/structure_to_triples_parser.hpp"
+#include "parser/triples_to_model_parser.hpp"
 
 #include "visitor/gwf_translator_visitor.hpp"
 
@@ -41,8 +43,12 @@ ScResult SCgVisualisationTranslatorAgent::DoProgram(ScAction & action)
     if (!m_context.IsElement(mainKeyElement))
       SC_THROW_EXCEPTION(utils::ExceptionItemNotFound, "Cannot find main key element for structure to translate");
     ParseKeyElementsOrder(keyElementsOrderTuple);
-    ParseStructureIntoTriples();
-    auto const & rootElement = WalkBFS(mainKeyElement, 0);
+    StructureToTriplesParser structureToTriplesParser;
+    structureToTriplesParser.ParseStructure(
+        &m_context, structureToTranslate, keyElementsOrder, identifiersLanguage, structureTriples);
+    TriplesToModelParser triplesToModelParser;
+    auto const & rootElement = triplesToModelParser.ParseTriples(
+        &m_context, mainKeyElement, keyElementsOrder, identifiersLanguage, structureTriples);
     auto const & treeRoots = AssignXCoordinates(rootElement);
     GWFTranslatorVisitor visitor;
     lastAssignedY = 0;
@@ -103,221 +109,6 @@ void SCgVisualisationTranslatorAgent::ParseKeyElementsOrder(ScAddr const & keyEl
   }
 }
 
-void SCgVisualisationTranslatorAgent::ParseStructureIntoTriples()
-{
-  auto const & structureConnectorsIterator =
-      m_context.CreateIterator3(structureToTranslate, ScType::ConstPermPosArc, ScType::Connector);
-  std::list<std::tuple<ScAddr, ScAddr, ScAddr>> triplesWithConnectors;
-  ScAddrToValueUnorderedMap<std::pair<ScAddr, ScAddr>> triplesWithConnectorNotInParsedStructure;
-  ScAddrToValueUnorderedMap<std::pair<ScAddr, ScAddr>> triplesWithConnectorInParsedStructure;
-  while (structureConnectorsIterator->Next())
-  {
-    ScAddr const & connector = structureConnectorsIterator->Get(2);
-    auto const & [first, second] = m_context.GetConnectorIncidentElements(connector);
-    ParseTriple(
-        first,
-        connector,
-        second,
-        false,
-        triplesWithConnectorNotInParsedStructure,
-        triplesWithConnectorInParsedStructure);
-    ParseTriple(
-        second,
-        connector,
-        first,
-        true,
-        triplesWithConnectorNotInParsedStructure,
-        triplesWithConnectorInParsedStructure);
-  }
-  for (auto const & [connector, firstAndSecond] : triplesWithConnectorInParsedStructure)
-  {
-    if (structureTriples.count(connector))
-    {
-      auto const & [first, second] = firstAndSecond;
-      if (m_context.GetElementType(second).IsNode())
-        AddTripleToParsedTriplesIfOtherIsNode(first, connector, second, false);
-      if (m_context.GetElementType(first).IsNode())
-        AddTripleToParsedTriplesIfOtherIsNode(second, connector, first, true);
-    }
-  }
-}
-
-void SCgVisualisationTranslatorAgent::ParseTriple(
-    ScAddr const & baseAddr,
-    ScAddr const & connectorAddr,
-    ScAddr const & otherElementAddr,
-    bool const isReversed,
-    ScAddrToValueUnorderedMap<std::pair<ScAddr, ScAddr>> & triplesWithConnectorNotInParsedStructure,
-    ScAddrToValueUnorderedMap<std::pair<ScAddr, ScAddr>> & triplesWithConnectorInParsedStructure)
-{
-  auto const sourceTargetPair =
-      isReversed ? std::make_pair(otherElementAddr, baseAddr) : std::make_pair(baseAddr, otherElementAddr);
-  if (m_context.GetElementType(otherElementAddr).IsNode())
-  {
-    if (keyElementsOrder.count(otherElementAddr))
-    {
-      AddTripleToParsedTriplesIfOtherIsNode(baseAddr, connectorAddr, otherElementAddr, isReversed);
-      auto const & notInParsedIterator = triplesWithConnectorNotInParsedStructure.find(connectorAddr);
-      if (notInParsedIterator != triplesWithConnectorNotInParsedStructure.cend())
-      {
-        triplesWithConnectorInParsedStructure.insert({connectorAddr, sourceTargetPair});
-        triplesWithConnectorNotInParsedStructure.erase(connectorAddr);
-      }
-    }
-    else
-    {
-      // if other element is not key element then it is possible that currently parsed triple is base triple in five
-      // elements construction that has key element as fifth element of construction
-      if (structureTriples.count(connectorAddr))
-        triplesWithConnectorInParsedStructure.insert({connectorAddr, sourceTargetPair});
-      else
-        triplesWithConnectorNotInParsedStructure.insert({connectorAddr, sourceTargetPair});
-    }
-  }
-}
-
-void SCgVisualisationTranslatorAgent::AddTripleToParsedTriplesIfOtherIsNode(
-    ScAddr const & baseAddr,
-    ScAddr const & connectorAddr,
-    ScAddr const & otherElementAddr,
-    bool const isReversed)
-{
-  if (m_context.GetElementType(otherElementAddr).IsNode())
-  {
-    if (!structureTriples.count(baseAddr))
-    {
-      ScAddrComparator const comparator(keyElementsOrder, structureTriples);
-      std::map<std::pair<ScAddr, ScAddr>, std::list<std::tuple<ScAddr, ScAddr, bool>>, ScAddrComparator>
-          pairsWithComparator(comparator);
-      structureTriples.insert({baseAddr, pairsWithComparator});
-    }
-    structureTriples.at(baseAddr)[{otherElementAddr, connectorAddr}].emplace_back(
-        otherElementAddr, connectorAddr, isReversed);
-  }
-}
-
-std::shared_ptr<Node> SCgVisualisationTranslatorAgent::WalkBFS(ScAddr const & root, size_t currentLevel)
-{
-  ScType const & rootType = m_context.GetElementType(root);
-  // todo(kilativ-dotcom): allow connectors to be roots
-  if (!rootType.IsNode())
-    SC_THROW_EXCEPTION(
-        utils::ExceptionInvalidParams,
-        "Only node is allowed to be a root, got " << std::string(rootType) << " instead for root with hash `"
-                                                  << root.Hash() << "`.");
-  auto rootElement = CreateNode(root, rootType);
-  if (rootElements.count(root))
-    return rootElement;
-  rootElements.insert(root);
-  auto const & pairsIterator = structureTriples.find(root);
-  if (pairsIterator == structureTriples.cend())
-    return rootElement;
-  for (auto const & [_, otherElementAndConnectorWithReverse] : pairsIterator->second)
-  {
-    for (auto const & [otherElementAddr, connectorAddr, isReversed] : otherElementAndConnectorWithReverse)
-    {
-      if (walkedConnectors.count(connectorAddr))
-        continue;
-      walkedConnectors.insert(connectorAddr);
-      auto const & subtreeRoot = WalkBFS(otherElementAddr, currentLevel + 1);
-      auto const & connectorElement = CreateConnector(connectorAddr, rootElement, subtreeRoot, isReversed);
-      ProcessTriple(rootElement, connectorElement);
-    }
-  }
-  return rootElement;
-}
-
-void SCgVisualisationTranslatorAgent::ProcessTriple(
-    std::shared_ptr<Node> const & rootElement,
-    std::shared_ptr<Connector> const & connectorElement)
-{
-  rootElement->AddConnector(connectorElement);
-
-  auto const & pairsIterator = structureTriples.find(connectorElement->GetScAddress());
-  if (pairsIterator != structureTriples.cend())
-  {
-    for (auto const & [_, otherElementAndConnectorWithReverse] : pairsIterator->second)
-      for (auto const & [relationAddr, connectorAddr, isReversed] : otherElementAndConnectorWithReverse)
-        AddVerticalConnector(relationAddr, connectorAddr, connectorElement, isReversed);
-  }
-}
-
-std::shared_ptr<Node> SCgVisualisationTranslatorAgent::CreateNode(ScAddr const & nodeAddr, ScType const & nodeType)
-    const
-{
-  if (!nodeType.IsNode())
-    SC_THROW_EXCEPTION(
-        utils::ExceptionInvalidParams,
-        "Cannot create node with type " << std::string(nodeType) << " for sc-element with hash `" << nodeAddr.Hash()
-                                        << "`.");
-  std::shared_ptr<Node> nodeElement;
-  if (nodeType.IsLink())
-  {
-    auto const linkElement = std::make_shared<Link>();
-    std::string linkContent;
-    m_context.GetLinkContent(nodeAddr, linkContent);
-    linkElement->SetContent(linkContent);
-    nodeElement = linkElement;
-  }
-  else
-    nodeElement = std::make_shared<Node>();
-  nodeElement->SetScAddress(nodeAddr);
-  nodeElement->SetScType(m_context.GetElementType(nodeAddr));
-  SetIdentifierIfExists(nodeAddr, nodeElement);
-
-  return nodeElement;
-}
-
-void SCgVisualisationTranslatorAgent::SetIdentifierIfExists(
-    ScAddr const & elementAddr,
-    std::shared_ptr<Element> const & element) const
-{
-  std::string identifier;
-  auto const & mainIdentifierIterator = m_context.CreateIterator5(
-      elementAddr, ScType::ConstCommonArc, ScType::ConstNodeLink, ScType::ConstPermPosArc, ScKeynodes::nrel_main_idtf);
-  while (mainIdentifierIterator->Next() && identifier.empty())
-  {
-    ScAddr const & link = mainIdentifierIterator->Get(2);
-    if (m_context.CheckConnector(identifiersLanguage, link, ScType::ConstPermPosArc))
-      m_context.GetLinkContent(link, identifier);
-  }
-  if (identifier.empty())
-    identifier = m_context.GetElementSystemIdentifier(elementAddr);
-  if (!identifier.empty())
-    element->SetIdentifier(identifier);
-  element->SetIdentifierPosition(IdentifierPosition::BOTTOM_RIGHT);
-}
-
-std::shared_ptr<Connector> SCgVisualisationTranslatorAgent::CreateConnector(
-    ScAddr const & connector,
-    std::shared_ptr<Element> const & baseElement,
-    std::shared_ptr<Node> const & otherElement,
-    bool const isReversed) const
-{
-  auto const & connectorElement = std::make_shared<Connector>();
-  connectorElement->SetScAddress(connector);
-  connectorElement->SetScType(m_context.GetElementType(connector));
-
-  SetIdentifierIfExists(connector, connectorElement);
-
-  connectorElement->SetBaseElement(baseElement);
-  connectorElement->SetOtherElement(otherElement);
-  connectorElement->SetIsReversed(isReversed);
-
-  return connectorElement;
-}
-
-void SCgVisualisationTranslatorAgent::AddVerticalConnector(
-    ScAddr const & otherAddr,
-    ScAddr const & connectorAddr,
-    std::shared_ptr<Connector> const & baseConnector,
-    bool const isReversed) const
-{
-  auto const otherElement = CreateNode(otherAddr, m_context.GetElementType(otherAddr));
-  auto const & connectorElement = CreateConnector(connectorAddr, baseConnector, otherElement, isReversed);
-  baseConnector->AddConnector(connectorElement);
-}
-
 std::list<std::shared_ptr<Node>> SCgVisualisationTranslatorAgent::AssignXCoordinates(
     std::shared_ptr<Node> const & rootElement)
 {
@@ -325,7 +116,6 @@ std::list<std::shared_ptr<Node>> SCgVisualisationTranslatorAgent::AssignXCoordin
   if (previousLevelMaxLinkContentSize > FormatTranslatorsConstants::MAX_LINK_WIDTH)
     previousLevelMaxLinkContentSize = FormatTranslatorsConstants::MAX_LINK_WIDTH;
   float nextLevelIndent = FormatTranslatorsConstants::MIN_X;
-  float const scaleX = 6;
   rootElement->SetX(nextLevelIndent);
   auto treeRoots = std::list{rootElement};
 
@@ -350,7 +140,7 @@ std::list<std::shared_ptr<Node>> SCgVisualisationTranslatorAgent::AssignXCoordin
       float const indentDifference =
           (std::max(maxLevelElementIdentifierLength, maxRelationIdentifierLength) + indentCausedByLinkContent
            + FormatTranslatorsConstants::EMPTY_SPACE_AFTER_IDENTIFIER)
-          * scaleX;
+          * FormatTranslatorsConstants::IDENTIFIER_CHARACTER_WIDTH;
       nextLevelIndent += indentDifference;
       bool const reachedEndOfIndent = nextLevelIndent >= FormatTranslatorsConstants::MAX_Y;
       if (reachedEndOfIndent)
@@ -466,7 +256,7 @@ void SCgVisualisationTranslatorAgent::UpdateNextLevelRoots(
 
 void SCgVisualisationTranslatorAgent::SetRelationIndent(
     std::list<std::shared_ptr<Node>> const & currentLevelRoots,
-    float relationIndent)
+    float const relationIndent)
 {
   for (auto const & levelElement : currentLevelRoots)
   {
@@ -492,7 +282,7 @@ void SCgVisualisationTranslatorAgent::AssignYCoordinates(std::shared_ptr<Node> c
   if (rootElement->HasBus())
     lastAssignedY += FormatTranslatorsConstants::Y_INCREMENT;
   float levelElementConnectorIndex = 1;
-  size_t rootElementConnectorsSize = rootElement->CalculateReservedVerticalElementsOnParent() - 1;
+  size_t const rootElementConnectorsSize = rootElement->CalculateReservedVerticalElementsOnParent() - 1;
   for (auto const & connector : rootElement->GetConnectors())
   {
     float const relationElementY = lastAssignedY - FormatTranslatorsConstants::HALF_Y_INCREMENT;
@@ -512,34 +302,5 @@ void SCgVisualisationTranslatorAgent::AssignYCoordinates(std::shared_ptr<Node> c
       rootElement->HasBus() ? lastAssignedY - FormatTranslatorsConstants::Y_INCREMENT : lastAssignedY);
   if (rootElement->GetConnectors().empty())
     lastAssignedY += FormatTranslatorsConstants::Y_INCREMENT;
-}
-
-SCgVisualisationTranslatorAgent::ScAddrComparator::ScAddrComparator(
-    ScAddrToValueUnorderedMap<size_t> & order,
-    ScAddrToValueUnorderedMap<
-        std::map<std::pair<ScAddr, ScAddr>, std::list<std::tuple<ScAddr, ScAddr, bool>>, ScAddrComparator>> &
-        structureTriples)
-  : order(order)
-  , structureTriples(structureTriples)
-{
-}
-
-size_t SCgVisualisationTranslatorAgent::ScAddrComparator::GetValue(std::pair<ScAddr, ScAddr> const & key) const
-{
-  if (order.count(key.first))
-    return order.at(key.first);
-  ScAddr const & firstOtherElementForConnector = structureTriples.at(key.second).begin()->first.first;
-  if (order.count(firstOtherElementForConnector))
-    return order.at(firstOtherElementForConnector);
-  return key.first.Hash() + key.second.Hash();
-}
-
-bool SCgVisualisationTranslatorAgent::ScAddrComparator::operator()(
-    std::pair<ScAddr, ScAddr> const & first,
-    std::pair<ScAddr, ScAddr> const & second) const
-{
-  size_t const firstValue = GetValue(first);
-  size_t const secondValue = GetValue(second);
-  return firstValue < secondValue;
 }
 }  // namespace formatTranslators

@@ -54,12 +54,17 @@ ScResult StructureTranslatorAgent::DoProgram(
 
     ScAction keyElementsOrderAction = m_context.GenerateAction(FormatTranslatorsKeynodes::action_order_key_elements);
     keyElementsOrderAction.SetArguments(structureToTranslate);
-    keyElementsOrderAction.InitiateAndWait(FormatTranslatorsConstants::KEY_ELEMENTS_ORDERING_WAIT_TIME);
-    // todo(kilativ-dotcom): add actions finish check
+    if (!keyElementsOrderAction.InitiateAndWait(FormatTranslatorsConstants::KEY_ELEMENTS_ORDERING_WAIT_TIME))
+      SC_THROW_EXCEPTION(
+          utils::ExceptionInvalidState,
+          "action_order_key_elements action didn't finish successfully or wait time expired");
 
     ScAction scgVisualiseAction = m_context.GenerateAction(FormatTranslatorsKeynodes::action_visualise_to_scg);
     scgVisualiseAction.SetArguments(structureToTranslate, identifiersLanguage);
-    scgVisualiseAction.InitiateAndWait(FormatTranslatorsConstants::SCG_VISUALISATION_WAIT_TIME);
+    if (!scgVisualiseAction.InitiateAndWait(FormatTranslatorsConstants::SCG_VISUALISATION_WAIT_TIME))
+      SC_THROW_EXCEPTION(
+          utils::ExceptionInvalidState,
+          "action_visualise_to_scg action didn't finish successfully or wait time expired");
     ScAddr const & scgVisualiseActionResult = scgVisualiseAction.GetResult();
     auto const & it1 =
         m_context.CreateIterator3(scgVisualiseActionResult, ScType::ConstPermPosArc, ScType::ConstNodeLink);

@@ -17,7 +17,9 @@ std::string const & Node::GetContent() const
 }
 
 Node::Node()
-  : Element()
+  : x(0)
+  , topY(0)
+  , bottomY(0)
 {
 }
 

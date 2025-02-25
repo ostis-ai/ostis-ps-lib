@@ -4,6 +4,7 @@ file(GLOB SOURCES CONFIGURE_DEPENDS
     "constants/*.cpp" "constants/*.hpp"
     "keynodes/*.hpp"
     "model/*.cpp" "model/*.hpp"
+    "parser/*.cpp" "parser/*.hpp"
     "visitor/*.cpp" "visitor/*.hpp"
 )
 
