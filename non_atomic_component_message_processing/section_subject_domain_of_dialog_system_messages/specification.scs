@@ -18,7 +18,7 @@ section_subject_domain_of_dialog_system_messages_reusable_component_specificatio
     => nrel_purpose: [This subject domain introduces concepts necessary for message processing in dialog systems](* <- lang_en;; *);;
 
     => nrel_component_dependencies: ... (* <- empty_set;; *);;
-    => nrel_component_address: [https://github.com/NikiforovSergei/ostis-ps-lib/tree/main/non_atomic_component_message_processing/section_subject_domain_of_dialog_system_messages] (* <- concept_github_url;; *);;
+    => nrel_component_address: [https://github.com/ostis-ai/ostis-ps-lib/tree/main/non_atomic_component_message_processing/section_subject_domain_of_dialog_system_messages] (* <- concept_github_url;; *);;
     => nrel_installation_method: ... (* <- concept_component_dynamically_installed_method;; *);;
 *);;
 *];;
