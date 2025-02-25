@@ -35,7 +35,7 @@ nrel_message_meaning
             {
                 rrel_example: [Cмысл сообщения* - бинарное ориентированное отношение, связывающее виртуального ассистента и распознанный им смысл входящего сообщения.]
                 (* <- lang_ru;; *);
-                rrel_example: [Message meaning* is a binary oriented relation connecting the virtual assistant and the meaning of the incoming message, recognized by it..]
+                rrel_example: [Message meaning* is a binary oriented relation connecting the virtual assistant and the meaning of the incoming message, recognized by it.]
                 (* <- lang_en;; *)
             };;
         <= nrel_using_constants:

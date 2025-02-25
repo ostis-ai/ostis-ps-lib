@@ -2,15 +2,13 @@ nrel_meaning_translation_example
 <- sc_node_non_role_relation;
 <- relation;
 <- binary_relation;
-<- quasybinary_relation;
+<- binary_relation;
 <- oriented_relation;
 => nrel_main_idtf:
     [пример трансляции смысла*]
     (* <- lang_ru;; *);
     [meaning translation example*]
     (* <- lang_en;; *);
-    [...*]
-    (* <- lang_de;; *);
 => nrel_first_domain:
     ..oriented_pair_boolean
     (*
@@ -40,9 +38,7 @@ nrel_meaning_translation_example
         [Опр. (пример трансляции смысла*)]
         (* <- lang_ru;; *);
         [Def. (meaning translation example*)]
-        (* <- lang_en;; *);
-        [Def. (...*)]
-        (* <- lang_de;; *);;
+        (* <- lang_en;; *);;
     <-  definition;;
     <= nrel_sc_text_translation:
         {

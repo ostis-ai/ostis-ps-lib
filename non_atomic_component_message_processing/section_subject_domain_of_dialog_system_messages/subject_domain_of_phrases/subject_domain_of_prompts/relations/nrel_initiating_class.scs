@@ -11,8 +11,6 @@ nrel_initiating_class
     (* <- lang_ru;; *);
     [initiating class*]
     (* <- lang_en;; *);
-    [...*]
-    (* <- lang_de;; *);
 => nrel_first_domain:
     ...
     (*
@@ -41,9 +39,7 @@ nrel_initiating_class
         [Опр. (инициирующий класс*)]
         (* <- lang_ru;; *);
         [Def. (initiating class*)]
-        (* <- lang_en;; *);
-        [Def. (...*)]
-        (* <- lang_de;; *);;
+        (* <- lang_en;; *);;
     <-  definition;;
     <= nrel_sc_text_translation:
         {
