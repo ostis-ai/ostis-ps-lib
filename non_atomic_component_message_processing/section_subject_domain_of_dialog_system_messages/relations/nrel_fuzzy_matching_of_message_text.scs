@@ -44,11 +44,11 @@ nrel_fuzzy_matching_of_message_text
             the case when, after the normalization of the text of these messages (i.e., after removing commas, spaces,
             reducing to lowercase), the editing line distance is less than the specified value.]
             (* <- lang_en;; *);
-         rrel_example: [Fuzzyübereinstimmung des Nachrichtentextes* ist eine binäre ungerichtete Beziehung. Die Beziehung verbindet
-             zwei Nachrichten in dem Fall, wenn nach der Normalisierung des Textes dieser Nachrichten (d. h. nach dem
-             Entfernen von Kommas, Leerzeichen, Reduzieren auf Kleinbuchstaben) der Bearbeitungszeilenabstand kleiner
-             als der angegebene Wert ist.]
-         (* <- lang_de;; *)
+            rrel_example: [Fuzzyübereinstimmung des Nachrichtentextes* ist eine binäre ungerichtete Beziehung. Die Beziehung verbindet
+            zwei Nachrichten in dem Fall, wenn nach der Normalisierung des Textes dieser Nachrichten (d. h. nach dem
+            Entfernen von Kommas, Leerzeichen, Reduzieren auf Kleinbuchstaben) der Bearbeitungszeilenabstand kleiner
+            als der angegebene Wert ist.]
+            (* <- lang_de;; *)
         };;
     <= nrel_using_constants:
         {
