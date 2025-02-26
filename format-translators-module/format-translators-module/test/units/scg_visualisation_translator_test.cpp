@@ -6,8 +6,7 @@
 namespace formatTranslatorsTest
 {
 ScsLoader loader;
-const std::string FORMAT_TRANSLATORS_MODULE_TEST_FILES_DIR_PATH =
-    FORMAT_TRANSLATORS_MODULE_TEST_SRC_PATH "/test-structures/scg-visualisation-translator/";
+const std::string FORMAT_TRANSLATORS_MODULE_TEST_FILES_DIR_PATH = "test-structures/scg-visualisation-translator/";
 const std::string FORMAT_TRANSLATORS_MODULE_EXPECTED_FILES_DIR_PATH =
     FORMAT_TRANSLATORS_MODULE_TEST_FILES_DIR_PATH + "/expected/";
 int const WAIT_TIME = 1000;

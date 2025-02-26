@@ -1,7 +1,6 @@
 file(GLOB TEST_SOURCES CONFIGURE_DEPENDS
     "units/*.cpp"
 )
-add_definitions(-DFORMAT_TRANSLATORS_MODULE_TEST_SRC_PATH="${CMAKE_CURRENT_SOURCE_DIR}")
 add_executable(format-translators-tests ${TEST_SOURCES})
 target_link_libraries(format-translators-tests
     LINK_PRIVATE sc-machine::sc-builder-lib

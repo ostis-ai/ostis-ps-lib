@@ -1,14 +1,15 @@
 #include <sc-memory/test/sc_test.hpp>
 #include <sc-builder/scs_loader.hpp>
 
+#include <filesystem>
+
 #include "agent/key-elements-orderer-agent/dummy_key_elements_orderer_agent.hpp"
 #include "keynodes/format_translators_keynodes.hpp"
 
 namespace dummyKeyElementsOrdererTest
 {
 ScsLoader loader;
-const std::string KEY_ELEMENTS_ORDERER_MODULE_TEST_FILES_DIR_PATH =
-    FORMAT_TRANSLATORS_MODULE_TEST_SRC_PATH "/test-structures/key-elements-orderer/";
+const std::string KEY_ELEMENTS_ORDERER_MODULE_TEST_FILES_DIR_PATH = "test-structures/key-elements-orderer/";
 int const WAIT_TIME = 1000;
 
 using DummyKeyElementsOrdererTest = ScMemoryTest;
