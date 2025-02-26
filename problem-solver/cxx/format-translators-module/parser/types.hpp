@@ -36,23 +36,27 @@ private:
 
   size_t GetValue(std::pair<ScAddr, ScAddr> const & key) const
   {
-    bool const hasDirectValue = order.count(key.first);
-    bool const hasIndirectValue = structureTriples.count(key.second);
+    auto const & directValueIterator = order.find(key.first);
+    bool const hasDirectValue = directValueIterator != order.cend();
+    auto const & indirectValueIterator = structureTriples.find(key.second);
+    bool const hasIndirectValue =
+        indirectValueIterator != structureTriples.cend() && !indirectValueIterator->second.empty();
     if (hasIndirectValue)
     {
-      ScAddr const & firstOtherElementForConnector = structureTriples.at(key.second).begin()->first.first;
-      if (hasDirectValue)
-        return std::min(order.at(key.first), order.at(firstOtherElementForConnector));
-      else
-        return order.at(firstOtherElementForConnector);
+      ScAddr const & firstOtherElementForConnector = indirectValueIterator->second.begin()->first.first;
+      auto const & otherElementOrderIterator = order.find(firstOtherElementForConnector);
+      if (otherElementOrderIterator != order.cend())
+      {
+        if (hasDirectValue)
+          return std::min(directValueIterator->second, otherElementOrderIterator->second);
+        else
+          return otherElementOrderIterator->second;
+      }
     }
+    if (hasDirectValue)
+      return directValueIterator->second;
     else
-    {
-      if (hasDirectValue)
-        return order.at(key.first);
-      else
-        return key.first.Hash() + key.second.Hash();
-    }
+      return key.first.Hash() + key.second.Hash();
   }
 };
 

@@ -1,0 +1,30 @@
+test_action_node
+    <- action;
+    <- action_order_key_elements;
+    -> rrel_1: test_structure;;
+
+sc_node_class
+    -> action;
+    -> action_order_key_elements;
+    -> node_class;;
+
+sc_node_non_role_relation
+    -> node_non_role;;
+
+sc_node_tuple
+    -> node_tuple;;
+
+sc_node_role_relation
+    -> node_role;;
+
+@node_link = [this is link];;
+
+test_structure =
+[*
+..node
+    -> node_class;
+    -> node_role;
+    -> node_tuple;
+    -> node_non_role;
+    -> @node_link;;
+*];;

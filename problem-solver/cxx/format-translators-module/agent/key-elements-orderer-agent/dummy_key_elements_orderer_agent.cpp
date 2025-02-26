@@ -1,5 +1,7 @@
 #include "dummy_key_elements_orderer_agent.hpp"
 
+#include <sc-agents-common/utils/IteratorUtils.hpp>
+
 #include "keynodes/format_translators_keynodes.hpp"
 
 namespace formatTranslators
@@ -22,28 +24,34 @@ ScResult DummyKeyElementsOrdererAgent::DoProgram(ScAction & action)
     if (!m_context.IsElement(structure))
       SC_THROW_EXCEPTION(utils::ExceptionInvalidParams, "Cannot find structure to order key elements");
 
-    ScAddrUnorderedSet elementsInOrder;
-    elementsInOrder.insert(structure);
-    auto const & it = m_context.CreateIterator5(
-        structure,
-        ScType::ConstPermPosArc,
-        ScType::Node,
-        ScType::ConstPermPosArc,
-        FormatTranslatorsKeynodes::rrel_main_key_sc_element);
-    if (it->Next())
-      elementsInOrder.insert(it->Get(2));
+    ScAddr elementsOrder = utils::IteratorUtils::getAnyByOutRelation(
+        &m_context, structure, FormatTranslatorsKeynodes::nrel_key_elements_order);
+    if (!m_context.IsElement(elementsOrder))
+    {
+      ScAddrUnorderedSet elementsInOrder;
+      elementsInOrder.insert(structure);
+      auto const & it = m_context.CreateIterator5(
+          structure,
+          ScType::ConstPermPosArc,
+          ScType::Node,
+          ScType::ConstPermPosArc,
+          FormatTranslatorsKeynodes::rrel_main_key_sc_element);
+      if (it->Next())
+        elementsInOrder.insert(it->Get(2));
 
-    ScAddr lastConnector;
-    ScAddr const & elementsOrder = m_context.GenerateNode(ScType::ConstNodeTuple);
-    std::list nodeTypes = {
-        ScType::NodeClass, ScType::NodeLink, ScType::NodeRole, ScType::NodeNonRole, ScType::NodeTuple, ScType::Node};
+      ScAddr lastConnector;
+      elementsOrder = m_context.GenerateNode(ScType::ConstNodeTuple);
+      std::list const nodeTypes = {
+          ScType::NodeClass, ScType::NodeLink, ScType::NodeRole, ScType::NodeNonRole, ScType::NodeTuple, ScType::Node};
 
-    for (auto const & nodeType : nodeTypes)
-      AddNodesToOrder(structure, elementsOrder, elementsInOrder, lastConnector, nodeType);
+      for (auto const & nodeType : nodeTypes)
+        AddNodesToOrder(structure, elementsOrder, elementsInOrder, lastConnector, nodeType);
 
-    ScAddr const & arc = m_context.GenerateConnector(ScType::ConstCommonArc, structure, elementsOrder);
-    m_context.GenerateConnector(ScType::ConstPermPosArc, FormatTranslatorsKeynodes::nrel_key_elements_order, arc);
-    action.SetResult(elementsOrder);
+      ScAddr const & arc = m_context.GenerateConnector(ScType::ConstCommonArc, structure, elementsOrder);
+      m_context.GenerateConnector(ScType::ConstPermPosArc, FormatTranslatorsKeynodes::nrel_key_elements_order, arc);
+    }
+
+    action.FormResult(elementsOrder);
     return action.FinishSuccessfully();
   }
   catch (utils::ScException const & exception)

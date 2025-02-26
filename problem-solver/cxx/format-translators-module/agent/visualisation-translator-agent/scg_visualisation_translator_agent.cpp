@@ -191,6 +191,7 @@ void SCgVisualisationTranslatorAgent::CalculateNextLevelElementsAndIdentifiersLe
     float & maxRelationIdentifierLength,
     float & maxLevelElementIdentifierLength)
 {
+  // todo(kilativ-dotcom): match russian letters regex and subtract from identifier length
   for (auto const & levelElement : currentLevelRoots)
   {
     auto const & levelElementIdentifierSize = levelElement->GetIdentifier().size();
