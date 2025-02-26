@@ -1,22 +1,3 @@
-# ostis-ps-lib
-OSTIS problem solvers components library
-
-this is draft of a readme
-
-## Build
-
-to build run
-
-```bash
-cmake --preset conan-release
-cmake --build --preset conan-release
-```
-
-## Use
-
-After that you'll get extensions in folder "./build/Release/lib/extensions" and they can be used when sc-machine is started.
-
-
 # Format Translators Module
 
 This module is part of the ostis-ps-lib and is responsible for translating structure into specified format.
@@ -31,13 +12,18 @@ The format translators Module can be used as an extension to the sc-machine. Fol
 - Alternatively, you can build sc-machine from source and use the resulting artifacts.
 - For more details on installing and using sc-machine artifacts, refer to the [sc-machine quick start guide](https://ostis-ai.github.io/sc-machine/quick_start/).
 
-### 2. Specify Extension Paths
+### 2. Download Format Translators Module Artifacts
 
-- When running the sc-machine binary, specify the path to the `lib/extensions` directory from the extracted Non-Atomic Action Interpreter Module folder:
+- Download pre-built artifacts of Format Translators Module from [GitHub Releases](https://github.com/ostis-ai/ostis-ps-lib/releases) and extract them to a location of your choice.
+- Alternatively, you can build Format Translators Module from sources and use the resulting artifacts (see [Developing Module](#developing-module) section).
+
+### 3. Specify Extension Paths
+
+- When running the sc-machine binary, specify paths to the `lib/extensions` of format translators module and sc-machine:
 
    ```sh
    ./path/to/sc-machine/binary -s path/to/kb.bin \
-       -e "non-atomic-action-interpreter-module/build/<Debug|Release>/lib/extensions;path/to/sc-machine/lib/extensions"
+       -e "format-translators-module/build/<Debug|Release>/lib/extensions;path/to/sc-machine/lib/extensions"
    ```
 
 Replace `path/to/sc-machine/binary` with the path to the sc-machine binary, and `path/to/kb.bin` with the path to your knowledge base file.
@@ -54,25 +40,33 @@ Before you begin, ensure you have the following installed:
 - ccache (for faster rebuilds).
 
 !!! Note
-This project is not supported on Windows OS.
+    This project is not supported on Windows OS.
 
 ### Installation & Build
 
 #### 1. Clone Repository
 
-First, clone the repository containing the Non-Atomic Action Interpreter Module:
+First, clone the repository containing the Format Translators Module:
 
 ```bash
 git clone https://github.com/ostis-ai/ostis-ps-lib.git
-cd ostis-ps-lib/non-atomic-action-interpreter-module
+cd ostis-ps-lib/format-translators-module
 ```
 
 #### 2. Install Dependencies with Conan
 
 The project uses Conan to manage dependencies. Install the required dependencies:
 
+- Debug:
+
 ```bash
-conan install . --build=missing
+conan install . -s build_type=Debug --build=missing
+```
+
+- Release
+
+```bash
+conan install . -s build_type=Release --build=missing
 ```
 
 #### 3. Configure Project
