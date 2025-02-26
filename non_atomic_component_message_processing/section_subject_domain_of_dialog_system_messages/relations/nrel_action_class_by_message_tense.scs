@@ -40,8 +40,6 @@ nrel_action_class_by_message_tense
         (* <- lang_ru;; *);
         [Def. (action class by message tense*)]
         (* <- lang_en;; *);
-        [Def. (...*)]
-        (* <- lang_de;; *);;
     <- definition;;
     <= nrel_sc_text_translation:
         {
