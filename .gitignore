@@ -2,3 +2,8 @@
 .venv
 
 build
+
+CMakeCache.txt
+CMakeFiles
+DartConfiguration.tcl
+repo
