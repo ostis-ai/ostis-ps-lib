@@ -26,7 +26,7 @@ The non-atomic action interpreter Module can be used as an extension to the sc-m
        -e "path/to/sc-machine/lib/extensions;path/to/extracted/non-atomic-action-interpreter-module/lib/extensions"
    ```
 
-   Replace `path/to/sc-machine/binary` with the path to the sc-machine binary, `path/to/kb.bin` with the path to your knowledge base file, `path/to/extracted/non-atomic-action-interpreter-module/lib/extensions` with the path to extensions of Non-Atomic Action Interpreter Module and `path/to/sc-machine/lib/extensions` with the path to extensions of the sc-machine.
+   Replace `path/to/sc-machine/binary` with the path to the sc-machine binary, `path/to/kb.bin` with the path to your knowledge base directory, `path/to/non-atomic-action-interpreter-module/lib/extensions` with the path to extensions of Non-Atomic Action Interpreter Module and `path/to/sc-machine/lib/extensions` with the path to extensions of the sc-machine.
 
 ## Developing Module
 

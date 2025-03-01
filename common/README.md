@@ -8,41 +8,41 @@ The Common library can be used as a Conan package in other projects. Here's how 
 
 ### 1. Add the following to your `conanfile.txt`:
 
-    ```
-    [requires]
-    common/0.1.0
-    ```
+```txt
+[requires]
+common/0.1.0
+```
 
 ### 2. Run Conan to install the package:
 
-    ```bash
-    conan install . --build=missing
-    ```
+```bash
+conan install . --build=missing
+```
 
 ### 3. In your CMakeLists.txt, add the following to find and link the library:
 
-    ```cmake
-    find_package(common REQUIRED)
+```cmake
+find_package(common REQUIRED)
 
-    add_executable(your_target your_source_files.cpp)
-    target_link_libraries(your_target PRIVATE common::common-utils)
-    ```
+add_executable(your_target your_source_files.cpp)
+target_link_libraries(your_target PRIVATE common::common-utils)
+```
 
 ### 4. Configure your project:
 
-    ```sh
-    cmake --preset conan-release
-    ```
+```sh
+cmake --preset conan-release
+```
 
 ### 5. Build your project as usual:
 
-    ```sh
-    cmake --build --preset conan-release
-    ```
+```sh
+cmake --build --preset conan-release
+```
 
 ### 6. Download sc-machine Artifacts
 
-   - Download pre-built artifacts of sc-machine from [GitHub Releases](https://github.com/ostis-ai/sc-machine/releases) and extract them to a location of your choice. After that you can use sc-machine binaries to load extensions with agents that use the Common library.
+- Download pre-built artifacts of sc-machine from [GitHub Releases](https://github.com/ostis-ai/sc-machine/releases) and extract them to a location of your choice. After that you can use sc-machine binaries to load extensions with agents that use the Common library.
 
 !!! Note
     The `common::common-utils` target provides all the necessary include directories and linked libraries. You don't need to specify them separately.
