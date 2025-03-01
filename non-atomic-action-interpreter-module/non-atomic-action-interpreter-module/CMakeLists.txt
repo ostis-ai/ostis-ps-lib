@@ -20,6 +20,9 @@ target_link_libraries(non-atomic-action-interpreter-module
 target_include_directories(non-atomic-action-interpreter-module
     PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}
 )
+set_target_properties(non-atomic-action-interpreter-module
+    PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${SC_EXTENSIONS_DIRECTORY}
+)
 
 if(${SC_CLANG_FORMAT_CODE})
     target_clangformat_setup(non-atomic-action-interpreter-module)
