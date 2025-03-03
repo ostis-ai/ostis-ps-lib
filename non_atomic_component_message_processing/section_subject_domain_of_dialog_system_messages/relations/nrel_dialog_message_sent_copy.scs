@@ -1,0 +1,52 @@
+nrel_dialog_message_sent_copy
+<- sc_node_non_role_relation;
+<- relation;
+<- binary_relation;
+<- oriented_relation;
+<- antireflexive_relation;
+<- asymmetric_relation;
+<- antitransitive_relation;
+=> nrel_main_idtf:
+    [отправленная копия диалогового сообщения*]
+    (* <- lang_ru;; *);
+    [sent copy of the dialog message*]
+    (* <- lang_en;; *);
+    [gesendete Kopie der Dialognachricht*]
+    (* <- lang_de;; *);
+=> nrel_first_domain: concept_dialog_message;
+=> nrel_second_domain: concept_sent_dialog_message;
+=> nrel_definitional_domain: 
+    ...
+    (*
+    <= nrel_combination:
+        {
+        concept_dialog_message;
+        concept_sent_dialog_message
+        };;
+    *);
+<- rrel_key_sc_element:
+    ...
+    (*
+    => nrel_main_idtf:
+        [Опр. (отправленная копия диалогового сообщения*)]
+        (* <- lang_ru;; *);
+        [Def. (sent copy of the dialog message*)]
+        (* <- lang_en;; *);
+        [Def. (gesendete Kopie der Dialognachricht*)]
+        (* <- lang_de;; *);;
+    <-  definition;;
+    <= nrel_sc_text_translation:
+        {
+            rrel_example: [Отправленная копия диалогового сообщения* - бинарное отношение, связывающее диалоговое сообщение и его копию, использованную в диалоге.]
+            (* <- lang_ru;; *);
+            rrel_example: [Sent copy of the dialog message* is a binary relation that connects a dialog message with its copy used in the dialog.]
+            (* <- lang_en;; *);
+         rrel_example: [Gesendete Kopie der Dialognachricht* ist eine binäre Beziehung, die eine Dialognachricht mit ihrer im Dialog verwendeten Kopie verbindet.]
+         (* <- lang_de;; *)
+        };;
+    <= nrel_using_constants:
+        {
+        concept_sent_dialog_message;
+        concept_dialog_message
+        };;
+    *);;

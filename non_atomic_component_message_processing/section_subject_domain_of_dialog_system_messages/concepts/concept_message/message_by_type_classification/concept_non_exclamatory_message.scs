@@ -1,0 +1,28 @@
+concept_non_exclamatory_message => nrel_main_idtf: [невосклицательное сообщение] (* <- lang_ru;; *);;
+concept_non_exclamatory_message => nrel_main_idtf: [non-exclamatory message] (* <- lang_en;; *);;
+concept_non_exclamatory_message => nrel_main_idtf: [nicht-Ausrufenachricht] (* <- lang_de;; *);;
+
+d_concept_non_exclamatory_message <- definition;;
+
+d_concept_non_exclamatory_message => nrel_main_idtf: [Опр.(невосклицательное сообщение)] (* <- lang_ru;; *);;
+d_concept_non_exclamatory_message => nrel_main_idtf: [Def.(non-exclamatory message)] (* <- lang_en;; *);;
+d_concept_non_exclamatory_message => nrel_main_idtf: [Def.(nicht-Ausrufenachricht)] (* <- lang_de;; *);;
+ 
+d_concept_non_exclamatory_message -> rrel_key_sc_element: concept_non_exclamatory_message;;
+d_concept_non_exclamatory_message <= nrel_sc_text_translation: 
+    {
+        rrel_example:
+            [Невосклицательное сообщение - атомарное сообщение, не имеющее восклицательной интонации.]
+            (* <- lang_ru;; *);
+        rrel_example:
+            [Non-exclamatory message is an atomic message without exclamation intonation.]
+            (* <- lang_en;; *);
+        rrel_example:
+            [Nicht-Ausrufenachricht ist die atomare Nachricht ohne Ausrufintonation.]
+            (* <- lang_de;; *)
+    };;
+
+d_concept_non_exclamatory_message <= nrel_using_constants:
+    {
+    concept_atomic_message
+    };;

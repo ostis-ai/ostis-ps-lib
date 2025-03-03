@@ -1,0 +1,38 @@
+concept_message_with_neutral_emotional_coloring
+<- sc_node_class;
+=> nrel_main_idtf:
+    [сообщение, имеющее нейтральную эмоциональную окраску]
+    (* <- lang_ru;; *);
+    [message with neutral coloring]
+    (* <- lang_en;; *);
+    [Nachricht mit neutraler Färbung]
+    (* <- lang_de;; *);
+<= nrel_inclusion:
+    concept_message_with_emotional_coloring;
+<- rrel_key_sc_element:
+    ...
+    (*
+    => nrel_main_idtf:
+        [Опр.(сообщение, имеющее нейтральную эмоциональную окраску)]
+        (* <- lang_ru;; *);
+        [Def.(message with neutral coloring)]
+        (* <- lang_en;; *);
+        [Def.(Nachricht mit neutraler Färbung)]
+        (* <- lang_de;; *);;
+    <- definition;;
+    <= nrel_sc_text_translation:
+        {
+            rrel_example: [Cообщение, имеющее  эмоциональную окраску - сообщение, имеющее эмоциональную окраску в одну из эмоций, являющихся нейтральным эмоциональным состоянием.]
+            (* <- lang_ru;;    *);
+            rrel_example: [Message with neutral coloring is a message, that has an emotional connotation of one of the emotions, that is a neutral emotional state.]
+            (* <- lang_en;;    *);
+         rrel_example: [Nachricht mit neutraler Färbung ist eine Nachricht, die eine emotionale Färbung in eine der Emotionen hat, die ein neutraler emotionaler Zustand ist.]
+         (* <- lang_de;;    *)
+        };;
+    <= nrel_using_constants:
+    {
+        concept_message;
+        concept_emotion;
+        concept_neutral_mental_state
+    };;
+    *);;

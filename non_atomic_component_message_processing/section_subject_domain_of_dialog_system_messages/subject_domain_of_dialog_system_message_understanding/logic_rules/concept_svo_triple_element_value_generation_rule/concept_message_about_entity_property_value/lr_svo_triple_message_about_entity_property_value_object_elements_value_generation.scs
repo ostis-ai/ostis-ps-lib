@@ -1,0 +1,51 @@
+sc_node_class
+    -> atomic_logical_formula;
+    -> concept_message;
+    -> concept_svo_triple;
+    -> concept_svo_triple_element;
+    -> not_enough_specified_essence;
+    -> concept_message_about_entity_property_value;
+    -> _class_value;;
+
+sc_node_non_role_relation
+    -> nrel_svo_triples;
+    -> nrel_implication;;
+
+sc_node_role_relation
+    -> rrel_svo_object;
+    -> rrel_svo_triple_element_values;
+    -> rrel_main_key_sc_element;;
+
+sc_node_tuple
+    -> _tuple;;
+
+@rule_condition = [*
+    _message
+        <-_ concept_message;
+        <-_ concept_message_about_entity_property_value;;
+    _message _=> nrel_svo_triples:: _tuple;;
+    _svo_triple
+        <-_ concept_svo_triple;
+        <-_ _tuple;
+        _-> rrel_svo_object:: _element;;
+    _element <-_ concept_svo_triple_element;;
+*];;
+
+@rule_result = [*
+    _element _-> rrel_svo_triple_element_values:: _values_set;;
+    _class_value <-_ _values_set;;
+*];;
+
+atomic_logical_formula
+    -> @rule_condition;
+    -> @rule_result;;
+
+@rule_implication_arc = (@rule_condition => @rule_result);;
+@rule_implication_arc
+    <- nrel_implication;
+    <- rrel_main_key_sc_element: lr_svo_triple_message_about_entity_property_value_object_elements_value_generation;;
+
+lr_svo_triple_message_about_entity_property_value_object_elements_value_generation
+    <- concept_svo_triple_element_value_generation_rule;
+    <- concept_svo_triple_element_value_generation_rule_class_by_priority_1;;
+

@@ -1,0 +1,43 @@
+concept_declarative_message
+<-sc_node_class;
+=> nrel_main_idtf:
+    [повествовательное сообщение]
+    (* <- lang_ru;; *);
+    [declarative message]
+    (* <- lang_en;; *);
+    [deklarative Nachricht]
+    (* <- lang_de;; *);
+<= nrel_inclusion: concept_message;
+<- rrel_key_sc_element:
+    ...
+    (*
+    => nrel_main_idtf:
+        [Опр. (повествовательное сообщение)]
+        (* <- lang_ru;; *);
+        [Def. (declarative message)]
+        (* <- lang_en;; *);
+        [Def. (deklarative Nachricht)]
+        (* <- lang_de;; *);;
+    <- definition;;
+    <= nrel_sc_text_translation:
+        {
+            rrel_example:
+                [Повествовательное сообщение - атомарное сообщение, сообщающее о каких-либо новых фактах.]
+                (* <- lang_ru;; *);
+            rrel_example:
+                [Declarative message is an atomic message that reports any new facts.]
+                (* <- lang_en;; *);
+            rrel_example:
+                [Deklarative Nachricht ist eine atomare Nachricht, die neue Fakten meldet.]
+                (* <- lang_de;; *)
+        };;
+    <= nrel_using_constants:
+        {
+            concept_atomic_message
+        };;
+    *);
+=> nrel_subdividing:
+    {
+        concept_neutral_message;
+        concept_information_message
+    };;

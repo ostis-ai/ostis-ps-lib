@@ -1,0 +1,60 @@
+nrel_action_class_by_message_tense
+<- sc_node_non_role_relation;
+<- relation;
+<- binary_relation;
+<- oriented_relation;
+<- antireflexive_relation;
+<- asymmetric_relation;
+<- antitransitive_relation;
+=> nrel_main_idtf:
+    [класс действия по времени сообщения*]
+    (* <- lang_ru;; *);
+    [action class by message tense*]
+    (* <- lang_en;; *);
+=> nrel_first_domain:
+    concept_message_tense;
+=> nrel_second_domain:
+    ...
+    (*
+        <- boolean;;
+        <= nrel_boolean: action;;
+    *);
+=> nrel_definitional_domain:
+    ...
+    (*
+    <= nrel_combination:
+        {
+            ...
+            (*
+                <- boolean;;
+                <= nrel_boolean: action;;
+            *);
+            concept_message_tense
+        };;
+    *);
+<- rrel_key_sc_element:
+    ...
+    (*
+    => nrel_main_idtf:
+        [Опр. (класс действия по времени сообщения*)]
+        (* <- lang_ru;; *);
+        [Def. (action class by message tense*)]
+        (* <- lang_en;; *);
+    <- definition;;
+    <= nrel_sc_text_translation:
+        {
+            rrel_example:
+                [Класс действия по времени сообщения* - бинарное отношение, связывающее время сообщения и класс действия, которому принадлежит упоминаемое в сообщении действие.]
+                (* <- lang_ru;; *);
+            rrel_example:
+                [Action class by message tense* is a binary relation that connects a message tense with a class of action to which the action mentioned in the message belongs.]
+                (* <- lang_en;; *)
+        };;
+    <= nrel_using_constants:
+        {
+        concept_message_tense;
+        action;
+        binary_relation;
+        concept_message
+        };;
+    *);;

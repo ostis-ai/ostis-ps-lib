@@ -1,0 +1,26 @@
+dialog_system_message_processing_module
+    <- concept_reusable_component_specification;;
+
+dialog_system_message_processing_module_reusable_component_specification = [*
+-> rrel_key_sc_element : dialog_system_message_processing_module
+(*
+    <- concept_reusable_component;;
+    <- concept_non_atomic_reusable_component;;
+    <- concept_dependent_reusable_component;;
+    // until introduction of agents
+    <- concept_reusable_kb_component;;
+    // until introduction of platform dependent agents
+    <- concept_platform_independent_reusable_component;;
+    <- concept_reusable_dynamically_installed_component;;
+
+    => nrel_main_idtf: [Dialog system message processing module] (* <- lang_en;; *);;
+    => nrel_main_idtf: [Модуль обработки сообщений диалоговых систем] (* <- lang_ru;; *);;
+
+    => nrel_note: [Currently component contains subject domain of dialog system messages] (* <- lang_en;; *);;
+    => nrel_purpose: [Component aimed at application in dialog systems for message processing](* <- lang_en;; *);;
+
+    => nrel_component_dependencies: ... (* -> section_subject_domain_of_dialog_system_messages;; *);;
+    => nrel_component_address: [https://github.com/ostis-ai/ostis-ps-lib/tree/main/non_atomic_component_message_processing] (* <- concept_github_url;; *);;
+    => nrel_installation_method: ... (* <- concept_component_dynamically_installed_method;; *);;
+*);;
+*];;
