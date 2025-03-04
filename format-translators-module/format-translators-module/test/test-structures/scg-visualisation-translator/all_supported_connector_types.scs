@@ -1,0 +1,47 @@
+test_action_node
+    <- action_visualise_to_scg;
+    -> rrel_1: test_structure;;
+
+sc_node_role_relation
+    -> rrel_connector;;
+
+test_structure =
+[*
+root_element
+?<=> rrel_connector: common_edge;
+?=> rrel_connector: common_arc_1;
+<=? rrel_connector: common_arc_2;
+<=> rrel_connector: const_common_edge;
+_<=> rrel_connector: var_common_edge;
+=> rrel_connector: const_common_arc_1;
+<= rrel_connector: const_common_arc_2;
+_=> rrel_connector: var_common_arc_1;
+<=_ rrel_connector: var_common_arc_2;
+-> rrel_connector: main_arc_1;
+<- rrel_connector: main_arc_2;
+..> rrel_connector: const_temp_pos_arc_1;
+<.. rrel_connector: const_temp_pos_arc_2;
+-|> rrel_connector: const_perm_neg_arc_1;
+<|- rrel_connector: const_perm_neg_arc_2;
+..|> rrel_connector: const_term_neg_arc_1;
+<|.. rrel_connector: const_term_neg_arc_2;
+/> rrel_connector: const_fuz_arc_1;
+</ rrel_connector: const_fuz_arc_2;
+_-> rrel_connector: neg_main_arc_1;
+<-_ rrel_connector: neg_main_arc_2;
+_..> rrel_connector: var_temp_pos_arc_1;
+<.._ rrel_connector: var_temp_pos_arc_2;
+_-|> rrel_connector: var_perm_neg_arc_1;
+<|-_ rrel_connector: var_perm_neg_arc_2;
+_..|> rrel_connector: var_term_neg_arc_1;
+<|.._ rrel_connector: var_term_neg_arc_2;
+_/> rrel_connector: var_fuz_arc_1;
+</_ rrel_connector: var_fuz_arc_2;;
+*];;
+
+test_structure
+    -> rrel_main_key_sc_element: root_element;
+    => nrel_key_elements_order:
+    <
+        rrel_connector
+    >;;

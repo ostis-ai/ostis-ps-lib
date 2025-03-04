@@ -1,0 +1,42 @@
+test_action_node
+    <- action_visualise_to_scg;
+    -> rrel_1: test_structure;
+    -> rrel_2: lang_fr;;
+
+sc_node_class
+    -> concept_test_element;
+    -> concept_0;
+    -> lang_en;
+    -> lang_fr;;
+
+test_structure =
+[*
+root_element
+    <-_ concept_test_element;
+    <- concept_0;;
+*];;
+
+test_structure
+    -> rrel_main_key_sc_element: root_element;
+    => nrel_key_elements_order:
+    <
+        concept_test_element;
+        concept_0
+    >;;
+
+root_element
+=> nrel_main_idtf:
+    [root element](* <- lang_en;; *);
+    [élément racine](* <- lang_fr;; *);;
+
+concept_test_element
+=> nrel_main_idtf:
+    [test element](* <- lang_en;; *);
+    [élément de test](* <- lang_fr;; *);;
+
+concept_0
+=> nrel_main_idtf:
+    [zero](* <- lang_en;; *);
+    [zéro](* <- lang_fr;; *);;
+
+

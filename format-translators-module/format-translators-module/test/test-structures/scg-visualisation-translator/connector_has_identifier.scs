@@ -1,0 +1,39 @@
+test_action_node
+    <- action_visualise_to_scg;
+    -> rrel_1: test_structure;
+    -> rrel_2: lang_fr;;
+
+sc_node_class
+    -> concept_test_element;
+    -> concept_0;
+    -> lang_en;
+    -> lang_fr;;
+
+sc_node_role_relation
+    -> rrel_2;;
+
+test_structure =
+[*
+@connector_1 = ( root_element <-_ concept_test_element );;
+@connector_2 = ( @connector_1 <- rrel_2 );;
+*];;
+
+test_structure
+    -> rrel_main_key_sc_element: root_element;
+    => nrel_key_elements_order:
+    <
+        concept_test_element;
+        rrel_2
+    >;;
+
+@connector_1
+=> nrel_main_idtf:
+    [one](* <- lang_en;; *);
+    [un](* <- lang_fr;; *);;
+
+@connector_2
+=> nrel_main_idtf:
+    [two](* <- lang_en;; *);
+    [deux](* <- lang_fr;; *);;
+
+
