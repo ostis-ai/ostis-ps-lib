@@ -17,7 +17,7 @@ using Triples = ScAddrToValueUnorderedMap<
 class ScAddrComparator
 {
 public:
-  explicit ScAddrComparator(ScAddrToValueUnorderedMap<size_t> & order, Triples & structureTriples)
+  explicit ScAddrComparator(ScAddrToValueUnorderedMap<uint32_t> & order, Triples & structureTriples)
     : order(order)
     , structureTriples(structureTriples)
   {
@@ -25,16 +25,16 @@ public:
 
   bool operator()(std::pair<ScAddr, ScAddr> const & first, std::pair<ScAddr, ScAddr> const & second) const
   {
-    size_t const firstValue = GetValue(first);
-    size_t const secondValue = GetValue(second);
+    uint32_t const firstValue = GetValue(first);
+    uint32_t const secondValue = GetValue(second);
     return firstValue < secondValue;
   }
 
 private:
-  ScAddrToValueUnorderedMap<size_t> & order;
+  ScAddrToValueUnorderedMap<uint32_t> & order;
   Triples & structureTriples;
 
-  size_t GetValue(std::pair<ScAddr, ScAddr> const & key) const
+  uint32_t GetValue(std::pair<ScAddr, ScAddr> const & key) const
   {
     auto const & directValueIterator = order.find(key.first);
     bool const hasDirectValue = directValueIterator != order.cend();

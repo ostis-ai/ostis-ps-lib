@@ -12,15 +12,15 @@ public:
   void ParseStructure(
       ScMemoryContext * memoryContext,
       ScAddr const & structureToTranslateAddr,
-      ScAddrToValueUnorderedMap<size_t> const & keyElementsOrderMap,
+      ScAddrToValueUnorderedMap<uint32_t> const & keyElementsOrderMap,
       ScAddr const & identifiersLanguageAddr,
-      Triples & structureTriplesMap);
+      std::shared_ptr<Triples> & structureTriplesMap);
 
 private:
   ScMemoryContext * context = nullptr;
   ScAddr structureToTranslate;
   ScAddr identifiersLanguage;
-  ScAddrToValueUnorderedMap<size_t> keyElementsOrder;
+  ScAddrToValueUnorderedMap<uint32_t> keyElementsOrder;
 
   void ParseStructure();
 

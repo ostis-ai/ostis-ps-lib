@@ -14,20 +14,20 @@ public:
   std::shared_ptr<Node> ParseTriples(
       ScMemoryContext * memoryContext,
       ScAddr const & root,
-      ScAddrToValueUnorderedMap<size_t> const & keyElementsOrderMap,
+      ScAddrToValueUnorderedMap<uint32_t> const & keyElementsOrderMap,
       ScAddr const & identifiersLanguageAddr,
-      Triples const & structureTriplesMap);
+      std::shared_ptr<Triples> const & structureTriplesMap);
 
 private:
   ScMemoryContext * context = nullptr;
-  ScAddrToValueUnorderedMap<size_t> keyElementsOrder;
-  Triples structureTriples;
+  ScAddrToValueUnorderedMap<uint32_t> keyElementsOrder;
+  std::shared_ptr<Triples> structureTriples;
   ScAddr identifiersLanguage;
 
   ScAddrUnorderedSet rootElements;
   ScAddrUnorderedSet walkedConnectors;
 
-  std::shared_ptr<Node> WalkBFS(ScAddr const & root, size_t currentLevel);
+  std::shared_ptr<Node> WalkBFS(ScAddr const & root, uint32_t currentLevel);
 
   std::shared_ptr<Node> CreateNode(ScAddr const & nodeAddr, ScType const & nodeType) const;
 

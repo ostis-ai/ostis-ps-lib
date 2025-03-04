@@ -5,18 +5,18 @@ namespace formatTranslators
 void StructureToTriplesParser::ParseStructure(
     ScMemoryContext * memoryContext,
     ScAddr const & structureToTranslateAddr,
-    ScAddrToValueUnorderedMap<size_t> const & keyElementsOrderMap,
+    ScAddrToValueUnorderedMap<uint32_t> const & keyElementsOrderMap,
     ScAddr const & identifiersLanguageAddr,
-    Triples & structureTriplesMap)
+    std::shared_ptr<Triples> & structureTriplesMap)
 {
   context = memoryContext;
   structureToTranslate = structureToTranslateAddr;
   keyElementsOrder = keyElementsOrderMap;
   identifiersLanguage = identifiersLanguageAddr;
   structureTriples.clear();
-  structureTriplesMap.clear();
+  structureTriplesMap->clear();
   ParseStructure();
-  structureTriplesMap.insert(structureTriples.begin(), structureTriples.end());
+  structureTriplesMap->insert(structureTriples.begin(), structureTriples.end());
 }
 
 void StructureToTriplesParser::ParseStructure()

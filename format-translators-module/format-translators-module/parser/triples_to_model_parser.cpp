@@ -12,9 +12,9 @@ namespace formatTranslators
 std::shared_ptr<Node> TriplesToModelParser::ParseTriples(
     ScMemoryContext * memoryContext,
     ScAddr const & root,
-    ScAddrToValueUnorderedMap<size_t> const & keyElementsOrderMap,
+    ScAddrToValueUnorderedMap<uint32_t> const & keyElementsOrderMap,
     ScAddr const & identifiersLanguageAddr,
-    Triples const & structureTriplesMap)
+    std::shared_ptr<Triples> const & structureTriplesMap)
 {
   context = memoryContext;
   keyElementsOrder = keyElementsOrderMap;
@@ -23,7 +23,7 @@ std::shared_ptr<Node> TriplesToModelParser::ParseTriples(
   return WalkBFS(root, 0);
 }
 
-std::shared_ptr<Node> TriplesToModelParser::WalkBFS(ScAddr const & root, size_t currentLevel)
+std::shared_ptr<Node> TriplesToModelParser::WalkBFS(ScAddr const & root, uint32_t currentLevel)
 {
   ScType const & rootType = context->GetElementType(root);
   // todo(kilativ-dotcom): allow connectors to be roots
@@ -36,8 +36,8 @@ std::shared_ptr<Node> TriplesToModelParser::WalkBFS(ScAddr const & root, size_t 
   if (rootElements.count(root))
     return rootElement;
   rootElements.insert(root);
-  auto const & pairsIterator = structureTriples.find(root);
-  if (pairsIterator == structureTriples.cend())
+  auto const & pairsIterator = structureTriples->find(root);
+  if (pairsIterator == structureTriples->cend())
     return rootElement;
   for (auto const & [_, otherElementAndConnectorWithReverse] : pairsIterator->second)
   {
@@ -60,8 +60,8 @@ void TriplesToModelParser::ProcessTriple(
 {
   rootElement->AddConnector(connectorElement);
 
-  auto const & pairsIterator = structureTriples.find(connectorElement->GetScAddress());
-  if (pairsIterator != structureTriples.cend())
+  auto const & pairsIterator = structureTriples->find(connectorElement->GetScAddress());
+  if (pairsIterator != structureTriples->cend())
   {
     for (auto const & [_, otherElementAndConnectorWithReverse] : pairsIterator->second)
       for (auto const & [relationAddr, connectorAddr, isReversed] : otherElementAndConnectorWithReverse)

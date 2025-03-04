@@ -28,6 +28,7 @@ bool SCgVisualisationTranslatorAgent::CheckInitiationCondition(ScActionInitiated
 
 ScResult SCgVisualisationTranslatorAgent::DoProgram(ScAction & action)
 {
+  structureTriples = std::make_shared<Triples>();
   try
   {
     structureToTranslate = action.GetArgument(1);
