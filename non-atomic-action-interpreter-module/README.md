@@ -15,7 +15,7 @@ The non-atomic action interpreter Module can be used as an extension to the sc-m
 ### 2. Download Non-Atomic Action Interpreter Module Artifacts
 
    - Download pre-built artifacts of Non-Atomic Action Interpreter Module from [GitHub Releases](https://github.com/ostis-ai/ostis-ps-lib/releases) and extract them to a location of your choice.
-   - Alternatively, you can build Non-Atomic Action Interpreter Module from sources and use the resulting artifacts (see Developing Module section).
+   - Alternatively, you can build Non-Atomic Action Interpreter Module from sources and use the resulting artifacts (see [Developing Module](#developing-module) section).
 
 ### 3. Specify Extension Paths
 
