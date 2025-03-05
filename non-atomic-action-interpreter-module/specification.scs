@@ -1,0 +1,25 @@
+non_atomic_action_interpreter_agent_specification
+    <- concept_reusable_component_specification;;
+
+non_atomic_action_interpreter_agent_specification = [*
+-> rrel_key_sc_element : non_atomic_action_interpreter_agent
+(*
+    <- concept_reusable_component;;
+    <- concept_atomic_reusable_component;;
+    <- concept_dependent_reusable_component;;
+    <- concept_reusable_ps_component;;
+    <- concept_reusable_dynamically_installed_component;;
+    <- concept_reusable_source_code_component;;
+
+    => nrel_authors: { NikiforovSergey; VitaliTsishchanka };;
+    => nrel_explanation: [Компонент представляет собой платформенно-зависимый агент интерпретации неатомарных действий.] (* <- lang_ru;; *);;
+    => nrel_note: [В отличие от scp-интерпретатора, данный агент предназначен для интерпретации неатомарных действий, а не scp-операторов.] (* <- lang_ru;; *);;
+
+    => nrel_main_idtf: [Агент интерпретации неатомарных действий] (* <- lang_ru;; *);;
+    => nrel_main_idtf: [Non-atomic action interpreter agent] (* <- lang_en;; *);;
+    => nrel_component_dependencies: ... (* <- empty_set;; *);; // TODO(NikitaZotov): Add sc-machine and common-lib dependencies
+
+    => nrel_component_address: [https://github.com/NikitaZotov/ostis-ps-lib/tree/feat/move_common_and_non_atomic_action_interpreter_module_to_new_build_system/non-atomic-action-interpreter-module] (* <- concept_github_url;; *);;
+    => nrel_installation_method: ... (* <- concept_component_dynamically_installed_method;; *);; // TODO(NikitaZotov): Add installation method
+*);;
+*];;

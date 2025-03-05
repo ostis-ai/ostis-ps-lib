@@ -1,0 +1,24 @@
+ps_common_utils_specification
+    <- concept_reusable_component_specification;;
+
+ps_common_utils_specification = [*
+-> rrel_key_sc_element : ps_common_utils
+(*
+    <- concept_reusable_component;;
+    <- concept_atomic_reusable_component;;
+    <- concept_dependent_reusable_component;;
+    <- concept_reusable_ps_component;;
+    <- concept_reusable_dynamically_installed_component;;
+    <- concept_reusable_source_code_component;;
+
+    => nrel_authors: { NikiforovSergey; VitaliTsishchanka; NikitaZotov };;
+    => nrel_explanation: [Компонент представляет собой библиотеку общих функций и утилит, используемых в платформенно-зависимых агентах.] (* <- lang_ru;; *);;
+
+    => nrel_main_idtf: [Библиотека общих функций и утилит для решателей задач] (* <- lang_ru;; *);;
+    => nrel_main_idtf: [Library of common functions and utilities for problem solvers] (* <- lang_en;; *);;
+    => nrel_component_dependencies: ... (* <- empty_set;; *);; // TODO(NikitaZotov): Add sc-machine and common-lib dependencies
+
+    => nrel_component_address: [https://github.com/NikitaZotov/ostis-ps-lib/tree/feat/move_common_and_non_atomic_action_interpreter_module_to_new_build_system/common] (* <- concept_github_url;; *);;
+    => nrel_installation_method: ... (* <- concept_component_statically_installed_method;; *);; // TODO(NikitaZotov): Add installation method
+*);;
+*];;
