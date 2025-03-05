@@ -8,6 +8,7 @@ cmake-build-*
 CMakeCache.txt
 CMakeFiles
 DartConfiguration.tcl
+repo
 
 kb.bin
 
