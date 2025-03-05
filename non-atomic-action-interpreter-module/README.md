@@ -19,7 +19,7 @@ The non-atomic action interpreter Module can be used as an extension to the sc-m
 
 ### 3. Specify Extension Paths
 
-   - When running the sc-machine binary, specify the path to the `lib/extensions` directory from the extracted Non-Atomic Action Interpreter Module folder:
+   - When running the sc-machine binary, specify the path to the `lib/extensions` directory from the Non-Atomic Action Interpreter Module folder:
 
    ```sh
    ./path/to/sc-machine/binary -s path/to/kb.bin \
