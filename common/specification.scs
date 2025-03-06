@@ -10,6 +10,7 @@ ps_common_utils_specification = [*
     <- concept_reusable_ps_component;;
     <- concept_reusable_dynamically_installed_component;;
     <- concept_reusable_source_code_component;;
+    <- concept_platform_dependent_reusable_component;;
 
     => nrel_authors: { NikiforovSergey; VitaliTsishchanka; NikitaZotov };;
     => nrel_explanation: [Компонент представляет собой библиотеку общих функций и утилит, используемых в платформенно-зависимых агентах.] (* <- lang_ru;; *);;
