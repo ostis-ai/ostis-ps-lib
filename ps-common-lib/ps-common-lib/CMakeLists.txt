@@ -6,12 +6,12 @@ set(SOURCES
 )
 
 set(HEADERS
-    "include/common/utils/macros.hpp"
-    "include/common/utils/logic_utils.hpp"
-    "include/common/utils/relation_utils.hpp"
-    "include/common/utils/template_params_utils.hpp"
-    "include/common/keynodes.hpp"
-    "include/common/action_cancelled_exception.hpp"
+    "include/ps-common-lib/utils/macros.hpp"
+    "include/ps-common-lib/utils/logic_utils.hpp"
+    "include/ps-common-lib/utils/relation_utils.hpp"
+    "include/ps-common-lib/utils/template_params_utils.hpp"
+    "include/ps-common-lib/keynodes.hpp"
+    "include/ps-common-lib/action_cancelled_exception.hpp"
 )
 
 add_library(common-utils SHARED ${SOURCES} ${HEADERS})

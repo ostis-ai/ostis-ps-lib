@@ -1,11 +1,11 @@
 cmake_minimum_required(VERSION 3.24)
 set(CMAKE_CXX_STANDARD 17)
-project(common VERSION 0.1.0 LANGUAGES C CXX)
+project(ps-common-lib VERSION 0.1.0 LANGUAGES C CXX)
 message(STATUS "Current project version: ${CMAKE_PROJECT_VERSION}")
 cmake_policy(SET CMP0048 NEW)
 
 if(${WIN32})
-    message(FATAL_ERROR "common isn't supported on Windows OS.")
+    message(FATAL_ERROR "ps-common-lib isn't supported on Windows OS.")
 endif()
 
 set(COMMON_ROOT ${CMAKE_CURRENT_SOURCE_DIR})
@@ -65,6 +65,6 @@ set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 
 find_package(sc-machine REQUIRED)
 
-add_subdirectory(common)
+add_subdirectory(ps-common-lib)
 
 include(${CMAKE_MODULE_PATH}/install.cmake)

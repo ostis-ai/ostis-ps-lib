@@ -1,9 +1,9 @@
 #include "NonAtomicActionInterpreterAgent.hpp"
 
 #include <sc-agents-common/utils/IteratorUtils.hpp>
-#include <common/action_cancelled_exception.hpp>
-#include <common/utils/template_params_utils.hpp>
-#include <common/utils/macros.hpp>
+#include <ps-common-lib/action_cancelled_exception.hpp>
+#include <ps-common-lib/utils/template_params_utils.hpp>
+#include <ps-common-lib/utils/macros.hpp>
 
 #include "keynodes/NonAtomicKeynodes.hpp"
 

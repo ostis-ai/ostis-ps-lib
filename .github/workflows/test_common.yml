@@ -1,22 +1,22 @@
-name: Test common
+name: Test ps-common-lib
 
 on:
   pull_request:
     branches: [main]
     paths:
-      - 'common/**'
+      - 'ps-common-lib/**'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 jobs:
-  test-common:
+  test-ps-common-lib:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Run common checks for common component
+      - name: Run common checks for ps-common-lib component
         uses: ostis-ai/test-conan@0.1.0
         with:
-          directory: 'common'
+          directory: 'ps-common-lib'
           configure-preset: release-with-tests-conan
           build-preset: release

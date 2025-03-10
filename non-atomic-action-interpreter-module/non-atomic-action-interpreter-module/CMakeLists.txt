@@ -15,7 +15,7 @@ set(HEADERS
 
 add_library(non-atomic-action-interpreter-module SHARED ${SOURCES} ${HEADERS})
 target_link_libraries(non-atomic-action-interpreter-module
-    LINK_PUBLIC common::common-utils
+    LINK_PUBLIC ps-common-lib::common-utils
 )
 target_include_directories(non-atomic-action-interpreter-module
     PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}

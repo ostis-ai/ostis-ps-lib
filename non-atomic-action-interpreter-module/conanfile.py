@@ -11,7 +11,7 @@ class non_atomic_action_interpreter_moduleRecipe(ConanFile):
     
     def requirements(self):
         self.requires("sc-machine/0.10.0")
-        self.requires("common/0.1.0")
+        self.requires("ps-common-lib/0.1.0")
 
     def build_requirements(self):
         self.test_requires("gtest/1.14.0")

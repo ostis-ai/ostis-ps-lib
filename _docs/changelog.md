@@ -8,5 +8,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Library of common utilities (`common` folder)
+- Library of common utilities (`ps-common-lib` folder)
 - Non-atomic action interpreter module (`non-atomic-action-interpreter-module` folder)

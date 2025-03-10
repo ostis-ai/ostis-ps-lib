@@ -10,7 +10,7 @@ The Common library can be used as a Conan package in other projects. Here's how 
 
 ```txt
 [requires]
-common/0.1.0
+ps-common-lib/0.1.0
 ```
 
 ### 2. Run Conan to install the package:
@@ -22,10 +22,10 @@ conan install . --build=missing
 ### 3. In your CMakeLists.txt, add the following to find and link the library:
 
 ```cmake
-find_package(common REQUIRED)
+find_package(ps-common-lib REQUIRED)
 
 add_executable(your_target your_source_files.cpp)
-target_link_libraries(your_target PRIVATE common::common-utils)
+target_link_libraries(your_target PRIVATE ps-common-lib::common-utils)
 ```
 
 ### 4. Configure your project:
@@ -45,7 +45,7 @@ cmake --build --preset conan-release
 - Download pre-built artifacts of sc-machine from [GitHub Releases](https://github.com/ostis-ai/sc-machine/releases) and extract them to a location of your choice. After that you can use sc-machine binaries to load extensions with agents that use the Common library.
 
 !!! Note
-    The `common::common-utils` target provides all the necessary include directories and linked libraries. You don't need to specify them separately.
+    The `ps-common-lib::common-utils` target provides all the necessary include directories and linked libraries. You don't need to specify them separately.
 
 If you're using Conan's CMake integration in your project, you might also need to add the following to your `conanfile.py`:
 
@@ -66,9 +66,9 @@ After you've set up your project to use the Common Utilities library, you can st
 1. Include the necessary headers in your C++ files:
 
 ```cpp
-#include <common/utils/logic_utils.hpp>
-#include <common/utils/relation_utils.hpp>
-#include <common/utils/template_params_utils.hpp>
+#include <ps-common-lib/utils/logic_utils.hpp>
+#include <ps-common-lib/utils/relation_utils.hpp>
+#include <ps-common-lib/utils/template_params_utils.hpp>
 ```
 
 2. Refer to the library's header files for a complete list of available functions and their usage.
@@ -95,7 +95,7 @@ First, clone the repository containing the Common component:
 
 ```bash
 git clone https://github.com/ostis-ai/ostis-ps-lib.git
-cd ostis-ps-lib/common
+cd ostis-ps-lib/ps-common-lib
 ```
 
 #### 2. Install Dependencies with Conan

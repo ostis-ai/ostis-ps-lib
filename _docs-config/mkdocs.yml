@@ -10,7 +10,7 @@ exclude_docs: |
   /README.md
   build
   cmake
-  common/common
+  ps-common-lib/ps-common-lib
   non-atomic-action-interpreter-module/non-atomic-action-interpreter-module
   scripts
 
@@ -22,7 +22,7 @@ extra_javascript:
 nav:
   - Home: index.md
   - Components:
-      - Library of Common Utilities: common/README.md
+      - Library of Common Utilities: ps-common-lib/README.md
       - Non-Atomic Action Interpreter Module: non-atomic-action-interpreter-module/README.md
   - Development:
       - Contributing Guide: _docs/CONTRIBUTING.md

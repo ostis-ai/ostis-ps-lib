@@ -3,13 +3,13 @@ from conan.tools.cmake import cmake_layout, CMakeDeps, CMakeToolchain, CMake
 import re
 
 
-class commonRecipe(ConanFile):
-    name = "common"
+class ps_common_libRecipe(ConanFile):
+    name = "ps-common-lib"
     package_type = "library"
     version = None
     author = "OSTIS AI"
-    license = "https://github.com/ostis-ai/ostis-ps-lib/blob/main/common-utils/LICENSE"
-    url = "https://github.com/ostis-ai/ostis-ps-lib/tree/main/common-utils"
+    license = "https://github.com/ostis-ai/ostis-ps-lib/blob/main/ps-common-lib/LICENSE"
+    url = "https://github.com/ostis-ai/ostis-ps-lib/tree/main/ps-common-lib"
     description = "Library of common utils"
     exports = ["LICENSE"]
     exports_sources = "*", "!.venv", "!build", "!.cache", "!kb", "!kb.bin", "!.env", "!ConanPresets.json", "!docs", "!.git"
@@ -68,5 +68,5 @@ class commonRecipe(ConanFile):
 
     def package_info(self): 
         self.cpp_info.set_property("cmake_find_mode", "none") # Do NOT generate any files
-        self.cpp_info.builddirs.append("lib/cmake/common")
+        self.cpp_info.builddirs.append("lib/cmake/ps-common-lib")
         self.cpp_info.builddirs.append("build/" + str(self.settings.build_type)) # Provides correct install path for conan editable

@@ -1,9 +1,9 @@
-#include "common/utils/logic_utils.hpp"
+#include "ps-common-lib/utils/logic_utils.hpp"
 
 #include <sc-agents-common/utils/CommonUtils.hpp>
 
-#include "common/keynodes.hpp"
-#include "common/utils/template_params_utils.hpp"
+#include "ps-common-lib/keynodes.hpp"
+#include "ps-common-lib/utils/template_params_utils.hpp"
 
 using namespace common;
 

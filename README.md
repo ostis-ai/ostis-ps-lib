@@ -18,7 +18,7 @@ It contains the following components:
 
 The Library of Common Utilities is a collection of reusable utility functions, classes, and templates that can be used across various components of the OSTIS system. This library provides common functionality and reduces code duplication.
 
-For more information about the Library of Common Utilities, [refer to the README file in the `common` folder](https://github.com/ostis-ai/ostis-ps-lib/tree/main/common).
+For more information about the Library of Common Utilities, [refer to the README file in the `ps-common-lib` folder](https://github.com/ostis-ai/ostis-ps-lib/tree/main/ps-common-lib).
 
 ## Non-Atomic Action Interpreter Module
 

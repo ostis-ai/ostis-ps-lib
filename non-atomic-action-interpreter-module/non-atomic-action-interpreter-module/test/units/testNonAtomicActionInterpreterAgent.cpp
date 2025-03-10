@@ -2,7 +2,7 @@
 #include <sc-builder/scs_loader.hpp>
 #include <sc-agents-common/utils/IteratorUtils.hpp>
 
-#include <common/keynodes.hpp>
+#include <ps-common-lib/keynodes.hpp>
 
 #include "agent/NonAtomicActionInterpreterAgent.hpp"
 #include "keynodes/NonAtomicKeynodes.hpp"

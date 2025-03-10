@@ -11,7 +11,7 @@ The primary goal of ostis-ps-lib is to provide a modular and extensible framewor
 Table of contents:
 
 - **Components** - *list of components of knowledge base and problem solver for ostis-systems*
-    * [Library of Common Utilities](common/README.md) - *library of common functions, utils, and classes for agents of ostis-systems*
+    * [Library of Common Utilities](ps-common-lib/README.md) - *library of common functions, utils, and classes for agents of ostis-systems*
     * [Non-Atomic Action Interpreter Module](non-atomic-action-interpreter-module/README.md) - *module for working with non-atomic actions*
 - **Development** - *Instructions for developers*
     * [Contributing Guide](_docs/CONTRIBUTING.md) - *how to contribute to the project*
