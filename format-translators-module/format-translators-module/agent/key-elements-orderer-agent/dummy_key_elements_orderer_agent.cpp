@@ -42,7 +42,13 @@ ScResult DummyKeyElementsOrdererAgent::DoProgram(ScAction & action)
       ScAddr lastConnector;
       elementsOrder = m_context.GenerateNode(ScType::ConstNodeTuple);
       std::list const nodeTypes = {
-          ScType::NodeClass, ScType::NodeLink, ScType::NodeRole, ScType::NodeNonRole, ScType::NodeTuple, ScType::Node};
+          ScType::NodeSuperclass,
+          ScType::NodeClass,
+          ScType::NodeLink,
+          ScType::NodeRole,
+          ScType::NodeNonRole,
+          ScType::NodeTuple,
+          ScType::Node};
 
       for (auto const & nodeType : nodeTypes)
         AddNodesToOrder(structure, elementsOrder, elementsInOrder, lastConnector, nodeType);

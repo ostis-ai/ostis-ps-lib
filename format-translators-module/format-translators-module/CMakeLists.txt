@@ -10,8 +10,8 @@ file(GLOB SOURCES CONFIGURE_DEPENDS
 
 add_library(format-translators SHARED ${SOURCES})
 target_link_libraries(format-translators
-        LINK_PUBLIC sc-machine::sc-memory
-        LINK_PUBLIC sc-machine::sc-agents-common
+    LINK_PUBLIC sc-machine::sc-memory
+    LINK_PUBLIC sc-machine::sc-agents-common
 )
 target_include_directories(format-translators PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 set_target_properties(format-translators PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${SC_EXTENSIONS_DIRECTORY})

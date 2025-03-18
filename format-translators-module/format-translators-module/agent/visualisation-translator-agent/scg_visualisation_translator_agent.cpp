@@ -28,11 +28,10 @@ bool SCgVisualisationTranslatorAgent::CheckInitiationCondition(ScActionInitiated
 
 ScResult SCgVisualisationTranslatorAgent::DoProgram(ScAction & action)
 {
-  structureTriples = std::make_shared<Triples>();
   try
   {
-    structureToTranslate = action.GetArgument(1);
-    identifiersLanguage = action.GetArgument(2, FormatTranslatorsConstants::GetDefaultLanguage());
+    ScAddr const & structureToTranslate = action.GetArgument(1);
+    ScAddr const & identifiersLanguage = action.GetArgument(2, FormatTranslatorsConstants::GetDefaultLanguage());
     if (!m_context.IsElement(structureToTranslate))
       SC_THROW_EXCEPTION(utils::ExceptionInvalidParams, "Cannot find structure to translate");
     ScAddr const & keyElementsOrderTuple = utils::IteratorUtils::getAnyByOutRelation(
@@ -45,6 +44,7 @@ ScResult SCgVisualisationTranslatorAgent::DoProgram(ScAction & action)
       SC_THROW_EXCEPTION(utils::ExceptionItemNotFound, "Cannot find main key element for structure to translate");
     ParseKeyElementsOrder(keyElementsOrderTuple);
     StructureToTriplesParser structureToTriplesParser;
+    std::shared_ptr<Triples> structureTriples = std::make_shared<Triples>();
     structureToTriplesParser.ParseStructure(
         &m_context, structureToTranslate, keyElementsOrder, identifiersLanguage, structureTriples);
     TriplesToModelParser triplesToModelParser;
@@ -143,7 +143,7 @@ std::list<std::shared_ptr<Node>> SCgVisualisationTranslatorAgent::AssignXCoordin
            + FormatTranslatorsConstants::EMPTY_SPACE_AFTER_IDENTIFIER)
           * FormatTranslatorsConstants::IDENTIFIER_CHARACTER_WIDTH;
       nextLevelIndent += indentDifference;
-      bool const reachedEndOfIndent = nextLevelIndent >= FormatTranslatorsConstants::MAX_Y;
+      bool const reachedEndOfIndent = nextLevelIndent >= FormatTranslatorsConstants::MAX_X;
       if (reachedEndOfIndent)
         UpdateNextLevelRoots(treeRoots, connectorsToNextLevelRoots, nextLevelRoots);
 
@@ -192,7 +192,7 @@ void SCgVisualisationTranslatorAgent::CalculateNextLevelElementsAndIdentifiersLe
     float & maxRelationIdentifierLength,
     float & maxLevelElementIdentifierLength)
 {
-  // todo(kilativ-dotcom): match russian letters regex and subtract from identifier length
+  // TODO(kilativ-dotcom): make identifier length not dependent on encoding
   for (auto const & levelElement : currentLevelRoots)
   {
     auto const & levelElementIdentifierSize = levelElement->GetIdentifier().size();
@@ -284,7 +284,7 @@ void SCgVisualisationTranslatorAgent::AssignYCoordinates(std::shared_ptr<Node> c
   if (rootElement->HasBus())
     lastAssignedY += FormatTranslatorsConstants::Y_INCREMENT;
   float levelElementConnectorIndex = 1;
-  size_t const rootElementConnectorsSize = rootElement->CalculateReservedVerticalElementsOnParent() - 1;
+  uint32_t const rootElementConnectorsSize = rootElement->CalculateReservedVerticalElementsOnParent() - 1;
   for (auto const & connector : rootElement->GetConnectors())
   {
     float const relationElementY = lastAssignedY - FormatTranslatorsConstants::HALF_Y_INCREMENT;

@@ -1,5 +1,9 @@
 #pragma once
 
+#include <iosfwd>
+#include <list>
+#include <unordered_map>
+
 #include "parser/types.hpp"
 
 #include <sc-memory/sc_memory.hpp>
@@ -22,6 +26,8 @@ private:
   ScAddr identifiersLanguage;
   ScAddrToValueUnorderedMap<uint32_t> keyElementsOrder;
 
+  void OrderTriples(UnorderedTriples const & unorderedTriples);
+
   void ParseStructure();
 
   Triples structureTriples;
@@ -34,7 +40,7 @@ private:
       ScAddrToValueUnorderedMap<std::pair<ScAddr, ScAddr>> & triplesWithConnectorNotInParsedStructure,
       ScAddrToValueUnorderedMap<std::pair<ScAddr, ScAddr>> & triplesWithConnectorInParsedStructure);
 
-  void AddTripleToParsedTriplesIfOtherIsNode(
+  void AddTripleToParsedTriples(
       ScAddr const & baseAddr,
       ScAddr const & connectorAddr,
       ScAddr const & otherElementAddr,

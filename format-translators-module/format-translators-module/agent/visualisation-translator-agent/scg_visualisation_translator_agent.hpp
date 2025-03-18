@@ -22,11 +22,8 @@ public:
 
 private:
   float lastAssignedY = 0;
-  ScAddr structureToTranslate;
-  ScAddr identifiersLanguage;
   ScAddrToValueUnorderedMap<uint32_t> keyElementsOrder;
 
-  std::shared_ptr<Triples> structureTriples;
   ScAddrUnorderedSet rootElements;
   ScAddrUnorderedSet walkedConnectors;
   void ParseKeyElementsOrder(ScAddr const & keyElementsOrderTuple);

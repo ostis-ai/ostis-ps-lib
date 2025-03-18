@@ -7,6 +7,8 @@
 namespace formatTranslators
 {
 
+using UnorderedTriples = ScAddrToValueUnorderedMap<std::list<std::tuple<ScAddr, ScAddr, bool>>>;
+
 class ScAddrComparator;
 // this is map that has baseElement as key and another map as value
 // value map has <otherElement, connector> pair as key and list of triples as value
@@ -17,47 +19,17 @@ using Triples = ScAddrToValueUnorderedMap<
 class ScAddrComparator
 {
 public:
-  explicit ScAddrComparator(ScAddrToValueUnorderedMap<uint32_t> & order, Triples & structureTriples)
-    : order(order)
-    , structureTriples(structureTriples)
-  {
-  }
+  explicit ScAddrComparator(
+      ScAddrToValueUnorderedMap<uint32_t> const & order,
+      UnorderedTriples const & structureTriples);
 
-  bool operator()(std::pair<ScAddr, ScAddr> const & first, std::pair<ScAddr, ScAddr> const & second) const
-  {
-    uint32_t const firstValue = GetValue(first);
-    uint32_t const secondValue = GetValue(second);
-    return firstValue < secondValue;
-  }
+  bool operator()(std::pair<ScAddr, ScAddr> const & first, std::pair<ScAddr, ScAddr> const & second) const;
 
 private:
-  ScAddrToValueUnorderedMap<uint32_t> & order;
-  Triples & structureTriples;
+  ScAddrToValueUnorderedMap<uint32_t> const & order;
+  UnorderedTriples const & structureTriples;
 
-  uint32_t GetValue(std::pair<ScAddr, ScAddr> const & key) const
-  {
-    auto const & directValueIterator = order.find(key.first);
-    bool const hasDirectValue = directValueIterator != order.cend();
-    auto const & indirectValueIterator = structureTriples.find(key.second);
-    bool const hasIndirectValue =
-        indirectValueIterator != structureTriples.cend() && !indirectValueIterator->second.empty();
-    if (hasIndirectValue)
-    {
-      ScAddr const & firstOtherElementForConnector = indirectValueIterator->second.begin()->first.first;
-      auto const & otherElementOrderIterator = order.find(firstOtherElementForConnector);
-      if (otherElementOrderIterator != order.cend())
-      {
-        if (hasDirectValue)
-          return std::min(directValueIterator->second, otherElementOrderIterator->second);
-        else
-          return otherElementOrderIterator->second;
-      }
-    }
-    if (hasDirectValue)
-      return directValueIterator->second;
-    else
-      return key.first.Hash() + key.second.Hash();
-  }
+  uint32_t GetValue(std::pair<ScAddr, ScAddr> const & key) const;
 };
 
 }  // namespace formatTranslators

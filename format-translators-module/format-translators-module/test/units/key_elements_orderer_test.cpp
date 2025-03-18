@@ -38,7 +38,13 @@ TEST_F(DummyKeyElementsOrdererTest, expectedOrderOfNodeTypes)
   EXPECT_TRUE(m_ctx->CheckConnector(actionResult, keyElementsOrder, ScType::ConstPermPosArc));
 
   std::vector const nodeTypes = {
-      ScType::NodeClass, ScType::NodeLink, ScType::NodeRole, ScType::NodeNonRole, ScType::NodeTuple, ScType::Node};
+      ScType::NodeSuperclass,
+      ScType::NodeClass,
+      ScType::NodeLink,
+      ScType::NodeRole,
+      ScType::NodeNonRole,
+      ScType::NodeTuple,
+      ScType::Node};
 
   EXPECT_EQ(m_ctx->GetElementEdgesAndOutgoingArcsCount(keyElementsOrder), nodeTypes.size());
 
@@ -46,7 +52,7 @@ TEST_F(DummyKeyElementsOrdererTest, expectedOrderOfNodeTypes)
       keyElementsOrder, ScType::ConstPermPosArc, ScType::Node, ScType::ConstPermPosArc, ScKeynodes::rrel_1);
   EXPECT_TRUE(firstElementIterator->Next());
   ScAddr connectorFromOrder = firstElementIterator->Get(1);
-  size_t elementIndex = 0;
+  uint32_t elementIndex = 0;
   while (m_ctx->IsElement(connectorFromOrder) && elementIndex < nodeTypes.size())
   {
     ScAddr const & elementFromOrder = m_ctx->GetArcTargetElement(connectorFromOrder);

@@ -22,6 +22,8 @@ public:
 
   virtual ~Element() = default;
 
+  virtual void AcceptVisitor(Visitor & visitor) = 0;
+
   std::string const & GetIdentifier() const;
 
   void SetIdentifier(std::string const & identifier);
@@ -42,15 +44,13 @@ public:
 
   void SetScType(ScType const & scType);
 
-  virtual void AcceptVisitor(Visitor & visitor) = 0;
-
   virtual std::string GetIdForBaseElement() const;
 
   virtual std::string GetIdForOtherElement() const;
 
   std::string GetId() const;
 
-  void GetId(std::string const & id);
+  void SetId(std::string const & id);
 
 private:
   std::string id;

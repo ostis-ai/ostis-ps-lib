@@ -11,6 +11,8 @@ namespace formatTranslators
 class Connector : public Element
 {
 public:
+  void AcceptVisitor(Visitor & visitor) override;
+
   std::shared_ptr<Element> const & GetBaseElement() const;
 
   void SetBaseElement(std::shared_ptr<Element> const & baseElement);
@@ -23,13 +25,13 @@ public:
 
   void SetBaseElementX(float baseElementX);
 
-  float GetBaseElementY() const;
-
-  void SetBaseElementY(float baseElementY);
-
   float GetBaseElementBalance() const;
 
   void SetBaseElementBalance(float baseElementBalance);
+
+  float GetBaseElementY() const;
+
+  void SetBaseElementY(float baseElementY);
 
   float GetOtherElementX() const;
 
@@ -68,8 +70,6 @@ public:
   float GetTargetElementY() const;
 
   float GetTargetElementBalance() const;
-
-  void AcceptVisitor(Visitor & visitor) override;
 
 private:
   std::shared_ptr<Element> baseElement;

@@ -9,7 +9,7 @@ class Node;
 class Visitor
 {
 public:
-  virtual ~Visitor() = default;
+  virtual ~Visitor();
 
   virtual void VisitConnector(Connector & connector) = 0;
   virtual void VisitLink(Link & link) = 0;

@@ -26,7 +26,7 @@ std::shared_ptr<Node> TriplesToModelParser::ParseTriples(
 std::shared_ptr<Node> TriplesToModelParser::WalkBFS(ScAddr const & root, uint32_t currentLevel)
 {
   ScType const & rootType = context->GetElementType(root);
-  // todo(kilativ-dotcom): allow connectors to be roots
+  // TODO(kilativ-dotcom): allow connectors to be roots
   if (!rootType.IsNode())
     SC_THROW_EXCEPTION(
         utils::ExceptionInvalidParams,

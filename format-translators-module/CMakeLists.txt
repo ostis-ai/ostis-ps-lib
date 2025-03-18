@@ -5,8 +5,8 @@ message(STATUS "Current project version: ${CMAKE_PROJECT_VERSION}")
 cmake_policy(SET CMP0048 NEW)
 
 if(${WIN32})
-    message(SEND_ERROR "scp-machine isn't supported on Windows OS.")
-endif(${WIN32})
+    message(FATAL_ERROR "ui-translators component isn't supported on Windows OS.")
+endif()
 
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake")
 

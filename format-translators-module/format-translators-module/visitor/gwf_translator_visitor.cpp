@@ -130,13 +130,29 @@ void GWFTranslatorVisitor::VisitNode(Node & node)
   VisitIncidentConnectors(node);
 }
 
+void GWFTranslatorVisitor::VisitIncidentConnectors(Element const & element)
+{
+  for (auto const & connector : element.GetConnectors())
+    connector->AcceptVisitor(*this);
+}
+
+void GWFTranslatorVisitor::AddBus(Node const & node)
+{
+  staticSectorContent << "        <bus type=\"bus\" idtf=\"\" shapeColor=\"0\" id=\"" << node.GetBusId()
+                      << "\" parent=\"0\" owner=\"" << node.GetNodeId() << "\" b_x=\"" << node.GetX() << "\" b_y=\""
+                      << node.GetTopY() << "\" e_x=\"" << node.GetX() << "\" e_y=\"" << node.GetBottomY()
+                      << "\">\n"
+                         "            <points/>\n"
+                         "        </bus>\n";
+}
+
 std::string GWFTranslatorVisitor::GetGWFId(Element & element)
 {
   std::string id = element.GetId();
   if (id.empty())
   {
     id = std::to_string(nextIdToAssign++);
-    element.GetId(id);
+    element.SetId(id);
   }
   return id;
 }
@@ -163,29 +179,13 @@ std::string GWFTranslatorVisitor::GetGWFNodeType(Node const & node) const
 
 std::string GWFTranslatorVisitor::GetLinkMimeType(Link const & link) const
 {
-  // todo(kilativ-dotcom): support other mime types
+  // TODO(kilativ-dotcom): support other mime types
   return "content/term";
 }
 
 std::string GWFTranslatorVisitor::GetLinkContentType(Link const & link) const
 {
-  // todo(kilativ-dotcom): support other content types
+  // TODO(kilativ-dotcom): support other content types
   return "1";
-}
-
-void GWFTranslatorVisitor::VisitIncidentConnectors(Element const & element)
-{
-  for (auto const & connector : element.GetConnectors())
-    connector->AcceptVisitor(*this);
-}
-
-void GWFTranslatorVisitor::AddBus(Node const & node)
-{
-  staticSectorContent << "        <bus type=\"bus\" idtf=\"\" shapeColor=\"0\" id=\"" << node.GetBusId()
-                      << "\" parent=\"0\" owner=\"" << node.GetNodeId() << "\" b_x=\"" << node.GetX() << "\" b_y=\""
-                      << node.GetTopY() << "\" e_x=\"" << node.GetX() << "\" e_y=\"" << node.GetBottomY()
-                      << "\">\n"
-                         "            <points/>\n"
-                         "        </bus>\n";
 }
 }  // namespace formatTranslators

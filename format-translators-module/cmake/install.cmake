@@ -1,25 +1,25 @@
 install(TARGETS
-        format-translators
-        EXPORT privateExport
-        LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}/extensions"
+    format-translators
+    EXPORT privateExport
+    LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}/extensions"
 )
 
 install(EXPORT privateExport
-        FILE privateTargets.cmake
-        DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/format-translators-module
+    FILE privateTargets.cmake
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/format-translators-module
 )
 
 include(CMakePackageConfigHelpers)
 
 write_basic_package_version_file(
-        "${CMAKE_CURRENT_BINARY_DIR}/format-translators-module-config-version.cmake"
-        VERSION ${PROJECT_VERSION}
-        COMPATIBILITY AnyNewerVersion
+    "${CMAKE_CURRENT_BINARY_DIR}/format-translators-module-config-version.cmake"
+    VERSION ${PROJECT_VERSION}
+    COMPATIBILITY AnyNewerVersion
 )
 
 install(FILES
-        "${CMAKE_CURRENT_BINARY_DIR}/format-translators-module-config-version.cmake"
-        DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/format-translators-module
+    "${CMAKE_CURRENT_BINARY_DIR}/format-translators-module-config-version.cmake"
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/format-translators-module
 )
 
 set(CPACK_PACKAGE_NAME                  format-translators-module)

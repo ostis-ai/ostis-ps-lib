@@ -21,7 +21,7 @@ float const FormatTranslatorsConstants::REVERSED_CONNECTOR_INCIDENT_POINT_PERCEN
 float const FormatTranslatorsConstants::Y_INCREMENT = 100;
 float const FormatTranslatorsConstants::HALF_Y_INCREMENT = Y_INCREMENT / 2;
 float const FormatTranslatorsConstants::MIN_X = 200;
-float const FormatTranslatorsConstants::MAX_Y = 800;
+float const FormatTranslatorsConstants::MAX_X = 800;
 float const FormatTranslatorsConstants::MAX_LINK_WIDTH = 60;
 float const FormatTranslatorsConstants::EMPTY_SPACE_AFTER_IDENTIFIER = 8;
 float const FormatTranslatorsConstants::IDENTIFIER_CHARACTER_WIDTH = 6;

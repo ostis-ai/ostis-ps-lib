@@ -9,6 +9,8 @@ class Node : public Element
 public:
   Node();
 
+  void AcceptVisitor(Visitor & visitor) override;
+
   virtual std::string const & GetContent() const;
 
   float GetX() const;
@@ -33,9 +35,7 @@ public:
 
   std::string GetBusId() const;
 
-  size_t CalculateReservedVerticalElementsOnParent();
-
-  void AcceptVisitor(Visitor & visitor) override;
+  uint32_t CalculateReservedVerticalElementsOnParent();
 
   virtual std::shared_ptr<Node> Copy() const;
 
@@ -46,7 +46,7 @@ private:
   float x;
   float topY;
   float bottomY;
-  size_t reservedVerticalElementsOnParent = 0;
+  uint32_t reservedVerticalElementsOnParent = 0;
 };
 
 }  // namespace formatTranslators

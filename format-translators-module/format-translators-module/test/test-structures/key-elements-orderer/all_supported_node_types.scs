@@ -8,6 +8,9 @@ sc_node_class
     -> action_order_key_elements;
     -> node_class;;
 
+sc_node_superclass
+    -> node_superclass;;
+
 sc_node_non_role_relation
     -> node_non_role;;
 
@@ -22,6 +25,7 @@ sc_node_role_relation
 test_structure =
 [*
 ..node
+    -> node_superclass;
     -> node_class;
     -> node_role;
     -> node_tuple;

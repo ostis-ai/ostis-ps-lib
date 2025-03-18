@@ -4,12 +4,12 @@
 
 namespace formatTranslators
 {
+Link::Link() = default;
+
 void Link::AcceptVisitor(Visitor & visitor)
 {
   visitor.VisitLink(*this);
 }
-
-Link::Link() {}
 
 std::string const & Link::GetContent() const
 {

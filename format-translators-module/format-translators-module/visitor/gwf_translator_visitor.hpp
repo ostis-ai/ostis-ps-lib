@@ -42,7 +42,7 @@ private:
   struct ScTypeHash;
   static std::unordered_map<ScType, std::string, ScTypeHash> const NODE_TYPES;
   static std::unordered_map<ScType, std::string, ScTypeHash> const CONNECTOR_TYPES;
-  size_t nextIdToAssign = 0;
+  uint32_t nextIdToAssign = 0;
 };
 
 }  // namespace formatTranslators

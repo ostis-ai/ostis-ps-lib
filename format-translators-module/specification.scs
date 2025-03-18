@@ -12,12 +12,12 @@ format_translators_ps_specification = [*
     <- concept_reusable_source_code_component;;
 
     => nrel_authors: ... (* -> VitaliTsishchanka;; *);;
-    => nrel_not_note: [Компонент содержит агентов, которые транслируют структуру в заданный формат.] (* <- lang_ru;; *);;
+    => nrel_not_note: [Компонент содержит агентов, которые транслируют структуру в формат gwf.] (* <- lang_ru;; *);;
     => nrel_explanation: [Компонент предоставляет компонент решателя задач, содержащий коллектив агентов.] (*<- lang_ru;; *);;
 
-    => nrel_main_idtf: [Решатель задач. Трансляторы в формат](* <- lang_ru;; *);;
-    => nrel_main_idtf: [Problem solver. Format translators](* <- lang_en;; *);;
-    => nrel_component_dependencies: ... (* <- empty_set;; *);;//todo(kilativ-dotcom): add sc-machine dependency? but it is not a component
+    => nrel_main_idtf: [Решатель задач. Транслятор в формат gwf](* <- lang_ru;; *);;
+    => nrel_main_idtf: [Problem solver. Format gwf translator](* <- lang_en;; *);;
+    => nrel_component_dependencies: ... (* <- empty_set;; *);;// TODO(kilativ-dotcom): add sc-machine dependency? but it is not a component
 
     => nrel_component_address: [https://github.com/ostis-ai/ostis-ps-lib/tree/feat/gwf_translator] (* <- concept_github_url;; *);;
     => nrel_installation_method: ... (* <- concept_component_dynamically_installed_method;; *);;

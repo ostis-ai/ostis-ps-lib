@@ -5,6 +5,13 @@
 
 namespace formatTranslators
 {
+Node::Node()
+  : x(0)
+  , topY(0)
+  , bottomY(0)
+{
+}
+
 void Node::AcceptVisitor(Visitor & visitor)
 {
   visitor.VisitNode(*this);
@@ -14,13 +21,6 @@ std::string const & Node::GetContent() const
 {
   static std::string EMPTY_CONTENT;
   return EMPTY_CONTENT;
-}
-
-Node::Node()
-  : x(0)
-  , topY(0)
-  , bottomY(0)
-{
 }
 
 float Node::GetX() const
@@ -78,7 +78,7 @@ std::string Node::GetBusId() const
   return GetId() + "_bus";
 }
 
-size_t Node::CalculateReservedVerticalElementsOnParent()
+uint32_t Node::CalculateReservedVerticalElementsOnParent()
 {
   if (reservedVerticalElementsOnParent == 0)
   {
