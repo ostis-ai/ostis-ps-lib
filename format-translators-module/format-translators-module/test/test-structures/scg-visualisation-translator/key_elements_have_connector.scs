@@ -1,0 +1,51 @@
+test_action_node
+    <- action_visualise_to_scg;
+    -> rrel_1: test_structure;;
+
+@not_root_2 = [not_root_2];;
+@not_root_3 = _[not_root_3];;
+
+sc_node_class
+    -> concept_test_element;
+    -> concept_0;
+    -> concept_1;
+    -> concept_2;
+    -> concept_3;;
+
+sc_node_tuple
+    -> _not_root_1;;
+
+test_structure =
+[*
+root_element
+    <-_ concept_test_element;
+    <- concept_0;;
+concept_test_element
+    _-> _not_root_1;
+    -|> @not_root_2;
+    _=> @not_root_3;;
+
+@key_connector = ( not_root_1 </ concept_another_test_element );;
+
+@not_root_2
+    <- concept_1;
+    -> concept_2;
+    <- concept_3;;
+*];;
+
+test_structure
+    -> rrel_main_key_sc_element: root_element;
+    => nrel_key_elements_order:
+    <
+        concept_test_element;
+        @key_connector;
+        concept_another_test_element;
+        concept_0;
+        concept_1;
+        concept_2;
+        concept_3;
+        _not_root_1;
+        @not_root_2;
+        @not_root_3
+    >;;
+

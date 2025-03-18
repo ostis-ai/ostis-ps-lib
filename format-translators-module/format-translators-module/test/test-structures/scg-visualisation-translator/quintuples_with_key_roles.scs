@@ -1,0 +1,48 @@
+test_action_node
+    <- action_visualise_to_scg;
+    -> rrel_1: test_structure;;
+
+sc_node_role_relation
+    -> rrel_relation_1;;
+
+sc_node_non_role_relation
+    -> nrel_relation_1;
+    -> nrel_relation_2;;
+
+@not_root_8 = [text here];;
+
+test_structure =
+[*
+root_element
+_=> nrel_relation_1:
+    not_root_1;
+    not_root_2;
+..> rrel_relation_1:
+    not_root_5;;
+
+not_root_1
+=> nrel_relation_1::
+    root_element;
+    not_root_3;
+<= nrel_relation_2:
+    not_root_4;;
+
+not_root_3
+<=_ nrel_relation_1::
+    not_root_6;
+    not_root_6;
+    not_root_6;
+    not_root_6;
+    not_root_6;
+    _not_root_7;
+    @not_root_8;;
+*];;
+
+test_structure
+    -> rrel_main_key_sc_element: root_element;
+    => nrel_key_elements_order:
+    <
+        rrel_relation_1;
+        nrel_relation_1;
+        nrel_relation_2
+    >;;

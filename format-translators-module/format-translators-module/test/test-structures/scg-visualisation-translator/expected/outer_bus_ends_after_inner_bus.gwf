@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GWF version="2.0">
+    <staticSector>
+        <node type="node/const/perm/general" idtf="root_element" shapeColor="0" id="0" parent="0" x="200" y="0" haveBus="true" idtf_pos="0"  >
+            <content type="0" mime_type="" content_visibility="false" file_name=""/>
+        </node>
+        <bus type="bus" idtf="" shapeColor="0" id="0_bus" parent="0" owner="0" b_x="200" b_y="0" e_x="200" e_y="800">
+            <points/>
+        </bus>
+        <node type="node/const/perm/group" idtf="concept_test_element" shapeColor="0" id="1" parent="0" x="320" y="100" haveBus="true" idtf_pos="0"  >
+            <content type="0" mime_type="" content_visibility="false" file_name=""/>
+        </node>
+        <bus type="bus" idtf="" shapeColor="0" id="1_bus" parent="0" owner="1" b_x="320" b_y="100" e_x="320" e_y="400">
+            <points/>
+        </bus>
+        <node type="node/var/perm/tuple" idtf="_not_root_1" shapeColor="0" id="2" parent="0" x="548" y="200" haveBus="false" idtf_pos="0"  >
+            <content type="0" mime_type="" content_visibility="false" file_name=""/>
+        </node>
+        <pair type="pair/var/pos/perm/orient/membership" idtf="" shapeColor="0" id="3" parent="0" id_b="1_bus" id_e="2" dotBBalance="0.333333" dotEBalance="0" >
+          <points/>
+        </pair>
+        <node type="node/const/perm/general" idtf="" shapeColor="0" id="4" parent="0" x="548" y="300" haveBus="false" idtf_pos="0" >
+          <content type="1" mime_type="content/term" content_visibility="true" file_name=""><![CDATA[not_root_2]]></content>
+        </node>
+        <pair type="pair/const/neg/perm/orient/membership" idtf="" shapeColor="0" id="5" parent="0" id_b="1_bus" id_e="4" dotBBalance="0.666667" dotEBalance="0" >
+          <points/>
+        </pair>
+        <node type="node/var/perm/general" idtf="" shapeColor="0" id="6" parent="0" x="548" y="400" haveBus="false" idtf_pos="0" >
+          <content type="1" mime_type="content/term" content_visibility="true" file_name=""><![CDATA[not_root_3]]></content>
+        </node>
+        <pair type="pair/var/-/perm/orient" idtf="" shapeColor="0" id="7" parent="0" id_b="1_bus" id_e="6" dotBBalance="0.99999" dotEBalance="0" >
+          <points/>
+        </pair>
+        <pair type="pair/var/pos/perm/orient/membership" idtf="" shapeColor="0" id="8" parent="0" id_b="1" id_e="0_bus" dotBBalance="0" dotEBalance="0.125" >
+          <points/>
+        </pair>
+        <node type="node/const/perm/group" idtf="concept_0" shapeColor="0" id="9" parent="0" x="320" y="500" haveBus="false" idtf_pos="0"  >
+            <content type="0" mime_type="" content_visibility="false" file_name=""/>
+        </node>
+        <pair type="pair/const/pos/perm/orient/membership" idtf="" shapeColor="0" id="10" parent="0" id_b="9" id_e="0_bus" dotBBalance="0" dotEBalance="0.625" >
+          <points/>
+        </pair>
+        <node type="node/const/perm/group" idtf="concept_1" shapeColor="0" id="11" parent="0" x="320" y="600" haveBus="false" idtf_pos="0"  >
+            <content type="0" mime_type="" content_visibility="false" file_name=""/>
+        </node>
+        <pair type="pair/const/pos/perm/orient/membership" idtf="" shapeColor="0" id="12" parent="0" id_b="11" id_e="0_bus" dotBBalance="0" dotEBalance="0.75" >
+          <points/>
+        </pair>
+        <node type="node/const/perm/group" idtf="concept_2" shapeColor="0" id="13" parent="0" x="320" y="700" haveBus="false" idtf_pos="0"  >
+            <content type="0" mime_type="" content_visibility="false" file_name=""/>
+        </node>
+        <pair type="pair/const/pos/perm/orient/membership" idtf="" shapeColor="0" id="14" parent="0" id_b="13" id_e="0_bus" dotBBalance="0" dotEBalance="0.875" >
+          <points/>
+        </pair>
+        <node type="node/const/perm/group" idtf="concept_3" shapeColor="0" id="15" parent="0" x="320" y="800" haveBus="false" idtf_pos="0"  >
+            <content type="0" mime_type="" content_visibility="false" file_name=""/>
+        </node>
+        <pair type="pair/const/pos/perm/orient/membership" idtf="" shapeColor="0" id="16" parent="0" id_b="15" id_e="0_bus" dotBBalance="0" dotEBalance="0.99999" >
+          <points/>
+        </pair>
+    </staticSector>
+</GWF>
