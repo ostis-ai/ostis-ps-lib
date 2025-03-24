@@ -63,7 +63,7 @@ This ensures that the necessary CMake files are generated for finding and linkin
 
 After you've set up your project to use the Common Utilities library, you can start using its functionality in your code. Here's how to include and use the library:
 
-1. Include the necessary headers in your C++ files:
+### 1. Include the necessary headers in your C++ files:
 
 ```cpp
 #include <ps-common-lib/utils/logic_utils.hpp>
@@ -71,7 +71,7 @@ After you've set up your project to use the Common Utilities library, you can st
 #include <ps-common-lib/utils/template_params_utils.hpp>
 ```
 
-2. Refer to the library's header files for a complete list of available functions and their usage.
+### 2. Refer to the library's header files for a complete list of available functions and their usage.
 
 ## Developing Library
 
