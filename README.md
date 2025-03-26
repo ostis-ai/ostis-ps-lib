@@ -13,6 +13,7 @@ It contains the following components:
 
 - [Library of Common Utilities](#library-of-common-utilities);
 - [Non-Atomic Action Interpreter Module](#non-atomic-action-interpreter-module)
+- [Dialog System Message Processing Module](#dialog-system-message-processing-module)
 
 ## Library of Common Utilities
 
