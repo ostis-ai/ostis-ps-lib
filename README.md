@@ -26,6 +26,10 @@ The Non-Atomic Action Interpreter Module is responsible for interpreting non-ato
 
 For more information about the Non-Atomic Action Interpreter Module, [refer to the README file in the `non-atomic-action-interpreter-module` folder](https://github.com/ostis-ai/ostis-ps-lib/tree/main/non-atomic-action-interpreter-module).
 
+## Dialog System Message Processing Module
+
+The Dialog System Message Processing Module is designed for use in dialog systems, specifically for processing messages within the OSTIS.
+
 ## Documentation
 
 - A brief user manual and developer docs are hosted on our [GitHub Pages](https://ostis-ai.github.io/ostis-ps-lib).

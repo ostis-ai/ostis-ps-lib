@@ -10,3 +10,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Library of common utilities (`ps-common-lib` folder)
 - Non-atomic action interpreter module (`non-atomic-action-interpreter-module` folder)
+- Dialog system message processing module (`dialog-system-message-processing-module` folder)
