@@ -1,7 +1,7 @@
 site_name: ostis-ps-lib
 dev_addr: 127.0.0.1:8021
 repo_url: https://github.com/ostis-ai/ostis-ps-lib
-edit_uri: edit/main/docs/
+edit_uri: edit/main
 
 site_dir: ../../site
 docs_dir: ..
