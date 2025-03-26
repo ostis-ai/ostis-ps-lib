@@ -1,0 +1,23 @@
+subject_domain_of_dialog_system_message_understanding
+=> nrel_main_idtf: 
+    [Предметная область понимания сообщений в диалоговых системах]
+    (* <- lang_ru;; *);
+    [Subject domain of dialog system message understanding]
+    (* <- lang_en;; *);
+<- sc_node_structure;
+<- subject_domain;
+<= nrel_private_subject_domain: section_subject_domain_of_dialog_system_messages;
+-> rrel_maximum_studied_object_class:
+    concept_svo_triple;
+    concept_svo_triple_element;
+    concept_svo_triple_element_value_generation_rule;
+    concept_svo_triple_element_value_generation_rule_class_by_priority;
+    concept_message_nl_translation_logic_rule;
+    concept_message_nl_translation_logic_rule_class_by_priority;
+-> rrel_explored_relation:
+    nrel_svo_triples;
+    rrel_svo_object;
+    rrel_svo_subject;
+    rrel_svo_triple_element_token;
+    rrel_svo_triple_element_values;
+    rrel_svo_verb;;

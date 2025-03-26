@@ -1,0 +1,59 @@
+rrel_svo_subject
+<- sc_node_role_relation;
+<- relation;
+<- role_relation;
+<- binary_relation;
+<- oriented_relation;
+<- antireflexive_relation;
+<- antitransitive_relation;
+<- asymmetric_relation;
+=> nrel_main_idtf:
+    [субъект тройки субъект-глагол-объект']
+    (* <-  lang_ru;; *);
+    [subject of the subject-verb-object triple']
+    (* <-  lang_en;; *);
+    [Subjekt des Subjekt-Verb-Objekt-Tripels']
+    (* <-  lang_de;; *);
+=> nrel_first_domain: concept_svo_triple;
+=> nrel_second_domain: concept_svo_triple_element;
+=> nrel_definitional_domain:
+    ...
+    (*
+    <= nrel_combination:
+        {
+        concept_svo_triple;
+        concept_svo_triple_element
+        };;
+    *);
+<- rrel_key_sc_element:
+    ...
+    (*
+    => nrel_main_idtf:
+        [Опр. (субъект тройки субъект-глагол-объект')]
+        (* <-  lang_ru;; *);
+        [Def. (subject of the subject-verb-object triple')]
+        (* <-  lang_en;; *);
+        [Def. (Subjekt des Subjekt-Verb-Objekt-Tripels')]
+        (* <-  lang_de;; *);;
+    <- definition;;
+    <= nrel_sc_text_translation:
+        {
+            rrel_example: [Субъект тройки субъект-глагол-объект' - ролевое отношение, связывающее тройку субъект–глагол–объект и
+            сущность, представляющую субъект, в рамках данной тройки.]
+            (* <-  lang_ru;; *);
+            rrel_example: [Subject of the subject-verb-object triple' is a role relation that connects the subject-verb-object
+            triple and the entity representing the subject within this triple.]
+            (* <-  lang_en;; *);
+         rrel_example: [Subjekt des Subjekt-Verb-Objekt-Tripels' ist eine Rollenbeziehung, die das Subjekt-Verb-Objekt-Tripel
+            und die Entität, die das Subjekt darstellt, innerhalb dieses Tripels verbindet.]
+         (* <-  lang_de;; *)
+        };;
+    <= nrel_using_constants:
+        {
+        sc_element;
+        triple_set;
+        subject;
+        concept_svo_triple;
+        role_relation
+        };;
+    *);;

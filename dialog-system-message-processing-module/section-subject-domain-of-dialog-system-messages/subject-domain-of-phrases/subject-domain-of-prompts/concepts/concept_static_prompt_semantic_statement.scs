@@ -1,0 +1,32 @@
+concept_static_prompt_semantic_statement
+<- sc_node_class;
+=> nrel_main_idtf:
+    [утверждение статического промпта про семантику]
+    (* <- lang_ru;; *);
+    [static prompt statement about semantic]
+    (* <- lang_en;; *);
+
+<- rrel_key_sc_element:
+    ...
+    (*
+    => nrel_main_idtf:
+        [Опр. (утверждение статического промпта про семантику)]
+        (* <- lang_ru;; *);
+        [Def. (static prompt statement about semantic)]
+        (* <- lang_en;; *);;
+    <- definition;;
+    <= nrel_sc_text_translation:
+        {
+            rrel_example: [Утверждение статического промпта про семантику - утверждение, содержащее требования к семантике ответа на запрос.
+            Может использоваться как составная часть статического промпта.]
+            (* <- lang_ru;; *);
+            rrel_example: [Static prompt statement about semantic is a statement that contains requirements for the semantics
+            of the response to the request. It can be used as an integral part of a static prompt.]
+            (* <- lang_en;; *)
+        };;
+    <= nrel_using_constants:
+        {
+        statement;
+        concept_static_prompt_statement
+        };;
+    *);;

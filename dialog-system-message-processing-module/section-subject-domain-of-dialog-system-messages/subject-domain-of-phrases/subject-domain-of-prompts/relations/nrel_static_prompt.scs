@@ -1,0 +1,57 @@
+nrel_static_prompt
+<- sc_node_non_role_relation;
+<- relation;
+<- binary_relation;
+<- oriented_relation;
+<- antireflexive_relation;
+<- asymmetric_relation;
+<- antitransitive_relation;
+=> nrel_main_idtf:
+    [статический промпт*]
+    (* <- lang_ru;; *);
+    [static prompt*]
+    (* <- lang_en;; *);
+=> nrel_first_domain: concept_llm_client;
+=> nrel_second_domain:
+    ...
+    (*
+        <- boolean;;
+        <= nrel_boolean: concept_static_prompt_statement;;
+    *);
+=> nrel_definitional_domain:
+    ...
+    (*
+        <= nrel_combination:
+        {
+            ...
+            (*
+                <- boolean;;
+                <= nrel_boolean: concept_static_prompt_statement;;
+            *);
+            concept_llm_client
+        };;
+    *);
+<- rrel_key_sc_element:
+    ...
+    (*
+    => nrel_main_idtf:
+        [Опр. (статический промпт*)]
+        (* <- lang_ru;; *);
+        [Def. (static prompt*)]
+        (* <- lang_en;; *);;
+    <-  definition;;
+    <= nrel_sc_text_translation:
+        {
+            rrel_example:
+                [Статический промпт* - это бинарное отношение, связывающее клиент LLM и ориентированное множество его статических промптов.]
+                (* <- lang_ru;; *);
+            rrel_example:
+                [Static prompt* is a binary relation that connects a LLM client with its oriented set of static prompts.]
+                (* <- lang_en;; *)
+        };;
+    <= nrel_using_constants:
+        {
+        concept_llm_client;
+        concept_static_prompt_statement
+        };;
+    *);;

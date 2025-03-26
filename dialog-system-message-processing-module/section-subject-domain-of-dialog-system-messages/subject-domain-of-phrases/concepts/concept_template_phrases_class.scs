@@ -1,0 +1,34 @@
+concept_template_phrases_class
+    => nrel_main_idtf:
+        [класс шаблонных фраз] (* <- lang_ru;; *);
+        [template phrases class] (* <- lang_en;; *);
+        [Klasse der Musterphrasen] (* <- lang_de;; *);
+    <-sc_node_class;
+    <= nrel_set_of_subsets: concept_phrase;;
+
+...
+    <- definition;
+    => nrel_main_idtf:
+        [Опр.(класс шаблонных фраз)] (* <- lang_ru;; *);
+        [Def.(template phrases class)] (* <- lang_en;; *);
+        [Def.(Klasse der Musterphrasen)] (* <- lang_de;; *);
+    -> rrel_key_sc_element:
+        concept_template_phrases_class;
+    <= nrel_sc_text_translation:
+        {
+            rrel_example:
+                [Класс шаблонных фраз - множество файлов, являющихся взаимозаменяемыми текстами для какого-либо сообщения.]
+                (* <- lang_ru;; *);
+            rrel_example:
+                [Template phrases class is a set of files that are interchangeable texts for a message.]
+                (* <- lang_en;; *);
+            rrel_example:
+                [Klasse der Musterphrasen ist eine Anzahl von Dateien, die austauschbare Texte für eine Nachricht sind.]
+                (* <- lang_de;; *)
+        };
+    <= nrel_using_constants:
+        {
+            set;
+            file;
+            concept_message
+        };;
