@@ -23,7 +23,7 @@ public:
   static inline ScKeynode const ui_rrel_output_format{"ui_rrel_output_format", ScType::ConstNodeRole};
   static inline ScKeynode const ui_rrel_source_sc_construction{"ui_rrel_source_sc_construction", ScType::ConstNodeRole};
   static inline ScKeynode const ui_rrel_user_lang{"ui_rrel_user_lang", ScType::ConstNodeRole};
-  static inline ScKeynode const format_scg_json{"format_scg_json", ScType::ConstNodeClass};
+  static inline ScKeynode const format_gwf_json{"format_gwf_json", ScType::ConstNodeClass};
   static inline ScKeynode const lang_en{"lang_en", ScType::ConstNodeClass};
 };
 

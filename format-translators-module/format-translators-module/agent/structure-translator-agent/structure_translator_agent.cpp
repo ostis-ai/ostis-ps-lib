@@ -23,7 +23,7 @@ bool StructureTranslatorAgent::CheckInitiationCondition(ScActionInitiatedEvent c
   auto const & formatIterator = m_context.CreateIterator5(
       command,
       ScType::ConstPermPosArc,
-      FormatTranslatorsKeynodes::format_scg_json,
+      FormatTranslatorsKeynodes::format_gwf_json,
       ScType::ConstPermPosArc,
       FormatTranslatorsKeynodes::ui_rrel_output_format);
   if (!formatIterator->Next())
@@ -71,7 +71,7 @@ ScResult StructureTranslatorAgent::DoProgram(
     ScAddr const & resultLink = it1->Next() ? it1->Get(2) : m_context.GenerateLink(ScType::ConstNodeLink);
 
     ScAddr arc =
-        m_context.GenerateConnector(ScType::ConstCommonArc, resultLink, FormatTranslatorsKeynodes::format_scg_json);
+        m_context.GenerateConnector(ScType::ConstCommonArc, resultLink, FormatTranslatorsKeynodes::format_gwf_json);
     m_context.GenerateConnector(ScType::ConstPermPosArc, FormatTranslatorsKeynodes::nrel_format, arc);
     arc = m_context.GenerateConnector(ScType::ConstCommonArc, structureToTranslate, resultLink);
     m_context.GenerateConnector(ScType::ConstPermPosArc, FormatTranslatorsKeynodes::nrel_translation, arc);
