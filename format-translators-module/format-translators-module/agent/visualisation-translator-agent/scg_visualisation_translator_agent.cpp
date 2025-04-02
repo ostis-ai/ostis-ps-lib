@@ -234,7 +234,7 @@ void SCgVisualisationTranslatorAgent::UpdateNextLevelRoots(
   auto connectorToNextLevelElementIterator = connectorsToNextLevelRoots.begin();
   while (connectorToNextLevelElementIterator != connectorsToNextLevelRoots.end())
   {
-    auto & connectorToNextLevel = *connectorToNextLevelElementIterator;
+    auto connectorToNextLevel = *connectorToNextLevelElementIterator;
     auto const & otherElement = connectorToNextLevel->GetOtherElement();
     if (!otherElement->GetConnectors().empty())
     {

@@ -13,10 +13,9 @@ void StructureToTriplesParser::ParseStructure(
   structureToTranslate = structureToTranslateAddr;
   keyElementsOrder = keyElementsOrderMap;
   identifiersLanguage = identifiersLanguageAddr;
-  structureTriples.clear();
-  structureTriplesMap->clear();
+  structureTriples = structureTriplesMap;
+  structureTriples->clear();
   ParseStructure();
-  structureTriplesMap->insert(structureTriples.begin(), structureTriples.end());
 }
 
 void StructureToTriplesParser::ParseStructure()
@@ -40,13 +39,13 @@ void StructureToTriplesParser::OrderTriples(UnorderedTriples const & unorderedTr
 {
   for (auto const & [baseAddr, triples] : unorderedTriples)
   {
-    auto triplesIterator = structureTriples.find(baseAddr);
-    if (triplesIterator == structureTriples.cend())
+    auto triplesIterator = structureTriples->find(baseAddr);
+    if (triplesIterator == structureTriples->cend())
     {
       ScAddrComparator const comparator(keyElementsOrder, unorderedTriples);
       std::map<std::pair<ScAddr, ScAddr>, std::list<std::tuple<ScAddr, ScAddr, bool>>, ScAddrComparator>
           pairsWithComparator(comparator);
-      triplesIterator = structureTriples.insert({baseAddr, pairsWithComparator}).first;
+      triplesIterator = structureTriples->insert({baseAddr, pairsWithComparator}).first;
     }
     for (auto const & [otherElementAddr, connectorAddr, isReversed] : triples)
     {

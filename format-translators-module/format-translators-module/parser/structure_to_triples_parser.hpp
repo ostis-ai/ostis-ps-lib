@@ -30,7 +30,7 @@ private:
 
   void ParseStructure();
 
-  Triples structureTriples;
+  std::shared_ptr<Triples> structureTriples;
 
   void ParseTriple(
       ScAddr const & baseAddr,
