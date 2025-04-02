@@ -16,9 +16,9 @@ This is an agent that translates structure in a format that can be used to visua
 
 **Workflow:**
 
-* Agent uses order of elements from `nrel_key_elements_order` order to create map of type `ScAddrToValueUnorderedMap<uint32_t>` that has key elements as keys and their order as values;
-* After that agent iterates through all structure connectors and if source/target element of that triple is node then this triple si added into map `ScAddrToValueUnorderedMap<std::list<std::tuple<ScAddr, ScAddr, bool>>>`. This is map that has `baseElement` as key and list of triples as value. Triple `<otherElement, connector, isReversed>` stores if `connector` between `baseElement` and `otherElement` is reversed.
-* After that agent uses triples map and key elements order map to create another map of type `ScAddrToValueUnorderedMap<std::map<std::pair<ScAddr, ScAddr>, std::list<std::tuple<ScAddr, ScAddr, bool>>, ScAddrComparator>>`. This is map that has `baseElement` as key and another map as value. Value map has `<otherElement, connector>` pair as key and list of triples as value. Triple `<otherElement, connector, isReversed>` stores if `connector` between `baseElement` and `otherElement` is reversed. `ScAddrComparator` uses key elements order to place key-value pairs into inner map. Order of `otherElement` in that triple and highest ordered `otherElement` of triples that have `connector` as `baseElement` is used to determine order of inserted key-value pairs.
+* Agent uses order of sc-elements from ordered set connected to structure via relation `nrel_key_elements_order` to create map of type `ScAddrToValueUnorderedMap<uint32_t>` that has key sc-elements as keys and their order as values;
+* After that agent iterates through all structure sc-connectors and if source/target sc-element of that triple is node then this triple is added into map `ScAddrToValueUnorderedMap<std::list<std::tuple<ScAddr, ScAddr, bool>>>`. This is map that has `baseElement` as key and list of triples as value. Triple `<otherElement, connector, isReversed>` stores if `connector` between `baseElement` and `otherElement` is reversed.
+* After that agent uses triples map and key sc-elements order map to create another map of type `ScAddrToValueUnorderedMap<std::map<std::pair<ScAddr, ScAddr>, std::list<std::tuple<ScAddr, ScAddr, bool>>, ScAddrComparator>>`. This is map that has `baseElement` as key and another map as value. Value map has `<otherElement, connector>` pair as key and list of triples as value. Triple `<otherElement, connector, isReversed>` stores if `connector` between `baseElement` and `otherElement` is reversed. `ScAddrComparator` uses key sc-elements order to place key-value pairs into inner map. Order of `otherElement` in that triple and the highest ordered `otherElement` of triples that have `connector` as `baseElement` is used to determine order of inserted key-value pairs.
     * Examples of input structures and maps that will be created after that structure parsing:
 
 | structure                                        | map                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
@@ -43,17 +43,20 @@ class2: {<class3, arc3>: [<class3, arc3, false>]},
 class4: {<class3, arc7>: [<class3, arc7, true>]},
 class1: {<arc5, arc3>: [<arc5, arc3, true>]}}
 
-* After that agent translates triples to model objects in order to allow further coordinates assigning. That model tree at this step contains sc-types, sc-addresses, identifiers and incidence of sc-elements;
+* After that agent translates triples to model objects in order to allow further coordinates assigning. That model tree at this step contains sc-types, sc-addresses, identifiers and incidence of sc-elements Classes that are used in the hierarchy:
+
+<img src="../images/model_objects_hierarchy.png"></img>
+
 * After that agent traverses model tree to assign X coordinates to its nodes and split tree into multiple trees if X coordinate becomes too large(max value is configured via `formatTranslators::FormatTranslatorsConstants::MAX_X`);
-    * X coordinate is calculated based on current level identifier length and content size if it is sn sc-link, identifier lengths of connectors(connectors1) to next level elements, identifier lengths of connectors(connectors2) to connectors1, identifier lengths of other elements of connectors2 and content sizes of next level elements if they are sc-links;
-    * If X coordinate becomes too large and next level elements have connectors to other elements then copy of next level element that have connectors is substituted instead of next level element(all fields but connectors are copied) and original next level element is added to collection of nodes that will start X coordinates assigning from minimal value which is configured via `formatTranslators::FormatTranslatorsConstants::MIN_X`;
+    * X coordinate is calculated based on current level identifier length and content size if it is an sc-link, identifier lengths of connectors(connectors1) to next level elements, identifier lengths of connectors(connectors2) to connectors1, identifier lengths of other elements of connectors2 and content sizes of next level elements if they are sc-links;
+    * If X coordinate becomes too large and next level elements have connectors to other elements then copy of next level element that have connectors is substituted instead of next level element (all fields but connectors are copied) and original next level element is added to collection of nodes that will start X coordinates assigning from minimal value which is configured via `formatTranslators::FormatTranslatorsConstants::MIN_X`;
     * Constant `formatTranslators::FormatTranslatorsConstants::CONNECTOR_INCIDENT_POINT_PERCENT` is used to calculate incidence point between horizontal and vertical connectors;
-* After that agent assigns Y coordinates to all subtrees and uses visitor to visit and translate them to SCg;
-    * One variable is reused for all subtrees to place them one under the other, which is incremented after level element without connectors is processed to create gap between horizontal connectors and before level element with bus is processed(level element has bus if it has more than one connector) to create gap between level element and first connector;
+* After that agent assigns Y coordinates to all subtrees and uses visitor to visit and translate them to gwf format;
+    * One variable is reused for all subtrees to place them one under the other, which is incremented after level element without connectors is processed to create gap between horizontal connectors and before level element with bus is processed (level element has bus if it has more than one connector) to create gap between level element and the first connector;
     * Constant `formatTranslators::FormatTranslatorsConstants::Y_INCREMENT` is used to set vertical gap between connectors;
     * Constant `formatTranslators::FormatTranslatorsConstants::HALF_Y_INCREMENT` is used to calculate vertical gap between horizontal connectors and relations;
     * Each translation assigns ids to elements starting with id = 0;
-    * Buses have suffix "_bus" in their ids;
+    * Buses have suffix "_bus" in their ids to create distinct ids for nodes and their corresponding buses;
     * Constant `formatTranslators::GWFTranslatorVisitor::NODE_TYPES` contains all supported node types;
     * Constant `formatTranslators::GWFTranslatorVisitor::CONNECTOR_TYPES` contains all supported connector types;
 * Constructed gwf file is set as content of generated sc-link and that sc-link is added to action result structure.
@@ -75,5 +78,5 @@ C++
 
 Possible result codes:
 
-* `sc_result_ok`- structure is translated successfully;
-* `sc_result_error`- internal error.
+* `sc_result_ok` - structure is translated successfully;
+* `sc_result_error` - internal error.

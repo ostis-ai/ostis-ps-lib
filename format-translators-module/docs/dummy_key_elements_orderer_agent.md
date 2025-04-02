@@ -14,10 +14,10 @@ This is an agent that creates key elements order for a structure based only on t
 
 **Workflow:**
 
-* Agent searches for existing element connected to structure via relation `nrel_key_elements_order`, if such element exists then it is set as element of result structure and agent finishes its work;
-* If no such element is found then new node is generated;
-* Agent iterates through all structure nodes in order of their types and adds them to key elements order;
-* Generated key elements order is connected to structure via relation `nrel_key_elements_order` and set as element of result structure.
+* Agent searches for existing sc-element connected to structure via relation `nrel_key_elements_order`, if such sc-element exists then it is set as element of result structure and agent finishes its work;
+* If no such sc-element is found then new sc-node is generated;
+* Agent iterates through all structure sc-nodes in order of their sc-types and adds them to key sc-elements order;
+* Generated key sc-elements order is connected to structure via relation `nrel_key_elements_order` and set as element of result structure.
 
 ### Example
 
@@ -36,5 +36,5 @@ C++
 
 Possible result codes:
 
-* `sc_result_ok`- key elements order is found or generated;
-* `sc_result_error`- internal error.
+* `sc_result_ok` - key elements order is found or generated;
+* `sc_result_error` - internal error.
