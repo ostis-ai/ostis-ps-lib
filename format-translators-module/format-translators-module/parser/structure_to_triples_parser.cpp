@@ -40,12 +40,13 @@ void StructureToTriplesParser::OrderTriples(UnorderedTriples const & unorderedTr
 {
   for (auto const & [baseAddr, triples] : unorderedTriples)
   {
-    if (!structureTriples.count(baseAddr))
+    auto triplesIterator = structureTriples.find(baseAddr);
+    if (triplesIterator == structureTriples.cend())
     {
       ScAddrComparator const comparator(keyElementsOrder, unorderedTriples);
       std::map<std::pair<ScAddr, ScAddr>, std::list<std::tuple<ScAddr, ScAddr, bool>>, ScAddrComparator>
           pairsWithComparator(comparator);
-      structureTriples.insert({baseAddr, pairsWithComparator});
+      triplesIterator = structureTriples.insert({baseAddr, pairsWithComparator}).first;
     }
     for (auto const & [otherElementAddr, connectorAddr, isReversed] : triples)
     {
@@ -65,7 +66,7 @@ void StructureToTriplesParser::OrderTriples(UnorderedTriples const & unorderedTr
                 }))
           continue;
       }
-      structureTriples.at(baseAddr)[{otherElementAddr, connectorAddr}].emplace_back(
+      triplesIterator->second[{otherElementAddr, connectorAddr}].emplace_back(
           otherElementAddr, connectorAddr, isReversed);
     }
   }
