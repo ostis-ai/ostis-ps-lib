@@ -24,7 +24,7 @@ install(FILES
 
 set(CPACK_PACKAGE_NAME                  format-translators-module)
 set(CPACK_PACKAGE_VENDOR                "OSTIS AI")
-set(CPACK_PACKAGE_DESCRIPTION_SUMMARY   "Component for translating structures into different formats")
+set(CPACK_PACKAGE_DESCRIPTION_SUMMARY   "Component for translating structures into gwf format")
 set(CPACK_PACKAGE_INSTALL_DIRECTORY     ${CPACK_PACKAGE_NAME})
 set(CPACK_PACKAGE_VERSION_MAJOR         ${PROJECT_VERSION_MAJOR})
 set(CPACK_PACKAGE_VERSION_MINOR         ${PROJECT_VERSION_MINOR})

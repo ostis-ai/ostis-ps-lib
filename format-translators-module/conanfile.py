@@ -2,7 +2,7 @@ from conan import ConanFile, tools
 from conan.tools.cmake import cmake_layout, CMakeDeps, CMakeToolchain, CMake
 
 
-class non_atomic_action_interpreter_moduleRecipe(ConanFile):
+class format_translators_moduleRecipe(ConanFile):
     settings = "os", "compiler", "build_type", "arch"
 
     @property
