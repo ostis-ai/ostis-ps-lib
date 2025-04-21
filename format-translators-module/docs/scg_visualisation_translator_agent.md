@@ -12,7 +12,7 @@ This is an agent that translates structure in a format that can be used to visua
 **Comment:**
 
 * If second argument is not passed then `lang_en` is used as default language;
-* Structure has to have element with role `rrel_main_key_sc_element` and order of key elements connected to it via relation `nrel_key_elements_order`.
+* Structure has to have element with role `rrel_main_key_sc_element` and order of key elements connected to it via relation `nrel_key_elements_order`, if structure has no element with role `rrel_main_key_sc_element` then random node is selected to be main key sc-element.
 
 **Workflow:**
 
@@ -49,8 +49,10 @@ class1: {<arc5, arc3>: [<arc5, arc3, true>]}}
 
 * After that agent traverses model tree to assign X coordinates to its nodes and split tree into multiple trees if X coordinate becomes too large(max value is configured via `formatTranslators::FormatTranslatorsConstants::MAX_X`);
     * X coordinate is calculated based on current level identifier length and content size if it is an sc-link, identifier lengths of connectors(connectors1) to next level elements, identifier lengths of connectors(connectors2) to connectors1, identifier lengths of other elements of connectors2 and content sizes of next level elements if they are sc-links;
+    * If all identifiers mentioned above are empty then indent is equal to `formatTranslators::FormatTranslatorsConstants::INDENT_FOR_NODE_WITHOUT_IDENTIFIER`;
     * If X coordinate becomes too large and next level elements have connectors to other elements then copy of next level element that have connectors is substituted instead of next level element (all fields but connectors are copied) and original next level element is added to collection of nodes that will start X coordinates assigning from minimal value which is configured via `formatTranslators::FormatTranslatorsConstants::MIN_X`;
-    * Constant `formatTranslators::FormatTranslatorsConstants::CONNECTOR_INCIDENT_POINT_PERCENT` is used to calculate incidence point between horizontal and vertical connectors;
+    * Constant `formatTranslators::FormatTranslatorsConstants::CONNECTOR_INCIDENT_POINT_PERCENT` is used to calculate X coordinate for relation nodes;
+    * Incidence point between horizontal and vertical connectors and incidence points between nodes and buses are calculated by visualiser because those connectors have negative balances;
 * After that agent assigns Y coordinates to all subtrees and uses visitor to visit and translate them to gwf format;
     * One variable is reused for all subtrees to place them one under the other, which is incremented after level element without connectors is processed to create gap between horizontal connectors and before level element with bus is processed (level element has bus if it has more than one connector) to create gap between level element and the first connector;
     * Constant `formatTranslators::FormatTranslatorsConstants::Y_INCREMENT` is used to set vertical gap between connectors;
