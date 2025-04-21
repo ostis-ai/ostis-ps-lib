@@ -35,8 +35,6 @@ public:
 
   std::string GetBusId() const;
 
-  uint32_t CalculateReservedVerticalElementsOnParent();
-
   virtual std::shared_ptr<Node> Copy() const;
 
 protected:
@@ -46,7 +44,6 @@ private:
   float x;
   float topY;
   float bottomY;
-  uint32_t reservedVerticalElementsOnParent = 0;
 };
 
 }  // namespace formatTranslators

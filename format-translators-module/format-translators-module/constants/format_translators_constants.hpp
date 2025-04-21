@@ -21,11 +21,13 @@ public:
   static float const REVERSED_CONNECTOR_INCIDENT_POINT_PERCENT;
   static float const Y_INCREMENT;
   static float const HALF_Y_INCREMENT;
+  static float const INDENT_FOR_NODE_WITHOUT_IDENTIFIER;
   static float const MIN_X;
   static float const MAX_X;
   static float const MAX_LINK_WIDTH;
   static float const EMPTY_SPACE_AFTER_IDENTIFIER;
   static float const IDENTIFIER_CHARACTER_WIDTH;
+  static int const NEGATIVE_BALANCE;
 
   static ScAddr GetDefaultLanguage();
 };

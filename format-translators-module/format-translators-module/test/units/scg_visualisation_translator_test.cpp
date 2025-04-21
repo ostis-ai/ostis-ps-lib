@@ -154,6 +154,11 @@ TEST_F(FormatTranslatorsTest, emptyStructureTest)
   checkTranslation(*m_ctx, "empty_structure");
 }
 
+TEST_F(FormatTranslatorsTest, noMainKeyElementTest)
+{
+  checkTranslation(*m_ctx, "no_main_key_element");
+}
+
 void checkTranslationWithError(ScAgentContext & context, std::string const & filename)
 {
   loader.loadScsFile(context, FORMAT_TRANSLATORS_MODULE_TEST_FILES_DIR_PATH + filename + ".scs");
@@ -187,11 +192,6 @@ TEST_F(FormatTranslatorsTest, keyElementsHaveConnectorTest)
   checkTranslationWithError(*m_ctx, "key_elements_have_connector");
 }
 
-TEST_F(FormatTranslatorsTest, noMainKeyElementTest)
-{
-  checkTranslationWithError(*m_ctx, "no_main_key_element");
-}
-
 TEST_F(FormatTranslatorsTest, mainKeyElementIsConnectorTest)
 {
   checkTranslationWithError(*m_ctx, "main_key_element_is_connector");
@@ -204,8 +204,9 @@ TEST_F(FormatTranslatorsTest, unsupportedConnectorTypeTest)
 
 TEST_F(FormatTranslatorsTest, aLotOfTriplesDoesNotCausesTimeoutTest)
 {
-  unsigned const TRIPLES_IN_STRUCTURE_COUNT = 725;
-  unsigned const KEY_ELEMENTS_ORDER_SIZE = 800;
+  // these are just two random not small numbers
+  unsigned const TRIPLES_IN_STRUCTURE_COUNT = 828;
+  unsigned const KEY_ELEMENTS_ORDER_SIZE = 881;
   ScAddr const & rootElement = m_ctx->ResolveElementSystemIdentifier("root_element", ScType::ConstNode);
   ScAddr const & conceptTestElement =
       m_ctx->ResolveElementSystemIdentifier("concept_test_element", ScType::ConstNodeClass);
@@ -251,7 +252,7 @@ TEST_F(FormatTranslatorsTest, aLotOfTriplesDoesNotCausesTimeoutTest)
   getResultLinkContent(*m_ctx, testAction, resultLinkContent);
   std::regex pattern("sc_addr=\\\"\\d+\\\"");
   std::string const resultLinkContentWithoutAddr = std::regex_replace(resultLinkContent, pattern, "");
-  EXPECT_EQ(resultLinkContentWithoutAddr.size(), 330334u);
+  EXPECT_EQ(resultLinkContentWithoutAddr.size(), 372503u);
 }
 
 TEST_F(FormatTranslatorsTest, benchmarkDoesNotCausesTimeoutTest)

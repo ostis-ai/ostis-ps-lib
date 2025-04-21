@@ -78,20 +78,6 @@ std::string Node::GetBusId() const
   return GetId() + "_bus";
 }
 
-uint32_t Node::CalculateReservedVerticalElementsOnParent()
-{
-  if (reservedVerticalElementsOnParent == 0)
-  {
-    for (auto const & connector : GetConnectors())
-      reservedVerticalElementsOnParent += connector->GetOtherElement()->CalculateReservedVerticalElementsOnParent();
-    if (HasBus())
-      reservedVerticalElementsOnParent++;
-    if (reservedVerticalElementsOnParent == 0)
-      reservedVerticalElementsOnParent = 1;
-  }
-  return reservedVerticalElementsOnParent;
-}
-
 std::shared_ptr<Node> Node::Copy() const
 {
   std::shared_ptr<Node> node = std::make_shared<Node>();
