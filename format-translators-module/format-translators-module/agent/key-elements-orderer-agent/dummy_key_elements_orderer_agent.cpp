@@ -30,14 +30,6 @@ ScResult DummyKeyElementsOrdererAgent::DoProgram(ScAction & action)
     {
       ScAddrUnorderedSet elementsInOrder;
       elementsInOrder.insert(structure);
-      auto const & it = m_context.CreateIterator5(
-          structure,
-          ScType::ConstPermPosArc,
-          ScType::Node,
-          ScType::ConstPermPosArc,
-          FormatTranslatorsKeynodes::rrel_main_key_sc_element);
-      if (it->Next())
-        elementsInOrder.insert(it->Get(2));
 
       ScAddr lastConnector;
       elementsOrder = m_context.GenerateNode(ScType::ConstNodeTuple);
