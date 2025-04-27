@@ -17,6 +17,8 @@ jobs:
       - name: Run common checks for ps-common-lib component
         uses: ostis-ai/release-conan@0.1.0
         with:
-          directory: 'ps-common-lib'
+          name: ps-common-lib
+          version: 0.1.0
+          directory: ps-common-lib
           configure-preset: release-conan
           build-preset: release
