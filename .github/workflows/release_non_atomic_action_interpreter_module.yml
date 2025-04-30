@@ -1,0 +1,29 @@
+name: Release non-atomic-action-interpreter-module
+
+on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  release-non-atomic-action-interpreter-module:
+    strategy:
+      fail-fast: true
+      matrix:
+        config:
+          - { os: ubuntu-22.04, cc: "gcc", cxx: "g++" }
+          - { os: macos-14, cc: "clang", cxx: "clang++" }
+
+    runs-on: ${{ matrix.config.os }}
+    
+    steps:
+      - name: Release non-atomic-action-interpreter-module component
+        uses: ostis-ai/release-conan@0.1.0
+        with:
+          name: non-atomic-action-interpreter-module
+          version: 0.1.0
+          directory: non-atomic-action-interpreter-module
+          configure-preset: release-conan
+          build-preset: release
+          create-conan-package: false
+          conan-username: ${{ secrets.CONAN_USERNAME }}
+          conan-api-key: ${{ secrets.CONAN_API_KEY }}
