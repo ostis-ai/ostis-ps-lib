@@ -37,6 +37,8 @@ private:
 
   std::string GetLinkContentType(Link const & link) const;
 
+  std::string GetEscapedXMLIdentifier(Element const & element) const;
+
   std::stringstream staticSectorContent;
 
   struct ScTypeHash;

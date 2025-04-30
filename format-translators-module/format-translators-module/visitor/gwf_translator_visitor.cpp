@@ -1,6 +1,8 @@
 #include <sc-memory/sc_debug.hpp>
 #include "gwf_translator_visitor.hpp"
 
+#include "constants/format_translators_constants.hpp"
+
 #include "model/connector.hpp"
 #include "model/element.hpp"
 #include "model/link.hpp"
@@ -74,7 +76,7 @@ void GWFTranslatorVisitor::VisitConnector(Connector & connector)
 {
   connector.GetOtherElement()->AcceptVisitor(*this);
   staticSectorContent << "        <pair type=\"" << GetGWFConnectorType(connector) << "\" idtf=\""
-                      << connector.GetIdentifier() << "\" shapeColor=\"0\" id=\"" << GetGWFId(connector)
+                      << GetEscapedXMLIdentifier(connector) << "\" shapeColor=\"0\" id=\"" << GetGWFId(connector)
                       << "\" parent=\"0\" id_b=\"" << connector.GetSourceElementIdForConnector() << "\" id_e=\""
                       << connector.GetTargetElementIdForConnector() << "\" dotBBalance=\""
                       << connector.GetSourceElementBalance() << "\" dotEBalance=\""
@@ -98,11 +100,11 @@ void GWFTranslatorVisitor::VisitConnector(Connector & connector)
 void GWFTranslatorVisitor::VisitLink(Link & link)
 {
   bool haveBus = link.HasBus();
-  staticSectorContent << "        <node type=\"" << GetGWFNodeType(link) << "\" idtf=\"" << link.GetIdentifier()
-                      << "\" shapeColor=\"0\" id=\"" << GetGWFId(link) << "\" parent=\"0\" x=\"" << link.GetX()
-                      << "\" y=\"" << link.GetTopY() << "\" haveBus=\"" << (haveBus ? "true" : "false")
-                      << "\" idtf_pos=\"" << static_cast<int>(link.GetIdentifierPosition()) << "\" sc_addr=\""
-                      << link.GetScAddress().Hash()
+  staticSectorContent << "        <node type=\"" << GetGWFNodeType(link) << "\" idtf=\""
+                      << GetEscapedXMLIdentifier(link) << "\" shapeColor=\"0\" id=\"" << GetGWFId(link)
+                      << "\" parent=\"0\" x=\"" << link.GetX() << "\" y=\"" << link.GetTopY() << "\" haveBus=\""
+                      << (haveBus ? "true" : "false") << "\" idtf_pos=\""
+                      << static_cast<int>(link.GetIdentifierPosition()) << "\" sc_addr=\"" << link.GetScAddress().Hash()
                       << "\">\n"
                          "          <content type=\""
                       << GetLinkContentType(link) << "\" mime_type=\"" << GetLinkMimeType(link)
@@ -117,7 +119,7 @@ void GWFTranslatorVisitor::VisitLink(Link & link)
 void GWFTranslatorVisitor::VisitNode(Node & node)
 {
   bool haveBus = node.HasBus();
-  std::string identifier = node.GetIdentifier();
+  std::string identifier = GetEscapedXMLIdentifier(node);
   staticSectorContent
       << "        <node type=\"" << GetGWFNodeType(node) << "\" idtf=\"" << identifier << "\" shapeColor=\"0\" id=\""
       << GetGWFId(node) << "\" parent=\"0\" x=\"" << node.GetX() << "\" y=\"" << node.GetTopY() << "\" haveBus=\""
@@ -187,5 +189,13 @@ std::string GWFTranslatorVisitor::GetLinkContentType(Link const & link) const
 {
   // TODO(kilativ-dotcom): support other content types
   return "1";
+}
+
+std::string GWFTranslatorVisitor::GetEscapedXMLIdentifier(Element const & element) const
+{
+  std::string identifier = element.GetIdentifier();
+  for (auto const & [replacement, expression] : FormatTranslatorsConstants::XML_IDTF_REPLACEMENTS)
+    identifier = std::regex_replace(identifier, expression, replacement);
+  return identifier;
 }
 }  // namespace formatTranslators

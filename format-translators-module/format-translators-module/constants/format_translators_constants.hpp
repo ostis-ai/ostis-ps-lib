@@ -1,5 +1,7 @@
 #pragma once
 
+#include <regex>
+
 #include <string>
 
 #include <sc-memory/sc_addr.hpp>
@@ -28,6 +30,8 @@ public:
   static float const EMPTY_SPACE_AFTER_IDENTIFIER;
   static float const IDENTIFIER_CHARACTER_WIDTH;
   static int const NEGATIVE_BALANCE;
+
+  static std::list<std::pair<std::string, std::regex>> const XML_IDTF_REPLACEMENTS;
 
   static ScAddr GetDefaultLanguage();
 };

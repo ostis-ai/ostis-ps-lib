@@ -28,6 +28,10 @@ float const FormatTranslatorsConstants::EMPTY_SPACE_AFTER_IDENTIFIER = 8;
 float const FormatTranslatorsConstants::IDENTIFIER_CHARACTER_WIDTH = 6;
 int const FormatTranslatorsConstants::NEGATIVE_BALANCE = -1;
 
+std::list<std::pair<std::string, std::regex>> const FormatTranslatorsConstants::XML_IDTF_REPLACEMENTS = {
+    {"&gt;", std::regex(">")},
+    {"&lt;", std::regex("<")}};
+
 ScAddr FormatTranslatorsConstants::GetDefaultLanguage()
 {
   return FormatTranslatorsKeynodes::lang_en;
