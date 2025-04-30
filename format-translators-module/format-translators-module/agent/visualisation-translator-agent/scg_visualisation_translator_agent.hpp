@@ -30,7 +30,10 @@ private:
 
   std::list<std::shared_ptr<Node>> AssignXCoordinates(std::shared_ptr<Node> const & rootElement);
 
-  void AssignXCoordinates(std::list<std::shared_ptr<Node>> & roots, std::shared_ptr<Node> const & treeRoot, float rootElementIndent);
+  void AssignXCoordinates(
+      std::list<std::shared_ptr<Node>> & roots,
+      std::shared_ptr<Node> const & treeRoot,
+      float rootElementIndent);
 
   void AssignYCoordinates(std::shared_ptr<Node> const & rootElement);
 };

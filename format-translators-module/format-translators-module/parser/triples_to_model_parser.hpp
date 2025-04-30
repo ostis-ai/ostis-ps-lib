@@ -27,7 +27,7 @@ private:
   ScAddrUnorderedSet rootElements;
   ScAddrUnorderedSet walkedConnectors;
 
-  std::shared_ptr<Node> WalkBFS(ScAddr const & root, uint32_t currentLevel);
+  std::shared_ptr<Node> WalkBFS(ScAddr const & root);
 
   std::shared_ptr<Node> CreateNode(ScAddr const & nodeAddr, ScType const & nodeType) const;
 

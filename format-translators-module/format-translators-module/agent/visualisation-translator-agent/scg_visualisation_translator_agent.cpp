@@ -43,9 +43,10 @@ ScResult SCgVisualisationTranslatorAgent::DoProgram(ScAction & action)
     if (!m_context.IsElement(mainKeyElement))
     {
       SC_LOG_WARNING("Cannot find main key element for structure to translate, choosing random");
-      auto const & elementsIterator = m_context.CreateIterator3(structureToTranslate, ScType::ConstPermPosArc, ScType::Node);
+      auto const & elementsIterator = m_context.CreateIterator5(
+          ScType::Node, ScType::Connector, ScType::Node, ScType::ConstPermPosArc, structureToTranslate);
       if (elementsIterator->Next())
-        mainKeyElement = elementsIterator->Get(2);
+        mainKeyElement = elementsIterator->Get(0);
     }
     if (!m_context.IsElement(mainKeyElement))
       SC_THROW_EXCEPTION(utils::ExceptionItemNotFound, "Cannot find main key element for structure to translate");
@@ -118,7 +119,7 @@ void SCgVisualisationTranslatorAgent::ParseKeyElementsOrder(ScAddr const & keyEl
 }
 
 std::list<std::shared_ptr<Node>> SCgVisualisationTranslatorAgent::AssignXCoordinates(
-  std::shared_ptr<Node> const & rootElement)
+    std::shared_ptr<Node> const & rootElement)
 {
   float nextLevelIndent = FormatTranslatorsConstants::MIN_X;
   rootElement->SetX(nextLevelIndent);
@@ -130,14 +131,18 @@ std::list<std::shared_ptr<Node>> SCgVisualisationTranslatorAgent::AssignXCoordin
 }
 
 void SCgVisualisationTranslatorAgent::AssignXCoordinates(
-  std::list<std::shared_ptr<Node>> & roots, std::shared_ptr<Node> const & treeRoot, float rootElementIndent)
+    std::list<std::shared_ptr<Node>> & roots,
+    std::shared_ptr<Node> const & treeRoot,
+    float rootElementIndent)
 {
   float previousLevelMaxLinkContentSize = treeRoot->GetContent().size();
   if (previousLevelMaxLinkContentSize > FormatTranslatorsConstants::MAX_LINK_WIDTH)
     previousLevelMaxLinkContentSize = FormatTranslatorsConstants::MAX_LINK_WIDTH;
   treeRoot->SetX(rootElementIndent);
 
-  auto treeRootIdentifierSize = treeRoot->HasBus() ? 0 : treeRoot->GetIdentifier().size() * FormatTranslatorsConstants::IDENTIFIER_CHARACTER_WIDTH;
+  auto treeRootIdentifierSize =
+      treeRoot->HasBus() ? 0
+                         : treeRoot->GetIdentifier().size() * FormatTranslatorsConstants::IDENTIFIER_CHARACTER_WIDTH;
   if (treeRootIdentifierSize < FormatTranslatorsConstants::INDENT_FOR_NODE_WITHOUT_IDENTIFIER)
     treeRootIdentifierSize = FormatTranslatorsConstants::INDENT_FOR_NODE_WITHOUT_IDENTIFIER;
 
@@ -167,7 +172,7 @@ void SCgVisualisationTranslatorAgent::AssignXCoordinates(
     }
 
     deltaForNextLevel = (deltaForNextLevel + FormatTranslatorsConstants::EMPTY_SPACE_AFTER_IDENTIFIER)
-          * FormatTranslatorsConstants::IDENTIFIER_CHARACTER_WIDTH;
+                        * FormatTranslatorsConstants::IDENTIFIER_CHARACTER_WIDTH;
 
     if (treeRootIdentifierSize > deltaForNextLevel)
       deltaForNextLevel = treeRootIdentifierSize;
@@ -203,6 +208,7 @@ void SCgVisualisationTranslatorAgent::AssignXCoordinates(
 
 void SCgVisualisationTranslatorAgent::AssignYCoordinates(std::shared_ptr<Node> const & rootElement)
 {
+  // TODO(kilativ-dotcom): take into account content size to move whole row down
   rootElement->SetTopY(lastAssignedY);
   if (rootElement->HasBus())
     lastAssignedY += FormatTranslatorsConstants::Y_INCREMENT;
@@ -211,6 +217,8 @@ void SCgVisualisationTranslatorAgent::AssignYCoordinates(std::shared_ptr<Node> c
     float const relationElementY = lastAssignedY - FormatTranslatorsConstants::HALF_Y_INCREMENT;
     for (auto const & relationConnector : connector->GetConnectors())
     {
+      // TODO(kilativ-dotcom): if `connector` has multiple relations like scp operator then make custom placing and
+      // probably move whole row down
       auto relationOtherElement = relationConnector->GetOtherElement();
       relationOtherElement->SetTopY(relationElementY);
       relationOtherElement->SetBottomY(relationElementY);

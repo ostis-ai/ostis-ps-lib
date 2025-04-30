@@ -20,10 +20,10 @@ std::shared_ptr<Node> TriplesToModelParser::ParseTriples(
   keyElementsOrder = keyElementsOrderMap;
   structureTriples = structureTriplesMap;
   identifiersLanguage = identifiersLanguageAddr;
-  return WalkBFS(root, 0);
+  return WalkBFS(root);
 }
 
-std::shared_ptr<Node> TriplesToModelParser::WalkBFS(ScAddr const & root, uint32_t currentLevel)
+std::shared_ptr<Node> TriplesToModelParser::WalkBFS(ScAddr const & root)
 {
   ScType const & rootType = context->GetElementType(root);
   // TODO(kilativ-dotcom): allow connectors to be roots
@@ -46,7 +46,8 @@ std::shared_ptr<Node> TriplesToModelParser::WalkBFS(ScAddr const & root, uint32_
       if (walkedConnectors.count(connectorAddr))
         continue;
       walkedConnectors.insert(connectorAddr);
-      auto const & subtreeRoot = WalkBFS(otherElementAddr, currentLevel + 1);
+      // TODO(): if otherElement is Structure with nodes + connectors then it probably can be displayed as a structure
+      auto const & subtreeRoot = WalkBFS(otherElementAddr);
       auto const & connectorElement = CreateConnector(connectorAddr, rootElement, subtreeRoot, isReversed);
       ProcessTriple(rootElement, connectorElement);
     }
