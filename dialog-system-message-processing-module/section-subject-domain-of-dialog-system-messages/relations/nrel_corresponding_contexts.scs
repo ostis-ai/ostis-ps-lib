@@ -1,0 +1,51 @@
+nrel_corresponding_contexts
+<- sc_node_non_role_relation;
+<- relation;
+<- non_role_relation;
+<- quasybinary_relation;
+<- oriented_relation;
+<- antireflexive_relation;
+<- antitransitive_relation;
+<- asymmetric_relation;
+=> nrel_main_idtf:
+    [соответствующие контексты*](* <- lang_ru;; *);
+    [corresponding contexts*](* <- lang_en;; *);
+    [relevante Kontexte*](* <- lang_de;; *);
+=> nrel_first_domain: structure;
+=> nrel_second_domain: concept_context;
+=> nrel_definitional_domain:
+    ...
+    (*
+    <= nrel_combination:
+    {
+        concept_context;
+        structure
+    };;
+    *);
+<- rrel_key_sc_element:
+    ...
+    (*
+    => nrel_main_idtf:
+        [Опр. (соответствующие контексты*)](* <- lang_ru;; *);
+        [Def. (corresponding contexts*)](* <- lang_en;; *);
+        [Def. (relevante Kontexte*)](* <- lang_de;; *);;
+    <- definition;;
+    <= nrel_sc_text_translation:
+        {
+            rrel_example:
+                [Соответствующие контексты* - это квазибинарное ориентированное отношение, связывающее сообщение с соответствующими ему контекстами.]
+                (* <- lang_ru;; *);
+            rrel_example:
+                [Corresponding contexts* is a quasybinary oriented relation that connects message and its corresponding contexts.]
+                (* <- lang_en;; *);
+            rrel_example:
+                [Relevante Kontext* ist eine quasi-binäre relation, die eine Verbindung zwischen einer Nachricht und ihren entsprechenden Kontexten herstellt.]
+                (* <- lang_de;; *)
+        };;
+        <= nrel_using_constants:
+        {
+            quasybinary_relation;
+            concept_message;
+            concept_context
+        };;
+    *);;

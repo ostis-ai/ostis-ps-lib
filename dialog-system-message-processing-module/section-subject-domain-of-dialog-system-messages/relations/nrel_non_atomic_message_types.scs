@@ -1,0 +1,52 @@
+nrel_non_atomic_message_types
+<- sc_node_non_role_relation;
+<- relation;
+<- quasybinary_relation;
+<- oriented_relation;
+<- antireflexive_relation;
+<- asymmetric_relation;
+<- antitransitive_relation;
+=> nrel_main_idtf:
+    [типы неатомарного сообщения*]
+    (* <- lang_ru;; *);
+    [non atomic message types*]
+    (* <- lang_en;; *);
+=> nrel_first_domain:
+    concept_non_atomic_message;
+=> nrel_second_domain:
+    concept_message_type;
+=> nrel_definitional_domain:
+    ...
+    (*
+    <= nrel_combination:
+        {
+            concept_message_type;
+            concept_non_atomic_message
+        };;
+    *);
+<- rrel_key_sc_element:
+    ...
+    (*
+    => nrel_main_idtf:
+        [Опр. (типы неатомарного сообщения*)]
+        (* <- lang_ru;; *);
+        [Def. (non atomic message types*)]
+        (* <- lang_en;; *);;
+    <- definition;;
+    <= nrel_sc_text_translation:
+        {
+            rrel_example:
+                [Типы неатомарного сообщения* - квазибинарное отношение, связывающее неатомарное сообщения и множество типов этого сообщения.]
+                (* <- lang_ru;; *);
+            rrel_example:
+                [Non atomic message types* is a quasybinary relation that connects a non atomic message with a set of types of this message.]
+                (* <- lang_en;; *)
+        };;
+    <= nrel_using_constants:
+        {
+        quasybinary_relation;
+        concept_message;
+        concept_non_atomic_message;
+        concept_message_type
+        };;
+    *);;

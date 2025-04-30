@@ -1,0 +1,49 @@
+nrel_message_meaning
+<- sc_node_non_role_relation;
+<- relation;
+<- binary_relation;
+<- oriented_relation;
+<- antireflexive_relation;
+<- asymmetric_relation;
+<- antitransitive_relation;
+=> nrel_main_idtf:
+    [смысл сообщения*]
+    (* <- lang_ru;; *);
+    [message meaning*]
+    (* <- lang_en;; *);
+=> nrel_first_domain: concept_virtual_assistant;
+=> nrel_second_domain: sc_node_structure;
+=> nrel_definitional_domain:
+    ...
+    (*
+    <= nrel_combination:
+        {
+        concept_virtual_assistant;
+        sc_node_structure
+        };;
+    *);
+<- rrel_key_sc_element:
+    ...
+    (*
+        => nrel_main_idtf:
+            [Опр. (смысл сообщения*)]
+            (* <- lang_ru;; *);
+            [Def. (message meaning*)]
+            (* <- lang_en;; *);;
+        <-  definition;;
+        <= nrel_sc_text_translation:
+            {
+                rrel_example: [Cмысл сообщения* - бинарное ориентированное отношение, связывающее виртуального ассистента и распознанный им смысл входящего сообщения.]
+                (* <- lang_ru;; *);
+                rrel_example: [Message meaning* is a binary oriented relation connecting the virtual assistant and the meaning of the incoming message, recognized by it.]
+                (* <- lang_en;; *)
+            };;
+        <= nrel_using_constants:
+            {
+            binary_relation;
+            oriented_relation;
+            concept_virtual_assistant;
+            sc_node_structure;
+            concept_message
+            };;
+    *);;

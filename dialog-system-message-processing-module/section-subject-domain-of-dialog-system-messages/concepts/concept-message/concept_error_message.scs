@@ -1,0 +1,38 @@
+concept_error_message
+<- sc_node_class;
+=> nrel_main_idtf:
+    [сообщение об ошибке]
+    (* <- lang_ru;; *);
+    [error message]
+    (* <- lang_en;; *);
+    [Fehlermeldung]
+    (* <- lang_de;; *);
+<= nrel_inclusion: concept_message;
+<- rrel_key_sc_element:
+    ...
+    (*
+    => nrel_main_idtf:
+    [Опр. (сообщение об ошибке)]
+    (* <- lang_ru;; *);
+    [Def. (error message)]
+    (* <- lang_en;; *);
+    [Def. (Fehlermeldung)]
+    (* <- lang_de;; *);;
+    <- definition;;
+    <= nrel_sc_text_translation:
+        {
+            rrel_example:
+                [Сообщение об ошибке - атомарное сообщение, которое оповещает об ошибке, которая произошла в системе.]
+                (* <- lang_ru;; *);
+            rrel_example:
+                [Error message is an atomic message that notifies about an error that has occurred in the system.]
+                (* <- lang_en;; *);
+            rrel_example:
+                [Fehlermeldung ist eine atomare Nachricht, die über einen Fehler informiert, der im System aufgetreten ist.]
+                (* <- lang_de;; *)
+        };;
+    <= nrel_using_constants:
+        {
+            concept_atomic_message
+        };;
+    *);;

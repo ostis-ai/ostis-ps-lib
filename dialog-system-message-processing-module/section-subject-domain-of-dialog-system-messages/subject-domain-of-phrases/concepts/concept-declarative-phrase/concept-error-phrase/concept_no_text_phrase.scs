@@ -1,0 +1,30 @@
+concept_no_text_phrase
+<- sc_node_class;
+=> nrel_main_idtf:
+    [фраза ошибки генерации ответа на пустое текстовое сообщение]
+    (* <- lang_ru;; *);
+    [answer generation error phrase to an empty text message]
+    (* <- lang_en;; *);
+<- rrel_key_sc_element:
+    ...
+    (*
+    => nrel_main_idtf:
+        [Опр. (фраза ошибки генерации ответа на пустое текстовое сообщение)]
+        (* <- lang_ru;; *);
+        [Def. (answer generation error phrase to an empty text message)]
+        (* <- lang_en;; *);;
+    <- definition;;
+    <= nrel_sc_text_translation:
+        {
+            rrel_example: [Фраза ошибки генерации ответа на пустое текстовое сообщение - фраза ошибки генерации ответа, причиной которой является отсутствие текстового содержания в сообщении пользователя.]
+            (* <- lang_ru;; *);
+            rrel_example: [Answer generation error phrase to an empty text message is an answer generation error phrase, caused by the absence of textual content in the user's message.]
+            (* <- lang_en;; *)
+        };;
+    <= nrel_using_constants:
+        {
+            concept_answer_generation_error_phrase;
+            concept_message;
+            concept_user
+        };;
+    *);;

@@ -1,0 +1,39 @@
+concept_message_about_present
+<-sc_node_class;
+=> nrel_main_idtf:
+    [сообщение о настоящем]
+    (* <- lang_ru;; *);
+    [message about the present]
+    (* <- lang_en;; *);
+    [Nachricht mit Informationen über die Gegenwart]
+    (* <- lang_de;; *);
+=> nrel_action_class_by_message_tense:
+    performed_action;
+<- rrel_key_sc_element:
+    ...
+    (*
+    => nrel_main_idtf:
+        [Опр. (сообщение о настоящем)]
+        (* <- lang_ru;; *);
+        [Def. (message about the present)]
+        (* <- lang_en;; *);
+        [Def. (Nachricht mit Informationen über die Gegenwart)]
+        (* <- lang_de;; *);;
+    <- definition;;
+    <= nrel_sc_text_translation:
+        {
+            rrel_example:
+                [Сообщение о настоящем - атомарное сообщение, содержащее информацию о настоящем.]
+                (* <- lang_ru;; *);
+            rrel_example:
+                [Message about the present is an atomic message that contains information about the present.]
+                (* <- lang_en;; *);
+            rrel_example:
+                [Nachricht mit Informationen über die Gegenwart ist eine atomare Nachricht, die Informationen über die Gegenwart enthält.]
+                (* <- lang_de;; *)
+        };;
+    <= nrel_using_constants:
+        {
+            concept_atomic_messages
+        };;
+    *);;

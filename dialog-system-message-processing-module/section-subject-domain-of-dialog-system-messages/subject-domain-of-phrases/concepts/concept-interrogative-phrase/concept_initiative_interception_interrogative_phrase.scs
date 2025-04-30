@@ -1,0 +1,29 @@
+concept_initiative_interception_interrogative_phrase
+<- sc_node_class;
+=> nrel_main_idtf:
+    [вопросительная фраза для перехвата инициативы]
+    (* <- lang_ru;; *);
+    [initiative interception interrogative phrase]
+    (* <- lang_en;; *);
+<- rrel_key_sc_element:
+    ...
+    (*
+    => nrel_main_idtf:
+        [Опр. (вопросительная фраза для перехвата инициативы)]
+        (* <- lang_ru;; *);
+        [Def. (initiative interception interrogative phrase)]
+        (* <- lang_en;; *);;
+    <- definition;;
+    <= nrel_sc_text_translation:
+        {
+            rrel_example: [Вопросительная фраза для перехвата инициативы - фраза, выражающая вопрос и позволяющая перехватить инициативу в процессе диалога.]
+            (* <- lang_ru;; *);
+            rrel_example: [Initiative interception interrogative phrase is a phrase that expresses a question and allows you to interception the initiative during the dialogue.]
+            (* <- lang_en;; *)
+        };;
+    <= nrel_using_constants:
+        {
+            concept_phrase;
+            concept_dialog
+        };;
+    *);;

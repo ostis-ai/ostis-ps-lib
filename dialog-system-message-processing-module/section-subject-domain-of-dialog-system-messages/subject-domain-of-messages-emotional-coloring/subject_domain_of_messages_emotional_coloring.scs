@@ -1,0 +1,22 @@
+subject_domain_of_messages_emotional_coloring
+=> nrel_main_idtf: 
+    [Предметная область эмоцинальной окраски сообщений]
+    (* <- lang_ru;; *);
+    [Subject domain of messages emotional coloring]
+    (* <- lang_en;; *);
+    [Fachgebiet der emotionalen Färbung von Nachrichten]
+    (* <- lang_de;; *);
+<- sc_node_structure;
+<- subject_domain;
+<= nrel_private_subject_domain: subject_domain_of_messages;
+-> rrel_maximum_studied_object_class:
+    concept_message_with_emotional_coloring;
+    concept_message_without_emotional_coloring;
+-> rrel_not_maximum_studied_object_class:
+    concept_message_with_negative_emotional_coloring;
+    concept_message_with_neutral_emotional_coloring;
+    concept_message_with_positive_emotional_coloring;
+    concept_message_with_negative_tone;
+    concept_message_with_neutral_tone;
+    concept_message_with_positive_tone;
+    concept_message_with_undefined_tone;;

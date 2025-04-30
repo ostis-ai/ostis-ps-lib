@@ -1,0 +1,38 @@
+concept_message_with_positive_emotional_coloring
+<- sc_node_class;
+=> nrel_main_idtf:
+    [сообщение, имеющее позитивную эмоциональную окраску]
+    (* <- lang_ru;; *);
+    [message with positive coloring]
+    (* <- lang_en;; *);
+    [Nachricht mit positiver emotionaler Färbung]
+    (* <- lang_de;; *);
+<= nrel_inclusion:
+    concept_message_with_emotional_coloring;
+<- rrel_key_sc_element:
+    ...
+    (*
+    => nrel_main_idtf:
+        [Опр.(сообщение, имеющее позитивную эмоциональную окраску)]
+        (* <- lang_ru;; *);
+        [Def.(message with positive coloring)]
+        (* <- lang_en;; *);
+        [Def.(Nachricht mit positiver emotionaler Färbung)]
+        (* <- lang_de;; *);;
+    <- definition;;
+    <= nrel_sc_text_translation:
+        {
+            rrel_example: [Cообщение, имеющее  эмоциональную окраску - сообщение, имеющее эмоциональную окраску в одну из эмоций, являющихся положительным эмоциональным состоянием.]
+            (* <- lang_ru;;    *);
+            rrel_example: [Message with positive coloring is a message, that has an emotional color in one of the emotions, that is a positive emotional state.]
+            (* <- lang_en;;    *);
+         rrel_example: [Nachricht mit positiver emotionaler Färbung ist eine Nachricht, die eine emotionale Färbung in eine der Emotionen hat, die ein positiver emotionaler Zustand sind.]
+         (* <- lang_de;;    *)
+        };;
+    <= nrel_using_constants:
+    {
+        concept_message;
+        concept_emotion;
+        concept_positive_mental_state
+    };;
+    *);;
