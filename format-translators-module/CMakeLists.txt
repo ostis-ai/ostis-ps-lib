@@ -72,3 +72,5 @@ set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 
 find_package(sc-machine REQUIRED)
 add_subdirectory(format-translators-module)
+
+include(${CMAKE_MODULE_PATH}/install.cmake)
