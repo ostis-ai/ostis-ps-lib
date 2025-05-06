@@ -56,5 +56,3 @@ rrel_2
 => nrel_main_idtf:
     [deux](* <- lang_fr;; *);
     [two](* <- lang_en;; *);;
-
-

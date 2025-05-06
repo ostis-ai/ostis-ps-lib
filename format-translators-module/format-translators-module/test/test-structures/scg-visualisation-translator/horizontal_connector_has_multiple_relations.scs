@@ -1,0 +1,55 @@
+test_action_node
+    <- action_visualise_to_scg;
+    -> rrel_1: test_structure;;
+
+sc_node_class
+    -> concept_test_element;
+    -> concept_0;
+    -> lang_en;
+    -> lang_fr;;
+
+sc_node_role_relation
+    -> rrel_1;
+    -> rrel_2;
+    -> rrel_3;
+    -> rrel_4;
+    -> rrel_5;
+    -> rrel_6;
+    -> rrel_7;
+    -> rrel_8;
+    -> rrel_9;
+    -> rrel_10;
+    -> rrel_11;
+    -> rrel_12;;
+
+@test_link = [this is text];;
+
+test_structure =
+[*
+@test_link
+    -> rrel_1: rrel_9: rrel_12: [t];
+    -> rrel_2: [h];
+    -> rrel_3: rrel_6: [i];
+    -> rrel_4: rrel_7: [s];
+    -> rrel_5: rrel_8: [ ];
+    -> rrel_10: [e];
+    -> rrel_11: [x];;
+*];;
+
+test_structure
+    -> rrel_main_key_sc_element: @test_link;
+    => nrel_key_elements_order:
+    <
+        rrel_1;
+        rrel_2;
+        rrel_3;
+        rrel_4;
+        rrel_5;
+        rrel_6;
+        rrel_7;
+        rrel_8;
+        rrel_9;
+        rrel_10;
+        rrel_11;
+        rrel_12
+    >;;

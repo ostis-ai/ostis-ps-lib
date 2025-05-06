@@ -135,9 +135,9 @@ void SCgVisualisationTranslatorAgent::AssignXCoordinates(
     std::shared_ptr<Node> const & treeRoot,
     float rootElementIndent)
 {
-  float previousLevelMaxLinkContentSize = treeRoot->GetContent().size();
-  if (previousLevelMaxLinkContentSize > FormatTranslatorsConstants::MAX_LINK_WIDTH)
-    previousLevelMaxLinkContentSize = FormatTranslatorsConstants::MAX_LINK_WIDTH;
+  float previousLevelLinkContentSize = treeRoot->GetContent().size();
+  if (previousLevelLinkContentSize > FormatTranslatorsConstants::MAX_LINK_WIDTH)
+    previousLevelLinkContentSize = FormatTranslatorsConstants::MAX_LINK_WIDTH;
   treeRoot->SetX(rootElementIndent);
 
   auto treeRootIdentifierSize =
@@ -149,10 +149,10 @@ void SCgVisualisationTranslatorAgent::AssignXCoordinates(
   for (auto const & treeRootConnector : treeRoot->GetConnectors())
   {
     auto const & otherElement = treeRootConnector->GetOtherElement();
-    float otherElementContentSize = otherElement->GetContent().size();
-    if (otherElementContentSize > FormatTranslatorsConstants::MAX_LINK_WIDTH)
-      otherElementContentSize = FormatTranslatorsConstants::MAX_LINK_WIDTH;
-    auto deltaForNextLevel = std::max(previousLevelMaxLinkContentSize, otherElementContentSize);
+    float otherElementLinkContentSize = otherElement->GetContent().size();
+    if (otherElementLinkContentSize > FormatTranslatorsConstants::MAX_LINK_WIDTH)
+      otherElementLinkContentSize = FormatTranslatorsConstants::MAX_LINK_WIDTH;
+    auto deltaForNextLevel = std::max(previousLevelLinkContentSize, otherElementLinkContentSize);
     auto const treeRootConnectorIdentifierLength =
         treeRootConnector->GetIdentifier().size() / FormatTranslatorsConstants::CONNECTOR_IDENTIFIER_SCALE;
     if (treeRootConnectorIdentifierLength > deltaForNextLevel)
@@ -177,16 +177,22 @@ void SCgVisualisationTranslatorAgent::AssignXCoordinates(
     if (treeRootIdentifierSize > deltaForNextLevel)
       deltaForNextLevel = treeRootIdentifierSize;
 
-    float const relationIndent =
-        rootElementIndent + deltaForNextLevel * FormatTranslatorsConstants::REVERSED_CONNECTOR_INCIDENT_POINT_PERCENT;
+    auto const indentNeededForRelationConnectors =
+        (treeRootConnector->GetConnectors().size() + FormatTranslatorsConstants::AMOUNT_OF_EMPTY_RELATION_CONNECTORS)
+        * FormatTranslatorsConstants::HORIZONTAL_RELATION_GAP * 2;
+    if (indentNeededForRelationConnectors > deltaForNextLevel)
+      deltaForNextLevel = indentNeededForRelationConnectors;
 
+    float const relationIndent =
+        rootElementIndent + deltaForNextLevel * FormatTranslatorsConstants::REVERSED_CONNECTOR_INCIDENT_POINT_PERCENT
+        + previousLevelLinkContentSize - otherElementLinkContentSize;
+
+    float currentShiftForRelationConnectors = 0;
     for (auto const & levelElementConnectorConnector : treeRootConnector->GetConnectors())
     {
-      levelElementConnectorConnector->SetOtherElementX(relationIndent);
-      if (treeRootConnector->GetIsReversed())
-        levelElementConnectorConnector->SetBaseElementBalance(FormatTranslatorsConstants::NEGATIVE_BALANCE);
-      else
-        levelElementConnectorConnector->SetBaseElementBalance(FormatTranslatorsConstants::NEGATIVE_BALANCE);
+      levelElementConnectorConnector->SetOtherElementX(relationIndent - currentShiftForRelationConnectors);
+      currentShiftForRelationConnectors += FormatTranslatorsConstants::HORIZONTAL_RELATION_GAP;
+      levelElementConnectorConnector->SetBaseElementBalance(FormatTranslatorsConstants::NEGATIVE_BALANCE);
     }
     auto otherElementIndent = rootElementIndent + deltaForNextLevel;
     if (otherElementIndent > FormatTranslatorsConstants::MAX_X)
@@ -200,37 +206,99 @@ void SCgVisualisationTranslatorAgent::AssignXCoordinates(
       otherElement->SetX(otherElementIndent);
     }
     else
-    {
       AssignXCoordinates(roots, otherElement, otherElementIndent);
-    }
   }
 }
 
-void SCgVisualisationTranslatorAgent::AssignYCoordinates(std::shared_ptr<Node> const & rootElement)
+void SCgVisualisationTranslatorAgent::AssignYCoordinates(std::shared_ptr<Node> const & tree)
 {
-  // TODO(kilativ-dotcom): take into account content size to move whole row down
-  rootElement->SetTopY(lastAssignedY);
-  if (rootElement->HasBus())
-    lastAssignedY += FormatTranslatorsConstants::Y_INCREMENT;
+  std::unordered_map<uint32_t, uint32_t> maxRelationsPerRow;
+  std::unordered_map<uint32_t, uint32_t> maxLinkContentPerRow;
+  std::unordered_map<uint32_t, std::list<std::shared_ptr<Node>>> rowNodes;
+  uint32_t rowIndex = 0;
+  CalculateHorizontalRows(tree, rowIndex, maxRelationsPerRow, maxLinkContentPerRow, rowNodes);
+  for (uint32_t i = 0; i < rowNodes.size(); ++i)
+    AssignYCoordinatesForRow(rowNodes[i], maxRelationsPerRow[i], maxLinkContentPerRow[i]);
+
+  AssignYCoordinatesForRelations(tree);
+}
+
+void SCgVisualisationTranslatorAgent::CalculateHorizontalRows(
+    std::shared_ptr<Node> const & rootElement,
+    uint32_t & rowIndex,
+    std::unordered_map<uint32_t, uint32_t> & maxRelationsPerRow,
+    std::unordered_map<uint32_t, uint32_t> & maxLinkContentPerRow,
+    std::unordered_map<uint32_t, std::list<std::shared_ptr<Node>>> & rowNodes)
+{
+  rowNodes[rowIndex].push_back(rootElement);
+  if (!maxRelationsPerRow.count(rowIndex))
+    maxRelationsPerRow[rowIndex] = 0;
+  if (!maxLinkContentPerRow.count(rowIndex))
+    maxLinkContentPerRow[rowIndex] = rootElement->GetContent().size();
+  else
+  {
+    auto const & contentSize = rootElement->GetContent().size();
+    if (contentSize > maxLinkContentPerRow[rowIndex])
+      maxLinkContentPerRow[rowIndex] = contentSize;
+  }
+  bool hasBus = rootElement->HasBus();
+  if (hasBus)
+  {
+    ++rowIndex;
+    if (!maxRelationsPerRow.count(rowIndex))
+      maxRelationsPerRow[rowIndex] = 0;
+    if (!maxLinkContentPerRow.count(rowIndex))
+      maxLinkContentPerRow[rowIndex] = 0;
+  }
   for (auto const & connector : rootElement->GetConnectors())
   {
-    float const relationElementY = lastAssignedY - FormatTranslatorsConstants::HALF_Y_INCREMENT;
-    for (auto const & relationConnector : connector->GetConnectors())
-    {
-      // TODO(kilativ-dotcom): if `connector` has multiple relations like scp operator then make custom placing and
-      // probably move whole row down
-      auto relationOtherElement = relationConnector->GetOtherElement();
-      relationOtherElement->SetTopY(relationElementY);
-      relationOtherElement->SetBottomY(relationElementY);
-    }
+    if (connector->GetConnectors().size() > maxRelationsPerRow[rowIndex])
+      maxRelationsPerRow[rowIndex] = connector->GetConnectors().size();
     auto otherElement = connector->GetOtherElement();
-    AssignYCoordinates(otherElement);
-    connector->SetBaseElementBalance(FormatTranslatorsConstants::NEGATIVE_BALANCE);
+    CalculateHorizontalRows(otherElement, rowIndex, maxRelationsPerRow, maxLinkContentPerRow, rowNodes);
+    if (hasBus)
+      ++rowIndex;
   }
+}
 
-  rootElement->SetBottomY(
-      rootElement->HasBus() ? lastAssignedY - FormatTranslatorsConstants::Y_INCREMENT : lastAssignedY);
-  if (rootElement->GetConnectors().empty())
-    lastAssignedY += FormatTranslatorsConstants::Y_INCREMENT;
+void SCgVisualisationTranslatorAgent::AssignYCoordinatesForRow(
+    std::list<std::shared_ptr<Node>> & rowNodes,
+    uint32_t const maxRelationsPerRow,
+    uint32_t const maxLinkContentPerRow)
+{
+  auto const shiftBasedOnRelations = maxRelationsPerRow * FormatTranslatorsConstants::VERTICAL_RELATION_GAP;
+  auto const shiftBasedOnLinkContent = maxLinkContentPerRow / FormatTranslatorsConstants::LINK_CHARACTERS_PER_ROW
+                                       * FormatTranslatorsConstants::LINK_ROW_HEIGHT;
+  auto const halfShiftBasedOnLinkContent = shiftBasedOnLinkContent / 2;
+  lastAssignedY +=
+      std::max(shiftBasedOnRelations, halfShiftBasedOnLinkContent) + FormatTranslatorsConstants::Y_INCREMENT;
+  for (auto const & node : rowNodes)
+  {
+    node->SetTopY(lastAssignedY);
+    node->SetBottomY(lastAssignedY);
+  }
+  if (halfShiftBasedOnLinkContent > FormatTranslatorsConstants::HALF_Y_INCREMENT)
+    lastAssignedY += halfShiftBasedOnLinkContent;
+}
+
+void SCgVisualisationTranslatorAgent::AssignYCoordinatesForRelations(std::shared_ptr<Node> const & rootElement)
+{
+  if (rootElement->HasBus())
+    rootElement->SetBottomY(rootElement->GetConnectors().back()->GetOtherElement()->GetTopY());
+  for (auto const & rootElementConnector : rootElement->GetConnectors())
+  {
+    rootElementConnector->SetBaseElementBalance(FormatTranslatorsConstants::NEGATIVE_BALANCE);
+    auto const otherElement = rootElementConnector->GetOtherElement();
+    float relationY = otherElement->GetTopY() - FormatTranslatorsConstants::HALF_Y_INCREMENT;
+    for (auto const & relationConnector : rootElementConnector->GetConnectors())
+    {
+      relationConnector->SetBaseElementBalance(FormatTranslatorsConstants::NEGATIVE_BALANCE);
+      auto relationOtherElement = relationConnector->GetOtherElement();
+      relationOtherElement->SetTopY(relationY);
+      relationOtherElement->SetBottomY(relationY);
+      relationY -= FormatTranslatorsConstants::VERTICAL_RELATION_GAP;
+    }
+    AssignYCoordinatesForRelations(otherElement);
+  }
 }
 }  // namespace formatTranslators

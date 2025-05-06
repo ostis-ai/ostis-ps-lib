@@ -38,5 +38,3 @@ concept_0
 => nrel_main_idtf:
     [zero](* <- lang_en;; *);
     [zéro](* <- lang_fr;; *);;
-
-

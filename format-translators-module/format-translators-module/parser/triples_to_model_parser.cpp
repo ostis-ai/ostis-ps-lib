@@ -46,7 +46,8 @@ std::shared_ptr<Node> TriplesToModelParser::WalkBFS(ScAddr const & root)
       if (walkedConnectors.count(connectorAddr))
         continue;
       walkedConnectors.insert(connectorAddr);
-      // TODO(): if otherElement is Structure with nodes + connectors then it probably can be displayed as a structure
+      // TODO(kilativ-dotcom): if otherElement is Structure with nodes + connectors then it probably can be displayed as
+      // a structure
       auto const & subtreeRoot = WalkBFS(otherElementAddr);
       auto const & connectorElement = CreateConnector(connectorAddr, rootElement, subtreeRoot, isReversed);
       ProcessTriple(rootElement, connectorElement);

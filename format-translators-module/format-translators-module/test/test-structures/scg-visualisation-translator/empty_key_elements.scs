@@ -37,4 +37,3 @@ not_root_1
 test_structure
     -> rrel_main_key_sc_element: root_element;
     => nrel_key_elements_order: ... (* <- sc_node_tuple;; *);;
-

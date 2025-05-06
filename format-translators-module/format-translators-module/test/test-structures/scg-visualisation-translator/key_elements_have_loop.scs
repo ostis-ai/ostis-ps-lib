@@ -57,4 +57,3 @@ nrel_basic_sequence -> (@arc7 => @arc8);;
 @arc9 = ( ..order -> @not_root_3 );;
 nrel_basic_sequence -> (@arc8 => @arc9);;
 nrel_basic_sequence -> (@arc9 => @arc5);;
-

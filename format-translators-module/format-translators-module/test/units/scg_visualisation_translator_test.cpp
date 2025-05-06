@@ -159,6 +159,16 @@ TEST_F(FormatTranslatorsTest, noMainKeyElementTest)
   checkTranslation(*m_ctx, "no_main_key_element");
 }
 
+TEST_F(FormatTranslatorsTest, horizontlConnectorHasMultipleRelationsTest)
+{
+  checkTranslation(*m_ctx, "horizontal_connector_has_multiple_relations");
+}
+
+TEST_F(FormatTranslatorsTest, creatingVerticalGapBecauseOfLinkContentTest)
+{
+  checkTranslation(*m_ctx, "creating_vertical_gap_because_of_link_content");
+}
+
 void checkTranslationWithError(ScAgentContext & context, std::string const & filename)
 {
   loader.loadScsFile(context, FORMAT_TRANSLATORS_MODULE_TEST_FILES_DIR_PATH + filename + ".scs");
@@ -252,7 +262,7 @@ TEST_F(FormatTranslatorsTest, aLotOfTriplesDoesNotCausesTimeoutTest)
   getResultLinkContent(*m_ctx, testAction, resultLinkContent);
   std::regex pattern("sc_addr=\\\"\\d+\\\"");
   std::string const resultLinkContentWithoutAddr = std::regex_replace(resultLinkContent, pattern, "");
-  EXPECT_EQ(resultLinkContentWithoutAddr.size(), 372503u);
+  EXPECT_EQ(resultLinkContentWithoutAddr.size(), 372480u);
 }
 
 TEST_F(FormatTranslatorsTest, benchmarkDoesNotCausesTimeoutTest)

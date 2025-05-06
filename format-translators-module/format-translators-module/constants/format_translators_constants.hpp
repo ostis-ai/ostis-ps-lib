@@ -26,9 +26,14 @@ public:
   static float const INDENT_FOR_NODE_WITHOUT_IDENTIFIER;
   static float const MIN_X;
   static float const MAX_X;
+  static float const LINK_CHARACTERS_PER_ROW;
+  static float const LINK_ROW_HEIGHT;
   static float const MAX_LINK_WIDTH;
   static float const EMPTY_SPACE_AFTER_IDENTIFIER;
   static float const IDENTIFIER_CHARACTER_WIDTH;
+  static float const VERTICAL_RELATION_GAP;
+  static float const HORIZONTAL_RELATION_GAP;
+  static uint32_t const AMOUNT_OF_EMPTY_RELATION_CONNECTORS;
   static int const NEGATIVE_BALANCE;
 
   static std::list<std::pair<std::string, std::regex>> const XML_IDTF_REPLACEMENTS;

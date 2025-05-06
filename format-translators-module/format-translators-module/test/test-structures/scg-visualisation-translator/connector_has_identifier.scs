@@ -35,5 +35,3 @@ test_structure
 => nrel_main_idtf:
     [two](* <- lang_en;; *);
     [deux](* <- lang_fr;; *);;
-
-

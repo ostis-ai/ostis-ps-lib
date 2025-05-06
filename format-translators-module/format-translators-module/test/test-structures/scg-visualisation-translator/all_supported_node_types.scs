@@ -2,10 +2,10 @@ test_action_node
     <- action_visualise_to_scg;
     -> rrel_1: test_structure;;
 
-@const_node_link = [sample text];;
-@const_node_link_class = [sample text];;
-@var_node_link = _[sample text];;
-@var_node_link_class = _[sample text];;
+@const_node_link = [sample text1];;
+@const_node_link_class = [sample text22];;
+@var_node_link = _[sample text333];;
+@var_node_link_class = _[sample text4444];;
 
 @const_node_link => nrel_system_identifier: [const_node_link];;
 @const_node_link_class => nrel_system_identifier: [const_node_link_class];;
@@ -54,7 +54,7 @@ sc_node_material
 test_structure =
 [*
 root_element
--> rrel_node:
+-> rrel_node:rrel_node:rrel_node:rrel_node:rrel_node:
     const_node;
     const_node_material;
     const_node_structure;
@@ -76,6 +76,7 @@ root_element
     @const_node_link_class;
     @var_node_link;
     @var_node_link_class;;
+@const_node_link_class -> rrel_node:rrel_node:rrel_node:rrel_node:rrel_node:rrel_node:rrel_node:rrel_node:rrel_node: about_now;;
 *];;
 
 test_structure

@@ -35,7 +35,21 @@ private:
       std::shared_ptr<Node> const & treeRoot,
       float rootElementIndent);
 
-  void AssignYCoordinates(std::shared_ptr<Node> const & rootElement);
+  void AssignYCoordinates(std::shared_ptr<Node> const & tree);
+
+  static void CalculateHorizontalRows(
+      std::shared_ptr<Node> const & rootElement,
+      uint32_t & rowIndex,
+      std::unordered_map<uint32_t, uint32_t> & maxRelationsPerRow,
+      std::unordered_map<uint32_t, uint32_t> & maxLinkContentPerRow,
+      std::unordered_map<uint32_t, std::list<std::shared_ptr<Node>>> & rowNodes);
+
+  void AssignYCoordinatesForRow(
+      std::list<std::shared_ptr<Node>> & rowNodes,
+      uint32_t const maxRelationsPerRow,
+      uint32_t const maxLinkContentPerRow);
+
+  static void AssignYCoordinatesForRelations(std::shared_ptr<Node> const & rootElement);
 };
 
 }  // namespace formatTranslators

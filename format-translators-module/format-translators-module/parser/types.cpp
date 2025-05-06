@@ -28,14 +28,24 @@ uint32_t ScAddrComparator::GetValue(std::pair<ScAddr, ScAddr> const & key) const
       indirectValueIterator != structureTriples.cend() && !indirectValueIterator->second.empty();
   if (hasIndirectValue)
   {
-    ScAddr const & firstOtherElementForConnector = std::get<0>(*indirectValueIterator->second.begin());
-    auto const & otherElementOrderIterator = order.find(firstOtherElementForConnector);
-    if (otherElementOrderIterator != order.cend())
+    bool foundIndirectValueInOrder = false;
+    uint32_t minimalValueInOrder = order.size();
+    for (auto const & otherElementAndConnector : indirectValueIterator->second)
+    {
+      auto const & otherElementOrderIterator = order.find(std::get<0>(otherElementAndConnector));
+      if (otherElementOrderIterator != order.cend())
+      {
+        foundIndirectValueInOrder = true;
+        if (otherElementOrderIterator->second < minimalValueInOrder)
+          minimalValueInOrder = otherElementOrderIterator->second;
+      }
+    }
+    if (foundIndirectValueInOrder)
     {
       if (hasDirectValue)
-        return std::min(directValueIterator->second, otherElementOrderIterator->second);
+        return std::min(directValueIterator->second, minimalValueInOrder);
       else
-        return otherElementOrderIterator->second;
+        return minimalValueInOrder;
     }
   }
   if (hasDirectValue)
