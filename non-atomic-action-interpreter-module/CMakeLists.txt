@@ -8,6 +8,7 @@ if(${WIN32})
     message(FATAL_ERROR "non-atomic-action-interpreter-module isn't supported on Windows OS.")
 endif()
 
+set(NON_ATOMIC_ACTION_INTERPRETER_ROOT ${CMAKE_CURRENT_SOURCE_DIR})
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake")
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)

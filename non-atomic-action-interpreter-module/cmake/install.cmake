@@ -1,11 +1,21 @@
 install(TARGETS
     non-atomic-action-interpreter-module
-    EXPORT privateExport
+    EXPORT non-atomic-action-interpreter-module-export
     LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}/extensions"
+    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+    INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+    PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
 )
 
-install(EXPORT privateExport
-    FILE privateTargets.cmake
+export(EXPORT non-atomic-action-interpreter-module-export
+        NAMESPACE non-atomic-action-interpreter-module::  # to simulate a different name and see it works
+        FILE "${CMAKE_CURRENT_BINARY_DIR}/non-atomic-action-interpreter-module-targets.cmake"
+)
+
+install(EXPORT non-atomic-action-interpreter-module-export
+    FILE non-atomic-action-interpreter-module-targets.cmake
+    NAMESPACE non-atomic-action-interpreter-module::
     DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/non-atomic-action-interpreter-module
 )
 
@@ -17,7 +27,14 @@ write_basic_package_version_file(
     COMPATIBILITY AnyNewerVersion
 )
 
+configure_package_config_file(
+    ${NON_ATOMIC_ACTION_INTERPRETER_ROOT}/cmake/non-atomic-action-interpreter-module-config.cmake.in
+    "${CMAKE_CURRENT_BINARY_DIR}/non-atomic-action-interpreter-module-config.cmake"
+    INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/non-atomic-action-interpreter-module
+)
+
 install(FILES
+    "${CMAKE_CURRENT_BINARY_DIR}/non-atomic-action-interpreter-module-config.cmake"
     "${CMAKE_CURRENT_BINARY_DIR}/non-atomic-action-interpreter-module-config-version.cmake"
     DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/non-atomic-action-interpreter-module
 )
