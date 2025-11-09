@@ -1,0 +1,101 @@
+nrel_fixed_search_strategy_template -> {
+    rrel_init_template: {
+        rrel_template: [*
+            @input_param1 = (BSUIR <-_ concept_university);;
+            rrel_group _-> (BSUIR _-> .._group);;
+            @output_param1 = (.._group <-_ concept_group);;
+        *];
+        rrel_template_input_params: {
+            @input_param1
+        };
+        rrel_template_output_params: {
+            @output_param1
+        }
+    } (* <- nrel_search_set_template;; *);
+    rrel_next_template: {
+        rrel_init_template: {
+            rrel_template: [*
+                @input_param1 = (.._group <-_ concept_group);;
+                rrel_student _-> (.._group _-> .._student);;
+                @output_param1 = (.._student <-_ concept_student);;
+            *];
+            rrel_template_input_params: {
+                @input_param1
+            };
+            rrel_template_output_params: {
+                @output_param1
+            }
+        } (* <- nrel_search_set_template;; *);
+        rrel_next_template: {
+            rrel_init_template: {
+                rrel_template: [*
+                    @input_param1 = (.._student <-_ concept_student);;
+                    nrel_fio _-> (.._student _=> .._fio);;
+                    @output_param1 = (.._fio <-_ lang_ru);;
+                *];
+                rrel_template_input_params: {
+                    @input_param1
+                };
+                rrel_template_output_params: {
+                    @output_param1
+                }
+            } (* <- nrel_search_template;; *)
+        } (* <- nrel_fixed_search_strategy_template;; *)
+    } (* <- nrel_fixed_search_strategy_template;; *)
+};;
+
+
+BSUIR
+<- concept_university;
+-> rrel_group:
+    group1;
+    group2;;
+
+group1
+<- concept_group;
+-> rrel_student:
+    Petrov;
+    Ivanov;;
+
+group2
+<- concept_group;
+-> rrel_student:
+    Olegov;
+    Sidorov;;
+
+Petrov
+<- concept_student;
+=> nrel_fio:
+    [Petrov P.P.]
+    (*
+        <- lang_ru;;
+    *);;
+
+Ivanov
+<- concept_student;
+=> nrel_fio:
+    [Ivanov I.I.]
+    (*
+        <- lang_ru;;
+    *);;
+
+Olegov
+<- concept_student;
+=> nrel_fio:
+    [Olegov O.O.]
+    (*
+        <- lang_ru;;
+    *);;
+
+Sidorov
+<- concept_student;
+=> nrel_fio:
+    [Sidorov S.S.]
+    (*
+        <- lang_ru;;
+    *);;
+
+concept_template_type
+-> nrel_search_template;
+-> nrel_search_set_template;
+-> nrel_fixed_search_strategy_template;;
