@@ -1,0 +1,16 @@
+.idea
+.vscode
+cmake-build-*
+/build
+/bin
+/ConanPresets.json
+
+CMakeCache.txt
+CMakeFiles
+DartConfiguration.tcl
+repo
+/logs
+
+kb.bin
+
+.DS_Store
