@@ -68,7 +68,7 @@ void ParameterizedTemplate::Load()
       });
 
   if (!m_templateAddr.IsValid())
-    m_logger.Error("Template not found in parameterized template ", *this);
+    m_logger.Debug("Template not found in parameterized template ", *this);
 
   if (!m_waitTimeMsAddr.IsValid())
     m_logger.Debug("Wait time not found in parameterized template ", *this);

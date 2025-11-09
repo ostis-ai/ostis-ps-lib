@@ -4,9 +4,7 @@
 #include <keynodes/keynodes.hpp>
 #include <data/parameterized_template_builder.hpp>
 
-std::string const TEST_FILES_DIR_PATH =
-    "/Users/nikitazotov/Development/apps/ostis/ostis-ai/ostis-ps-lib/fixed-search-strategy-template-processing-module/"
-    "fixed-search-strategy-template-processing-module/test/units/../test-structures/";
+std::string const TEST_FILES_DIR_PATH = "../test-structures/";
 
 using FixedSearchStrategyTemplateProcessingModuleTest = ScMemoryTest;
 
@@ -38,20 +36,4 @@ TEST_F(FixedSearchStrategyTemplateProcessingModuleTest, SearchByFixedSearchStrat
 
   TemplateResults results;
   EXPECT_TRUE(templ->Apply(arguments, results));
-
-  results.ForEach(
-      [](TemplateResult const & result)
-      {
-        std::cout << "Result 0 : " << result.GetIndex() << std::endl;
-        result.ForEach(
-            [](TemplateResult const & result)
-            {
-              std::cout << "Result 1 : " << result.GetIndex() << std::endl;
-              result.ForEach(
-                  [](TemplateResult const & result)
-                  {
-                    std::cout << "Result 2 : " << result.GetIndex() << std::endl;
-                  });
-            });
-      });
 }
