@@ -1,0 +1,46 @@
+subject_domain_of_phrases
+=> nrel_main_idtf:
+    [Предметная область фраз]
+    (* <- lang_ru;; *);
+    [Subject domain of phrases]
+    (* <- lang_en;; *);
+    [Fachgebiet von Phrasen]
+    (* <- lang_de;; *);
+<- subject_domain;
+<= nrel_private_subject_domain: subject_domain_of_messages;
+-> rrel_maximum_studied_object_class:
+    concept_phrase;
+-> rrel_not_maximum_studied_object_class:
+    concept_misunderstanding_phrase;
+    concept_answer_generation_error_phrase;
+    concept_error_phrase;
+    concept_indefinite_answer_phrase;
+    concept_no_audio_phrase;
+    concept_no_text_phrase;
+    concept_confirmation_phrase;
+    concept_denial_phrase;
+    concept_information_phrase;
+    concept_informing_phrase;
+    concept_interception_phrase;
+    concept_phrase_of_compassion;
+    concept_phrase_of_gratitude;
+    concept_phrase_of_pleasure;
+    concept_default_dialog_start_phrase;
+    concept_dialog_end_phrase;
+    concept_dialog_start_phrase;
+    concept_greeting_phrase;
+    concept_neutral_phrase;
+    concept_politeness_phrase;
+    concept_response_delay_phrase;
+    concept_declarative_phrase;
+    concept_hortative_phrase;
+    concept_information_request_phrase;
+    concept_initiative_interception_interrogative_phrase;
+    concept_interrogative_phrase;
+    concept_phrase_about_future;
+    concept_phrase_about_past;
+    concept_phrase_about_present;
+    concept_template_phrases_class;
+-> rrel_explored_relation:
+    nrel_descriptive_phrase;
+    nrel_phrase_template;;

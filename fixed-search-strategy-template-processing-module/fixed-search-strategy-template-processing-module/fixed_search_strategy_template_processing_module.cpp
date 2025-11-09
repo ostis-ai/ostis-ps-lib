@@ -1,0 +1,5 @@
+#include "fixed_search_strategy_template_processing_module.hpp"
+
+#include "agent/fixed_search_strategy_template_processing_agent.hpp"
+
+SC_MODULE_REGISTER(FixedSearchStrategyTemplateProcessingModule)->Agent<FixedSearchStrategyTemplateProcessingAgent>();

@@ -1,0 +1,30 @@
+concept_message_no_time
+<- sc_node_class;
+=> nrel_main_idtf:
+    [сообщение без времени]
+    (* <- lang_ru;; *);
+    [message without tense]
+    (* <- lang_en;; *);
+<- rrel_key_sc_element:
+    ...
+    (*
+    => nrel_main_idtf:
+    [Опр. (сообщение без времени)]
+    (* <- lang_ru;; *);
+    [Def. (message without tense)]
+    (* <- lang_en;; *);;
+    <- definition;;
+    <= nrel_sc_text_translation:
+        {
+            rrel_example:
+                [Сообщение без времени - сообщение, время которого не распознано.]
+                (* <- lang_ru;; *);
+            rrel_example:
+                [Message without tense is a message whose tense is not recognized.]
+                (* <- lang_en;; *)
+        };;
+    <= nrel_using_constants:
+        {
+           concept_message
+        };;
+    *);;
