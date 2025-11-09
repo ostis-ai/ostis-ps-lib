@@ -19,7 +19,7 @@ ps_common_utils_specification = [*
     => nrel_main_idtf: [Library of common functions and utilities for problem solvers] (* <- lang_en;; *);;
     => nrel_component_dependencies: ... (* <- empty_set;; *);; // TODO(NikitaZotov): Add sc-machine and common-lib dependencies
 
-    => nrel_component_address: [https://github.com/NikitaZotov/ostis-ps-lib/tree/feat/move_common_and_non_atomic_action_interpreter_module_to_new_build_system/ps-common-lib] (* <- concept_github_url;; *);;
+    => nrel_component_address: [https://github.com/ostis-ai/ostis-ps-lib/tree/main/ps-common-lib] (* <- concept_github_url;; *);;
     => nrel_installation_method: ... (* <- concept_component_statically_installed_method;; *);; // TODO(NikitaZotov): Add installation method
 *);;
 *];;
