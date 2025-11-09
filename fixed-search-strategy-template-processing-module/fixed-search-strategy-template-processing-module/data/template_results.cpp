@@ -13,19 +13,19 @@ TemplateResult::TemplateResult(
     TemplateResults * results,
     size_t index,
     ScAddrToValueUnorderedMap<std::pair<ScAddr, ScAddr>> const & result,
-    std::list<size_t> const & connectedResultIndicies)
+    std::list<size_t> const & connectedResultIndices)
   : m_context(context)
   , m_logger(logger)
   , m_results(results)
   , m_index(index)
   , m_result(result)
-  , m_connectedResultIndicies(connectedResultIndicies)
+  , m_connectedResultIndices(connectedResultIndices)
 {
 }
 
 bool TemplateResult::IsValid() const
 {
-  return m_context != null_ptr;
+  return m_context != nullptr;
 }
 
 size_t TemplateResult::GetIndex() const
@@ -35,7 +35,7 @@ size_t TemplateResult::GetIndex() const
 
 size_t TemplateResult::Size() const
 {
-  return m_connectedResultIndicies.size();
+  return m_connectedResultIndices.size();
 }
 
 void TemplateResult::ForEach(std::function<void(TemplateResult const &)> const & callback) const
@@ -60,7 +60,7 @@ void TemplateResult::ForEach(std::function<void(TemplateResult const &)> const &
       callback(result);
   };
 
-  for (size_t index : m_connectedResultIndicies)
+  for (size_t index : m_connectedResultIndices)
   {
     auto const & result = m_results->m_results[index];
     ForEachItem(result);
@@ -89,7 +89,7 @@ bool TemplateResult::AllOf(std::function<bool(TemplateResult const &)> const & c
       return callback(result);
   };
 
-  for (size_t index : m_connectedResultIndicies)
+  for (size_t index : m_connectedResultIndices)
   {
     auto const & result = m_results->m_results[index];
     if (!AllOfItems(result))
@@ -121,7 +121,7 @@ bool TemplateResult::AnyOf(std::function<bool(TemplateResult const &)> const & c
       return callback(result);
   };
 
-  for (size_t index : m_connectedResultIndicies)
+  for (size_t index : m_connectedResultIndices)
   {
     auto const & result = m_results->m_results[index];
     if (AnyOfItems(result))
@@ -193,7 +193,7 @@ void TemplateResult::TryUpdateArguments(TemplateArguments & arguments) const
 
 void TemplateResult::AddConnectedResultIndex(size_t index)
 {
-  m_connectedResultIndicies.push_back(index);
+  m_connectedResultIndices.push_back(index);
 }
 
 TemplateResults::TemplateResults() = default;
@@ -427,11 +427,11 @@ void TemplateResults::AddTemplateResults(TemplateResults const & other)
   {
     size_t const newIndex = result.GetIndex() + size;
 
-    std::list<size_t> connectedResultIndicies;
-    for (size_t index : result.m_connectedResultIndicies)
-      connectedResultIndicies.push_back(index + size);
+    std::list<size_t> connectedResultIndices;
+    for (size_t index : result.m_connectedResultIndices)
+      connectedResultIndices.push_back(index + size);
 
-    m_results.emplace_back(m_context, m_logger, this, newIndex, result.m_result, connectedResultIndicies);
+    m_results.emplace_back(m_context, m_logger, this, newIndex, result.m_result, connectedResultIndices);
   }
 }
 
@@ -466,10 +466,10 @@ void TemplateResults::MergeTemplateResults(
     auto & otherResult = otherResults.m_results[0];
     thisResult.m_result.insert(otherResult.m_result.cbegin(), otherResult.m_result.cend());
 
-    thisResult.m_connectedResultIndicies.insert(
-        thisResult.m_connectedResultIndicies.cbegin(),
-        otherResult.m_connectedResultIndicies.cbegin(),
-        otherResult.m_connectedResultIndicies.cend());
+    thisResult.m_connectedResultIndices.insert(
+        thisResult.m_connectedResultIndices.cbegin(),
+        otherResult.m_connectedResultIndices.cbegin(),
+        otherResult.m_connectedResultIndices.cend());
   }
 }
 
@@ -506,7 +506,7 @@ void TemplateResults::SortResultIndices(
   if (m_sortParamAddr.IsValid())
   {
     ScAddr const varArcAddr = m_sortParamAddr;
-    ScAddrToValueUnorderedMap<size_t> entitiesToIndicies;
+    ScAddrToValueUnorderedMap<size_t> entitiesToIndices;
 
     ScAddr sortSetAddr;
     bool isSortSetFound = false;
@@ -523,10 +523,10 @@ void TemplateResults::SortResultIndices(
         isSortSetFound = true;
       }
 
-      entitiesToIndicies.insert({entityAddr, i});
+      entitiesToIndices.insert({entityAddr, i});
     }
 
-    sortedResultItemIndices.reserve(entitiesToIndicies.size());
+    sortedResultItemIndices.reserve(entitiesToIndices.size());
     if (isSortSetFound)
     {
       ScOrientedSet const sortSet = m_context->ConvertToOrientedSet(sortSetAddr);
@@ -534,21 +534,21 @@ void TemplateResults::SortResultIndices(
       ScAddr elementAddr;
       while ((elementAddr = sortSet.Next()).IsValid())
       {
-        auto const it = entitiesToIndicies.find(elementAddr);
-        if (it != entitiesToIndicies.cend())
+        auto const it = entitiesToIndices.find(elementAddr);
+        if (it != entitiesToIndices.cend())
           sortedResultItemIndices.push_back(it->second);
       }
     }
 
-    if (!isSortSetFound || sortedResultItemIndices.size() < entitiesToIndicies.size())
+    if (!isSortSetFound || sortedResultItemIndices.size() < entitiesToIndices.size())
     {
       sortedResultItemIndices.clear();
 
       std::vector<std::pair<std::string, size_t>> itemsIndicesWithText;
-      itemsIndicesWithText.reserve(entitiesToIndicies.size());
+      itemsIndicesWithText.reserve(entitiesToIndices.size());
       std::transform(
-          entitiesToIndicies.begin(),
-          entitiesToIndicies.end(),
+          entitiesToIndices.begin(),
+          entitiesToIndices.end(),
           std::back_inserter(itemsIndicesWithText),
           [&](std::pair<ScAddr, size_t> const & pair)
           {

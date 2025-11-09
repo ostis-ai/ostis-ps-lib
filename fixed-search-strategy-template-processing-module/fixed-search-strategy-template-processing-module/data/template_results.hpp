@@ -54,8 +54,8 @@ public:
    * @param[in] results Pointer to the parent TemplateResults container
    * @param[in] index Index of this result in the results container
    * @param[in] result Initial variable bindings as address-to-arc-element mappings
-   * @param[in] m_continuousResultIndicies Set of indices of continuous results for chaining operations
-   * @param[in] connectedResultIndicies Set of indices of connected results for chaining operations
+   * @param[in] m_continuousResultIndices Set of indices of continuous results for chaining operations
+   * @param[in] connectedResultIndices Set of indices of connected results for chaining operations
    */
   TemplateResult(
       ScAgentContext * context,
@@ -63,7 +63,7 @@ public:
       TemplateResults * results,
       size_t index,
       ScAddrToValueUnorderedMap<std::pair<ScAddr, ScAddr>> const & result = {},
-      std::list<size_t> const & connectedResultIndicies = {});
+      std::list<size_t> const & connectedResultIndices = {});
 
   /*!
    * @brief Checks if this template result is valid and properly initialized.
@@ -155,7 +155,7 @@ private:
   /// Variable bindings stored as set-to-arc-element pairs
   ScAddrToValueUnorderedMap<std::pair<ScAddr, ScAddr>> m_result;
   /// Indices of connected results for chaining operations
-  std::list<size_t> m_connectedResultIndicies;
+  std::list<size_t> m_connectedResultIndices;
 
   /*!
    * @brief Adds a connected result index to this result's connection set.

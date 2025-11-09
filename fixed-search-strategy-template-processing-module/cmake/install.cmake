@@ -19,7 +19,7 @@ write_basic_package_version_file(
 
 install(FILES
     "${CMAKE_CURRENT_BINARY_DIR}/fixed-search-strategy-template-processing-module-config-version.cmake"
-    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/non-atomic-action-interpreter-module
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/fixed-search-strategy-template-processing-module
 )
 
 set(CPACK_PACKAGE_NAME                  fixed-search-strategy-template-processing-module)
