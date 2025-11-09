@@ -20,7 +20,7 @@ jobs:
         uses: ostis-ai/release-conan@0.1.0
         with:
           name: ps-common-lib
-          version: 0.1.0
+          version: 0.1.1
           directory: ps-common-lib
           configure-preset: release-conan
           build-preset: release
