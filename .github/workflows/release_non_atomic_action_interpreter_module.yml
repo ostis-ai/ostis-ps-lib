@@ -20,7 +20,7 @@ jobs:
         uses: ostis-ai/release-conan@0.1.0
         with:
           name: non-atomic-action-interpreter-module
-          version: 0.1.0
+          version: 0.1.1
           directory: non-atomic-action-interpreter-module
           configure-preset: release-conan
           build-preset: release

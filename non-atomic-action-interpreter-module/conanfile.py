@@ -10,8 +10,8 @@ class non_atomic_action_interpreter_moduleRecipe(ConanFile):
         return tools.get_env("CONAN_RUN_TESTS", False)
     
     def requirements(self):
-        self.requires("sc-machine/0.10.0")
-        self.requires("ps-common-lib/0.1.0")
+        self.requires("sc-machine/0.10.5", override=True)
+        self.requires("ps-common-lib/0.1.1")
 
     def build_requirements(self):
         self.test_requires("gtest/1.14.0")
