@@ -1,11 +1,11 @@
-name: Release fixed-search-strategy-template-processing-module
+name: Release fixed-search-strategy-template-processing-lib
 
 on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 jobs:
-  release-fixed-search-strategy-template-processing-module:
+  release-fixed-search-strategy-template-processing-lib:
     strategy:
       fail-fast: true
       matrix:
@@ -16,14 +16,14 @@ jobs:
     runs-on: ${{ matrix.config.os }}
     
     steps:
-      - name: Release fixed-search-strategy-template-processing-module component
+      - name: Release fixed-search-strategy-template-processing-lib component
         uses: ostis-ai/release-conan@0.1.0
         with:
-          name: fixed-search-strategy-template-processing-module
+          name: fixed-search-strategy-template-processing-lib
           version: 0.1.0
-          directory: fixed-search-strategy-template-processing-module
+          directory: fixed-search-strategy-template-processing-lib
           configure-preset: release-conan
           build-preset: release
-          create-conan-package: false
+          create-conan-package: true
           conan-username: ${{ secrets.CONAN_USERNAME }}
           conan-api-key: ${{ secrets.CONAN_API_KEY }}

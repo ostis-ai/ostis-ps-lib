@@ -1,0 +1,25 @@
+fixed_search_strategy_template_processing_module_specification
+    <- concept_reusable_component_specification;;
+
+fixed_search_strategy_template_processing_module_specification = [*
+-> rrel_key_sc_element : fixed_search_strategy_template_processing_agent
+(*
+    <- concept_reusable_component;;
+    <- concept_atomic_reusable_component;;
+    <- concept_dependent_reusable_component;;
+    <- concept_reusable_ps_component;;
+    <- concept_reusable_dynamically_installed_component;;
+    <- concept_reusable_source_code_component;;
+    <- concept_platform_dependent_reusable_component;;
+
+    => nrel_authors: { NikitaZotov };;
+    => nrel_explanation: [Компонент представляет собой платформенно-зависимый агент интерпретации sc-шаблонов с фиксированной стратегией поиска.] (* <- lang_ru;; *);;
+
+    => nrel_main_idtf: [Агент интерпретации sc-шаблонов с фиксированной стратегией поиска] (* <- lang_ru;; *);;
+    => nrel_main_idtf: [Fixed search strategy template processing agent] (* <- lang_en;; *);;
+    => nrel_component_dependencies: ... (* <- empty_set;; *);; // TODO(NikitaZotov): Add sc-machine and ps-common-lib-lib dependencies
+
+    => nrel_component_address: [] (* <- concept_github_url;; *);;
+    => nrel_installation_method: ... (* <- concept_component_dynamically_installed_method;; *);; // TODO(NikitaZotov): Add installation method
+*);;
+*];;
