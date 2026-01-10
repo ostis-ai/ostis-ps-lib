@@ -73,6 +73,6 @@ set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 
 find_package(sc-machine REQUIRED)
 
-add_subdirectory(fixed-search-strategy-template-processing-module)
+add_subdirectory(fixed-search-strategy-template-processing-lib)
 
 include(${CMAKE_MODULE_PATH}/install.cmake)
