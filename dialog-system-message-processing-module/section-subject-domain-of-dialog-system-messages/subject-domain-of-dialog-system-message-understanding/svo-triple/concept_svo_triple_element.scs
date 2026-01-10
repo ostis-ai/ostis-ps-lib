@@ -1,0 +1,41 @@
+concept_svo_triple_element
+<-sc_node_class;
+=> nrel_main_idtf:
+    [элемент тройки субъект-глагол-объект]
+    (* <- lang_ru;; *);
+    [subject-verb-object triple element]
+    (* <- lang_en;; *);
+    [Subjekt-Verb-Objekt-Tripelelements]
+    (* <- lang_de;; *);
+<- rrel_key_sc_element:
+    ...
+    (*
+    => nrel_main_idtf:
+        [Опр. (элемент тройки субъект-глагол-объект)]
+        (* <- lang_ru;; *);
+        [Def. (subject-verb-object triple)]
+        (* <- lang_en;; *);
+        [Def. (Subjekt-Verb-Objekt-Tripelelements)]
+        (* <- lang_de;; *);;
+    <- definition;;
+    <= nrel_sc_text_translation:
+        {
+            rrel_example: [Элемент тройки субъект-глагол-объект - один из элементов тройки субъект-глагол-объект, характеризующийся
+             токеном и соответствующими ему сущностями в рамках текущего состояния базы знаний.]
+            (* <- lang_ru;; *);
+            rrel_example: [Subject-verb-object triple element is one of the elements of the subject-verb-object triple,
+            characterized by a token and its corresponding entities within the current state of the knowledge base.]
+            (* <- lang_en;; *);
+         rrel_example: [Subjekt-Verb-Objekt-Tripelelement ist eines der Elemente des Subjekt-Verb-Objekt-Tripels, das durch ein
+            Token und die entsprechenden Entitäten innerhalb des aktuellen Zustands der Wissensdatenbank gekennzeichnet ist.]
+         (* <- lang_de;; *)
+        };;
+    <= nrel_using_constants:
+        {
+        triple_set;
+        subject;
+        sc_element;
+        concept_token;
+        knowledge_base
+        };;
+    *);;

@@ -1,0 +1,41 @@
+@message_types_for_llm_meaning_examples = <
+    concept_declarative_message;
+    concept_imperative_message;
+    concept_interrogative_message
+>;;
+
+@message_types_for_llm_meaning_examples
+<- oriented_set;
+=> nrel_system_identifier:
+    [message_types_for_llm_meaning_examples];
+=> nrel_main_idtf:
+    [типы сообщения для примеров смыслов для LLM]
+    (* <- lang_ru;; *);
+    [message types for LLM meaning examples]
+    (* <- lang_en;; *);
+<- rrel_key_sc_element:
+    ...
+    (*
+    => nrel_main_idtf:
+        [Опр. (типы сообщения для примеров смыслов для LLM)]
+        (* <- lang_ru;; *);;
+    => nrel_main_idtf:
+        [Def. (message types for LLM meaning examples)]
+        (* <- lang_en;; *);;
+    <- definition;;
+    <= nrel_sc_text_translation:
+        {
+            rrel_example:
+                [Типы сообщения для примеров смыслов для LLM - это ориентированное множество, задающее порядок типов сообщений при составлении примеров трансляций смыслов сообщений для отправки на LLM.]
+                (* <- lang_ru;; *);
+            rrel_example:
+                [Message types for LLM meaning examples is an oriented set that specifies the order of message types when composing example translations of message meanings to send to LLM.]
+                (* <- lang_en;; *)
+        };;
+    <= nrel_using_constants:
+        {
+           oriented_set;
+           concept_message_type;
+           concept_message
+        };;
+    *);;

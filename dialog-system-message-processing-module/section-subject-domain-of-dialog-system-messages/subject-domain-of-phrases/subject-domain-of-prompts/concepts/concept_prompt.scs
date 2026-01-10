@@ -1,0 +1,33 @@
+concept_prompt
+<- sc_node_class;
+=> nrel_main_idtf:
+    [промпт]
+    (* <- lang_ru;; *);
+    [prompt]
+    (* <- lang_en;; *);
+
+<- rrel_key_sc_element:
+    ...
+    (*
+    => nrel_main_idtf:
+        [Опр. (промпт)]
+        (* <- lang_ru;; *);
+        [Def. (prompt)]
+        (* <- lang_en;; *);;
+    <- definition;;
+    <= nrel_sc_text_translation:
+        {
+            rrel_example:
+                [Промпт - текстовое описание задания, передаваемое LLM.]
+                (* <- lang_ru;; *);
+            rrel_example:
+                [Prompt is a text description of a task passed to LLM.]
+                (* <- lang_en;; *)
+        };;
+    *);
+=> nrel_subdividing:
+    {
+        concept_static_prompt;
+        concept_dynamic_prompt
+    };;
+

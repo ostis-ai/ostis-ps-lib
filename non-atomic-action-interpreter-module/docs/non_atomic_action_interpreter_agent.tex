@@ -1,0 +1,67 @@
+\scnheader{Агент интерпретации неатомарных действий}
+\scnidtf{Non atomic action interpretation agent}
+\scntext{пояснение}{Агент создаёт описание неатомарного действия в базе знаний на основе полученного шаблона (программы). Если передано множество аргументов, то перед генерацией происходит подстановка аргументов действия.}
+\scnrelfrom{класс действия}{action\_interpret\_non\_atomic\_action}
+\begin{scnrelfromvector}{аргументы агента}
+  \scnitem{программа}
+  \scnitem{множество аргументов}
+\end{scnrelfromvector}
+\scnrelfrom{понятие, специфицирующее действие}{nrel\_subaction}
+\begin{scnindent}
+    \scntext{примечание}{Экземпляр действия, которое инициирует действие, создаваемое. Необходимо, чтобы прервать интерпретацию неатомарного действия при отмене действия более высокого уровня.}
+\end{scnindent}
+\begin{scnrelfromvector}{алгоритм}
+    \scnfileitem{Первый аргумент неатомарного действия заменяется узлом, принадлежащим множеству аргументов как первый, второй аргумент неатомарного действия заменяется узлом, принадлежащим множеству как второй. Обратите внимание, что порядок аргументов задается отношениями rrel\_1, rrel\_2 и т. д., а не отношением последовательности.}
+    \scnfileitem{В ходе работы агента программа (шаблон) генерирует описание неатомарного действия. Составляющие его атомарные действия также добавляются в класс выполняемых (успешно или неуспешно) выполнившими их агентами.}
+    \begin{scnindent}
+        \scntext{примечание}{Перед инициированием каждого атомарного действия происходит проверка, не прервано ли общее действие (nrel\_subaction). Если общее действие было прервано, то интерпретация неатомного действия прекращается.}
+    \end{scnindent}
+\end{scnrelfromvector}
+\scnrelfrom{пример входной конструкции}{\scnfileimage[30em]{images/non_atomic_action_interpretation_agent_input.png}}
+\scnrelfrom{пример выходной конструкции}{\scnfileimage[30em]{images/non_atomic_action_interpretation_agent_output.png}}
+\scnrelfrom{пример программы}{\scnfileimage[30em]{images/non_atomic_action_interpretation_agent_example.png}}
+\begin{scnrelfromset}{возможные коды ответа}
+    \scnitem{SC\_RESULT\_OK}
+    \begin{scnindent}
+        \scntext{примечание}{Интерпретация неатомарного действия завершена.}
+    \end{scnindent}
+    \scnitem{SC\_RESULT\_ERROR}
+    \begin{scnindent}
+        \scntext{примечание}{Произошла ошибка.}
+    \end{scnindent}
+\end{scnrelfromset}
+
+\scnheader{программа}
+\begin{scnrelfromset}{варианты обхода}
+    \scnfileitem{переход к следующему действию при успешном завершении действия}
+    \begin{scnindent}
+        \scntext{примечание}{Устанавливается отношением nrel\_then. Переход по этому отношению осуществляется при успешном завершении действия, из которого осуществляется переход (его добавлении в класс questions\_finished\_successfully).}
+    \end{scnindent}
+    \scnfileitem{переход к следующему действию при безуспешном завершении действия}
+    \begin{scnindent}
+        \scntext{примечание}{Устанавливается отношением nrel\_else. Переход по этому отношению осуществляется при безуспешном завершении действия, из которого осуществляется переход (его добавлении в класс questions\_finished\_unsuccessfully).}
+    \end{scnindent}
+    \scnfileitem{безусловный переход к следующему действию}
+    \begin{scnindent}
+        \scntext{примечание}{Устанавливается отношением nrel\_goto.}
+    \end{scnindent}
+\end{scnrelfromset}
+\begin{scnindent}
+    \scntext{примечание}{Переход к следующему действию зависит от результата предыдущего. После завершения действия (добавленного в класс questions\_finished) проверяется его успешность для определения необходимого перехода.}
+    \scnrelfrom{пример условия обхода}{\scnfileimage[30em]{images/non_atomic_action_interpretation_agent_transition_by_action_result_example.png}}
+\end{scnindent}
+\scntext{примечание}{Помимо переходов, зависящих от результата предыдущего действия, вводятся условные переходы через отношение nrel\_condition. Первым элементом пар этого отношения являются пары (дуги) переходов по успешности действия, вторым — логическая формула. При этом на пару переходов накладывается дополнительное условие (помимо успешности/неуспеха завершения действия) – истинность логической формулы. В этом случае истинность формулы рассчитывается для тех же подстановок, которые использовались при генерации процесса по программе.}
+\begin{scnindent}
+    \scnrelfrom{пример условия}{\scnfileimage[30em]{images/non_atomic_action_interpretation_agent_conditioanl_transition_example.png}}
+\end{scnindent}
+\scntext{примечание}{В программе также можно задать приоритет выполнения действий. В первую очередь проверяются переходы по парам отношения nrel\_then. Если переход не выполнился (из-за неудачного завершения действия, наличия (и ложности) дополнительного условия или отсутствия таких переходов), то аналогичная проверка производится для переходов относительно nrel\_else, то — nrel\_goto. При наличии нескольких переходов, принадлежащих одному и тому же отношению, последовательность проверки таких переходов является случайной (зависит от состояния системной памяти). Если необходимо задать другой порядок проверки условий перехода, можно использовать отношение nrel\_basic\_sequence. В этом случае пара первого перехода в последовательности (наивысшего приоритета) дополнительно принадлежит отношению nrel\_priority\_path. В этом случае в первую очередь будут проверяться переходы в этой последовательности, а уже потом остальные.}
+\begin{scnindent}
+    \scnrelfrom{пример без приоритетов}{\scnfileimage[30em]{images/non_atomic_action_interpretation_agent_transitions_priority_example_1.png}}
+    \begin{scnindent}
+        \scntext{примечание}{В данном примере возможны два варианта последовательности выполнения действий: \textbf{action\_1 -> action\_2} (через nrel\_then), \textbf{action\_1 -> action\_3} (через nrel\_then), action\_1 -> action\_4 (через nrel\_else), action\_1 -> action\_5 (через nrel\_goto). Второй вариант следующий: \textbf{action\_1 -> action\_3} (через nrel\_then), \textbf{action\_1 -> action\_2} (через nrel\_then), action\_1 -> action\_4 (через nrel\_else), action\_1 -> action\_5 (через nrel\_goto)}
+    \end{scnindent}
+    \scnrelfrom{пример с приоритетами}{\scnfileimage[30em]{images/non_atomic_action_interpretation_agent_transitions_priority_example_2.png}}
+    \begin{scnindent}
+        \scntext{примечание}{В данном примере будет следующая последовательность выполнения действий: action\_1 -> action\_2 (через nrel\_then), \textbf{action\_1 -> action\_3} (через nrel\_else), \textbf{action\_1 -> action\_4} (через nrel\_then), action\_1 -> action\_5 (через nrel\_else).}
+    \end{scnindent}
+\end{scnindent}

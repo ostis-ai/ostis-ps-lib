@@ -1,0 +1,18 @@
+concept_message_nl_translation_logic_rule_class_by_priority
+    => nrel_main_idtf:
+        [множество правил естественно-языковой трансляции сообщения] (* <- lang_ru;; *);
+        [set of rules for the natural language translation of a message] (* <- lang_en;; *);
+        [Menge an Regeln für die natürlich-sprachliche Translation einer Nachricht] (* <- lang_de;; *);
+    <- sc_node_class;
+    <- concept_rules_classes_set_by_priority;;
+
+@access_arc_1 = (concept_message_nl_translation_logic_rule_class_by_priority -> rrel_1: concept_message_nl_translation_logic_rule_class_by_priority_1);;
+@access_arc_2 = (concept_message_nl_translation_logic_rule_class_by_priority -> concept_message_nl_translation_logic_rule_class_by_priority_2);;
+@access_arc_3 = (concept_message_nl_translation_logic_rule_class_by_priority -> concept_message_nl_translation_logic_rule_class_by_priority_3);;
+
+@sequence_arc_1 = (@access_arc_1 => @access_arc_2);;
+@sequence_arc_2 = (@access_arc_2 => @access_arc_3);;
+
+nrel_basic_sequence
+    -> @sequence_arc_1;
+    -> @sequence_arc_2;;

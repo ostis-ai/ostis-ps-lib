@@ -1,0 +1,41 @@
+concept_hortative_phrase
+<-sc_node_class;
+=> nrel_main_idtf:
+    [побудительная фраза]
+    (* <- lang_ru;; *);
+    [hortative phrase]
+    (* <- lang_en;; *);
+    [kausative Phrase]
+    (* <- lang_de;; *);
+=> nrel_idtf:
+    [императивная фраза]
+    (* <- lang_ru;; *);
+    [imperative phrase]
+    (* <- lang_en;; *);
+    [imperative Phrase]
+    (* <- lang_de;; *);
+<- rrel_key_sc_element:
+    ...
+    (*
+    => nrel_main_idtf:
+        [Опр. (побудительная фраза)]
+        (* <- lang_ru;; *);
+        [Def. (hortative phrase)]
+        (* <- lang_en;; *);
+        [Def. (kausative Phrase)]
+        (* <- lang_de;; *);;
+    <- definition;;
+    <= nrel_sc_text_translation:
+        {
+            rrel_example: [Побудительная фраза - фраза, побуждающая к какому-либо действию.]
+            (* <- lang_ru;; *);
+            rrel_example: [Hortative phrase is a phrase that encourages an action.]
+            (* <- lang_en;; *);
+         rrel_example: [Kausative Phrase ist eine Phrase, die zu einer Handlung anregt.]
+         (* <- lang_de;; *)
+        };;
+    <= nrel_using_constants:
+        {
+            concept_phrase
+        };;
+    *);;

@@ -1,0 +1,34 @@
+concept_phrase_about_future
+<-sc_node_class;
+=> nrel_main_idtf:
+    [фраза о будущем]
+    (* <- lang_ru;; *);
+    [phrase about the future]
+    (* <- lang_en;; *);
+    [Phrase mit Informationen über die Zukunft]
+    (* <- lang_de;; *);
+<- rrel_key_sc_element:
+    ...
+    (*
+    => nrel_main_idtf:
+        [Опр. (фраза о будущем)]
+        (* <- lang_ru;; *);
+        [Def. (phrase about the future)]
+        (* <- lang_en;; *);
+        [Def. (Phrase mit Informationen über die Zukunft)]
+        (* <- lang_de;; *);;
+    <- definition;;
+    <= nrel_sc_text_translation:
+        {
+            rrel_example: [Фраза о будущем - фраза, содержащая информацию о будущем.]
+            (* <- lang_ru;; *);
+            rrel_example: [Phrase about the future is a phrase that contains information about the future.]
+            (* <- lang_en;; *);
+         rrel_example: [Phrase mit Informationen über die Zukunft ist eine Phrase, die Informationen über die Zukunft enthält.]
+         (* <- lang_de;; *)
+        };;
+    <= nrel_using_constants:
+        {
+            concept_phrase
+        };;
+    *);;

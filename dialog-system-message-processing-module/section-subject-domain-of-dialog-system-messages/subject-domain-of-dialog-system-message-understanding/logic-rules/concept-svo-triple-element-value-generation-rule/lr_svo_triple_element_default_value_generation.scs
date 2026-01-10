@@ -1,0 +1,49 @@
+sc_node_class
+    -> atomic_logical_formula;
+    -> concept_message;
+    -> concept_svo_triple;
+    -> concept_svo_triple_element;
+    -> not_enough_specified_essence;;
+
+sc_node_non_role_relation
+    -> nrel_svo_triples;
+    -> nrel_implication;;
+
+sc_node_role_relation
+    -> rrel_svo_verb;
+    -> rrel_svo_triple_element_values;
+    -> rrel_main_key_sc_element;;
+
+sc_node_tuple
+    -> _tuple;;
+
+@rule_condition = [*
+    concept_message _-> _message;;
+    _message _=> nrel_svo_triples:: _tuple;;
+    _svo_triple
+        <-_ concept_svo_triple;
+        <-_ _tuple;
+        _-> _element;;
+    _element <-_ concept_svo_triple_element;;
+*];;
+
+@rule_result = [*
+    _element _-> rrel_svo_triple_element_values:: _values_set;;
+    _value
+        <-_ _values_set;
+        <~_ not_enough_specified_essence;;
+*];;
+
+atomic_logical_formula
+    -> @rule_condition;
+    -> @rule_result;;
+
+@rule_implication_arc = (@rule_condition => @rule_result);;
+@rule_implication_arc
+    <- nrel_implication;
+    <- rrel_main_key_sc_element: lr_svo_triple_element_default_value_generation;;
+
+lr_svo_triple_element_default_value_generation
+    <- concept_svo_triple_element_value_generation_rule;
+    <- concept_svo_triple_element_value_generation_rule_class_by_priority_2;;
+
