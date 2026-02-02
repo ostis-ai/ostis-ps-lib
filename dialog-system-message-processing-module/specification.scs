@@ -20,7 +20,7 @@ dialog_system_message_processing_module_reusable_component_specification = [*
     => nrel_purpose: [The component is designed for use in dialog systems, specifically for processing messages.](* <- lang_en;; *);;
 
     => nrel_component_dependencies: ... (* -> section_subject_domain_of_dialog_system_messages;; *);;
-    => nrel_component_address: [https://github.com/ostis-ai/ostis-ps-lib/tree/main/non_atomic_component_message_processing] (* <- concept_github_url;; *);;
+    => nrel_component_address: [https://github.com/ostis-ai/ostis-ps-lib/tree/main/dialog-system-message-processing-module] (* <- concept_github_url;; *);;
     => nrel_installation_method: ... (* <- concept_component_dynamically_installed_method;; *);;
 *);;
 *];;
